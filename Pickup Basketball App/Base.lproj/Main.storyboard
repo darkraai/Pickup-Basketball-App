@@ -186,7 +186,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" selectedImage="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Second" selectedImage="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
                         <segue destination="zhe-k3-abk" kind="show" identifier="search_ballerinfo_segue" id="jfD-dV-KOw"/>
                     </connections>
@@ -470,7 +470,6 @@
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="plus" catalog="system" width="64" height="56"/>
-        <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0hF-xf-NQc"/>
