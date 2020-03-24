@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7324280DC700F6D70F /* AppDelegate.swift */; };
 		C0A27B7624280DC700F6D70F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7524280DC700F6D70F /* SceneDelegate.swift */; };
-		C0A27B7824280DC700F6D70F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7724280DC700F6D70F /* FirstViewController.swift */; };
-		C0A27B7A24280DC700F6D70F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7924280DC700F6D70F /* SecondViewController.swift */; };
+		C0A27B7824280DC700F6D70F /* Loginviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7724280DC700F6D70F /* Loginviewcontroller.swift */; };
+		C0A27B7A24280DC700F6D70F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7924280DC700F6D70F /* HomeViewController.swift */; };
 		C0A27B7D24280DC700F6D70F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A27B7B24280DC700F6D70F /* Main.storyboard */; };
 		C0A27B8024280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7E24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld */; };
 		C0A27B8224280DCB00F6D70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A27B8124280DCB00F6D70F /* Assets.xcassets */; };
@@ -21,8 +21,8 @@
 		C0A27B7024280DC700F6D70F /* Pickup Basketball App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pickup Basketball App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A27B7324280DC700F6D70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0A27B7524280DC700F6D70F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C0A27B7724280DC700F6D70F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		C0A27B7924280DC700F6D70F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		C0A27B7724280DC700F6D70F /* Loginviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loginviewcontroller.swift; sourceTree = "<group>"; };
+		C0A27B7924280DC700F6D70F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C0A27B7C24280DC700F6D70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0A27B7F24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pickup_Basketball_App.xcdatamodel; sourceTree = "<group>"; };
 		C0A27B8124280DCB00F6D70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,8 +62,8 @@
 			children = (
 				C0A27B7324280DC700F6D70F /* AppDelegate.swift */,
 				C0A27B7524280DC700F6D70F /* SceneDelegate.swift */,
-				C0A27B7724280DC700F6D70F /* FirstViewController.swift */,
-				C0A27B7924280DC700F6D70F /* SecondViewController.swift */,
+				C0A27B7724280DC700F6D70F /* Loginviewcontroller.swift */,
+				C0A27B7924280DC700F6D70F /* HomeViewController.swift */,
 				C0A27B7B24280DC700F6D70F /* Main.storyboard */,
 				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
@@ -144,8 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0A27B7A24280DC700F6D70F /* SecondViewController.swift in Sources */,
-				C0A27B7824280DC700F6D70F /* FirstViewController.swift in Sources */,
+				C0A27B7A24280DC700F6D70F /* HomeViewController.swift in Sources */,
+				C0A27B7824280DC700F6D70F /* Loginviewcontroller.swift in Sources */,
 				C0A27B8024280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld in Sources */,
 				C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */,
 				C0A27B7624280DC700F6D70F /* SceneDelegate.swift in Sources */,
