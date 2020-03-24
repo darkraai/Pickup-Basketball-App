@@ -10,10 +10,12 @@ import UIKit
 
 class Loginviewcontroller: UIViewController {
 
+    
     @IBAction func Loginbuttonpressed(_ sender: Any) {
         print("button pressed")
         self.performSegue(withIdentifier: "Logintohomesegue", sender: self)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

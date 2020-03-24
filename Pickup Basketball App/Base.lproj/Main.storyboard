@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--3.Home View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="9pv-A4-QxB" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Homeviewcontroller" id="9pv-A4-QxB" userLabel="3.Home View Controller" customClass="Homeviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
-        <!--View Controller-->
+        <!--11.Game Menu View Controller-->
         <scene sceneID="NoQ-kS-gMl">
             <objects>
-                <viewController id="HlM-Fj-27q" sceneMemberID="viewController">
+                <viewController id="HlM-Fj-27q" userLabel="11.Game Menu View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ver-N4-jir">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="1697" y="-314"/>
         </scene>
-        <!--View Controller-->
+        <!--13.Join Game View Controller-->
         <scene sceneID="gVa-zd-frd">
             <objects>
-                <viewController id="ziq-5v-RzB" sceneMemberID="viewController">
+                <viewController id="ziq-5v-RzB" userLabel="13.Join Game View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z6A-7x-Hff">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="2786" y="-302"/>
         </scene>
-        <!--View Controller-->
+        <!--12.Create Game View Controller-->
         <scene sceneID="pCf-Ia-meZ">
             <objects>
-                <viewController id="HoG-UR-PaG" sceneMemberID="viewController">
+                <viewController id="HoG-UR-PaG" userLabel="12.Create Game View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Yo-YN-gkN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="2786" y="-985"/>
         </scene>
-        <!--Second-->
+        <!--7.Search Friends View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" userLabel="7.Search Friends View Controller" customClass="SecondViewController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--View Controller-->
+        <!--8.Other Baller View Controller-->
         <scene sceneID="9ti-Kb-Lqi">
             <objects>
-                <viewController id="zhe-k3-abk" sceneMemberID="viewController">
+                <viewController id="zhe-k3-abk" userLabel="8.Other Baller View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v1K-N8-r8L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,10 +229,10 @@
             </objects>
             <point key="canvasLocation" x="1586" y="363"/>
         </scene>
-        <!--View Controller-->
+        <!--9.Friends List View Controller-->
         <scene sceneID="fce-PJ-0Ih">
             <objects>
-                <viewController id="P2U-dl-QLr" sceneMemberID="viewController">
+                <viewController id="P2U-dl-QLr" userLabel="9.Friends List View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r9a-jU-MeI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -254,10 +254,10 @@
             </objects>
             <point key="canvasLocation" x="2447" y="368"/>
         </scene>
-        <!--Third-->
+        <!--4.New Park Selection View Controller-->
         <scene sceneID="rYP-Xq-hkn">
             <objects>
-                <viewController id="SSO-zN-RsQ" sceneMemberID="viewController">
+                <viewController id="SSO-zN-RsQ" userLabel="4.New Park Selection View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ia-fe-K2D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,10 +282,10 @@
             </objects>
             <point key="canvasLocation" x="748" y="1031"/>
         </scene>
-        <!--View Controller-->
+        <!--5.New Park Configuration View Controller-->
         <scene sceneID="fPs-aP-3Ne">
             <objects>
-                <viewController id="8Yj-zF-Yo1" sceneMemberID="viewController">
+                <viewController id="8Yj-zF-Yo1" userLabel="5.New Park Configuration View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sX4-WA-V0g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,10 +307,10 @@
             </objects>
             <point key="canvasLocation" x="1696" y="1036"/>
         </scene>
-        <!--Fourth-->
+        <!--6.Baller Profile View Controller-->
         <scene sceneID="0uf-t0-tSy">
             <objects>
-                <viewController id="0yn-qS-PhH" sceneMemberID="viewController">
+                <viewController id="0yn-qS-PhH" userLabel="6.Baller Profile View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v0d-EO-zux">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,10 +347,10 @@
             </objects>
             <point key="canvasLocation" x="736.23188405797111" y="1739.7321428571429"/>
         </scene>
-        <!--View Controller-->
+        <!--10.Friend Requests View Controller-->
         <scene sceneID="hZe-1m-d1e">
             <objects>
-                <viewController id="43n-54-RN2" sceneMemberID="viewController">
+                <viewController id="43n-54-RN2" userLabel="10.Friend Requests View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AbY-Ar-Byh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -386,10 +386,10 @@
             </objects>
             <point key="canvasLocation" x="1708.6956521739132" y="1735.7142857142856"/>
         </scene>
-        <!--Loginviewcontroller-->
+        <!--1.Login View Controller-->
         <scene sceneID="vCU-1g-H0B">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="AIn-h6-WXl" customClass="Loginviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="AIn-h6-WXl" userLabel="1.Login View Controller" customClass="Loginviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bVV-Yp-61D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -426,25 +426,78 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLj-Md-mml">
-                                <rect key="frame" x="143" y="435" width="129" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLj-Md-mml">
+                                <rect key="frame" x="142.5" y="432" width="129" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="Lfi-i1-1zh"/>
+                                    <constraint firstAttribute="height" constant="72" id="sV1-Gd-fz9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="Log in"/>
                                 <connections>
                                     <action selector="Loginbuttonpressed:" destination="AIn-h6-WXl" eventType="touchUpInside" id="Bpo-Am-6Fq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-af-buV" userLabel="LoginwithFacebook">
+                                <rect key="frame" x="47" y="593" width="320" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="SRj-GR-kl8"/>
+                                    <constraint firstAttribute="height" constant="73" id="URC-ca-6fR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
+                                <state key="normal" title="Log in with Facebook" backgroundImage="FB">
+                                    <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mga-MF-6Yf" userLabel="LoginwithGoogle">
+                                <rect key="frame" x="47" y="696" width="320" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="UcM-XB-cv7"/>
+                                    <constraint firstAttribute="width" constant="320" id="aoG-eA-pzD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="Login with Google" backgroundImage="Google">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44W-4U-7JG">
+                                <rect key="frame" x="125" y="527" width="164" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="30W-S5-liu"/>
+                                    <constraint firstAttribute="height" constant="36" id="pzD-7z-0Yk"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Forgot Password?">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.79148271399026737" green="0.905398175625312" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="rY1-Qx-IKX" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="2nU-Ym-QNB"/>
+                            <constraint firstItem="WsK-af-buV" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="FCf-BH-42t"/>
+                            <constraint firstItem="44W-4U-7JG" firstAttribute="top" secondItem="BLj-Md-mml" secondAttribute="bottom" constant="23" id="Fyj-cp-SMd"/>
                             <constraint firstItem="yES-f5-nh3" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="KzI-tL-C4u"/>
                             <constraint firstItem="hzl-lL-LOd" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="NSK-pv-Bg9"/>
                             <constraint firstItem="BIG-DZ-JAR" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="Oca-zH-b9x"/>
+                            <constraint firstItem="BLj-Md-mml" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="PNS-n2-KwX"/>
                             <constraint firstItem="yES-f5-nh3" firstAttribute="top" secondItem="rY1-Qx-IKX" secondAttribute="bottom" constant="25" id="SoP-1W-9DL"/>
+                            <constraint firstItem="Mga-MF-6Yf" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="XCN-Zo-v3D"/>
                             <constraint firstItem="rY1-Qx-IKX" firstAttribute="top" secondItem="hzl-lL-LOd" secondAttribute="bottom" constant="50" id="gXy-6Y-Abs"/>
                             <constraint firstItem="BIG-DZ-JAR" firstAttribute="top" secondItem="csK-kS-50o" secondAttribute="top" constant="60" id="sP6-g4-7zf"/>
+                            <constraint firstItem="44W-4U-7JG" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="tZb-DG-j4k"/>
+                            <constraint firstItem="WsK-af-buV" firstAttribute="top" secondItem="44W-4U-7JG" secondAttribute="bottom" constant="30" id="vaq-OX-KmT"/>
+                            <constraint firstItem="Mga-MF-6Yf" firstAttribute="top" secondItem="WsK-af-buV" secondAttribute="bottom" constant="30" id="ydJ-Xc-8Y9"/>
+                            <constraint firstItem="BLj-Md-mml" firstAttribute="top" secondItem="yES-f5-nh3" secondAttribute="bottom" constant="40" id="z9b-ag-x61"/>
                             <constraint firstItem="hzl-lL-LOd" firstAttribute="top" secondItem="BIG-DZ-JAR" secondAttribute="bottom" constant="22" id="zC1-iu-usC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="csK-kS-50o"/>
@@ -460,10 +513,10 @@
             </objects>
             <point key="canvasLocation" x="-1001.4492753623189" y="0.0"/>
         </scene>
-        <!--View Controller-->
+        <!--2.Register View Controller-->
         <scene sceneID="aly-2P-6ad">
             <objects>
-                <viewController id="CUc-p4-182" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Registerviewcontroller" id="CUc-p4-182" userLabel="2.Register View Controller" customClass="Registerviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OSv-vd-ctz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -511,6 +564,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FB" width="285" height="69"/>
+        <image name="Google" width="285" height="69"/>
         <image name="PngItem_32413" width="600" height="600"/>
         <image name="location.circle.fill" catalog="system" width="64" height="60"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>

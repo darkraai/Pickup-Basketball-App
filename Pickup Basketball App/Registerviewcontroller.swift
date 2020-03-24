@@ -1,14 +1,13 @@
 //
-//  SecondViewController.swift
+//  Registerviewcontroller.swift
 //  Pickup Basketball App
 //
-//  Created by Surya M on 3/22/20.
+//  Created by Ben Svoboda on 3/24/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
-
 import UIKit
 
-class HomeViewController: UIViewController {
+class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,4 +18,3 @@ class HomeViewController: UIViewController {
 
 
 }
-
