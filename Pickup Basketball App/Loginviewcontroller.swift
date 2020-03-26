@@ -13,6 +13,7 @@ class Loginviewcontroller: UIViewController {
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
 
+    //When login is tapped,  it goes to home page
     @IBAction func Loginbuttonpressed(_ sender: Any) {
         print("button pressed")
         self.performSegue(withIdentifier: "Logintohomesegue", sender: self)
@@ -22,11 +23,13 @@ class Loginviewcontroller: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("Loaded sucessfully")
+        //sets text field delegates to themselves
         UsernameTextField.delegate = self
         PasswordTextField.delegate = self
 
     }
 
+    //When login is tapped,  it saves the username and password
     @IBAction func LoginTapped(_ sender: Any) {
         var user = UsernameTextField.text!
         var pass = PasswordTextField.text!
@@ -36,6 +39,7 @@ class Loginviewcontroller: UIViewController {
     
 }
 extension Loginviewcontroller : UITextFieldDelegate{
+    //when return is clicked, the keyboard dissapears by resigning first responder
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
