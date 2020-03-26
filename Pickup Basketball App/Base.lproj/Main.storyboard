@@ -435,6 +435,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="Log in"/>
                                 <connections>
+                                    <action selector="LoginTapped:" destination="AIn-h6-WXl" eventType="touchUpInside" id="JQd-wc-j3u"/>
                                     <action selector="Loginbuttonpressed:" destination="AIn-h6-WXl" eventType="touchUpInside" id="Bpo-Am-6Fq"/>
                                 </connections>
                             </button>
@@ -504,6 +505,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="6oq-X4-jhg"/>
                     <connections>
+                        <outlet property="PasswordTextField" destination="yES-f5-nh3" id="gab-lw-wzp"/>
+                        <outlet property="UsernameTextField" destination="rY1-Qx-IKX" id="WXq-8o-2qS"/>
                         <segue destination="CUc-p4-182" kind="show" identifier="login_register_segue" id="LLg-lM-9ja"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="login_home_segue" id="wsp-FD-VdQ"/>
                         <segue destination="9pv-A4-QxB" kind="showDetail" identifier="Logintohomesegue" id="zVU-a0-HrC"/>
