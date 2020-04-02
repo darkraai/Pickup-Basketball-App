@@ -6,15 +6,28 @@
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
 import UIKit
+import os.log
+
+
 
 class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("Loaded sucessfully2")
 
     }
+    
+
+    
+
+    
+
+
+   /* @IBAction func cancelregistration(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    */
 
 
 }
