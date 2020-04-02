@@ -15,14 +15,12 @@ class Loginviewcontroller: UIViewController {
 
     //When login is tapped,  it goes to home page
     @IBAction func Loginbuttonpressed(_ sender: Any) {
-        print("button pressed")
         self.performSegue(withIdentifier: "Logintohomesegue", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("Loaded sucessfully")
         //sets text field delegates to themselves
         UsernameTextField.delegate = self
         PasswordTextField.delegate = self
