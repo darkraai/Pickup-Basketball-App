@@ -536,6 +536,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aig-vG-bqh"/>
                     <connections>
+                        <outlet property="LoginButton" destination="BLj-Md-mml" id="Xby-VE-b1b"/>
                         <outlet property="PasswordTextField" destination="yES-f5-nh3" id="gab-lw-wzp"/>
                         <outlet property="UsernameTextField" destination="rY1-Qx-IKX" id="WXq-8o-2qS"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="login_home_segue" id="wsp-FD-VdQ"/>
