@@ -10,8 +10,16 @@ import os.log
 
 
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController,UITextFieldDelegate {
 
+    
+    
+    //MARK: Properties
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -19,6 +27,8 @@ class RegisterViewController: UIViewController {
     }
     
 
+
+    
     
 
     

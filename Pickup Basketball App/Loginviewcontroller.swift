@@ -17,8 +17,7 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
-    
-    
+    @IBOutlet weak var donthaveaccount: UIButton!
     
     @IBAction func donthaveaccountpressed(_ sender: Any) {
             self.performSegue(withIdentifier: "logtoreg", sender: self)
