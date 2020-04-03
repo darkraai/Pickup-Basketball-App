@@ -19,10 +19,10 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var donthaveaccount: UIButton!
     
-    @IBAction func donthaveaccountpressed(_ sender: Any) {
+    /*@IBAction func donthaveaccountpressed(_ sender: Any) {
             self.performSegue(withIdentifier: "logtoreg", sender: self)
         }
-    
+    */
     
     //When login is tapped,  it goes to home page
     @IBAction func Loginbuttonpressed(_ sender: Any) {

@@ -613,9 +613,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="ffff:" destination="CUc-p4-182" eventType="editingDidEnd" id="IeD-aF-DhA"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7X-GM-Flj" userLabel="LoginwithFacebook">
                                 <rect key="frame" x="47" y="555" width="320" height="73"/>
@@ -674,9 +671,18 @@
                                 <segue destination="AIn-h6-WXl" kind="presentation" identifier="registernow" id="72R-9Y-AX5"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="n0D-dM-9uK">
+                            <connections>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="oooof" destination="tr4-jA-6W6" id="HSy-bs-g5B"/>
+                        <outlet property="registerdone" destination="n0D-dM-9uK" id="a6q-eG-5XB"/>
+                        <outlet property="useremail" destination="YWm-5A-EfP" id="XpH-oA-lbZ"/>
+                        <outlet property="userfirstname" destination="5f6-1D-asr" id="hDp-KK-s9F"/>
+                        <outlet property="userlastname" destination="tr4-jA-6W6" id="pqa-D5-OcM"/>
+                        <outlet property="userpassword" destination="nAH-8B-5hJ" id="fdL-gA-dNw"/>
+                        <outlet property="userusername" destination="5qv-07-NVi" id="LSH-ed-3mJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3T-j9-afa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -726,7 +732,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="GEA-CZ-BC7"/>
-        <segue reference="zVU-a0-HrC"/>
+        <segue reference="Fcb-Ng-Ip0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FB" width="285" height="69"/>
