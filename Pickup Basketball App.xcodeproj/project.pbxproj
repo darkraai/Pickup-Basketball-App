@@ -15,6 +15,7 @@
 		C0A27B8024280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7E24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld */; };
 		C0A27B8224280DCB00F6D70F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0A27B8124280DCB00F6D70F /* Assets.xcassets */; };
 		C0A27B8524280DCB00F6D70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */; };
+		C0E28CEC2436D92C00A25ABD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
 		C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		C0A27B8124280DCB00F6D70F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0A27B8424280DCB00F6D70F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0A27B8624280DCB00F6D70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0E28CEB2436D92C00A25ABD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E28CEC2436D92C00A25ABD /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +51,7 @@
 			children = (
 				C0A27B7224280DC700F6D70F /* Pickup Basketball App */,
 				C0A27B7124280DC700F6D70F /* Products */,
+				C0E28CEA2436D92C00A25ABD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +78,14 @@
 				C0A27B7E24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld */,
 			);
 			path = "Pickup Basketball App";
+			sourceTree = "<group>";
+		};
+		C0E28CEA2436D92C00A25ABD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0E28CEB2436D92C00A25ABD /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
