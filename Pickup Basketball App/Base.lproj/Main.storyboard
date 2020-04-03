@@ -673,6 +673,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="n0D-dM-9uK">
                             <connections>
+                                <segue destination="9pv-A4-QxB" kind="showDetail" id="Fcb-Ng-Ip0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
