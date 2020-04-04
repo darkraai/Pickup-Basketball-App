@@ -23,6 +23,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var registerdone: UIBarButtonItem!
     
     
+    /* @IBAction func DoneTapped(_ sender: UIBarButtonItem) {
+    }
+    
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -492,9 +492,8 @@
                                     </attributedString>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="des-nC-J0n">
-                                <rect key="frame" x="104" y="751" width="208" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="des-nC-J0n">
+                                <rect key="frame" x="103" y="712" width="208" height="36"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Dont have an account?">
@@ -524,7 +523,9 @@
                             <constraint firstItem="Mga-MF-6Yf" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="XCN-Zo-v3D"/>
                             <constraint firstItem="44W-4U-7JG" firstAttribute="top" secondItem="BLj-Md-mml" secondAttribute="bottom" constant="10" id="deF-If-ijH"/>
                             <constraint firstItem="rY1-Qx-IKX" firstAttribute="top" secondItem="hzl-lL-LOd" secondAttribute="bottom" constant="40" id="gXy-6Y-Abs"/>
+                            <constraint firstItem="des-nC-J0n" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="gZw-qt-3T9"/>
                             <constraint firstItem="BLj-Md-mml" firstAttribute="top" secondItem="yES-f5-nh3" secondAttribute="bottom" constant="25" id="jNs-GS-Dpo"/>
+                            <constraint firstItem="des-nC-J0n" firstAttribute="top" secondItem="Mga-MF-6Yf" secondAttribute="bottom" constant="41" id="mBv-il-5lM"/>
                             <constraint firstItem="BIG-DZ-JAR" firstAttribute="top" secondItem="csK-kS-50o" secondAttribute="top" constant="15" id="sP6-g4-7zf"/>
                             <constraint firstItem="44W-4U-7JG" firstAttribute="centerX" secondItem="bVV-Yp-61D" secondAttribute="centerX" id="tZb-DG-j4k"/>
                             <constraint firstItem="WsK-af-buV" firstAttribute="top" secondItem="44W-4U-7JG" secondAttribute="bottom" constant="30" id="vaq-OX-KmT"/>
@@ -673,6 +674,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="n0D-dM-9uK">
                             <connections>
+                                <action selector="DoneTapped:" destination="CUc-p4-182" id="eZ0-eq-EtT"/>
                                 <segue destination="9pv-A4-QxB" kind="showDetail" id="Fcb-Ng-Ip0"/>
                             </connections>
                         </barButtonItem>
@@ -733,7 +735,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="GEA-CZ-BC7"/>
-        <segue reference="Fcb-Ng-Ip0"/>
+        <segue reference="zVU-a0-HrC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FB" width="285" height="69"/>
