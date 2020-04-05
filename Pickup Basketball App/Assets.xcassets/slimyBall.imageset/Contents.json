@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "slime.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "slime.png",
+      "filename" : "slime-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "slime-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

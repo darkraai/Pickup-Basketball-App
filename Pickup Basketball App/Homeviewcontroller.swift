@@ -9,13 +9,13 @@
 import UIKit
 import MapKit
 
-class Homeviewcontroller: UIViewController {
+class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     
-    private var destinations: [MKPointAnnotation] = []
-    private var currentRoute: MKRoute?
+//    private var destinations: [MKPointAnnotation] = []
+//    private var currentRoute: MKRoute?
 
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
@@ -25,6 +25,64 @@ class Homeviewcontroller: UIViewController {
         mapView.delegate = self
         configureLocationServices()
 
+    }
+    
+    @IBAction func searchButton(_ sender: Any) {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        present(searchController, animated: true, completion: nil)
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.isUserInteractionEnabled = false
+        
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = UIActivityIndicatorView.Style.medium
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        
+        self.view.addSubview(activityIndicator)
+        
+        searchBar.resignFirstResponder()
+        dismiss(animated: true, completion: nil)
+        
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.naturalLanguageQuery = searchBar.text
+        
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        
+        activeSearch.start {
+            (response, error) in
+            activityIndicator.stopAnimating()
+            self.view.isUserInteractionEnabled = true
+            
+            if (response == nil){
+                print("Error")
+            }
+            
+            else {
+//                let annotations = self.mapView.annotations
+//                self.mapView.removeAnnotation(annotations as! MKAnnotation)
+                
+                let latitude = response!.boundingRegion.center.latitude
+                let longitude = response!.boundingRegion.center.longitude
+                
+                let annotation = MKPointAnnotation()
+                annotation.title = searchBar.text
+                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+                self.mapView.addAnnotation(annotation)
+                
+                let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                let region = MKCoordinateRegion(center: coordinate, span: span)
+                
+                self.mapView.setRegion(region, animated: true)
+                
+            }
+            
+        }
     }
     
     func configureLocationServices(){
@@ -59,8 +117,8 @@ class Homeviewcontroller: UIViewController {
         ortegaParkAnnotation.title = "Ortega Park"
         ortegaParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617)
         
-        destinations.append(appleParkAnnotation)
-        destinations.append(ortegaParkAnnotation)
+//        destinations.append(appleParkAnnotation)
+//        destinations.append(ortegaParkAnnotation)
         
         let annotations: [MKAnnotation] = [appleParkAnnotation, ortegaParkAnnotation]
         
@@ -68,28 +126,28 @@ class Homeviewcontroller: UIViewController {
         
     }
     
-    private func constructRoute(userLocation: CLLocationCoordinate2D){
-        let directionsRequest = MKDirections.Request()
-        directionsRequest.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation))
-        directionsRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinations[0].coordinate))
-        directionsRequest.requestsAlternateRoutes = true
-        directionsRequest.transportType = .automobile
-        
-        let directions = MKDirections(request: directionsRequest)
-        
-        directions.calculate { [weak self] (directionsReponse, error) in
-            guard let strongSelf = self else { return }
-            
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let response = directionsReponse, response.routes.count > 0{
-                strongSelf.currentRoute = response.routes[0]
-                
-                strongSelf.mapView.addOverlay(response.routes[0].polyline)
-                strongSelf.mapView.setVisibleMapRect(response.routes[0].polyline.boundingMapRect, animated: true)
-            }
-        }
-    }
+//    private func constructRoute(userLocation: CLLocationCoordinate2D){
+//        let directionsRequest = MKDirections.Request()
+//        directionsRequest.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation))
+//        directionsRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinations[0].coordinate))
+//        directionsRequest.requestsAlternateRoutes = true
+//        directionsRequest.transportType = .automobile
+//
+//        let directions = MKDirections(request: directionsRequest)
+//
+//        directions.calculate { [weak self] (directionsReponse, error) in
+//            guard let strongSelf = self else { return }
+//
+//            if let error = error {
+//                print(error.localizedDescription)
+//            } else if let response = directionsReponse, response.routes.count > 0{
+//                strongSelf.currentRoute = response.routes[0]
+//
+//                strongSelf.mapView.addOverlay(response.routes[0].polyline)
+//                strongSelf.mapView.setVisibleMapRect(response.routes[0].polyline.boundingMapRect, animated: true)
+//            }
+//        }
+//    }
         
 
 }
@@ -102,7 +160,7 @@ extension Homeviewcontroller: CLLocationManagerDelegate {
         if currentCoordinate == nil {
             zoomToLatestLocation(with: latestLocation.coordinate)
             addAnnotations()
-            constructRoute(userLocation: latestLocation.coordinate)
+//            constructRoute(userLocation: latestLocation.coordinate)
         }
         currentCoordinate = latestLocation.coordinate
     }
@@ -116,16 +174,16 @@ extension Homeviewcontroller: CLLocationManagerDelegate {
 
 extension Homeviewcontroller: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let currentRoute = currentRoute else {
-            return MKOverlayRenderer()
-        }
-        let polyLineRenderer = MKPolylineRenderer(polyline: currentRoute.polyline)
-        polyLineRenderer.strokeColor = UIColor.blue
-        polyLineRenderer.lineWidth = 5
-        
-        return polyLineRenderer
-    }
+//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+//        guard let currentRoute = currentRoute else {
+//            return MKOverlayRenderer()
+//        }
+//        let polyLineRenderer = MKPolylineRenderer(polyline: currentRoute.polyline)
+//        polyLineRenderer.strokeColor = UIColor.blue
+//        polyLineRenderer.lineWidth = 5
+//
+//        return polyLineRenderer
+//    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
@@ -136,7 +194,7 @@ extension Homeviewcontroller: MKMapViewDelegate {
         if let title = annotation.title, title == "Apple Park" {
             annotationView?.image = UIImage(named: "slimyBall")
         } else if let title = annotation.title, title == "Ortega Park" {
-            annotationView?.image = UIImage(named: "bball1")
+            annotationView?.image = UIImage(named: "slimyBall")
         } else if annotation === mapView.userLocation{ //if the annotation passed in to the function is an instance (has the identity of:) the user location, then we render the user image
             annotationView?.image = UIImage(named: "user")
         }

@@ -35,6 +35,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="+ New Park"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4M-pl-KFS">
+                                <rect key="frame" x="45" y="59" width="79" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="qXz-Lb-1Du"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.65128860125620147" blue="0.66153644781124232" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -734,7 +743,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GEA-CZ-BC7"/>
+        <segue reference="0hF-xf-NQc"/>
         <segue reference="zVU-a0-HrC"/>
     </inferredMetricsTieBreakers>
     <resources>
