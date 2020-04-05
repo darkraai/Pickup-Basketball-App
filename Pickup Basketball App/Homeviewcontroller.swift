@@ -23,9 +23,29 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         // Do any additional setup after loading the view.
         print("Loaded sucessfully2")
         mapView.delegate = self
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        longPressRecognizer.minimumPressDuration = 0.1
+        mapView.addGestureRecognizer(longPressRecognizer)
+        
         configureLocationServices()
 
     }
+    
+    @objc func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        let location = gestureRecognizer.location(in: mapView) //gives the location object of where you are clicking on mapView
+        let locCoord = mapView.convert(location, toCoordinateFrom: mapView) //converts location object to coordinates
+            
+        let annotation = MKPointAnnotation()
+            
+        annotation.coordinate = locCoord
+        annotation.title = "latitude:" + String(format: "%0.02f", annotation.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation.coordinate.longitude)
+        annotation.subtitle = "Loc of new bball court"
+           
+    //  self.mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(annotation)
+    }
+    
     
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
@@ -75,7 +95,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
                 self.mapView.addAnnotation(annotation)
                 
                 let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
                 let region = MKCoordinateRegion(center: coordinate, span: span)
                 
                 self.mapView.setRegion(region, animated: true)
@@ -84,6 +104,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
             
         }
     }
+    
     
     func configureLocationServices(){
         locationManager.delegate = self //set location manager delegate to view controller
@@ -191,12 +212,11 @@ extension Homeviewcontroller: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
         }
         
-        if let title = annotation.title, title == "Apple Park" {
-            annotationView?.image = UIImage(named: "slimyBall")
-        } else if let title = annotation.title, title == "Ortega Park" {
-            annotationView?.image = UIImage(named: "slimyBall")
-        } else if annotation === mapView.userLocation{ //if the annotation passed in to the function is an instance (has the identity of:) the user location, then we render the user image
+        
+        if annotation === mapView.userLocation{ //if the annotation passed in to the function is an instance (has the identity of:) the user location, then we render the user image
             annotationView?.image = UIImage(named: "user")
+        } else if (annotation.title) != nil{
+            annotationView?.image = UIImage(named: "slimyBall")
         }
         
         annotationView?.canShowCallout = true //callout is triggered when we tap on the annotation
