@@ -25,7 +25,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         mapView.delegate = self
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        longPressRecognizer.minimumPressDuration = 0.1
+        longPressRecognizer.minimumPressDuration = 0.2
         mapView.addGestureRecognizer(longPressRecognizer)
         
         configureLocationServices()
@@ -89,10 +89,10 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
                 let latitude = response!.boundingRegion.center.latitude
                 let longitude = response!.boundingRegion.center.longitude
                 
-                let annotation = MKPointAnnotation()
-                annotation.title = searchBar.text
-                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-                self.mapView.addAnnotation(annotation)
+//                let annotation = MKPointAnnotation()
+//                annotation.title = searchBar.text
+//                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+//                self.mapView.addAnnotation(annotation)
                 
                 let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
                 let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
