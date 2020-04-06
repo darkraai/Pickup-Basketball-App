@@ -51,8 +51,8 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
-        
     }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.isUserInteractionEnabled = false

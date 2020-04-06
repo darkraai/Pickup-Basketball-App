@@ -30,21 +30,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <gestureRecognizers/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuB-eW-iRd">
-                                <rect key="frame" x="242" y="59" width="128" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="+ New Park"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4M-pl-KFS">
-                                <rect key="frame" x="45" y="59" width="79" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Search"/>
-                                <connections>
-                                    <action selector="searchButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="qXz-Lb-1Du"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.65128860125620147" blue="0.66153644781124232" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
@@ -60,7 +45,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" selectedImage="location.circle.fill" catalog="system" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="Press to create a new court" id="0aC-bI-RlD">
+                        <leftBarButtonItems>
+                            <barButtonItem id="pQz-AJ-Qwp"/>
+                            <barButtonItem title="Search" id="QpL-Gz-5yU">
+                                <connections>
+                                    <action selector="searchButton:" destination="9pv-A4-QxB" id="sOx-Dg-Dpi"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="wF3-J4-9fQ" id="dVQ-tc-N0t"/>
                         <segue destination="HlM-Fj-27q" kind="show" identifier="home_gamemenu_segue" id="Pvi-T6-m82"/>
@@ -68,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="1659.4202898550725" y="-320.08928571428572"/>
         </scene>
         <!--11.Game Menu View Controller-->
         <scene sceneID="NoQ-kS-gMl">
@@ -124,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAS-ZW-Wbd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="-314"/>
+            <point key="canvasLocation" x="2605.7971014492755" y="-314.0625"/>
         </scene>
         <!--13.Join Game View Controller-->
         <scene sceneID="gVa-zd-frd">
@@ -149,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCR-nX-tXI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2786" y="-302"/>
+            <point key="canvasLocation" x="3695.652173913044" y="-302.00892857142856"/>
         </scene>
         <!--12.Create Game View Controller-->
         <scene sceneID="pCf-Ia-meZ">
@@ -181,17 +175,17 @@
             <objects>
                 <viewController id="8rJ-Kc-sve" userLabel="7.Search Friends View Controller" customClass="SecondViewController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Search Friends" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="92" y="399.5" width="230" height="43"/>
+                                <rect key="frame" x="92" y="426.5" width="230" height="43"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="99.5" y="450.5" width="215" height="17"/>
+                                <rect key="frame" x="99.5" y="477.5" width="215" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -278,7 +272,7 @@
             <objects>
                 <viewController id="SSO-zN-RsQ" userLabel="4.New Park Selection View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ia-fe-K2D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="New Court pt. 1" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="UGs-uk-bJ2">
@@ -331,7 +325,7 @@
             <objects>
                 <viewController id="0yn-qS-PhH" userLabel="6.Baller Profile View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v0d-EO-zux">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Baller Profile" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2xo-QI-aDK">
@@ -551,8 +545,7 @@
                         <outlet property="PasswordTextField" destination="yES-f5-nh3" id="gab-lw-wzp"/>
                         <outlet property="UsernameTextField" destination="rY1-Qx-IKX" id="WXq-8o-2qS"/>
                         <outlet property="donthaveaccount" destination="des-nC-J0n" id="Evx-L2-gDr"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="login_home_segue" id="wsp-FD-VdQ"/>
-                        <segue destination="9pv-A4-QxB" kind="showDetail" identifier="Logintohomesegue" id="zVU-a0-HrC"/>
+                        <segue destination="ks7-aB-4Wm" kind="showDetail" identifier="Logintohomesegue" id="zVU-a0-HrC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqj-St-oP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -685,7 +678,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Done" id="n0D-dM-9uK">
                             <connections>
                                 <action selector="DoneTapped:" destination="CUc-p4-182" id="eZ0-eq-EtT"/>
-                                <segue destination="9pv-A4-QxB" kind="showDetail" id="Fcb-Ng-Ip0"/>
+                                <segue destination="ks7-aB-4Wm" kind="showDetail" id="Fcb-Ng-Ip0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -701,27 +694,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3T-j9-afa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-91.304347826086968" y="720.53571428571422"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
-            <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8yC-U9-PmC"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
-                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="SSO-zN-RsQ" kind="relationship" relationship="viewControllers" id="utf-Lu-kiY"/>
-                        <segue destination="0yn-qS-PhH" kind="relationship" relationship="viewControllers" id="BFT-Nw-taJ"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KDP-9o-r4T">
@@ -742,10 +714,29 @@
             </objects>
             <point key="canvasLocation" x="-1001.4492753623189" y="720.53571428571422"/>
         </scene>
+        <!--First-->
+        <scene sceneID="GXO-tR-evx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ks7-aB-4Wm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="First" selectedImage="location.circle.fill" catalog="system" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0bl-fP-vOy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="uJz-JU-mcs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwf-a2-1WX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0hF-xf-NQc"/>
         <segue reference="zVU-a0-HrC"/>
+        <segue reference="0hF-xf-NQc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FB" width="285" height="69"/>
