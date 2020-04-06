@@ -57,12 +57,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="wF3-J4-9fQ" id="dVQ-tc-N0t"/>
-                        <segue destination="HlM-Fj-27q" kind="show" identifier="home_gamemenu_segue" id="Pvi-T6-m82"/>
+                        <segue destination="HlM-Fj-27q" kind="presentation" identifier="home_gamemenu_segue" id="Pvi-T6-m82"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659.4202898550725" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="-554" y="-1137"/>
         </scene>
         <!--11.Game Menu View Controller-->
         <scene sceneID="NoQ-kS-gMl">
@@ -320,6 +320,22 @@
             </objects>
             <point key="canvasLocation" x="2605.7971014492755" y="1035.9375"/>
         </scene>
+        <!--Profile Tab View Controller-->
+        <scene sceneID="7aZ-Mo-mYn">
+            <objects>
+                <viewController title="Profile Tab View Controller" id="u7C-ks-Rhr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d0M-WD-jcF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7ss-yP-EYh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="ba9-fH-l7M"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-tY-4oI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1464" y="872"/>
+        </scene>
         <!--6.Baller Profile View Controller-->
         <scene sceneID="0uf-t0-tSy">
             <objects>
@@ -404,7 +420,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="AIn-h6-WXl" userLabel="1.Login View Controller" customClass="Loginviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bVV-Yp-61D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoop Break" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIG-DZ-JAR">
@@ -413,7 +429,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PngItem_32413" translatesAutoresizingMaskIntoConstraints="NO" id="hzl-lL-LOd" userLabel="logoplaceholder">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="templogo" translatesAutoresizingMaskIntoConstraints="NO" id="hzl-lL-LOd" userLabel="logoplaceholder">
                                 <rect key="frame" x="144.5" y="76" width="125" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="DMo-kM-Ob7"/>
@@ -452,6 +468,7 @@
                                 <connections>
                                     <action selector="LoginTapped:" destination="AIn-h6-WXl" eventType="touchUpInside" id="JQd-wc-j3u"/>
                                     <action selector="Loginbuttonpressed:" destination="AIn-h6-WXl" eventType="touchUpInside" id="Bpo-Am-6Fq"/>
+                                    <segue destination="B2v-YA-ivN" kind="presentation" identifier="Logintohomesegue" id="3f6-pn-XZR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-af-buV" userLabel="LoginwithFacebook">
@@ -545,12 +562,11 @@
                         <outlet property="PasswordTextField" destination="yES-f5-nh3" id="gab-lw-wzp"/>
                         <outlet property="UsernameTextField" destination="rY1-Qx-IKX" id="WXq-8o-2qS"/>
                         <outlet property="donthaveaccount" destination="des-nC-J0n" id="Evx-L2-gDr"/>
-                        <segue destination="ks7-aB-4Wm" kind="showDetail" identifier="Logintohomesegue" id="zVU-a0-HrC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqj-St-oP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1001.4492753623189" y="0.0"/>
+            <point key="canvasLocation" x="-3777" y="-32"/>
         </scene>
         <!--2.Register View Controller-->
         <scene sceneID="aly-2P-6ad">
@@ -560,7 +576,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PngItem_32413" translatesAutoresizingMaskIntoConstraints="NO" id="bx4-fY-zTz" userLabel="logoplaceholder">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="templogo" translatesAutoresizingMaskIntoConstraints="NO" id="bx4-fY-zTz" userLabel="logoplaceholder">
                                 <rect key="frame" x="144.5" y="137" width="125" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="ScL-Lb-pZq"/>
@@ -678,7 +694,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Done" id="n0D-dM-9uK">
                             <connections>
                                 <action selector="DoneTapped:" destination="CUc-p4-182" id="eZ0-eq-EtT"/>
-                                <segue destination="ks7-aB-4Wm" kind="showDetail" id="Fcb-Ng-Ip0"/>
+                                <segue destination="B2v-YA-ivN" kind="presentation" id="HXT-dt-DZO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -693,7 +709,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3T-j9-afa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-91.304347826086968" y="720.53571428571422"/>
+            <point key="canvasLocation" x="-2928" y="678"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KDP-9o-r4T">
@@ -712,14 +728,67 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFk-u9-hSv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1001.4492753623189" y="720.53571428571422"/>
+            <point key="canvasLocation" x="-3777" y="678"/>
         </scene>
-        <!--First-->
+        <!--Search Tab View Controller-->
+        <scene sceneID="XFE-5S-hPN">
+            <objects>
+                <viewController title="Search Tab View Controller" id="M2v-3H-Apm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zVa-hd-qJM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4Dj-Fa-wQg"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" id="KUD-Ek-yMH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5BM-mu-ZQa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1464" y="-448"/>
+        </scene>
+        <!--New Court View Controller-->
+        <scene sceneID="ut0-hj-qRf">
+            <objects>
+                <viewController title="New Court View Controller" id="mMZ-e1-63B" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xHp-ke-8eB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="xoQ-pr-iv9"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="New Court" id="y35-hH-Uvp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0p0-Sh-W46" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1464" y="200"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="Wv8-7b-Ro8">
+            <objects>
+                <tabBarController id="B2v-YA-ivN" customClass="MainTabBarController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jgh-BO-cdI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ks7-aB-4Wm" kind="relationship" relationship="viewControllers" id="wRM-zS-otb"/>
+                        <segue destination="M2v-3H-Apm" kind="relationship" relationship="viewControllers" id="XLk-vQ-ODV"/>
+                        <segue destination="mMZ-e1-63B" kind="relationship" relationship="viewControllers" id="HmS-Xo-CJ6"/>
+                        <segue destination="u7C-ks-Rhr" kind="relationship" relationship="viewControllers" id="c3l-qK-7C7"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ehn-lf-NyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2228" y="-32"/>
+        </scene>
+        <!--Home Tab View Controller-->
         <scene sceneID="GXO-tR-evx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ks7-aB-4Wm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" selectedImage="location.circle.fill" catalog="system" id="acW-dT-cKf"/>
+                <navigationController title="Home Tab View Controller" automaticallyAdjustsScrollViewInsets="NO" id="ks7-aB-4Wm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="home" image="Homebutton" id="acW-dT-cKf"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bcF-sz-g2N"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0bl-fP-vOy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -731,20 +800,20 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwf-a2-1WX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="-1465" y="-1137"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zVU-a0-HrC"/>
-        <segue reference="0hF-xf-NQc"/>
+        <segue reference="HXT-dt-DZO"/>
+        <segue reference="T4J-gK-nB4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FB" width="285" height="69"/>
         <image name="Google" width="285" height="69"/>
-        <image name="PngItem_32413" width="600" height="600"/>
-        <image name="location.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="Homebutton" width="50" height="45"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="templogo" width="300" height="300"/>
     </resources>
 </document>
