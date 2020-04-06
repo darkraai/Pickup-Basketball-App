@@ -330,7 +330,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="7ss-yP-EYh"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="ba9-fH-l7M"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="ba9-fH-l7M"/>
+                    <connections>
+                        <segue destination="0yn-qS-PhH" kind="showDetail" id="hDr-9r-TVu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-tY-4oI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,7 +344,7 @@
             <objects>
                 <viewController id="0yn-qS-PhH" userLabel="6.Baller Profile View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v0d-EO-zux">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Baller Profile" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2xo-QI-aDK">
@@ -371,10 +374,11 @@
                         <viewLayoutGuide key="safeArea" id="NYU-zK-rNU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Fourth" selectedImage="person.fill" catalog="system" id="uCc-TH-Ru8"/>
+                    <navigationItem key="navigationItem" id="SGk-1V-2Xi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sB-Se-KVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="736.23188405797111" y="1739.7321428571429"/>
+            <point key="canvasLocation" x="-536" y="872"/>
         </scene>
         <!--10.Friend Requests View Controller-->
         <scene sceneID="hZe-1m-d1e">
@@ -740,7 +744,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="4Dj-Fa-wQg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="KUD-Ek-yMH"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="KUD-Ek-yMH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5BM-mu-ZQa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -756,7 +760,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="xoQ-pr-iv9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="New Court" id="y35-hH-Uvp"/>
+                    <tabBarItem key="tabBarItem" title="New Court" image="plus" catalog="system" id="y35-hH-Uvp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0p0-Sh-W46" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
