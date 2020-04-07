@@ -20,7 +20,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var useremail: UITextField!
     @IBOutlet weak var userusername: UITextField!
     @IBOutlet weak var userpassword: UITextField!
-    @IBOutlet weak var registerdone: UIBarButtonItem!
+    @IBOutlet weak var registernext: UIBarButtonItem!
     
     
     /* @IBAction func DoneTapped(_ sender: UIBarButtonItem) {
@@ -50,7 +50,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     //Disables the done button while the user is editing the text field
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
-        registerdone.isEnabled = false
+        registernext.isEnabled = false
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -67,19 +67,19 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         // Disable the login button if the text field is empty.
 
         let userfirsttext = userfirstname.text ?? ""
-        registerdone.isEnabled = !userfirsttext.isEmpty
+        registernext.isEnabled = !userfirsttext.isEmpty
         
         let userlasttext = userlastname.text ?? ""
-        registerdone.isEnabled = !userlasttext.isEmpty
+        registernext.isEnabled = !userlasttext.isEmpty
 
         let useremailtext = useremail.text ?? ""
-        registerdone.isEnabled = !useremailtext.isEmpty
+        registernext.isEnabled = !useremailtext.isEmpty
         
         let usernametext = userusername.text ?? ""
-        registerdone.isEnabled = !usernametext.isEmpty
+        registernext.isEnabled = !usernametext.isEmpty
         
         let userpasswordtext = userpassword.text ?? ""
-        registerdone.isEnabled = !userpasswordtext.isEmpty
+        registernext.isEnabled = !userpasswordtext.isEmpty
     }
     
 
