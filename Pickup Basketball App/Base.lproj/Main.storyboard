@@ -12,7 +12,7 @@
             <objects>
                 <viewController storyboardIdentifier="Homeviewcontroller" id="9pv-A4-QxB" userLabel="3.Home View Controller" customClass="Homeviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Home Page" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
@@ -288,12 +288,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OFe-nq-9eb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.87058823529411766" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="i9r-vM-mMz" firstAttribute="bottom" secondItem="OFe-nq-9eb" secondAttribute="bottom" id="WYg-aL-MvU"/>
+                            <constraint firstItem="OFe-nq-9eb" firstAttribute="leading" secondItem="i9r-vM-mMz" secondAttribute="leading" id="a79-Ba-n0e"/>
+                            <constraint firstItem="OFe-nq-9eb" firstAttribute="top" secondItem="i9r-vM-mMz" secondAttribute="top" id="agT-Oq-fL0"/>
+                            <constraint firstItem="i9r-vM-mMz" firstAttribute="trailing" secondItem="OFe-nq-9eb" secondAttribute="trailing" id="ea0-OV-KQY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="i9r-vM-mMz"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add Court" image="plus" catalog="system" id="9jK-Fi-7f7"/>
                     <connections>
+                        <outlet property="mapView" destination="OFe-nq-9eb" id="lw5-56-LuE"/>
                         <segue destination="8Yj-zF-Yo1" kind="show" identifier="new_court_segue" id="1MS-2K-Qzc"/>
                     </connections>
                 </viewController>
