@@ -10,7 +10,7 @@
         <!--3.Home View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController storyboardIdentifier="Homeviewcontroller" id="9pv-A4-QxB" userLabel="3.Home View Controller" customClass="Homeviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Homeviewcontroller" modalPresentationStyle="fullScreen" id="9pv-A4-QxB" userLabel="3.Home View Controller" customClass="Homeviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -179,7 +179,7 @@
         <!--7.Search View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Search View Controller" id="8rJ-Kc-sve" userLabel="7.Search View Controller" customClass="SecondViewController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search View Controller" modalPresentationStyle="fullScreen" id="8rJ-Kc-sve" userLabel="7.Search View Controller" customClass="SecondViewController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +276,7 @@
         <!--4.New Park Selection View Controller-->
         <scene sceneID="rYP-Xq-hkn">
             <objects>
-                <viewController title="New Park Selection" id="SSO-zN-RsQ" userLabel="4.New Park Selection View Controller" customClass="Tabnewcourtviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New Park Selection" modalPresentationStyle="fullScreen" id="SSO-zN-RsQ" userLabel="4.New Park Selection View Controller" customClass="Tabnewcourtviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ia-fe-K2D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,9 +314,9 @@
         <!--5.New Park Configuration View Controller-->
         <scene sceneID="fPs-aP-3Ne">
             <objects>
-                <viewController id="8Yj-zF-Yo1" userLabel="5.New Park Configuration View Controller" customClass="Newcourtviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="8Yj-zF-Yo1" userLabel="5.New Park Configuration View Controller" customClass="Newcourtviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sX4-WA-V0g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="New Court pt. 2" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bh3-gc-O5D">
@@ -339,7 +339,7 @@
         <!--6.Baller Profile View Controller-->
         <scene sceneID="0uf-t0-tSy">
             <objects>
-                <viewController id="0yn-qS-PhH" userLabel="6.Baller Profile View Controller" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="0yn-qS-PhH" userLabel="6.Baller Profile View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v0d-EO-zux">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -419,19 +419,19 @@
         <!--1.Login View Controller-->
         <scene sceneID="vCU-1g-H0B">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="AIn-h6-WXl" userLabel="1.Login View Controller" customClass="Loginviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="AIn-h6-WXl" userLabel="1.Login View Controller" customClass="Loginviewcontroller" customModule="Pickup_Basketball_App" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bVV-Yp-61D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoop Break" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIG-DZ-JAR">
-                                <rect key="frame" x="126.5" y="15" width="161" height="39"/>
+                                <rect key="frame" x="126.5" y="59" width="161" height="39"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="templogo" translatesAutoresizingMaskIntoConstraints="NO" id="hzl-lL-LOd" userLabel="logoplaceholder">
-                                <rect key="frame" x="144.5" y="76" width="125" height="128"/>
+                                <rect key="frame" x="144.5" y="120" width="125" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="DMo-kM-Ob7"/>
                                     <constraint firstAttribute="height" constant="128" id="shc-rz-yaR"/>
@@ -439,7 +439,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="rY1-Qx-IKX">
-                                <rect key="frame" x="82" y="244" width="250" height="34"/>
+                                <rect key="frame" x="82" y="288" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="3Gc-tH-xvX"/>
                                     <constraint firstAttribute="height" constant="34" id="gy8-Bi-QwK"/>
@@ -448,7 +448,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="yES-f5-nh3">
-                                <rect key="frame" x="82" y="303" width="250" height="34"/>
+                                <rect key="frame" x="82" y="347" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="Tzs-tn-o6l"/>
                                     <constraint firstAttribute="height" constant="34" id="oXh-np-1k7"/>
@@ -457,7 +457,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLj-Md-mml">
-                                <rect key="frame" x="106" y="362" width="202" height="72"/>
+                                <rect key="frame" x="106" y="406" width="202" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="lxz-dt-kC5"/>
                                 </constraints>
@@ -469,11 +469,11 @@
                                 <connections>
                                     <action selector="LoginTapped:" destination="AIn-h6-WXl" eventType="touchUpInside" id="JQd-wc-j3u"/>
                                     <action selector="Loginbuttonpressed:" destination="AIn-h6-WXl" eventType="touchUpInside" id="Bpo-Am-6Fq"/>
-                                    <segue destination="B2v-YA-ivN" kind="presentation" identifier="Logintohomesegue" id="3f6-pn-XZR"/>
+                                    <segue destination="B2v-YA-ivN" kind="showDetail" identifier="Logintohomesegue" id="3f6-pn-XZR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-af-buV" userLabel="LoginwithFacebook">
-                                <rect key="frame" x="47" y="510" width="320" height="73"/>
+                                <rect key="frame" x="47" y="554" width="320" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="SRj-GR-kl8"/>
                                     <constraint firstAttribute="height" constant="73" id="URC-ca-6fR"/>
@@ -485,7 +485,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mga-MF-6Yf" userLabel="LoginwithGoogle">
-                                <rect key="frame" x="47" y="598" width="320" height="73"/>
+                                <rect key="frame" x="47" y="642" width="320" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="JA4-5F-rCj"/>
                                     <constraint firstAttribute="height" constant="73" id="UcM-XB-cv7"/>
@@ -497,7 +497,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44W-4U-7JG">
-                                <rect key="frame" x="125" y="444" width="164" height="36"/>
+                                <rect key="frame" x="125" y="488" width="164" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="164" id="30W-S5-liu"/>
                                     <constraint firstAttribute="height" constant="36" id="pzD-7z-0Yk"/>
@@ -515,7 +515,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="des-nC-J0n">
-                                <rect key="frame" x="103" y="712" width="208" height="36"/>
+                                <rect key="frame" x="103" y="756" width="208" height="36"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Dont have an account?">
@@ -572,26 +572,26 @@
         <!--2.Register View Controller-->
         <scene sceneID="aly-2P-6ad">
             <objects>
-                <viewController storyboardIdentifier="Registerviewcontroller" id="CUc-p4-182" userLabel="2.Register View Controller" customClass="RegisterViewController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Registerviewcontroller" modalPresentationStyle="fullScreen" id="CUc-p4-182" userLabel="2.Register View Controller" customClass="RegisterViewController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OSv-vd-ctz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="templogo" translatesAutoresizingMaskIntoConstraints="NO" id="bx4-fY-zTz" userLabel="logoplaceholder">
-                                <rect key="frame" x="144.5" y="81" width="125" height="128"/>
+                                <rect key="frame" x="144.5" y="137" width="125" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="ScL-Lb-pZq"/>
                                     <constraint firstAttribute="width" constant="125" id="o6I-vv-BcG"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoop Break" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uND-fn-2Hl">
-                                <rect key="frame" x="126.5" y="20" width="161" height="39"/>
+                                <rect key="frame" x="126.5" y="76" width="161" height="39"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-jA-6W6">
-                                <rect key="frame" x="82" y="283" width="250" height="34"/>
+                                <rect key="frame" x="82" y="339" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="cCJ-ip-N0H"/>
                                     <constraint firstAttribute="width" constant="250" id="yES-VT-82q"/>
@@ -600,7 +600,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="YWm-5A-EfP">
-                                <rect key="frame" x="82" y="337" width="250" height="34"/>
+                                <rect key="frame" x="82" y="393" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="kMM-lw-xvI"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="xiR-1j-ICh"/>
@@ -609,7 +609,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="5qv-07-NVi">
-                                <rect key="frame" x="82" y="391" width="250" height="34"/>
+                                <rect key="frame" x="82" y="447" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="0EC-Cn-Vhn"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="WpW-bl-FGj"/>
@@ -618,7 +618,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="5f6-1D-asr">
-                                <rect key="frame" x="82" y="229" width="250" height="34"/>
+                                <rect key="frame" x="82" y="285" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="DgG-8p-e0S"/>
                                     <constraint firstAttribute="height" constant="34" id="T7G-G7-1fQ"/>
@@ -627,7 +627,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="nAH-8B-5hJ">
-                                <rect key="frame" x="82" y="445" width="250" height="34"/>
+                                <rect key="frame" x="82" y="501" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="IQZ-yG-WrC"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="Vzy-Py-IdT"/>
@@ -636,7 +636,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7X-GM-Flj" userLabel="LoginwithFacebook">
-                                <rect key="frame" x="47" y="499" width="320" height="73"/>
+                                <rect key="frame" x="47" y="555" width="320" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="anm-LB-4t6"/>
                                     <constraint firstAttribute="height" constant="73" id="h0O-MD-V9n"/>
@@ -648,7 +648,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1y-ND-xr9" userLabel="LoginwithGoogle">
-                                <rect key="frame" x="47" y="587" width="320" height="73"/>
+                                <rect key="frame" x="47" y="643" width="320" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="73" id="VAa-bV-Lhz"/>
                                     <constraint firstAttribute="width" constant="320" id="zWU-Ep-cIx"/>
@@ -714,20 +714,20 @@
         <!--Register2 View Controller-->
         <scene sceneID="qqr-IP-ab7">
             <objects>
-                <viewController id="qKp-9V-b2E" userLabel="Register2 View Controller" customClass="RegisterViewController2" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="qKp-9V-b2E" userLabel="Register2 View Controller" customClass="RegisterViewController2" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ir1-X5-tEA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="templogo" translatesAutoresizingMaskIntoConstraints="NO" id="qta-cA-q95" userLabel="logoplaceholder">
-                                <rect key="frame" x="134.5" y="139" width="145" height="149"/>
+                                <rect key="frame" x="134.5" y="171" width="145" height="149"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="1Pj-6E-dmh"/>
                                     <constraint firstAttribute="height" constant="149" id="luU-pl-ySa"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoop Break" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECt-tr-reZ">
-                                <rect key="frame" x="107" y="76" width="200" height="38"/>
+                                <rect key="frame" x="107" y="108" width="200" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="MfR-eE-nQD"/>
                                 </constraints>
@@ -736,7 +736,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="mLL-WN-stg">
-                                <rect key="frame" x="141" y="392" width="132" height="34"/>
+                                <rect key="frame" x="141" y="424" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="dTh-Wp-WBS"/>
                                     <constraint firstAttribute="width" constant="132" id="ljq-rx-bNf"/>
@@ -745,7 +745,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Inches" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="3nW-Nw-nya">
-                                <rect key="frame" x="222" y="328" width="84.5" height="34"/>
+                                <rect key="frame" x="222" y="360" width="84.5" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84.5" id="FKE-a2-jgL"/>
                                     <constraint firstAttribute="height" constant="34" id="Qen-MF-lHq"/>
@@ -754,7 +754,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Feet" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="MWU-zS-Hgn">
-                                <rect key="frame" x="137" y="328" width="66" height="34"/>
+                                <rect key="frame" x="137" y="360" width="66" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="ug2-Vr-ZI7"/>
                                     <constraint firstAttribute="height" constant="34" id="w8X-8a-m7k"/>
@@ -763,25 +763,25 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7El-c9-GBT">
-                                <rect key="frame" x="73" y="332" width="56" height="21"/>
+                                <rect key="frame" x="73" y="364" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMt-bN-a9h">
-                                <rect key="frame" x="205" y="328" width="4.5" height="20"/>
+                                <rect key="frame" x="205" y="360" width="4.5" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdV-LS-aEM">
-                                <rect key="frame" x="308.5" y="324" width="9" height="20.5"/>
+                                <rect key="frame" x="308.5" y="356" width="9" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="qCt-a7-FrC">
-                                <rect key="frame" x="141" y="456" width="132" height="34"/>
+                                <rect key="frame" x="141" y="488" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="9er-iU-eMz"/>
                                     <constraint firstAttribute="height" constant="34" id="RoH-6s-KEL"/>
@@ -790,7 +790,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hometown" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="PMM-GZ-3SP">
-                                <rect key="frame" x="141" y="520" width="132" height="34"/>
+                                <rect key="frame" x="141" y="552" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ET9-6n-cPu"/>
                                     <constraint firstAttribute="width" constant="132" id="tMN-Vi-edC"/>
@@ -799,7 +799,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Position" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="FEc-Bp-cLV">
-                                <rect key="frame" x="141" y="584" width="132" height="34"/>
+                                <rect key="frame" x="141" y="616" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Twe-4D-tr2"/>
                                     <constraint firstAttribute="width" constant="132" id="zmN-5I-3IE"/>
@@ -808,7 +808,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Games Played" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-JO-5KH">
-                                <rect key="frame" x="141" y="648" width="132" height="34"/>
+                                <rect key="frame" x="141" y="680" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="EKG-ef-52x"/>
                                     <constraint firstAttribute="width" constant="132" id="wGX-z5-fbT"/>
@@ -876,11 +876,11 @@
         <!--Login To Register Navigation Controller-->
         <scene sceneID="KDP-9o-r4T">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="phJ-gI-8MM" userLabel="Login To Register Navigation Controller" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="phJ-gI-8MM" userLabel="Login To Register Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ldG-3p-Cd7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EcI-fp-U52">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -895,7 +895,7 @@
         <!--Add Court-->
         <scene sceneID="Wv8-7b-Ro8">
             <objects>
-                <tabBarController title="Add Court" id="B2v-YA-ivN" customClass="MainTabBarController" sceneMemberID="viewController">
+                <tabBarController title="Add Court" modalPresentationStyle="fullScreen" id="B2v-YA-ivN" customClass="MainTabBarController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jgh-BO-cdI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -915,7 +915,7 @@
         <!--Home Tab View Controller-->
         <scene sceneID="GXO-tR-evx">
             <objects>
-                <navigationController title="Home Tab View Controller" automaticallyAdjustsScrollViewInsets="NO" id="ks7-aB-4Wm" sceneMemberID="viewController">
+                <navigationController title="Home Tab View Controller" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ks7-aB-4Wm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="home" image="Homebutton" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="bcF-sz-g2N"/>
@@ -935,10 +935,10 @@
         <!--Navigation Controller-->
         <scene sceneID="lDw-ip-vDq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cSh-sc-DaA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="cSh-sc-DaA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Znf-z9-09i">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -952,9 +952,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UUT-jY-whn"/>
-        <segue reference="QpR-SB-GhC"/>
-        <segue reference="X1y-Za-v2w"/>
+        <segue reference="3f6-pn-XZR"/>
+        <segue reference="8vd-NC-9it"/>
+        <segue reference="1MS-2K-Qzc"/>
         <segue reference="T4J-gK-nB4"/>
     </inferredMetricsTieBreakers>
     <resources>

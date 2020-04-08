@@ -37,6 +37,8 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate {
             userhometown.delegate = self
             gamesplayed.delegate = self
             userposition.delegate = self
+            
+            updateDoneButtonState2()
 
     }
         //MARK: UITextFieldDelegate
