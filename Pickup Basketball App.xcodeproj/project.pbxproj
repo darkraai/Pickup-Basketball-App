@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */; };
+		C01396A9243D58A600DAE647 /* Newcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */; };
 		C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7324280DC700F6D70F /* AppDelegate.swift */; };
 		C0A27B7624280DC700F6D70F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7524280DC700F6D70F /* SceneDelegate.swift */; };
 		C0A27B7824280DC700F6D70F /* Loginviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7724280DC700F6D70F /* Loginviewcontroller.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabnewcourtviewcontroller.swift; sourceTree = "<group>"; };
+		C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newcourtviewcontroller.swift; sourceTree = "<group>"; };
 		C0A27B7024280DC700F6D70F /* Pickup Basketball App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pickup Basketball App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A27B7324280DC700F6D70F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0A27B7524280DC700F6D70F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 				C25922F3243AC037006A5420 /* MainTabBarController.swift */,
 				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
 				C0A27B7B24280DC700F6D70F /* Main.storyboard */,
+				C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */,
+				C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */,
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
 				C0A27B8624280DCB00F6D70F /* Info.plist */,
 				C0A27B7E24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld */,
@@ -177,6 +183,8 @@
 				C0A27B7624280DC700F6D70F /* SceneDelegate.swift in Sources */,
 				C25392AF2438132D00F850E5 /* User.swift in Sources */,
 				C2012026243BFCE5006A4BB4 /* Registerviewcontroller2.swift in Sources */,
+				C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */,
+				C01396A9243D58A600DAE647 /* Newcourtviewcontroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

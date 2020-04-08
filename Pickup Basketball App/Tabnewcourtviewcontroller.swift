@@ -1,24 +1,21 @@
- 
 //
-//  HomeViewController.swift
+//  Tabnewcourtviewcontroller.swift
 //  Pickup Basketball App
 //
-//  Created by Surya M on 3/22/20.
+//  Created by Surya M on 4/6/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
  
 import UIKit
 import MapKit
  
-class Homeviewcontroller: UIViewController, UISearchBarDelegate {
-    
+class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
-    
+        
 //    private var destinations: [MKPointAnnotation] = []
 //    private var currentRoute: MKRoute?
- 
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +43,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
            
     //  self.mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(annotation)
-        performSegue(withIdentifier: "addCourtSegue", sender: UILongPressGestureRecognizer.self)
+        performSegue(withIdentifier: "new_court_segue", sender: UILongPressGestureRecognizer.self)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: UILongPressGestureRecognizer) {
@@ -55,66 +52,62 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         vc.locCoord = self.locCoord
     }
     
-    
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
     
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.view.isUserInteractionEnabled = false
-        
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = UIActivityIndicatorView.Style.medium
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        
-        self.view.addSubview(activityIndicator)
-        
-        searchBar.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
-        
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = searchBar.text
-        
-        let activeSearch = MKLocalSearch(request: searchRequest)
-        
-        activeSearch.start {
-            (response, error) in
-            activityIndicator.stopAnimating()
-            self.view.isUserInteractionEnabled = true
+            self.view.isUserInteractionEnabled = false
             
-            if (response == nil){
-                print("Error")
+            let activityIndicator = UIActivityIndicatorView()
+            activityIndicator.style = UIActivityIndicatorView.Style.medium
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.startAnimating()
+            
+            self.view.addSubview(activityIndicator)
+            
+            searchBar.resignFirstResponder()
+            dismiss(animated: true, completion: nil)
+            
+            let searchRequest = MKLocalSearch.Request()
+            searchRequest.naturalLanguageQuery = searchBar.text
+            
+            let activeSearch = MKLocalSearch(request: searchRequest)
+            
+            activeSearch.start {
+                (response, error) in
+                activityIndicator.stopAnimating()
+                self.view.isUserInteractionEnabled = true
+                
+                if (response == nil){
+                    print("Error")
+                }
+                
+                else {
+    //                let annotations = self.mapView.annotations
+    //                self.mapView.removeAnnotation(annotations as! MKAnnotation)
+                    
+                    let latitude = response!.boundingRegion.center.latitude
+                    let longitude = response!.boundingRegion.center.longitude
+                    
+    //                let annotation = MKPointAnnotation()
+    //                annotation.title = searchBar.text
+    //                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+    //                self.mapView.addAnnotation(annotation)
+                    
+                    let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+                    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    let region = MKCoordinateRegion(center: coordinate, span: span)
+                    
+                    self.mapView.setRegion(region, animated: true)
+                    
+                }
+                
             }
-            
-            else {
-//                let annotations = self.mapView.annotations
-//                self.mapView.removeAnnotation(annotations as! MKAnnotation)
-                
-                let latitude = response!.boundingRegion.center.latitude
-                let longitude = response!.boundingRegion.center.longitude
-                
-//                let annotation = MKPointAnnotation()
-//                annotation.title = searchBar.text
-//                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-//                self.mapView.addAnnotation(annotation)
-                
-                let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                let region = MKCoordinateRegion(center: coordinate, span: span)
-                
-                self.mapView.setRegion(region, animated: true)
-                
-            }
-            
         }
-    }
-    
-    
     func configureLocationServices(){
         locationManager.delegate = self //set location manager delegate to view controller
         
@@ -134,26 +127,26 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     }
     
     private func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D) {
-        let zoomRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
-        mapView.setRegion(zoomRegion, animated: true)
+            let zoomRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
+            mapView.setRegion(zoomRegion, animated: true)
     }
-    
+        
     private func addAnnotations(){
-        let appleParkAnnotation = MKPointAnnotation()
-        appleParkAnnotation.title = "Apple Park"
-        appleParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100)
-        
-        let ortegaParkAnnotation = MKPointAnnotation()
-        ortegaParkAnnotation.title = "Ortega Park"
-        ortegaParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617)
-        
-//        destinations.append(appleParkAnnotation)
-//        destinations.append(ortegaParkAnnotation)
-        
-        let annotations: [MKAnnotation] = [appleParkAnnotation, ortegaParkAnnotation]
-        
-        mapView.addAnnotations(annotations)
-        
+//            let appleParkAnnotation = MKPointAnnotation()
+//            appleParkAnnotation.title = "Apple Park"
+//            appleParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100)
+//
+//            let ortegaParkAnnotation = MKPointAnnotation()
+//            ortegaParkAnnotation.title = "Ortega Park"
+//            ortegaParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617)
+//
+    //        destinations.append(appleParkAnnotation)
+    //        destinations.append(ortegaParkAnnotation)
+            
+//            let annotations: [MKAnnotation] = [appleParkAnnotation, ortegaParkAnnotation]
+//
+//            mapView.addAnnotations(annotations)
+            
     }
     
 //    private func constructRoute(userLocation: CLLocationCoordinate2D){
@@ -178,11 +171,10 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
 //            }
 //        }
 //    }
-        
  
 }
  
-extension Homeviewcontroller: CLLocationManagerDelegate {
+extension Tabnewcourtviewcontroller: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Just got latest location and updated map...")
         
@@ -202,7 +194,7 @@ extension Homeviewcontroller: CLLocationManagerDelegate {
     }
 }
  
-extension Homeviewcontroller: MKMapViewDelegate {
+extension Tabnewcourtviewcontroller: MKMapViewDelegate {
     
 //    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 //        guard let currentRoute = currentRoute else {
@@ -234,7 +226,7 @@ extension Homeviewcontroller: MKMapViewDelegate {
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("The annotation was selected: \(String(describing: view.annotation?.title))")
-        performSegue(withIdentifier: "home_gamemenu_segue", sender: MKAnnotationView.self)
     }
     
 }
+
