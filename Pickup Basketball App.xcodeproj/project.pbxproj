@@ -20,6 +20,7 @@
 		C0E28CEC2436D92C00A25ABD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
 		C2012026243BFCE5006A4BB4 /* Registerviewcontroller2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2012025243BFCE5006A4BB4 /* Registerviewcontroller2.swift */; };
 		C222E539243EAAAF006098C6 /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222E538243EAAAF006098C6 /* SegueFromLeft.swift */; };
+		C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23FC943243F8861006AC17C /* SegueFromRight.swift */; };
 		C25392AF2438132D00F850E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25392AE2438132D00F850E5 /* User.swift */; };
 		C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25922F3243AC037006A5420 /* MainTabBarController.swift */; };
 		C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */; };
@@ -41,6 +42,7 @@
 		C0E28CEB2436D92C00A25ABD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C2012025243BFCE5006A4BB4 /* Registerviewcontroller2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller2.swift; sourceTree = "<group>"; };
 		C222E538243EAAAF006098C6 /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
+		C23FC943243F8861006AC17C /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		C25392AE2438132D00F850E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C25922F3243AC037006A5420 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller.swift; sourceTree = "<group>"; };
@@ -86,12 +88,13 @@
 				C2012025243BFCE5006A4BB4 /* Registerviewcontroller2.swift */,
 				C0A27B7924280DC700F6D70F /* Homeviewcontroller.swift */,
 				C25922F3243AC037006A5420 /* MainTabBarController.swift */,
-				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
-				C0A27B7B24280DC700F6D70F /* Main.storyboard */,
 				C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */,
 				C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */,
+				C23FC943243F8861006AC17C /* SegueFromRight.swift */,
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
+				C0A27B7B24280DC700F6D70F /* Main.storyboard */,
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
+				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
 				C0A27B8624280DCB00F6D70F /* Info.plist */,
 				C0A27B7E24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld */,
 			);
@@ -184,6 +187,7 @@
 				C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */,
 				C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */,
 				C222E539243EAAAF006098C6 /* SegueFromLeft.swift in Sources */,
+				C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */,
 				C0A27B7624280DC700F6D70F /* SceneDelegate.swift in Sources */,
 				C25392AF2438132D00F850E5 /* User.swift in Sources */,
 				C2012026243BFCE5006A4BB4 /* Registerviewcontroller2.swift in Sources */,

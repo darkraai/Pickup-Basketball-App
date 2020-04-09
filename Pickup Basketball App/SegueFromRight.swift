@@ -1,26 +1,24 @@
 //
-//  SegueFromLeft.swift
+//  SegueFromRight.swift
 //  Pickup Basketball App
 //
-//  Created by Ben Svoboda on 4/8/20.
+//  Created by Ben Svoboda on 4/9/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
 
 import UIKit
-import os.log
 
-class SegueFromLeft: UIStoryboardSegue {
+class SegueFromRight: UIStoryboardSegue {
     override func perform() {
         let src = self.source
         let dst = self.destination
 
         src.view.superview?.insertSubview(dst.view, aboveSubview: src.view)
-        dst.view.transform = CGAffineTransform(translationX: -src.view.frame.size.width, y: 0)
-         
+        dst.view.transform = CGAffineTransform(translationX: src.view.frame.size.width, y: 0)
+
         print(src)
         print(dst)
 
-        
         UIView.animate(withDuration: 0.25,
                               delay: 0.0,
                             options: .curveEaseInOut,
