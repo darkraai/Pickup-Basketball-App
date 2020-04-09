@@ -316,7 +316,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="8Yj-zF-Yo1" userLabel="5.New Park Configuration View Controller" customClass="Newcourtviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sX4-WA-V0g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="New Court pt. 2" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bh3-gc-O5D">
@@ -849,7 +849,7 @@
                     <navigationItem key="navigationItem" title="Register" id="3Qq-nr-CkI">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="zd8-Um-c0c">
                             <connections>
-                                <segue destination="CUc-p4-182" kind="showDetail" id="QpR-SB-GhC"/>
+                                <segue destination="Jlw-b0-Zbr" kind="custom" identifier="" customClass="SegueFromLeft" customModule="Pickup_Basketball_App" customModuleProvider="target" id="w0R-KP-hd1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="x0P-4u-f6g">
@@ -950,11 +950,28 @@
             </objects>
             <point key="canvasLocation" x="-3009" y="678"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GgU-lJ-NIE">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="Jlw-b0-Zbr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4tf-u2-jfh"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jz8-LD-i3a">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CUc-p4-182" kind="relationship" relationship="rootViewController" id="3n5-CL-F7s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ubb-Rn-pnj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3010" y="1377"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="3f6-pn-XZR"/>
-        <segue reference="8vd-NC-9it"/>
-        <segue reference="1MS-2K-Qzc"/>
+        <segue reference="Tsv-af-YD1"/>
+        <segue reference="X1y-Za-v2w"/>
         <segue reference="T4J-gK-nB4"/>
     </inferredMetricsTieBreakers>
     <resources>
