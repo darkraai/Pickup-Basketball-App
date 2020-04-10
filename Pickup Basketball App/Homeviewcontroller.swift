@@ -46,7 +46,10 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
            
     //  self.mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(annotation)
-        performSegue(withIdentifier: "addCourtSegue", sender: UILongPressGestureRecognizer.self)
+//        performSegue(withIdentifier: "addCourtSegue", sender: UILongPressGestureRecognizer.self)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Newcourtviewcontroller") as! Newcourtviewcontroller
+        self.present(nextViewController, animated:true, completion:nil)
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: UILongPressGestureRecognizer) {
