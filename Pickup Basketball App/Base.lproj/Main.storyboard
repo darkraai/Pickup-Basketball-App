@@ -62,8 +62,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="wF3-J4-9fQ" id="dVQ-tc-N0t"/>
-                        <segue destination="HlM-Fj-27q" kind="presentation" identifier="home_gamemenu_segue" id="Pvi-T6-m82"/>
-                        <segue destination="8Yj-zF-Yo1" kind="show" identifier="addCourtSegue" id="X1y-Za-v2w"/>
+                        <segue destination="REe-Oo-D08" kind="presentation" identifier="home_gamemenu_segue" id="Pvi-T6-m82"/>
+                        <segue destination="XHN-jE-fyY" kind="show" identifier="addCourtSegue" id="X1y-Za-v2w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -73,9 +73,9 @@
         <!--11.Game Menu View Controller-->
         <scene sceneID="NoQ-kS-gMl">
             <objects>
-                <viewController id="HlM-Fj-27q" userLabel="11.Game Menu View Controller" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="HlM-Fj-27q" userLabel="11.Game Menu View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ver-N4-jir">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Home Page" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kix-S5-Z8h">
@@ -85,9 +85,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Game Menu" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bbz-Na-mvZ">
-                                <rect key="frame" x="113" y="426" width="189" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Game Menu" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bbz-Na-mvZ">
+                                <rect key="frame" x="112.5" y="426.5" width="189" height="43"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="highlightedColor"/>
@@ -98,40 +97,52 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="+ Add Friend"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNk-ve-Rpa">
-                                <rect key="frame" x="124" y="55" width="167" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Create a Game"/>
-                                <connections>
-                                    <segue destination="HoG-UR-PaG" kind="show" identifier="create_game_segue" id="L7z-to-dcu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVc-qD-lAR">
-                                <rect key="frame" x="127" y="153" width="139" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVc-qD-lAR">
+                                <rect key="frame" x="137.5" y="153" width="139" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Join a Game"/>
                                 <connections>
                                     <segue destination="ziq-5v-RzB" kind="show" identifier="join_game_segue" id="C4f-1G-pmt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNk-ve-Rpa">
+                                <rect key="frame" x="123.5" y="227" width="167" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Create a Game"/>
+                                <connections>
+                                    <segue destination="HoG-UR-PaG" kind="show" identifier="create_game_segue" id="L7z-to-dcu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.55057150773500019" blue="0.81162233053391375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="bbz-Na-mvZ" firstAttribute="centerX" secondItem="ver-N4-jir" secondAttribute="centerX" id="5cq-XN-ILU"/>
+                            <constraint firstItem="oVc-qD-lAR" firstAttribute="top" secondItem="QLp-k4-Ebp" secondAttribute="top" constant="65" id="HYn-Cq-wsg"/>
+                            <constraint firstItem="bbz-Na-mvZ" firstAttribute="centerY" secondItem="ver-N4-jir" secondAttribute="centerY" id="J23-dp-gyQ"/>
+                            <constraint firstItem="tNk-ve-Rpa" firstAttribute="top" secondItem="oVc-qD-lAR" secondAttribute="bottom" constant="30" id="UQf-jE-eT5"/>
+                            <constraint firstItem="oVc-qD-lAR" firstAttribute="centerX" secondItem="ver-N4-jir" secondAttribute="centerX" id="tDE-Ip-e4v"/>
+                            <constraint firstItem="tNk-ve-Rpa" firstAttribute="centerX" secondItem="ver-N4-jir" secondAttribute="centerX" id="uMz-C9-SAA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QLp-k4-Ebp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IXL-XG-TwF"/>
+                    <navigationItem key="navigationItem" id="IXL-XG-TwF">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RlK-yA-PZC">
+                            <connections>
+                                <segue destination="9pv-A4-QxB" kind="show" id="9BH-JR-Vvo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAS-ZW-Wbd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2605.7971014492755" y="-314.0625"/>
+            <point key="canvasLocation" x="4426.0869565217399" y="-314.0625"/>
         </scene>
         <!--13.Join Game View Controller-->
         <scene sceneID="gVa-zd-frd">
             <objects>
                 <viewController id="ziq-5v-RzB" userLabel="13.Join Game View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z6A-7x-Hff">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Join a Game" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="z5g-ch-ioe">
@@ -149,14 +160,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCR-nX-tXI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3695.652173913044" y="-302.00892857142856"/>
+            <point key="canvasLocation" x="5515.9420289855079" y="-302.00892857142856"/>
         </scene>
         <!--12.Create Game View Controller-->
         <scene sceneID="pCf-Ia-meZ">
             <objects>
                 <viewController id="HoG-UR-PaG" userLabel="12.Create Game View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Yo-YN-gkN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Create a Game" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-3h-9ce">
@@ -174,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkH-0g-U6s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239" y="-409"/>
+            <point key="canvasLocation" x="2147.826086956522" y="-409.15178571428572"/>
         </scene>
         <!--7.Search View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -246,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIN-wI-sbX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3404.347826086957" y="362.94642857142856"/>
+            <point key="canvasLocation" x="4314.4927536231889" y="362.94642857142856"/>
         </scene>
         <!--9.Friends List View Controller-->
         <scene sceneID="fce-PJ-0Ih">
@@ -271,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCt-oW-pqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4266.666666666667" y="367.63392857142856"/>
+            <point key="canvasLocation" x="5176.811594202899" y="367.63392857142856"/>
         </scene>
         <!--4.New Park Selection View Controller-->
         <scene sceneID="rYP-Xq-hkn">
@@ -304,7 +315,7 @@
                     <tabBarItem key="tabBarItem" title="Add Court" image="plus" catalog="system" id="9jK-Fi-7f7"/>
                     <connections>
                         <outlet property="mapView" destination="OFe-nq-9eb" id="lw5-56-LuE"/>
-                        <segue destination="8Yj-zF-Yo1" kind="show" identifier="new_court_segue" id="1MS-2K-Qzc"/>
+                        <segue destination="XHN-jE-fyY" kind="show" identifier="new_court_segue" id="1MS-2K-Qzc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eE8-Od-Bl5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -330,11 +341,13 @@
                         <color key="backgroundColor" red="1" green="0.5284396520186545" blue="0.55087731700953424" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="EjG-uw-vXo"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8v8-yR-WPP"/>
+                    <navigationItem key="navigationItem" id="8v8-yR-WPP">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="vNh-GV-5tQ"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HM-Ix-r0N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400.00000000000006" y="193.52678571428569"/>
+            <point key="canvasLocation" x="1310.144927536232" y="193.52678571428569"/>
         </scene>
         <!--6.Baller Profile View Controller-->
         <scene sceneID="0uf-t0-tSy">
@@ -915,6 +928,7 @@
         <!--Home Tab View Controller-->
         <scene sceneID="GXO-tR-evx">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwf-a2-1WX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController title="Home Tab View Controller" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ks7-aB-4Wm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="home" image="Homebutton" id="acW-dT-cKf"/>
                     <toolbarItems/>
@@ -928,7 +942,6 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="uJz-JU-mcs"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uwf-a2-1WX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1465" y="-1137"/>
         </scene>
@@ -968,12 +981,50 @@
             </objects>
             <point key="canvasLocation" x="-3010" y="1377"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zxc-7L-7KZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="REe-Oo-D08" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TnK-8n-qF9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HlM-Fj-27q" kind="relationship" relationship="rootViewController" id="ee3-dw-22m"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJN-Tz-azd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3515.9420289855075" y="-314.0625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wqe-38-iuL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="XHN-jE-fyY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="yC2-UG-msR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FWV-Ej-c7c">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8Yj-zF-Yo1" kind="relationship" relationship="rootViewController" id="RZF-gx-fex"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CaZ-8e-2Ub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400.00000000000006" y="193.52678571428569"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="X1y-Za-v2w"/>
         <segue reference="UUT-jY-whn"/>
         <segue reference="8vd-NC-9it"/>
-        <segue reference="X1y-Za-v2w"/>
         <segue reference="T4J-gK-nB4"/>
+        <segue reference="uJz-JU-mcs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FB" width="285" height="69"/>
