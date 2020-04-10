@@ -23,10 +23,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var registernext: UIBarButtonItem!
     
     
-    /* @IBAction func DoneTapped(_ sender: UIBarButtonItem) {
-    }
-    
-    */
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +35,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         userusername.delegate = self
         userpassword.delegate = self
         
-        updateDoneButtonState()
+        updateNextButtonState()
     }
     
     //MARK: UITextFieldDelegate
@@ -55,15 +53,15 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         //when done editing, updates save button state
-        updateDoneButtonState()
+        updateNextButtonState()
         //navigationItem.title = textField.text
     }
     
     
 
-    
+    //MARK: Private Methods
 
-    private func updateDoneButtonState() {
+    private func updateNextButtonState() {
         // Disable the login button if the text field is empty.
 
         let userfirsttext = userfirstname.text ?? ""

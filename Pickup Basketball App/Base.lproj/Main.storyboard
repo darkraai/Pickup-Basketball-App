@@ -469,7 +469,7 @@
                                 <connections>
                                     <action selector="LoginTapped:" destination="AIn-h6-WXl" eventType="touchUpInside" id="JQd-wc-j3u"/>
                                     <action selector="Loginbuttonpressed:" destination="AIn-h6-WXl" eventType="touchUpInside" id="Bpo-Am-6Fq"/>
-                                    <segue destination="B2v-YA-ivN" kind="custom" identifier="Logintohomesegue" customClass="SegueFromRight" customModule="Pickup_Basketball_App" customModuleProvider="target" id="3f6-pn-XZR"/>
+                                    <segue destination="B2v-YA-ivN" kind="showDetail" identifier="Logintohomesegue" id="3f6-pn-XZR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-af-buV" userLabel="LoginwithFacebook">
@@ -590,7 +590,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-jA-6W6">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-jA-6W6">
                                 <rect key="frame" x="82" y="371" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="cCJ-ip-N0H"/>
@@ -599,7 +599,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="YWm-5A-EfP">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="YWm-5A-EfP">
                                 <rect key="frame" x="82" y="425" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="kMM-lw-xvI"/>
@@ -608,7 +608,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="5qv-07-NVi">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="5qv-07-NVi">
                                 <rect key="frame" x="82" y="479" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="0EC-Cn-Vhn"/>
@@ -617,7 +617,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="5f6-1D-asr">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="5f6-1D-asr">
                                 <rect key="frame" x="82" y="317" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="DgG-8p-e0S"/>
@@ -626,7 +626,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="nAH-8B-5hJ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="nAH-8B-5hJ">
                                 <rect key="frame" x="82" y="533" width="250" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="IQZ-yG-WrC"/>
@@ -694,7 +694,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="n0D-dM-9uK">
                             <connections>
-                                <segue destination="cSh-sc-DaA" kind="custom" customClass="SegueFromRight" customModule="Pickup_Basketball_App" customModuleProvider="target" id="v9A-ee-xiD"/>
+                                <segue destination="cSh-sc-DaA" kind="showDetail" identifier="reg1toreg2" id="v9A-ee-xiD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -709,7 +709,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3T-j9-afa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3794" y="678"/>
+            <point key="canvasLocation" x="-3794.202898550725" y="677.67857142857144"/>
         </scene>
         <!--Register2 View Controller-->
         <scene sceneID="qqr-IP-ab7">
@@ -735,7 +735,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="mLL-WN-stg">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="mLL-WN-stg">
                                 <rect key="frame" x="141" y="424" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="dTh-Wp-WBS"/>
@@ -744,7 +744,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Inches" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="3nW-Nw-nya">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="3nW-Nw-nya">
                                 <rect key="frame" x="222" y="360" width="84.5" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84.5" id="FKE-a2-jgL"/>
@@ -753,7 +753,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Feet" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="MWU-zS-Hgn">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="MWU-zS-Hgn">
                                 <rect key="frame" x="137" y="360" width="66" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="ug2-Vr-ZI7"/>
@@ -780,7 +780,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="qCt-a7-FrC">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="qCt-a7-FrC">
                                 <rect key="frame" x="141" y="488" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="9er-iU-eMz"/>
@@ -789,7 +789,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hometown" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="PMM-GZ-3SP">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="PMM-GZ-3SP">
                                 <rect key="frame" x="141" y="552" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ET9-6n-cPu"/>
@@ -798,7 +798,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Position" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="FEc-Bp-cLV">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="FEc-Bp-cLV">
                                 <rect key="frame" x="141" y="616" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Twe-4D-tr2"/>
@@ -807,7 +807,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Games Played" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-JO-5KH">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-JO-5KH">
                                 <rect key="frame" x="141" y="680" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="EKG-ef-52x"/>
@@ -849,12 +849,12 @@
                     <navigationItem key="navigationItem" title="Register" id="3Qq-nr-CkI">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="zd8-Um-c0c">
                             <connections>
-                                <segue destination="Jlw-b0-Zbr" kind="custom" identifier="" customClass="SegueFromLeft" customModule="Pickup_Basketball_App" customModuleProvider="target" id="w0R-KP-hd1"/>
+                                <segue destination="Jlw-b0-Zbr" kind="modal" identifier="reg2toreg1" id="w0R-KP-hd1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="x0P-4u-f6g">
                             <connections>
-                                <segue destination="B2v-YA-ivN" kind="presentation" id="UUT-jY-whn"/>
+                                <segue destination="B2v-YA-ivN" kind="presentation" identifier="reg2totab" id="UUT-jY-whn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -937,6 +937,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="cSh-sc-DaA" userLabel="Register 1 to Register 2" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="5gF-VD-jam"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Znf-z9-09i">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -969,10 +970,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="v9A-ee-xiD"/>
         <segue reference="UUT-jY-whn"/>
-        <segue reference="3n5-CL-F7s"/>
-        <segue reference="X1y-Za-v2w"/>
+        <segue reference="Tsv-af-YD1"/>
+        <segue reference="1MS-2K-Qzc"/>
         <segue reference="T4J-gK-nB4"/>
     </inferredMetricsTieBreakers>
     <resources>

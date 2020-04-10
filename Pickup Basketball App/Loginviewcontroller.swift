@@ -19,11 +19,7 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var donthaveaccount: UIButton!
     
-    /*@IBAction func donthaveaccountpressed(_ sender: Any) {
-            self.performSegue(withIdentifier: "logtoreg", sender: self)
-        }
-    */
-    
+
     //When login is tapped,  it goes to home page
     @IBAction func Loginbuttonpressed(_ sender: Any) {
         self.performSegue(withIdentifier: "Logintohomesegue", sender: self)
@@ -86,12 +82,5 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     }
     
 }
-/*extension Loginviewcontroller : UITextFieldDelegate{
-    //when return is clicked, the keyboard dissapears by resigning first responder
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
-*/
+
 
