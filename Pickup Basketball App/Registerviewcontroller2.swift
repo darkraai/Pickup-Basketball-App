@@ -22,6 +22,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var gamesplayed: UITextField!
     @IBOutlet weak var userposition: UITextField!
     @IBOutlet weak var registerdone: UIBarButtonItem!
+    @IBOutlet weak var pickerviewheight: UIPickerView!
     
     
     
