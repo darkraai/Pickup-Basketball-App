@@ -34,8 +34,16 @@ class User{
     //Recall that an initializer is a method that prepares an instance of a class for use, which involves setting an initial value for each property and performing any other setup or initialization.
     init?(firstname: String, lastname: String, email: String, username: String, password: String) {
         
-
-    
+//
+//    @IBOutlet weak var userheightf: UITextField!
+//    @IBOutlet weak var userheighti: UITextField!
+//    @IBOutlet weak var userweight: UITextField!
+//    @IBOutlet weak var userage: UITextField!
+//    @IBOutlet weak var userhometown: UITextField!
+//    @IBOutlet weak var gamesplayed: UITextField!
+//    @IBOutlet weak var userposition: UITextField!
+//    @IBOutlet weak var registerdone: UIBarButtonItem!
+//    @IBOutlet weak var pickerviewheight: UIPickerView!
 
 
         // Initialize stored properties.
