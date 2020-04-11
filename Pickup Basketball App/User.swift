@@ -13,6 +13,7 @@ import os.log
 class User{
     
     //MARK: Properties
+    //add games played somewhere
     //properties of a user. In the future optional properties such as photo will be added
     var firstname: String
     var lastname: String

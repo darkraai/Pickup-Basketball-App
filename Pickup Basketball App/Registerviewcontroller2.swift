@@ -15,46 +15,86 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     
     //MARK: Properties
     //@IBOutlet weak var userheightf: UITextField!
-    @IBOutlet weak var userheighti: UITextField!
     @IBOutlet weak var userweight: UITextField!
-    @IBOutlet weak var userage: UITextField!
     @IBOutlet weak var userhometown: UITextField!
-    @IBOutlet weak var gamesplayed: UITextField!
     @IBOutlet weak var userposition: UITextField!
     @IBOutlet weak var registerdone: UIBarButtonItem!
     
     
     @IBOutlet weak var pickerviewheight: UIPickerView!
+    @IBOutlet weak var pickerviewheight2: UIPickerView!
+    @IBOutlet weak var pickerviewposition: UIPickerView!
+    
     
     let heightfeet = ["4","5","6","7"]
+    
+    let heightinches = ["0","1","2","3","4","5","6","7","8","9","10","11"]
+    
+    let positions = ["PG","SG","SF","PF","C"]
+
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return heightfeet[row]
+        
+        if pickerView.tag == 1{
+            return heightfeet[row]
+        }
+        else if pickerView.tag == 3{
+            return positions[row]
+        }
+        else{
+            return heightinches[row]
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        return heightfeet.count
+        if pickerView.tag == 1{
+            return heightfeet.count
+        }
+        else if pickerView.tag == 3{
+            return positions.count
+        }
+        else{
+            return heightinches.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var heightinfeet = heightfeet[row]
+        if pickerView.tag == 1{
+            var heightinfeet = heightfeet[row]
+            print(heightinfeet)
+        }
+        else if pickerView.tag == 3{
+            var positions2 = positions[row]
+            print(positions2)
+        }
+        else{
+            var heightininches = heightinches[row]
+            //print(heightinches[row])
+        }
+        
     }
     
         
         override func viewDidLoad() {
             super.viewDidLoad()
             // Do any additional setup after loading the view.
-            //userheightf.delegate = self
-            userheighti.delegate = self
+            //text fields
             userweight.delegate = self
-            userage.delegate = self
             userhometown.delegate = self
-            gamesplayed.delegate = self
             userposition.delegate = self
+            //pickers
+            self.pickerviewheight.delegate = self
+            self.pickerviewheight.dataSource = self
+            self.pickerviewheight2.delegate = self
+            self.pickerviewheight2.dataSource = self
+            self.pickerviewposition.delegate = self
+            self.pickerviewposition.dataSource = self
+            
             
             updateDoneButtonState2()
 
@@ -81,24 +121,12 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         private func updateDoneButtonState2() {
             // Disable the login button if the text field is empty.
 
-            //let userheightftext = userheightf.text ?? ""
-            //registerdone.isEnabled = !userheightftext.isEmpty
-            
-            let userheightitext = userheighti.text ?? ""
-            registerdone.isEnabled = !userheightitext.isEmpty
             
             let userweighttext = userweight.text ?? ""
             registerdone.isEnabled = !userweighttext.isEmpty
             
-            let useragetext = userage.text ?? ""
-            registerdone.isEnabled = !useragetext.isEmpty
-            
             let userhometowntext = userhometown.text ?? ""
             registerdone.isEnabled = !userhometowntext.isEmpty
-            
-            let usergamesplayedtext = gamesplayed.text ?? ""
-            registerdone.isEnabled = !usergamesplayedtext.isEmpty
-            
             
             let usergamespositiontext = userposition.text ?? ""
             registerdone.isEnabled = !usergamespositiontext.isEmpty
