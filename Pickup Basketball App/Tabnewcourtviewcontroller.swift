@@ -23,15 +23,16 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
         print("Loaded sucessfully2")
         mapView.delegate = self
         
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        longPressRecognizer.minimumPressDuration = 0.2
-        mapView.addGestureRecognizer(longPressRecognizer)
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        mapView.addGestureRecognizer(tapRecognizer)
         
         configureLocationServices()
  
     }
     
-    @objc func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
+    @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: mapView) //gives the location object of where you are clicking on mapView
         locCoord = mapView.convert(location, toCoordinateFrom: mapView) //converts location object to coordinates
             
@@ -49,7 +50,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
         self.present(nextViewController, animated:true, completion:nil)
     }
     
-    func prepare(for segue: UIStoryboardSegue, sender: UILongPressGestureRecognizer) {
+    func prepare(for segue: UIStoryboardSegue, sender: UITapGestureRecognizer) {
         super.prepare(for: segue, sender: sender)
         let vc = segue.destination as! Newcourtviewcontroller
         vc.locCoord = self.locCoord
