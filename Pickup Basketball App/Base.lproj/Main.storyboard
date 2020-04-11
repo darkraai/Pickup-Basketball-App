@@ -143,7 +143,7 @@
             <objects>
                 <viewController id="ziq-5v-RzB" userLabel="13.Join Game View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z6A-7x-Hff">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Join a Game" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="z5g-ch-ioe">
@@ -964,7 +964,6 @@
         <!--Add Court-->
         <scene sceneID="Wv8-7b-Ro8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ehn-lf-NyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController title="Add Court" modalPresentationStyle="fullScreen" id="B2v-YA-ivN" customClass="MainTabBarController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jgh-BO-cdI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -978,6 +977,7 @@
                         <segue destination="qLT-Ju-16Q" kind="relationship" relationship="viewControllers" id="727-Md-vzb"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ehn-lf-NyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2228" y="-32"/>
         </scene>

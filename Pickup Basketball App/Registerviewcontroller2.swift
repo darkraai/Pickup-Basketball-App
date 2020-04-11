@@ -10,11 +10,11 @@ import os.log
 
 
 
-class RegisterViewController2: UIViewController,UITextFieldDelegate {
+class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     
     //MARK: Properties
-    @IBOutlet weak var userheightf: UITextField!
+    //@IBOutlet weak var userheightf: UITextField!
     @IBOutlet weak var userheighti: UITextField!
     @IBOutlet weak var userweight: UITextField!
     @IBOutlet weak var userage: UITextField!
@@ -22,16 +22,33 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var gamesplayed: UITextField!
     @IBOutlet weak var userposition: UITextField!
     @IBOutlet weak var registerdone: UIBarButtonItem!
+    
+    
     @IBOutlet weak var pickerviewheight: UIPickerView!
     
+    let heightfeet = ["4","5","6","7"]
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return heightfeet[row]
+    }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        return heightfeet.count
+    }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var heightinfeet = heightfeet[row]
+    }
     
         
         override func viewDidLoad() {
             super.viewDidLoad()
             // Do any additional setup after loading the view.
-            userheightf.delegate = self
+            //userheightf.delegate = self
             userheighti.delegate = self
             userweight.delegate = self
             userage.delegate = self
@@ -64,8 +81,8 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate {
         private func updateDoneButtonState2() {
             // Disable the login button if the text field is empty.
 
-            let userheightftext = userheightf.text ?? ""
-            registerdone.isEnabled = !userheightftext.isEmpty
+            //let userheightftext = userheightf.text ?? ""
+            //registerdone.isEnabled = !userheightftext.isEmpty
             
             let userheightitext = userheighti.text ?? ""
             registerdone.isEnabled = !userheightitext.isEmpty
