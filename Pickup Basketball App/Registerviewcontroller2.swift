@@ -17,7 +17,6 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     //@IBOutlet weak var userheightf: UITextField!
     @IBOutlet weak var userweight: UITextField!
     @IBOutlet weak var userhometown: UITextField!
-    @IBOutlet weak var userposition: UITextField!
     @IBOutlet weak var registerdone: UIBarButtonItem!
     
     
@@ -86,7 +85,6 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             //text fields
             userweight.delegate = self
             userhometown.delegate = self
-            userposition.delegate = self
             //pickers
             self.pickerviewheight.delegate = self
             self.pickerviewheight.dataSource = self
@@ -128,8 +126,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             let userhometowntext = userhometown.text ?? ""
             registerdone.isEnabled = !userhometowntext.isEmpty
             
-            let usergamespositiontext = userposition.text ?? ""
-            registerdone.isEnabled = !usergamespositiontext.isEmpty
+
         }
         
         

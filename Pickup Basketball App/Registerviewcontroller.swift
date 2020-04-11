@@ -31,7 +31,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         // Do any additional setup after loading the view.
         userfirstname.delegate = self
         userlastname.delegate = self
-        useremail.delegate = self
         userusername.delegate = self
         userpassword.delegate = self
         
@@ -69,9 +68,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         
         let userlasttext = userlastname.text ?? ""
         registernext.isEnabled = !userlasttext.isEmpty
-
-        let useremailtext = useremail.text ?? ""
-        registernext.isEnabled = !useremailtext.isEmpty
         
         let usernametext = userusername.text ?? ""
         registernext.isEnabled = !usernametext.isEmpty
