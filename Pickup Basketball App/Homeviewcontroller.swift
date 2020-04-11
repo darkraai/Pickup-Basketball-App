@@ -26,37 +26,37 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         print("Loaded sucessfully2")
         mapView.delegate = self
         
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        longPressRecognizer.minimumPressDuration = 0.2
-        mapView.addGestureRecognizer(longPressRecognizer)
+//        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+//        longPressRecognizer.minimumPressDuration = 0.2
+//        mapView.addGestureRecognizer(longPressRecognizer)
         
         configureLocationServices()
  
     }
     
-    @objc func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        let location = gestureRecognizer.location(in: mapView) //gives the location object of where you are clicking on mapView
-        locCoord = mapView.convert(location, toCoordinateFrom: mapView) //converts location object to coordinates
-            
-        let annotation = MKPointAnnotation()
-            
-        annotation.coordinate = locCoord!
-        annotation.title = "latitude:" + String(format: "%0.02f", annotation.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation.coordinate.longitude)
-        annotation.subtitle = "Loc of new bball court"
-           
-    //  self.mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotation(annotation)
-//        performSegue(withIdentifier: "addCourtSegue", sender: UILongPressGestureRecognizer.self)
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Newcourtviewcontroller") as! Newcourtviewcontroller
-        self.present(nextViewController, animated:true, completion:nil)
-    }
+//    @objc func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
+//        let location = gestureRecognizer.location(in: mapView) //gives the location object of where you are clicking on mapView
+//        locCoord = mapView.convert(location, toCoordinateFrom: mapView) //converts location object to coordinates
+//
+//        let annotation = MKPointAnnotation()
+//
+//        annotation.coordinate = locCoord!
+//        annotation.title = "latitude:" + String(format: "%0.02f", annotation.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation.coordinate.longitude)
+//        annotation.subtitle = "Loc of new bball court"
+//
+//    //  self.mapView.removeAnnotations(mapView.annotations)
+//        mapView.addAnnotation(annotation)
+////        performSegue(withIdentifier: "addCourtSegue", sender: UILongPressGestureRecognizer.self)
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Newcourtviewcontroller") as! Newcourtviewcontroller
+//        self.present(nextViewController, animated:true, completion:nil)
+//    }
     
-    func prepare(for segue: UIStoryboardSegue, sender: UILongPressGestureRecognizer) {
-        super.prepare(for: segue, sender: sender)
-        let vc = segue.destination as! Newcourtviewcontroller
-        vc.locCoord = self.locCoord
-    }
+//    func prepare(for segue: UIStoryboardSegue, sender: UILongPressGestureRecognizer) {
+//        super.prepare(for: segue, sender: sender)
+//        let vc = segue.destination as! Newcourtviewcontroller
+//        vc.locCoord = self.locCoord
+//    }
     
     
     @IBAction func searchButton(_ sender: Any) {
