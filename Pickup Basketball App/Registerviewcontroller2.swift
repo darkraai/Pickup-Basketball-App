@@ -23,6 +23,14 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     @IBOutlet weak var pickerviewheight: UIPickerView!
     @IBOutlet weak var pickerviewheight2: UIPickerView!
     @IBOutlet weak var pickerviewposition: UIPickerView!
+    @IBOutlet weak var testLabel: UILabel!
+    
+    
+    
+    var firstname: String = ""
+    var lastname: String = ""
+    var username: String = ""
+    var password: String = ""
     
     
     let heightfeet = ["4","5","6","7"]
@@ -92,7 +100,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             self.pickerviewheight2.dataSource = self
             self.pickerviewposition.delegate = self
             self.pickerviewposition.dataSource = self
-            
+            testLabel.text = self.username
             
             updateDoneButtonState2()
 

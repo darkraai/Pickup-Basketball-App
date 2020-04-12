@@ -22,7 +22,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var userpassword: UITextField!
     @IBOutlet weak var registernext: UIBarButtonItem!
     
-    
+    var firstname: String = ""
+    var lastname: String = ""
+    var username: String = ""
+    var password: String = ""
 
 
     
@@ -36,6 +39,25 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         
         updateNextButtonState()
     }
+    
+    
+    
+    @IBAction func nextButton(_ sender: Any) {
+        self.firstname = userfirstname.text!
+        self.lastname = userlastname.text!
+        self.username = userusername.text!
+        self.password = userpassword.text!
+        performSegue(withIdentifier: "reg1toreg2", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! RegisterViewController2
+        vc.username = self.firstname
+        vc.password = self.password
+        vc.firstname = self.firstname
+        vc.lastname = self.lastname
+    }
+    
     
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
