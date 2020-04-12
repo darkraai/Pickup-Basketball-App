@@ -142,7 +142,7 @@
             <objects>
                 <viewController id="ziq-5v-RzB" userLabel="13.Join Game View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z6A-7x-Hff">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Join a Game" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="z5g-ch-ioe">
@@ -752,7 +752,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Next" id="n0D-dM-9uK">
                             <connections>
                                 <action selector="nextButton:" destination="CUc-p4-182" id="1yt-Ud-Me9"/>
-                                <segue destination="cSh-sc-DaA" kind="presentation" identifier="reg1toreg2" id="FUd-q4-bsk"/>
+                                <segue destination="qKp-9V-b2E" kind="show" id="YV1-Oq-OzK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -920,11 +920,7 @@
                         <viewLayoutGuide key="safeArea" id="5U1-Ut-82j"/>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="3Qq-nr-CkI">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="zd8-Um-c0c">
-                            <connections>
-                                <segue destination="Jlw-b0-Zbr" kind="modal" identifier="reg2toreg1" id="w0R-KP-hd1"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="zd8-Um-c0c"/>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="x0P-4u-f6g">
                             <connections>
                                 <segue destination="B2v-YA-ivN" kind="presentation" identifier="reg2totab" id="UUT-jY-whn"/>
@@ -943,7 +939,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7l-rN-U2K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2230.434782608696" y="677.67857142857144"/>
+            <point key="canvasLocation" x="-2977" y="678"/>
         </scene>
         <!--Login To Register Navigation Controller-->
         <scene sceneID="KDP-9o-r4T">
@@ -1003,42 +999,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwf-a2-1WX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1465" y="-1137"/>
-        </scene>
-        <!--Register 1 to Register 2-->
-        <scene sceneID="lDw-ip-vDq">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="cSh-sc-DaA" userLabel="Register 1 to Register 2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="5gF-VD-jam"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Znf-z9-09i">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="qKp-9V-b2E" kind="relationship" relationship="rootViewController" id="d2M-MH-LDY"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PWD-Oc-J39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3009" y="678"/>
-        </scene>
-        <!--Register 2 to Register 1-->
-        <scene sceneID="GgU-lJ-NIE">
-            <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="Jlw-b0-Zbr" userLabel="Register 2 to Register 1" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="4tf-u2-jfh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jz8-LD-i3a">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="CUc-p4-182" kind="relationship" relationship="rootViewController" id="3n5-CL-F7s"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ubb-Rn-pnj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3010" y="1377"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zxc-7L-7KZ">
