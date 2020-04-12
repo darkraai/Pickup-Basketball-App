@@ -743,7 +743,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HFv-Ae-0cc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Register" id="UoF-T9-vGd">
+                    <navigationItem key="navigationItem" title="Registration" id="UoF-T9-vGd">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bf7-Ty-GDR">
                             <connections>
                                 <segue destination="AIn-h6-WXl" kind="presentation" identifier="registernow" id="72R-9Y-AX5"/>
@@ -751,7 +751,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="n0D-dM-9uK">
                             <connections>
-                                <action selector="nextButton:" destination="CUc-p4-182" id="1yt-Ud-Me9"/>
                                 <segue destination="qKp-9V-b2E" kind="show" id="YV1-Oq-OzK"/>
                             </connections>
                         </barButtonItem>
@@ -885,6 +884,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifF-1O-i78">
+                                <rect key="frame" x="171.5" y="734" width="71" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.792156862745098" green="0.90588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -892,6 +897,7 @@
                             <constraint firstItem="NMt-bN-a9h" firstAttribute="top" secondItem="qta-cA-q95" secondAttribute="bottom" constant="40" id="Apn-7T-OKt"/>
                             <constraint firstItem="ECt-tr-reZ" firstAttribute="centerX" secondItem="Ir1-X5-tEA" secondAttribute="centerX" id="DmU-ip-lrc"/>
                             <constraint firstItem="cPq-bd-wxN" firstAttribute="top" secondItem="PMM-GZ-3SP" secondAttribute="bottom" constant="18" id="EfU-rt-ljq"/>
+                            <constraint firstItem="ifF-1O-i78" firstAttribute="centerX" secondItem="Ir1-X5-tEA" secondAttribute="centerX" id="F4r-Ey-zId"/>
                             <constraint firstItem="PMM-GZ-3SP" firstAttribute="top" secondItem="mEz-o4-7lT" secondAttribute="bottom" constant="5" id="I2p-na-XUI"/>
                             <constraint firstItem="NMt-bN-a9h" firstAttribute="leading" secondItem="Cb9-Zd-YvM" secondAttribute="trailing" constant="6" id="MgT-6f-15O"/>
                             <constraint firstItem="Cb9-Zd-YvM" firstAttribute="top" secondItem="qta-cA-q95" secondAttribute="bottom" constant="11" id="Ojw-Cg-AYk"/>
@@ -908,6 +914,7 @@
                             <constraint firstItem="qta-cA-q95" firstAttribute="centerX" secondItem="Ir1-X5-tEA" secondAttribute="centerX" id="hdf-sB-Knm"/>
                             <constraint firstItem="NMt-bN-a9h" firstAttribute="centerX" secondItem="Ir1-X5-tEA" secondAttribute="centerX" id="hvd-f1-TC4"/>
                             <constraint firstItem="VKe-kn-0cK" firstAttribute="top" secondItem="PMM-GZ-3SP" secondAttribute="bottom" constant="58" id="iHe-ci-lxl"/>
+                            <constraint firstItem="ifF-1O-i78" firstAttribute="top" secondItem="cPq-bd-wxN" secondAttribute="bottom" constant="50" id="iRw-im-bJ8"/>
                             <constraint firstItem="qta-cA-q95" firstAttribute="top" secondItem="ECt-tr-reZ" secondAttribute="bottom" constant="25" id="lL4-a5-M0e"/>
                             <constraint firstItem="CdV-LS-aEM" firstAttribute="top" secondItem="ECt-tr-reZ" secondAttribute="bottom" constant="210" id="mjo-5L-91b"/>
                             <constraint firstItem="Ruy-2d-KWe" firstAttribute="centerX" secondItem="Ir1-X5-tEA" secondAttribute="centerX" id="p3c-gu-9Rb"/>
@@ -919,8 +926,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5U1-Ut-82j"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Register" id="3Qq-nr-CkI">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="zd8-Um-c0c"/>
+                    <navigationItem key="navigationItem" title="Registration 2" id="3Qq-nr-CkI">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="x0P-4u-f6g">
                             <connections>
                                 <segue destination="B2v-YA-ivN" kind="presentation" identifier="reg2totab" id="UUT-jY-whn"/>
@@ -932,14 +938,14 @@
                         <outlet property="pickerviewheight2" destination="6Dv-5d-Edm" id="ikr-xe-N1u"/>
                         <outlet property="pickerviewposition" destination="cPq-bd-wxN" id="T03-rH-D8M"/>
                         <outlet property="registerdone" destination="x0P-4u-f6g" id="W2D-mz-XT1"/>
-                        <outlet property="testLabel" destination="K2e-rf-pNb" id="r1z-qV-20n"/>
+                        <outlet property="testLabel" destination="ifF-1O-i78" id="DtU-rX-bg2"/>
                         <outlet property="userhometown" destination="PMM-GZ-3SP" id="0Xz-BL-CSO"/>
                         <outlet property="userweight" destination="mLL-WN-stg" id="6TS-va-kZ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7l-rN-U2K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2977" y="678"/>
+            <point key="canvasLocation" x="-2978.2608695652175" y="677.67857142857144"/>
         </scene>
         <!--Login To Register Navigation Controller-->
         <scene sceneID="KDP-9o-r4T">

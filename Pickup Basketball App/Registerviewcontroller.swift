@@ -22,7 +22,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var registernext: UIBarButtonItem!
     
 
-    var fnameText = ""
+
 
     
     override func viewDidLoad() {
@@ -37,6 +37,26 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     }
     
 
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination
+        
+        if let MainVC = destinationViewController as? RegisterViewController2{
+            MainVC.fname = userfirstname.text
+            MainVC.lname = userlastname.text
+            MainVC.uname = userusername.text
+            MainVC.pword = userpassword.text
+
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

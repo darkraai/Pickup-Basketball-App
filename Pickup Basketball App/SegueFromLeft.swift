@@ -17,8 +17,7 @@ class SegueFromLeft: UIStoryboardSegue {
         src.view.superview?.insertSubview(dst.view, aboveSubview: src.view)
         dst.view.transform = CGAffineTransform(translationX: -src.view.frame.size.width, y: 0)
          
-        print(src)
-        print(dst)
+
 
         
         UIView.animate(withDuration: 0.25,
