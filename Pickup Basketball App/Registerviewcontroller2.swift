@@ -25,13 +25,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     @IBOutlet weak var pickerviewposition: UIPickerView!
     @IBOutlet weak var testLabel: UILabel!
     
-    
-    
-    var firstname: String = ""
-    var lastname: String = ""
-    var username: String = ""
-    var password: String = ""
-    
+        
     
     let heightfeet = ["4","5","6","7"]
     
@@ -73,15 +67,12 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1{
             var heightinfeet = heightfeet[row]
-            print(heightinfeet)
         }
         else if pickerView.tag == 3{
             var positions2 = positions[row]
-            print(positions2)
         }
         else{
             var heightininches = heightinches[row]
-            //print(heightinches[row])
         }
         
     }
@@ -100,7 +91,6 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             self.pickerviewheight2.dataSource = self
             self.pickerviewposition.delegate = self
             self.pickerviewposition.dataSource = self
-            testLabel.text = self.username
             
             updateDoneButtonState2()
 
