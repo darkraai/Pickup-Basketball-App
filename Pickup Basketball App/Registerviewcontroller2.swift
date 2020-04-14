@@ -40,6 +40,11 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     let positions = ["PG","SG","SF","PF","C"]
 
 
+    var heightinfeet: String?
+    var heightininches: String?
+    var positions2: String?
+
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -72,13 +77,13 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1{
-            var heightinfeet = heightfeet[row]
+            heightinfeet = heightfeet[row]
         }
         else if pickerView.tag == 3{
-            var positions2 = positions[row]
+            positions2 = positions[row]
         }
         else{
-            var heightininches = heightinches[row]
+            heightininches = heightinches[row]
         }
         
     }
@@ -132,8 +137,12 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             let userhometowntext = userhometown.text ?? ""
             registerdone.isEnabled = !userhometowntext.isEmpty
             
-
-        }
-        
-        
     }
+        
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+    }
+        
+}
