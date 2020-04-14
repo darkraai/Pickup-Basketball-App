@@ -63,7 +63,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="wF3-J4-9fQ" id="dVQ-tc-N0t"/>
-                        <segue destination="REe-Oo-D08" kind="presentation" identifier="home_gamemenu_segue" id="Pvi-T6-m82"/>
+                        <segue destination="HlM-Fj-27q" kind="show" identifier="home_gamemenu_segue" id="sIf-BQ-IUX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -125,24 +125,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QLp-k4-Ebp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IXL-XG-TwF">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RlK-yA-PZC">
-                            <connections>
-                                <segue destination="9pv-A4-QxB" kind="show" id="lbr-n2-p9E"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="IXL-XG-TwF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAS-ZW-Wbd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5336.231884057971" y="-314.0625"/>
+            <point key="canvasLocation" x="5991" y="-1112"/>
         </scene>
         <!--13.Join Game View Controller-->
         <scene sceneID="gVa-zd-frd">
             <objects>
                 <viewController id="ziq-5v-RzB" userLabel="13.Join Game View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z6A-7x-Hff">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Join a Game" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="z5g-ch-ioe">
@@ -160,14 +154,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCR-nX-tXI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6426.0869565217399" y="-302.00892857142856"/>
+            <point key="canvasLocation" x="7335" y="-379"/>
         </scene>
         <!--12.Create Game View Controller-->
         <scene sceneID="pCf-Ia-meZ">
             <objects>
                 <viewController id="HoG-UR-PaG" userLabel="12.Create Game View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Yo-YN-gkN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Create a Game" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-3h-9ce">
@@ -185,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkH-0g-U6s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3057.971014492754" y="-409.15178571428572"/>
+            <point key="canvasLocation" x="7336" y="-1112"/>
         </scene>
         <!--7.Search View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -216,21 +210,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" id="uvG-KP-GKn"/>
                     <connections>
                         <segue destination="zhe-k3-abk" kind="show" identifier="search_ballerinfo_segue" id="jfD-dV-KOw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1465" y="-488"/>
+            <point key="canvasLocation" x="-555.07246376811599" y="-488.16964285714283"/>
         </scene>
         <!--8.Other Baller View Controller-->
         <scene sceneID="9ti-Kb-Lqi">
             <objects>
                 <viewController id="zhe-k3-abk" userLabel="8.Other Baller View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v1K-N8-r8L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Other Baller Info" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="BCw-Js-i7v">
@@ -257,14 +251,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIN-wI-sbX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5224.6376811594209" y="362.94642857142856"/>
+            <point key="canvasLocation" x="6134.7826086956529" y="362.94642857142856"/>
         </scene>
         <!--9.Friends List View Controller-->
         <scene sceneID="fce-PJ-0Ih">
             <objects>
                 <viewController id="P2U-dl-QLr" userLabel="9.Friends List View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r9a-jU-MeI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Friends List" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kDk-AG-aco">
@@ -282,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCt-oW-pqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6086.9565217391309" y="367.63392857142856"/>
+            <point key="canvasLocation" x="6997.1014492753629" y="367.63392857142856"/>
         </scene>
         <!--4.New Park Selection View Controller-->
         <scene sceneID="rYP-Xq-hkn">
@@ -300,7 +294,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OFe-nq-9eb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.87058823529411766" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -321,7 +315,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="OFe-nq-9eb" id="lw5-56-LuE"/>
-                        <segue destination="XHN-jE-fyY" kind="showDetail" identifier="new_court_segue" id="Qq2-5l-kSb"/>
+                        <segue destination="8Yj-zF-Yo1" kind="show" identifier="new_court_segue" id="6CB-kZ-XsJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eE8-Od-Bl5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -347,13 +341,7 @@
                         <color key="backgroundColor" red="1" green="0.5284396520186545" blue="0.55087731700953424" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="EjG-uw-vXo"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8v8-yR-WPP">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="vNh-GV-5tQ">
-                            <connections>
-                                <segue destination="SSO-zN-RsQ" kind="show" id="xun-HH-ung"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="8v8-yR-WPP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HM-Ix-r0N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -388,17 +376,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="3 Friend Requests"/>
+                                <connections>
+                                    <segue destination="43n-54-RN2" kind="show" id="zhA-GY-OPv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.792156862745098" green="0.90588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="NYU-zK-rNU"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="uCc-TH-Ru8"/>
-                    <navigationItem key="navigationItem" id="SGk-1V-2Xi"/>
+                    <navigationItem key="navigationItem" title="Baller Profile" id="SGk-1V-2Xi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sB-Se-KVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-555.07246376811599" y="872.54464285714278"/>
+            <point key="canvasLocation" x="355.07246376811599" y="872.54464285714278"/>
         </scene>
         <!--10.Friend Requests View Controller-->
         <scene sceneID="hZe-1m-d1e">
@@ -434,6 +424,7 @@
                         <color key="backgroundColor" red="0.72454638479435507" green="1" blue="0.95487500446957618" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="cDr-Ea-Xbv"/>
                     </view>
+                    <navigationItem key="navigationItem" id="x2U-CR-nTE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l11-Kn-UHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -977,8 +968,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="ks7-aB-4Wm" kind="relationship" relationship="viewControllers" id="wRM-zS-otb"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="bYT-fV-K44"/>
-                        <segue destination="0yn-qS-PhH" kind="relationship" relationship="viewControllers" id="8Ct-ZA-lb5"/>
+                        <segue destination="YJD-sn-mB3" kind="relationship" relationship="viewControllers" id="bYT-fV-K44"/>
+                        <segue destination="po1-ck-x64" kind="relationship" relationship="viewControllers" id="8Ct-ZA-lb5"/>
                         <segue destination="qLT-Ju-16Q" kind="relationship" relationship="viewControllers" id="727-Md-vzb"/>
                     </connections>
                 </tabBarController>
@@ -1006,43 +997,6 @@
             </objects>
             <point key="canvasLocation" x="-1465" y="-1137"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="zxc-7L-7KZ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="REe-Oo-D08" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TnK-8n-qF9">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="HlM-Fj-27q" kind="relationship" relationship="rootViewController" id="ee3-dw-22m"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DJN-Tz-azd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4426.0869565217399" y="-314.0625"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wqe-38-iuL">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="XHN-jE-fyY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="yC2-UG-msR"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FWV-Ej-c7c">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8Yj-zF-Yo1" kind="relationship" relationship="rootViewController" id="RZF-gx-fex"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CaZ-8e-2Ub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1310.144927536232" y="193.52678571428569"/>
-        </scene>
         <!--Add Court-->
         <scene sceneID="bWP-MC-PCE">
             <objects>
@@ -1062,13 +1016,49 @@
             </objects>
             <point key="canvasLocation" x="-723" y="194"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="Ro7-eh-IFN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YJD-sn-mB3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p1y-3U-E0v">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="j5N-cY-UnI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ulm-UT-RF6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1465.217391304348" y="-488.16964285714283"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Sog-Mt-lEC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="po1-ck-x64" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="uCc-TH-Ru8"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DYg-VO-Dis">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0yn-qS-PhH" kind="relationship" relationship="rootViewController" id="fF0-kz-bVr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tz8-fj-hqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-555.07246376811599" y="872.54464285714278"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="UUT-jY-whn"/>
-        <segue reference="Tsv-af-YD1"/>
-        <segue reference="xun-HH-ung"/>
-        <segue reference="T4J-gK-nB4"/>
-        <segue reference="lbr-n2-p9E"/>
+        <segue reference="8vd-NC-9it"/>
+        <segue reference="0hF-xf-NQc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FB" width="285" height="69"/>
