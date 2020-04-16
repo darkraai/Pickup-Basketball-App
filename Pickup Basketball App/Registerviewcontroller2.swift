@@ -33,6 +33,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     var pword: String?
     
     
+    
     let heightfeet = ["4","5","6","7"]
     
     let heightinches = ["0","1","2","3","4","5","6","7","8","9","10","11"]
@@ -108,6 +109,18 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             updateDoneButtonState2()
 
     }
+        
+    
+    @IBAction func donetappedd(_ sender: Any) {
+        print("hellodaddi")
+        print (fname!, lname!, uname!, pword!, userweight.text!, userhometown.text!, heightinfeet!, heightininches!, positions2!)
+        var user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+        performSegue(withIdentifier: "reg_tab_segue", sender: (Any).self)
+        
+        
+    }
+    
+    
         //MARK: UITextFieldDelegate
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
                // Hide the keyboard.
@@ -141,8 +154,10 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+ /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+
     }
+ */
         
 }

@@ -25,7 +25,7 @@ class User{
     var userheightfeet: String
     var position: String
     
-    
+
 //    //creates property key
 //    struct PropertyKey{
 //        static let firstname = "first name"
@@ -34,6 +34,7 @@ class User{
 //        static let username = "username"
 //        static let password = "password"
 //    }
+    
     
     //MARK: Initialization
     //Recall that an initializer is a method that prepares an instance of a class for use, which involves setting an initial value for each property and performing any other setup or initialization.

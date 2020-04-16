@@ -187,7 +187,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
  
 extension Homeviewcontroller: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Just got latest location and updated map...")
+        //print("Just got latest location and updated map...")
         
         guard let latestLocation = locations.first else { return }
         if currentCoordinate == nil {
@@ -198,7 +198,7 @@ extension Homeviewcontroller: CLLocationManagerDelegate {
         currentCoordinate = latestLocation.coordinate
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("Authorization status changed!")
+        //print("Authorization status changed!")
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             beginLocationUpdates(locationManager: manager)
         }
@@ -236,7 +236,7 @@ extension Homeviewcontroller: MKMapViewDelegate {
         return annotationView
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("The annotation was selected: \(String(describing: view.annotation?.title))")
+        //print("The annotation was selected: \(String(describing: view.annotation?.title))")
         performSegue(withIdentifier: "home_gamemenu_segue", sender: MKAnnotationView.self)
     }
     
