@@ -23,7 +23,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell") as! GameTableViewCell
-        
+
         cell.timeLabel.text = timeData[indexPath.row]
         cell.gameLabel.text = gameData[indexPath.row]
         cell.ownerLabel.text = ownerData[indexPath.row]

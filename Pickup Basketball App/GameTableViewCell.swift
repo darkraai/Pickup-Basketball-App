@@ -17,6 +17,7 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var slotsFilledLabel: UILabel!
     @IBOutlet weak var gameStatusButton: UIButton!
     
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
