@@ -1020,7 +1020,7 @@
         <!--Add Court-->
         <scene sceneID="Wv8-7b-Ro8">
             <objects>
-                <tabBarController title="Add Court" modalPresentationStyle="fullScreen" id="B2v-YA-ivN" customClass="MainTabBarController" sceneMemberID="viewController">
+                <tabBarController title="Add Court" modalPresentationStyle="fullScreen" id="B2v-YA-ivN" customClass="MainTabBarController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jgh-BO-cdI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1330,6 +1330,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="wRM-zS-otb"/>
         <segue reference="UUT-jY-whn"/>
         <segue reference="8vd-NC-9it"/>
         <segue reference="0hF-xf-NQc"/>

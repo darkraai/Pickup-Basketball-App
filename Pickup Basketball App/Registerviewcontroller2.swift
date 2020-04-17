@@ -109,7 +109,16 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             testLabel.text = fname
 
             updateDoneButtonState2()
+    }
+    
+    //prepare sends data to next vc
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //works so far
+        let destinationViewController = segue.destination
+        if let MainVC3 = destinationViewController as? MainTabBarController{
+            print("gang!")
 
+        }
     }
         
     
@@ -150,7 +159,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             
             let userhometowntext = userhometown.text ?? ""
             
-            if((!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")){
+            if((!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
                 
                 registerdone.isEnabled = true
             
