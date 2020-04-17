@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		189AAFCE2446C5100035E722 /* Gamemenuviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */; };
 		189AAFD02446C5490035E722 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCF2446C5490035E722 /* GameTableViewCell.swift */; };
+		18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FF29244A08920060672A /* Creategameviewcontroller.swift */; };
 		C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */; };
 		C01396A9243D58A600DAE647 /* Newcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */; };
 		C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7324280DC700F6D70F /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamemenuviewcontroller.swift; sourceTree = "<group>"; };
 		189AAFCF2446C5490035E722 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		18B4FF29244A08920060672A /* Creategameviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creategameviewcontroller.swift; sourceTree = "<group>"; };
 		C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabnewcourtviewcontroller.swift; sourceTree = "<group>"; };
 		C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newcourtviewcontroller.swift; sourceTree = "<group>"; };
 		C0A27B7024280DC700F6D70F /* Pickup Basketball App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pickup Basketball App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
 				189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */,
 				189AAFCF2446C5490035E722 /* GameTableViewCell.swift */,
+				18B4FF29244A08920060672A /* Creategameviewcontroller.swift */,
 				C2D9ED682446B15B00CC3690 /* Main.storyboard */,
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
 				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
@@ -189,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */,
 				C0A27B7A24280DC700F6D70F /* Homeviewcontroller.swift in Sources */,
 				C2D9ED6424469F3700CC3690 /* BallerProfile.swift in Sources */,
 				C0A27B7824280DC700F6D70F /* Loginviewcontroller.swift in Sources */,

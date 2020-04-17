@@ -50,6 +50,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
           
         }
     
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
