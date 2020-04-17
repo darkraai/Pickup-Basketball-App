@@ -90,6 +90,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         
         let userpasswordtext = userpassword.text ?? ""
         registernext.isEnabled = !userpasswordtext.isEmpty
+        
+
     }
     
 

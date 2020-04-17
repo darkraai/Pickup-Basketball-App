@@ -34,11 +34,11 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     
     
     
-    let heightfeet = ["4","5","6","7"]
+    let heightfeet = [" ","4","5","6","7"]
     
-    let heightinches = ["0","1","2","3","4","5","6","7","8","9","10","11"]
+    let heightinches = [" ","0","1","2","3","4","5","6","7","8","9","10","11"]
     
-    let positions = ["PG","SG","SF","PF","C"]
+    let positions = [" ","PG","SG","SF","PF","C"]
 
 
     var heightinfeet: String?
@@ -87,6 +87,8 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             heightininches = heightinches[row]
         }
         
+        updateDoneButtonState2()
+
     }
     
         
@@ -142,14 +144,18 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         
         private func updateDoneButtonState2() {
             // Disable the login button if the text field is empty.
-
+            registerdone.isEnabled = false
             
             let userweighttext = userweight.text ?? ""
-            registerdone.isEnabled = !userweighttext.isEmpty
             
             let userhometowntext = userhometown.text ?? ""
-            registerdone.isEnabled = !userhometowntext.isEmpty
             
+            if((!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")){
+                
+                registerdone.isEnabled = true
+            
+
+            }
     }
         
     
