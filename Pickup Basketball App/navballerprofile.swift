@@ -16,6 +16,6 @@ class navballerprofile: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("HJOKKIIIIIIIIIIIIIIIIIIIIIIIII")
+
     }
 }

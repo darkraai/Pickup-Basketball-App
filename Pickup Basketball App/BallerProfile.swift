@@ -20,13 +20,35 @@ class BallerProfile: UIViewController {
     @IBOutlet weak var hometownlabel: UILabel!
     @IBOutlet weak var agelabel: UILabel!
     @IBOutlet weak var gamesplayedlabel: UILabel!
+    @IBOutlet weak var fullnamelabel: UILabel!
+    @IBOutlet weak var usernamelabel: UILabel!
     
-    var teststring:String?
+    
+    
+    
+    var user24:User?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(teststring)
+        
+        //configures height label
+        if(user24!.userheightfeet != "N/A"){
+        heightlabel.text = user24!.userheightfeet + " ' " + user24!.userheightinches + " \" "
+        }
+        
+        //configures other labels based on class values
+        weightlabel.text = user24!.userweight
+        prefpositionlabel.text = user24!.position
+        hometownlabel.text = user24!.hometown
+        fullnamelabel.text = user24!.firstname + " " + user24!.lastname
+        usernamelabel.text = "@" + user24!.username
+        
+
+
+        
+        
+
         // Do any additional setup after loading the view.
 //        heightlabel.text = userobj!.firstname
     }

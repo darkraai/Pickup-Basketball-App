@@ -111,24 +111,20 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             updateDoneButtonState2()
     }
     
-    //prepare sends data to next vc
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //works so far
-        let destinationViewController = segue.destination
-        if let MainVC3 = destinationViewController as? MainTabBarController{
-            print("gang!")
 
-        }
-    }
         
     
-    @IBAction func donetappedd(_ sender: Any) {
-        print("hellodaddi")
-        print (fname!, lname!, uname!, pword!, userweight.text!, userhometown.text!, heightinfeet!, heightininches!, positions2!)
-        var user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
-        performSegue(withIdentifier: "reg_tab_segue", sender: (Any).self)
-        
-        
+
+//sends data through tab bar and nav controllers
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let barViewControllers = segue.destination as! UITabBarController
+        //confirmed sets firstdc to nav controller before  baller profile
+        let navvc = barViewControllers.viewControllers![3] as! navballerprofile
+
+        let finalvc = navvc.topViewController as! BallerProfile
+
+        finalvc.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+
     }
     
     
@@ -166,13 +162,5 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
 
             }
     }
-        
-    
-    
- /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-
-    }
- */
         
 }

@@ -44,16 +44,15 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "Logintohomesegue" else {return}
         let barViewControllers = segue.destination as! UITabBarController
         //confirmed sets firstdc to nav controller before  baller profile
         let navvc = barViewControllers.viewControllers![3] as! navballerprofile
         
         let finalvc = navvc.topViewController as! BallerProfile
         
-        finalvc.teststring = "bruhh"
-        
-        
-        
+        finalvc.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A")
+
     }
     
     
