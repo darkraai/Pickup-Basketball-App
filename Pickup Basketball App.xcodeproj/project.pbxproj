@@ -26,6 +26,7 @@
 		C25392AF2438132D00F850E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25392AE2438132D00F850E5 /* User.swift */; };
 		C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25922F3243AC037006A5420 /* MainTabBarController.swift */; };
 		C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */; };
+		C2C8EA15244AA52B002CC5FB /* navballerprofile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */; };
 		C2D9ED6424469F3700CC3690 /* BallerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9ED6324469F3700CC3690 /* BallerProfile.swift */; };
 		C2D9ED6A2446B15B00CC3690 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D9ED682446B15B00CC3690 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		C25392AE2438132D00F850E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C25922F3243AC037006A5420 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller.swift; sourceTree = "<group>"; };
+		C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navballerprofile.swift; sourceTree = "<group>"; };
 		C2D9ED6324469F3700CC3690 /* BallerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallerProfile.swift; sourceTree = "<group>"; };
 		C2D9ED692446B15B00CC3690 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 				189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */,
 				189AAFCF2446C5490035E722 /* GameTableViewCell.swift */,
 				18B4FF29244A08920060672A /* Creategameviewcontroller.swift */,
+				C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */,
 				C2D9ED682446B15B00CC3690 /* Main.storyboard */,
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
 				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
@@ -199,6 +202,7 @@
 				C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */,
 				C0A27B8024280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld in Sources */,
 				C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */,
+				C2C8EA15244AA52B002CC5FB /* navballerprofile.swift in Sources */,
 				C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */,
 				C222E539243EAAAF006098C6 /* SegueFromLeft.swift in Sources */,
 				C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */,

@@ -21,14 +21,14 @@ class BallerProfile: UIViewController {
     @IBOutlet weak var agelabel: UILabel!
     @IBOutlet weak var gamesplayedlabel: UILabel!
     
-    
+    var teststring:String?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(teststring)
         // Do any additional setup after loading the view.
 //        heightlabel.text = userobj!.firstname
-        print("hello printing user obj...")
     }
 
 }

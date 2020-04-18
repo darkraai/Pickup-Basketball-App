@@ -39,9 +39,21 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     @IBAction func LoginTapped(_ sender: Any) {
         var user = UsernameTextField.text!
         var pass = PasswordTextField.text!
-        print("Username:" + user)
-        print("Password:" + pass)
 
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let barViewControllers = segue.destination as! UITabBarController
+        //confirmed sets firstdc to nav controller before  baller profile
+        let navvc = barViewControllers.viewControllers![3] as! navballerprofile
+        
+        let finalvc = navvc.topViewController as! BallerProfile
+        
+        finalvc.teststring = "bruhh"
+        
+        
+        
     }
     
     
