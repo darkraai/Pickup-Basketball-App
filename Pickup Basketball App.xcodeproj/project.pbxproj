@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18013ADA244CE9D500AAB54F /* JoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */; };
 		189AAFCE2446C5100035E722 /* Gamemenuviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */; };
 		189AAFD02446C5490035E722 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCF2446C5490035E722 /* GameTableViewCell.swift */; };
 		18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FF29244A08920060672A /* Creategameviewcontroller.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTableViewCell.swift; sourceTree = "<group>"; };
 		189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamemenuviewcontroller.swift; sourceTree = "<group>"; };
 		189AAFCF2446C5490035E722 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		18B4FF29244A08920060672A /* Creategameviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creategameviewcontroller.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				C0A27B7924280DC700F6D70F /* Homeviewcontroller.swift */,
 				189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */,
 				189AAFCF2446C5490035E722 /* GameTableViewCell.swift */,
+				18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */,
 				18B4FF29244A08920060672A /* Creategameviewcontroller.swift */,
 				C2DBB52A244BEA8400DB50E4 /* Joingameviewcontroller.swift */,
 				C2B571CC244BE23800EE3FC7 /* navsearch.swift */,
@@ -223,6 +226,7 @@
 				C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */,
 				C2C8EA15244AA52B002CC5FB /* navballerprofile.swift in Sources */,
 				C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */,
+				18013ADA244CE9D500AAB54F /* JoinTableViewCell.swift in Sources */,
 				C222E539243EAAAF006098C6 /* SegueFromLeft.swift in Sources */,
 				C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */,
 				C0A27B7624280DC700F6D70F /* SceneDelegate.swift in Sources */,
