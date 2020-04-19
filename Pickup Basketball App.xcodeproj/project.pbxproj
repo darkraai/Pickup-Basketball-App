@@ -26,9 +26,14 @@
 		C25392AF2438132D00F850E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25392AE2438132D00F850E5 /* User.swift */; };
 		C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25922F3243AC037006A5420 /* MainTabBarController.swift */; };
 		C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */; };
+		C2B571CB244BDFF500EE3FC7 /* navhome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CA244BDFF500EE3FC7 /* navhome.swift */; };
+		C2B571CD244BE23800EE3FC7 /* navsearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CC244BE23800EE3FC7 /* navsearch.swift */; };
+		C2B571CF244BE26A00EE3FC7 /* navaddcourt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CE244BE26A00EE3FC7 /* navaddcourt.swift */; };
+		C2B571D1244BE3E900EE3FC7 /* Searchviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571D0244BE3E900EE3FC7 /* Searchviewcontroller.swift */; };
 		C2C8EA15244AA52B002CC5FB /* navballerprofile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */; };
 		C2D9ED6424469F3700CC3690 /* BallerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9ED6324469F3700CC3690 /* BallerProfile.swift */; };
 		C2D9ED6A2446B15B00CC3690 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D9ED682446B15B00CC3690 /* Main.storyboard */; };
+		C2DBB52B244BEA8400DB50E4 /* Joingameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBB52A244BEA8400DB50E4 /* Joingameviewcontroller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,9 +58,14 @@
 		C25392AE2438132D00F850E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C25922F3243AC037006A5420 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller.swift; sourceTree = "<group>"; };
+		C2B571CA244BDFF500EE3FC7 /* navhome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navhome.swift; sourceTree = "<group>"; };
+		C2B571CC244BE23800EE3FC7 /* navsearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navsearch.swift; sourceTree = "<group>"; };
+		C2B571CE244BE26A00EE3FC7 /* navaddcourt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navaddcourt.swift; sourceTree = "<group>"; };
+		C2B571D0244BE3E900EE3FC7 /* Searchviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchviewcontroller.swift; sourceTree = "<group>"; };
 		C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navballerprofile.swift; sourceTree = "<group>"; };
 		C2D9ED6324469F3700CC3690 /* BallerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallerProfile.swift; sourceTree = "<group>"; };
 		C2D9ED692446B15B00CC3690 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C2DBB52A244BEA8400DB50E4 /* Joingameviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joingameviewcontroller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,18 +105,23 @@
 				C0A27B7724280DC700F6D70F /* Loginviewcontroller.swift */,
 				C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */,
 				C2012025243BFCE5006A4BB4 /* Registerviewcontroller2.swift */,
-				C0A27B7924280DC700F6D70F /* Homeviewcontroller.swift */,
 				C25922F3243AC037006A5420 /* MainTabBarController.swift */,
-				C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */,
+				C2B571CA244BDFF500EE3FC7 /* navhome.swift */,
+				C0A27B7924280DC700F6D70F /* Homeviewcontroller.swift */,
+				189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */,
+				189AAFCF2446C5490035E722 /* GameTableViewCell.swift */,
+				18B4FF29244A08920060672A /* Creategameviewcontroller.swift */,
+				C2DBB52A244BEA8400DB50E4 /* Joingameviewcontroller.swift */,
+				C2B571CC244BE23800EE3FC7 /* navsearch.swift */,
+				C2B571D0244BE3E900EE3FC7 /* Searchviewcontroller.swift */,
+				C2B571CE244BE26A00EE3FC7 /* navaddcourt.swift */,
 				C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */,
+				C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */,
+				C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */,
 				C2D9ED6324469F3700CC3690 /* BallerProfile.swift */,
 				C25392AE2438132D00F850E5 /* User.swift */,
 				C23FC943243F8861006AC17C /* SegueFromRight.swift */,
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
-				189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */,
-				189AAFCF2446C5490035E722 /* GameTableViewCell.swift */,
-				18B4FF29244A08920060672A /* Creategameviewcontroller.swift */,
-				C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */,
 				C2D9ED682446B15B00CC3690 /* Main.storyboard */,
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
 				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
@@ -195,12 +210,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DBB52B244BEA8400DB50E4 /* Joingameviewcontroller.swift in Sources */,
 				18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */,
 				C0A27B7A24280DC700F6D70F /* Homeviewcontroller.swift in Sources */,
 				C2D9ED6424469F3700CC3690 /* BallerProfile.swift in Sources */,
+				C2B571CF244BE26A00EE3FC7 /* navaddcourt.swift in Sources */,
 				C0A27B7824280DC700F6D70F /* Loginviewcontroller.swift in Sources */,
 				C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */,
+				C2B571CD244BE23800EE3FC7 /* navsearch.swift in Sources */,
 				C0A27B8024280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld in Sources */,
+				C2B571D1244BE3E900EE3FC7 /* Searchviewcontroller.swift in Sources */,
 				C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */,
 				C2C8EA15244AA52B002CC5FB /* navballerprofile.swift in Sources */,
 				C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */,
@@ -213,6 +232,7 @@
 				C01396A9243D58A600DAE647 /* Newcourtviewcontroller.swift in Sources */,
 				189AAFCE2446C5100035E722 /* Gamemenuviewcontroller.swift in Sources */,
 				189AAFD02446C5490035E722 /* GameTableViewCell.swift in Sources */,
+				C2B571CB244BDFF500EE3FC7 /* navhome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

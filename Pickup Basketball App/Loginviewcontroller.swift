@@ -47,12 +47,31 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
         guard segue.identifier == "Logintohomesegue" else {return}
         let barViewControllers = segue.destination as! UITabBarController
         //confirmed sets firstdc to nav controller before  baller profile
-        let navvc = barViewControllers.viewControllers![3] as! navballerprofile
+        let navvcbp = barViewControllers.viewControllers![3] as! navballerprofile
         
-        let finalvc = navvc.topViewController as! BallerProfile
+        let finalvcbp = navvcbp.topViewController as! BallerProfile
         
-        finalvc.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A")
-
+        finalvcbp.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A")
+        
+        let navh = barViewControllers.viewControllers![0] as! navhome
+        
+        let finalvch = navh.topViewController as! Homeviewcontroller
+        
+        finalvch.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A")
+        
+        let navs = barViewControllers.viewControllers![1] as! navsearch
+        
+        let finalvcs = navs.topViewController as! Searchviewcontroller
+        
+        finalvcs.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A")
+        
+        
+        let navac = barViewControllers.viewControllers![2] as! navaddcourt
+        
+        let finalvcac = navac.topViewController as! Tabnewcourtviewcontroller
+        
+        finalvcac.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A")
+        
     }
     
     

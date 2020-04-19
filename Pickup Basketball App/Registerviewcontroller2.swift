@@ -121,10 +121,28 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         //confirmed sets firstdc to nav controller before  baller profile
         let navvc = barViewControllers.viewControllers![3] as! navballerprofile
 
-        let finalvc = navvc.topViewController as! BallerProfile
+        let finalvcbp = navvc.topViewController as! BallerProfile
 
-        finalvc.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
-
+        finalvcbp.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+        
+        let navh = barViewControllers.viewControllers![0] as! navhome
+        
+        let finalvch = navh.topViewController as! Homeviewcontroller
+        
+        finalvch.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+        
+        let navs = barViewControllers.viewControllers![1] as! navsearch
+        
+        let finalvcs = navs.topViewController as! Searchviewcontroller
+        
+        finalvcs.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+        
+        
+        let navac = barViewControllers.viewControllers![2] as! navaddcourt
+        
+        let finalvcac = navac.topViewController as! Tabnewcourtviewcontroller
+        
+        finalvcac.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
     }
     
     

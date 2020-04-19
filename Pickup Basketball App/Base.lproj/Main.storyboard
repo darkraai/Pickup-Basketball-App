@@ -237,7 +237,7 @@
         <!--13.Join Game View Controller-->
         <scene sceneID="gVa-zd-frd">
             <objects>
-                <viewController id="ziq-5v-RzB" userLabel="13.Join Game View Controller" sceneMemberID="viewController">
+                <viewController id="ziq-5v-RzB" userLabel="13.Join Game View Controller" customClass="Joingameviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z6A-7x-Hff">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -382,7 +382,7 @@
         <!--7.Search View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Search View Controller" modalPresentationStyle="fullScreen" id="8rJ-Kc-sve" userLabel="7.Search View Controller" customClass="SecondViewController" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search View Controller" modalPresentationStyle="fullScreen" id="8rJ-Kc-sve" userLabel="7.Search View Controller" customClass="Searchviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1135,7 +1135,7 @@
         <!--Home Tab View Controller-->
         <scene sceneID="GXO-tR-evx">
             <objects>
-                <navigationController title="Home Tab View Controller" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ks7-aB-4Wm" sceneMemberID="viewController">
+                <navigationController title="Home Tab View Controller" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ks7-aB-4Wm" customClass="navhome" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="home" image="house.fill" catalog="system" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="bcF-sz-g2N"/>
@@ -1155,7 +1155,7 @@
         <!--Add Court-->
         <scene sceneID="bWP-MC-PCE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="qLT-Ju-16Q" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="qLT-Ju-16Q" customClass="navaddcourt" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Add Court" image="plus" catalog="system" id="9jK-Fi-7f7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jHW-e3-NyX">
@@ -1174,7 +1174,7 @@
         <!--Search-->
         <scene sceneID="Ro7-eh-IFN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YJD-sn-mB3" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YJD-sn-mB3" customClass="navsearch" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p1y-3U-E0v">

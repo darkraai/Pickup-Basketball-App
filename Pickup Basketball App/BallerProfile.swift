@@ -31,7 +31,8 @@ class BallerProfile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(user24!.username)
+
         //configures height label
         if(user24!.userheightfeet != "N/A"){
         heightlabel.text = user24!.userheightfeet + " ' " + user24!.userheightinches + " \" "

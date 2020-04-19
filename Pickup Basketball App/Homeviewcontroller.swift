@@ -12,6 +12,9 @@ import MapKit
  
 class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     
+   
+    var user24:User?
+    
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
@@ -22,6 +25,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(user24!.username)
         // Do any additional setup after loading the view.
         print("Loaded sucessfully2")
         mapView.delegate = self

@@ -10,6 +10,9 @@ import UIKit
 import MapKit
  
 class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
+    
+    var user24:User?
+
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
@@ -18,9 +21,10 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
 //    private var currentRoute: MKRoute?
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
+        print(user24!.username)
+
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("Loaded sucessfully2")
         mapView.delegate = self
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -181,7 +185,6 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
  
 extension Tabnewcourtviewcontroller: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Just got latest location and updated map...")
         
         guard let latestLocation = locations.first else { return }
         if currentCoordinate == nil {
