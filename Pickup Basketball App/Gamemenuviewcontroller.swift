@@ -71,20 +71,26 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         cell.gameStatusButton.layer.cornerRadius = 5
         cell.gameStatusButton.setTitleColor(UIColor.white, for: .normal)
         cell.gameStatusButton.setTitle(buttonData[indexPath.row], for: .normal)
-        if cell.gameStatusButton.currentTitle == "Join" || cell.gameStatusButton.currentTitle == "Create"{
-            cell.gameStatusButton.backgroundColor = .brown
+        if cell.gameStatusButton.currentTitle == "Join" {
+            cell.gameStatusButton.backgroundColor = UIColor.green
+        } else if cell.gameStatusButton.currentTitle == "Create" {
+            cell.gameStatusButton.backgroundColor = UIColor.blue
         } else {
-            cell.gameStatusButton.backgroundColor = .red
+            cell.gameStatusButton.backgroundColor = UIColor.red
         }
         cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return cell
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     @objc func buttonAction(sender: UIButton!) {
-            if (sender.currentTitle == "Join"){
+        if (sender.currentTitle == "Join" && dateTextField.text != ""){
                performSegue(withIdentifier: "join_game_segue", sender: self)
             }
-            if (sender.currentTitle == "Create"){
+        if (sender.currentTitle == "Create" && dateTextField.text != ""){
                 performSegue(withIdentifier: "create_game_segue", sender: self)
             }
           
