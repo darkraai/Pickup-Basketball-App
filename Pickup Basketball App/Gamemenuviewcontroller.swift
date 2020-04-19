@@ -8,13 +8,53 @@
 
 import UIKit
 
-class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var dateTextField: UITextField!
     
     var timeData: [String] = ["1 - 2 pm", "2 - 3 pm", "3 - 4 pm"]
     var gameData: [String] = ["5 v 5", "5 v 5", "N/A"]
     var ownerData: [String] = ["@Bensvo", "@Sundar", "N/A"]
     var slotsFilledData : [String] = ["8/10", "6/6", ""]
     var buttonData : [String] = ["Join", "Full", "Create"]
+    
+    let datePicker = UIDatePicker()
+    
+    private func createDatePicker(forField field: UITextField){
+        datePicker.datePickerMode = .date
+        field.textAlignment = .center
+        
+        //toolbar
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        //done bar button on toolbar
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done
+            , target: nil, action: #selector(donePressed))
+        
+        toolbar.setItems([doneBtn], animated: true)
+        
+        //assign toolbar
+        field.inputAccessoryView = toolbar
+        
+        //assign date picker to text field
+        field.inputView = datePicker
+    }
+    
+    var dateTextFieldDate : Date?
+    
+    @objc private func donePressed(){
+        //formatter
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+
+        dateTextField.text = formatter.string(from: datePicker.date)
+        dateTextFieldDate = datePicker.date
+        
+        self.view.endEditing(true)
+    }
     
      
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +95,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateTextField.delegate = self
+        self.createDatePicker(forField: dateTextField)
 
         // Do any additional setup after loading the view.
     }
