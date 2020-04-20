@@ -22,6 +22,7 @@
 		C0A27B8524280DCB00F6D70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */; };
 		C0E28CEC2436D92C00A25ABD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
 		C2012026243BFCE5006A4BB4 /* Registerviewcontroller2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2012025243BFCE5006A4BB4 /* Registerviewcontroller2.swift */; };
+		C20A2748244D397B00C6BFAD /* Editprofileviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A2747244D397B00C6BFAD /* Editprofileviewcontroller.swift */; };
 		C222E539243EAAAF006098C6 /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222E538243EAAAF006098C6 /* SegueFromLeft.swift */; };
 		C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23FC943243F8861006AC17C /* SegueFromRight.swift */; };
 		C25392AF2438132D00F850E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25392AE2438132D00F850E5 /* User.swift */; };
@@ -55,6 +56,7 @@
 		C0A27B8624280DCB00F6D70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0E28CEB2436D92C00A25ABD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C2012025243BFCE5006A4BB4 /* Registerviewcontroller2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller2.swift; sourceTree = "<group>"; };
+		C20A2747244D397B00C6BFAD /* Editprofileviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editprofileviewcontroller.swift; sourceTree = "<group>"; };
 		C222E538243EAAAF006098C6 /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		C23FC943243F8861006AC17C /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		C25392AE2438132D00F850E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */,
 				C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */,
 				C2D9ED6324469F3700CC3690 /* BallerProfile.swift */,
+				C20A2747244D397B00C6BFAD /* Editprofileviewcontroller.swift */,
 				C25392AE2438132D00F850E5 /* User.swift */,
 				C23FC943243F8861006AC17C /* SegueFromRight.swift */,
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
@@ -219,6 +222,7 @@
 				C2D9ED6424469F3700CC3690 /* BallerProfile.swift in Sources */,
 				C2B571CF244BE26A00EE3FC7 /* navaddcourt.swift in Sources */,
 				C0A27B7824280DC700F6D70F /* Loginviewcontroller.swift in Sources */,
+				C20A2748244D397B00C6BFAD /* Editprofileviewcontroller.swift in Sources */,
 				C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */,
 				C2B571CD244BE23800EE3FC7 /* navsearch.swift in Sources */,
 				C0A27B8024280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld in Sources */,

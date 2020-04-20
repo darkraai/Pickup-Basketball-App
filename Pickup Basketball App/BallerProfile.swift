@@ -46,12 +46,16 @@ class BallerProfile: UIViewController {
         usernamelabel.text = "@" + user24!.username
         
 
-
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination
         
-        
+        if let MainVC94 = destinationViewController as? Editprofileviewcontroller{
+            MainVC94.user24 = user24
 
-        // Do any additional setup after loading the view.
-//        heightlabel.text = userobj!.firstname
+
+        }
     }
 
 }
