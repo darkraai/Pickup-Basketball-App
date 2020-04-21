@@ -168,7 +168,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destinationViewController = segue.destination as! BallerProfile
-            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
         }
         
     }

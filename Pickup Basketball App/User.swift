@@ -24,6 +24,7 @@ class User{
     var userheightinches: String
     var userheightfeet: String
     var position: String
+    var profilepic: UIImage?
     
 
 //    //creates property key
@@ -38,7 +39,7 @@ class User{
     
     //MARK: Initialization
     //Recall that an initializer is a method that prepares an instance of a class for use, which involves setting an initial value for each property and performing any other setup or initialization.
-    init?(firstname: String, lastname: String, username: String, password: String, userweight: String, hometown: String, userheightinches: String, userheightfeet: String, position: String) {
+    init?(firstname: String, lastname: String, username: String, password: String, userweight: String, hometown: String, userheightinches: String, userheightfeet: String, position: String, profilepic: UIImage?) {
         
         // Initialize stored properties.
         self.firstname = firstname
@@ -50,6 +51,7 @@ class User{
         self.userheightinches = userheightinches
         self.userheightfeet = userheightfeet
         self.position = position
+        self.profilepic = profilepic
     }
     
 }

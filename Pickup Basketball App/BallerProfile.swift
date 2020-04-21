@@ -23,6 +23,7 @@ class BallerProfile: UIViewController {
     @IBOutlet weak var usernamelabel: UILabel!
     //edit button
     @IBOutlet weak var editprofbutton: UIButton!
+    @IBOutlet weak var bpprofilepic: UIImageView!
     
     
     
@@ -39,7 +40,7 @@ class BallerProfile: UIViewController {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         //configures height label
         if(user24!.userheightfeet != "N/A"){
@@ -55,6 +56,8 @@ class BallerProfile: UIViewController {
         hometownlabel.text = user24!.hometown
         fullnamelabel.text = user24!.firstname + " " + user24!.lastname
         usernamelabel.text = "@" + user24!.username
+        bpprofilepic.image = user24?.profilepic
+        
     }
     
     
@@ -68,9 +71,10 @@ class BallerProfile: UIViewController {
         
         if let MainVC94 = destinationViewController as? Editprofileviewcontroller{
             MainVC94.user24 = user24
-
-
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
+            }
         }
-    }
 
 }

@@ -123,26 +123,26 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
 
         let finalvcbp = navvc.topViewController as! BallerProfile
 
-        finalvcbp.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+        finalvcbp.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
         
         let navh = barViewControllers.viewControllers![0] as! navhome
         
         let finalvch = navh.topViewController as! Homeviewcontroller
         
-        finalvch.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+        finalvch.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
         
         let navs = barViewControllers.viewControllers![1] as! navsearch
         
         let finalvcs = navs.topViewController as! Searchviewcontroller
         
-        finalvcs.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+        finalvcs.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
         
         
         let navac = barViewControllers.viewControllers![2] as! navaddcourt
         
         let finalvcac = navac.topViewController as! Tabnewcourtviewcontroller
         
-        finalvcac.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!)
+        finalvcac.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
     }
     
     
