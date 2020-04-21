@@ -18,10 +18,11 @@ class BallerProfile: UIViewController {
     @IBOutlet weak var weightlabel: UILabel!
     @IBOutlet weak var prefpositionlabel: UILabel!
     @IBOutlet weak var hometownlabel: UILabel!
-    @IBOutlet weak var agelabel: UILabel!
     @IBOutlet weak var gamesplayedlabel: UILabel!
     @IBOutlet weak var fullnamelabel: UILabel!
     @IBOutlet weak var usernamelabel: UILabel!
+    //edit button
+    @IBOutlet weak var editprofbutton: UIButton!
     
     
     
@@ -31,23 +32,37 @@ class BallerProfile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(user24!.username)
 
+        
+
+        
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         //configures height label
         if(user24!.userheightfeet != "N/A"){
         heightlabel.text = user24!.userheightfeet + " ' " + user24!.userheightinches + " \" "
         }
-        
+        else{
+            editprofbutton.isEnabled = false
+
+        }
         //configures other labels based on class values
         weightlabel.text = user24!.userweight
         prefpositionlabel.text = user24!.position
         hometownlabel.text = user24!.hometown
         fullnamelabel.text = user24!.firstname + " " + user24!.lastname
         usernamelabel.text = "@" + user24!.username
-        
-
     }
     
+    
+
+    @IBAction func unwindtobp(_ sender: UIStoryboardSegue) {
+    }
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
         

@@ -34,11 +34,11 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     
     
     
-    let heightfeet = [" ","4","5","6","7"]
+    var heightfeet = [" ","4","5","6","7"]
     
-    let heightinches = [" ","0","1","2","3","4","5","6","7","8","9","10","11"]
+    var heightinches = [" ","0","1","2","3","4","5","6","7","8","9","10","11"]
     
-    let positions = [" ","PG","SG","SF","PF","C"]
+    var positions = [" ","PG","SG","SF","PF","C"]
 
 
     var heightinfeet: String?
