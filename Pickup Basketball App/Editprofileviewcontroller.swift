@@ -10,7 +10,7 @@ import UIKit
 import os.log
 
 
-class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var user24:User?
     
@@ -21,6 +21,10 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var editlast: UITextField!
     @IBOutlet weak var editweight: UITextField!
     @IBOutlet weak var edithometown: UITextField!
+    
+    
+    @IBOutlet weak var pfpimageview: UIImageView!
+    
     @IBOutlet weak var saveedits: UIBarButtonItem!
     
     
@@ -99,6 +103,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         editlast.text = user24?.lastname
         editweight.text = user24?.userweight
         edithometown.text = user24?.hometown
+        pfpimageview.image = user24?.profilepic
         
         //text field delegates
         editusername.delegate = self
@@ -142,6 +147,68 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         //navigationItem.title = textField.text
     }
     
+
+    
+    //MARK: UIImagePickerControllerDelegate
+
+
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    
+        // Dismiss the picker if the user canceled.
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //gets called when user selects a photo. here we will use it to display the photo in imageview
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictonary containing an image, but was provided the following: \(info)")
+        }
+        
+        // Set photoImageView to display the selected image.
+        pfpimageview.image = selectedImage
+        
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
+    }
+    
+
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationViewController = segue.destination as! BallerProfile
+            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image)
+        }
+    
+    //MARK: Actions
+    
+    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+        //closes keyboards for text fields
+        editusername.resignFirstResponder()
+        editpassword.resignFirstResponder()
+        editfirst.resignFirstResponder()
+        editlast.resignFirstResponder()
+        edithometown.resignFirstResponder()
+        editweight.resignFirstResponder()
+        
+
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        let imagePickerController = UIImagePickerController()
+
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+
+        present(imagePickerController, animated: true, completion: nil)
+        
+        
+    }
+    
     private func updateDoneButtonState3() {
         // Disable the login button if the text field is empty.
         saveedits.isEnabled = false
@@ -165,11 +232,6 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
 
             }
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destinationViewController = segue.destination as! BallerProfile
-            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
-        }
         
     }
     
