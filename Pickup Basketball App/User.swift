@@ -52,6 +52,7 @@ class User{
         self.userheightfeet = userheightfeet
         self.position = position
         self.profilepic = profilepic
+        
     }
     
 }

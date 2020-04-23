@@ -58,6 +58,10 @@ class BallerProfile: UIViewController {
         usernamelabel.text = "@" + user24!.username
         bpprofilepic.image = user24?.profilepic
         
+        
+        self.bpprofilepic.layer.cornerRadius = self.bpprofilepic.frame.size.width / 2;
+        self.bpprofilepic.clipsToBounds = true;
+        
     }
     
     

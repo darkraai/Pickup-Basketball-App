@@ -122,6 +122,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         self.positionpv.delegate = self
         self.positionpv.dataSource = self
 
+        self.pfpimageview.layer.cornerRadius = self.pfpimageview.frame.size.width / 2;
+        self.pfpimageview.clipsToBounds = true;
         
         updateDoneButtonState3()
 
@@ -163,12 +165,13 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         // The info dictionary may contain multiple representations of the image. You want to use the original.
-        guard let selectedImage = info[.originalImage] as? UIImage else {
-            fatalError("Expected a dictonary containing an image, but was provided the following: \(info)")
-        }
+        if let selectedImage = info[.editedImage] as? UIImage{
+            self.pfpimageview.image = selectedImage
+        }else {fatalError("Expected a dictonary containing an image, but was provided the following: \(info)")}
         
-        // Set photoImageView to display the selected image.
-        pfpimageview.image = selectedImage
+
+        self.pfpimageview.layer.cornerRadius = self.pfpimageview.frame.size.width / 2;
+        self.pfpimageview.clipsToBounds = true;
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
@@ -178,12 +181,16 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        pfpimageview.layer.cornerRadius = pfpimageview.frame.size.width / 2;
+        pfpimageview.clipsToBounds = true;
         let destinationViewController = segue.destination as! BallerProfile
-            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image)
+        destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image)
         }
     
     //MARK: Actions
+    
+
+    
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         //closes keyboards for text fields
@@ -198,6 +205,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
 
+        imagePickerController.allowsEditing = true
+        
         // Only allow photos to be picked, not taken.
         imagePickerController.sourceType = .photoLibrary
 
@@ -206,6 +215,31 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
 
         present(imagePickerController, animated: true, completion: nil)
         
+        
+    }
+    
+    @IBAction func selectImageFromPhotoLibrary2(_ sender: UITapGestureRecognizer) {
+        //closes keyboards for text fields
+        editusername.resignFirstResponder()
+        editpassword.resignFirstResponder()
+        editfirst.resignFirstResponder()
+        editlast.resignFirstResponder()
+        edithometown.resignFirstResponder()
+        editweight.resignFirstResponder()
+        
+
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        let imagePickerController = UIImagePickerController()
+
+        imagePickerController.allowsEditing = true
+        
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+
+        present(imagePickerController, animated: true, completion: nil)
         
     }
     
