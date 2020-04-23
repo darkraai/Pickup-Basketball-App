@@ -132,7 +132,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
            // Hide the keyboard.
            textField.resignFirstResponder()
-           return  true
+           return true
        }
     
     //Disables the done button while the user is editing the text field
@@ -222,18 +222,17 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         let userpasswordtext = editpassword.text ?? ""
             
         let userweighttext = editweight.text ?? ""
-            
+        
         let userhometowntext = edithometown.text ?? ""
             
         if((!userfirsttext.isEmpty)&&(!userlasttext.isEmpty)&&(!usernametext.isEmpty)&&(!userpasswordtext.isEmpty)&&(!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
-                
                 saveedits.isEnabled = true
-            
 
             }
     }
         
     }
+
     
 
 
