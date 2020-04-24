@@ -122,27 +122,32 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         let navvc = barViewControllers.viewControllers![3] as! navballerprofile
 
         let finalvcbp = navvc.topViewController as! BallerProfile
+        
+        let image14 = UIImage(named: "user")
+        
 
-        finalvcbp.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
+        finalvcbp.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
+
         
         let navh = barViewControllers.viewControllers![0] as! navhome
         
         let finalvch = navh.topViewController as! Homeviewcontroller
         
-        finalvch.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
+        
+        finalvch.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
         
         let navs = barViewControllers.viewControllers![1] as! navsearch
         
         let finalvcs = navs.topViewController as! Searchviewcontroller
         
-        finalvcs.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
+        finalvcs.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
         
         
         let navac = barViewControllers.viewControllers![2] as! navaddcourt
         
         let finalvcac = navac.topViewController as! Tabnewcourtviewcontroller
         
-        finalvcac.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
+        finalvcac.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
     }
     
     
@@ -150,7 +155,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
                // Hide the keyboard.
                textField.resignFirstResponder()
-               return  true
+               return true
            }
         
         //Disables the done button while the user is editing the text field

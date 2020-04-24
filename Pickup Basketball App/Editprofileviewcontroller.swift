@@ -10,7 +10,7 @@ import UIKit
 import os.log
 
 
-class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var user24:User?
     
@@ -21,6 +21,10 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var editlast: UITextField!
     @IBOutlet weak var editweight: UITextField!
     @IBOutlet weak var edithometown: UITextField!
+    
+    
+    @IBOutlet weak var pfpimageview: UIImageView!
+    
     @IBOutlet weak var saveedits: UIBarButtonItem!
     
     
@@ -99,6 +103,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         editlast.text = user24?.lastname
         editweight.text = user24?.userweight
         edithometown.text = user24?.hometown
+        pfpimageview.image = user24?.profilepic
         
         //text field delegates
         editusername.delegate = self
@@ -117,9 +122,45 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         self.positionpv.delegate = self
         self.positionpv.dataSource = self
 
+        self.pfpimageview.layer.cornerRadius = self.pfpimageview.frame.size.width / 2;
+        self.pfpimageview.clipsToBounds = true;
         
-        updateDoneButtonState3()
+        
+        //initialization for height in feet
+        for counter in  0...heightfeet.count-1{
+            if(heightfeet[counter] == user24?.userheightfeet){
+                heightfpv.selectRow(counter, inComponent:0, animated:true)
+                print(counter)
+            }
+        }
+                
+        heightinfeet = heightfeet[heightfpv.selectedRow(inComponent: 0)]
+        
 
+        //initialization for height in inches
+        for counter in  0...heightinches.count-1{
+            if(heightinches[counter] == user24?.userheightinches){
+                heightipv.selectRow(counter, inComponent:0, animated:true)
+            }
+        }
+                
+        heightininches = heightinches[heightipv.selectedRow(inComponent: 0)]
+        
+        
+        //initialization for position
+               for counter in  0...positions.count-1{
+                   if(positions[counter] == user24?.position){
+                       positionpv.selectRow(counter, inComponent:0, animated:true)
+                   }
+               }
+                       
+               positions2 = positions[positionpv.selectedRow(inComponent: 0)]
+        
+        
+
+        updateDoneButtonState3()
+        
+    
     }
     
     
@@ -127,7 +168,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
            // Hide the keyboard.
            textField.resignFirstResponder()
-           return  true
+           return true
        }
     
     //Disables the done button while the user is editing the text field
@@ -140,6 +181,100 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         //when done editing, updates save button state
         updateDoneButtonState3()
         //navigationItem.title = textField.text
+    }
+    
+
+    
+    //MARK: UIImagePickerControllerDelegate
+
+
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    
+        // Dismiss the picker if the user canceled.
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //gets called when user selects a photo. here we will use it to display the photo in imageview
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        if let selectedImage = info[.editedImage] as? UIImage{
+            self.pfpimageview.image = selectedImage
+        }else {fatalError("Expected a dictonary containing an image, but was provided the following: \(info)")}
+        
+
+        self.pfpimageview.layer.cornerRadius = self.pfpimageview.frame.size.width / 2;
+        self.pfpimageview.clipsToBounds = true;
+        
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
+    }
+    
+
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        pfpimageview.layer.cornerRadius = pfpimageview.frame.size.width / 2;
+        pfpimageview.clipsToBounds = true;
+        let destinationViewController = segue.destination as! BallerProfile
+        destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image)
+        }
+    
+    //MARK: Actions
+    
+
+    
+    
+    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+        //closes keyboards for text fields
+        editusername.resignFirstResponder()
+        editpassword.resignFirstResponder()
+        editfirst.resignFirstResponder()
+        editlast.resignFirstResponder()
+        edithometown.resignFirstResponder()
+        editweight.resignFirstResponder()
+        
+
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        let imagePickerController = UIImagePickerController()
+
+        imagePickerController.allowsEditing = true
+        
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+
+        present(imagePickerController, animated: true, completion: nil)
+        
+        
+    }
+    
+    @IBAction func selectImageFromPhotoLibrary2(_ sender: UITapGestureRecognizer) {
+        //closes keyboards for text fields
+        editusername.resignFirstResponder()
+        editpassword.resignFirstResponder()
+        editfirst.resignFirstResponder()
+        editlast.resignFirstResponder()
+        edithometown.resignFirstResponder()
+        editweight.resignFirstResponder()
+        
+
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        let imagePickerController = UIImagePickerController()
+
+        imagePickerController.allowsEditing = true
+        
+        // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+
+        // Make sure ViewController is notified when the user picks an image.
+        imagePickerController.delegate = self
+
+        present(imagePickerController, animated: true, completion: nil)
+        
     }
     
     private func updateDoneButtonState3() {
@@ -155,23 +290,17 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         let userpasswordtext = editpassword.text ?? ""
             
         let userweighttext = editweight.text ?? ""
-            
+        
         let userhometowntext = edithometown.text ?? ""
             
         if((!userfirsttext.isEmpty)&&(!userlasttext.isEmpty)&&(!usernametext.isEmpty)&&(!userpasswordtext.isEmpty)&&(!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
-                
                 saveedits.isEnabled = true
-            
 
             }
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destinationViewController = segue.destination as! BallerProfile
-            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: UIImage(named: "user"))
-        }
         
     }
+
     
 
 
