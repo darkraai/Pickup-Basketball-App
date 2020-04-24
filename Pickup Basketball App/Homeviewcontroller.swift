@@ -27,7 +27,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         print(user24!.username)
         // Do any additional setup after loading the view.
-        print("Loaded sucessfully2")
+        //print("Loaded sucessfully2")
         mapView.delegate = self
         
 //        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
