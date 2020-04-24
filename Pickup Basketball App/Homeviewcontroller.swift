@@ -25,7 +25,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(user24!.username)
+        print(user24?.username)
         // Do any additional setup after loading the view.
         //print("Loaded sucessfully2")
         mapView.delegate = self
