@@ -125,8 +125,42 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         self.pfpimageview.layer.cornerRadius = self.pfpimageview.frame.size.width / 2;
         self.pfpimageview.clipsToBounds = true;
         
-        updateDoneButtonState3()
+        
+        //initialization for height in feet
+        for counter in  0...heightfeet.count-1{
+            if(heightfeet[counter] == user24?.userheightfeet){
+                heightfpv.selectRow(counter, inComponent:0, animated:true)
+                print(counter)
+            }
+        }
+                
+        heightinfeet = heightfeet[heightfpv.selectedRow(inComponent: 0)]
+        
 
+        //initialization for height in inches
+        for counter in  0...heightinches.count-1{
+            if(heightinches[counter] == user24?.userheightinches){
+                heightipv.selectRow(counter, inComponent:0, animated:true)
+            }
+        }
+                
+        heightininches = heightinches[heightipv.selectedRow(inComponent: 0)]
+        
+        
+        //initialization for position
+               for counter in  0...positions.count-1{
+                   if(positions[counter] == user24?.position){
+                       positionpv.selectRow(counter, inComponent:0, animated:true)
+                   }
+               }
+                       
+               positions2 = positions[positionpv.selectedRow(inComponent: 0)]
+        
+        
+
+        updateDoneButtonState3()
+        
+    
     }
     
     

@@ -78,6 +78,7 @@ class BallerProfile: UIViewController {
             let backItem = UIBarButtonItem()
             backItem.title = "Back"
             navigationItem.backBarButtonItem = backItem
+            
             }
         }
 
