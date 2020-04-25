@@ -25,6 +25,7 @@ class User{
     var userheightfeet: String
     var position: String
     var profilepic: UIImage?
+    var fullname: String
     
 
 //    //creates property key
@@ -52,7 +53,9 @@ class User{
         self.userheightfeet = userheightfeet
         self.position = position
         self.profilepic = profilepic
+        self.fullname = self.firstname + " " + self.lastname
         
     }
+
     
 }

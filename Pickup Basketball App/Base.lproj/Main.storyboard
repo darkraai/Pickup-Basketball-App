@@ -497,34 +497,34 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.76601278780000004" green="0.90872657300000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchTableViewCell" rowHeight="90" id="eG7-6f-hP4" customClass="searchTableViewCell" customModule="Pickup_Basketball_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="90"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchTableViewCell" id="eG7-6f-hP4" customClass="searchTableViewCell" customModule="Pickup_Basketball_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="108.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eG7-6f-hP4" id="4Fg-mc-1jH">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="108.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="suq-aE-zHi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="90"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="108.5"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M1D-la-bEt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                            <rect key="frame" x="0.0" y="9.5" width="90" height="90"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="90" id="G7x-rx-tjZ"/>
                                                                 <constraint firstAttribute="width" constant="90" id="w5B-wD-k4H"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xha-ik-Z9P">
-                                                            <rect key="frame" x="140" y="18" width="156" height="54"/>
+                                                            <rect key="frame" x="140" y="0.5" width="50" height="108"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surya Mamidyala" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYr-1c-YUp">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="25.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYr-1c-YUp">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@suryam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fV-FK-UMw">
-                                                                    <rect key="frame" x="0.0" y="33.5" width="71.5" height="20.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fV-FK-UMw">
+                                                                    <rect key="frame" x="0.0" y="58" width="50" height="50"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -542,16 +542,12 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.76601278780000004" green="0.90872657300000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
-                                            <outlet property="nameLabel" destination="dYr-1c-YUp" id="aeM-kC-MbR"/>
-                                            <outlet property="userImage" destination="M1D-la-bEt" id="s7l-KI-5qJ"/>
-                                            <outlet property="usernameLabel" destination="1fV-FK-UMw" id="PfN-W7-EtF"/>
+                                            <outlet property="nameLabel" destination="dYr-1c-YUp" id="kcY-HT-DXR"/>
+                                            <outlet property="userImage" destination="M1D-la-bEt" id="z22-Zn-Gob"/>
+                                            <outlet property="usernameLabel" destination="1fV-FK-UMw" id="Neo-4m-egW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="uRv-us-Y50"/>
-                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="Mnk-xP-Kss"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.76601278780000004" green="0.90872657300000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -563,14 +559,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search for friends, courts, or areas" id="uvG-KP-GKn">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="XWM-E9-gxa">
-                            <connections>
-                                <action selector="searchButtonPressed:" destination="8rJ-Kc-sve" id="dpj-YI-zGS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search for friends, courts, or areas" id="uvG-KP-GKn"/>
                     <connections>
+                        <outlet property="tableView" destination="6oA-xB-ylt" id="kw6-QC-dB0"/>
                         <segue destination="zhe-k3-abk" kind="show" identifier="search_ballerinfo_segue" id="jfD-dV-KOw"/>
                     </connections>
                 </viewController>
@@ -1810,6 +1801,6 @@
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="templogo" width="300" height="300"/>
         <image name="thinline" width="452" height="129"/>
-        <image name="user" width="200" height="200"/>
+        <image name="user" width="100" height="100"/>
     </resources>
 </document>
