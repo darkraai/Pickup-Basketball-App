@@ -71,15 +71,34 @@ class BallerProfile: UIViewController {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationViewController = segue.destination
-        
-        if let MainVC94 = destinationViewController as? Editprofileviewcontroller{
-            MainVC94.user24 = user24
-            let backItem = UIBarButtonItem()
-            backItem.title = "Back"
-            navigationItem.backBarButtonItem = backItem
-            
+        if(segue.identifier == "bptoeditbp"){
+            let destinationViewController = segue.destination
+            if let MainVC94 = destinationViewController as? Editprofileviewcontroller{
+                    MainVC94.user24 = user24
+                    let backItem = UIBarButtonItem()
+                    backItem.title = "Back"
+                    navigationItem.backBarButtonItem = backItem
+
             }
         }
+        if(segue.identifier == "bptofollowers"){
+            let destinationViewController = segue.destination
+            if let MainVC97 = destinationViewController as? Followersviewcontroller{
+                    MainVC97.user24 = user24
 
+            }
+
+        }
+        
+        if(segue.identifier == "bptofollowing"){
+            let destinationViewController = segue.destination
+            if let MainVC99 = destinationViewController as? Followingviewcontroller{
+                    MainVC99.user24 = user24
+                    
+            }
+        }
+        
+
+        
+    }
 }
