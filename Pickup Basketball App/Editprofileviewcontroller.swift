@@ -130,7 +130,6 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         for counter in  0...heightfeet.count-1{
             if(heightfeet[counter] == user24?.userheightfeet){
                 heightfpv.selectRow(counter, inComponent:0, animated:true)
-                print(counter)
             }
         }
                 

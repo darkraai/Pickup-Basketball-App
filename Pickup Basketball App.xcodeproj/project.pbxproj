@@ -37,6 +37,9 @@
 		C2D9ED6424469F3700CC3690 /* BallerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9ED6324469F3700CC3690 /* BallerProfile.swift */; };
 		C2D9ED6A2446B15B00CC3690 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D9ED682446B15B00CC3690 /* Main.storyboard */; };
 		C2DBB52B244BEA8400DB50E4 /* Joingameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBB52A244BEA8400DB50E4 /* Joingameviewcontroller.swift */; };
+		C2F312A82453C6B700B42E51 /* Followersviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F312A72453C6B700B42E51 /* Followersviewcontroller.swift */; };
+		C2F312AA2453C72E00B42E51 /* Followingviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F312A92453C72E00B42E51 /* Followingviewcontroller.swift */; };
+		C2F312AC2453DA5900B42E51 /* FollowersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F312AB2453DA5900B42E51 /* FollowersViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		C2D9ED6324469F3700CC3690 /* BallerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallerProfile.swift; sourceTree = "<group>"; };
 		C2D9ED692446B15B00CC3690 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C2DBB52A244BEA8400DB50E4 /* Joingameviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joingameviewcontroller.swift; sourceTree = "<group>"; };
+		C2F312A72453C6B700B42E51 /* Followersviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followersviewcontroller.swift; sourceTree = "<group>"; };
+		C2F312A92453C72E00B42E51 /* Followingviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followingviewcontroller.swift; sourceTree = "<group>"; };
+		C2F312AB2453DA5900B42E51 /* FollowersViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,9 @@
 				C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */,
 				C2D9ED6324469F3700CC3690 /* BallerProfile.swift */,
 				C20A2747244D397B00C6BFAD /* Editprofileviewcontroller.swift */,
+				C2F312A72453C6B700B42E51 /* Followersviewcontroller.swift */,
+				C2F312AB2453DA5900B42E51 /* FollowersViewCell.swift */,
+				C2F312A92453C72E00B42E51 /* Followingviewcontroller.swift */,
 				C25392AE2438132D00F850E5 /* User.swift */,
 				C23FC943243F8861006AC17C /* SegueFromRight.swift */,
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
@@ -223,8 +232,10 @@
 				18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */,
 				C0A27B7A24280DC700F6D70F /* Homeviewcontroller.swift in Sources */,
 				18DA8E582450BAB8000B7DA9 /* searchTableViewCell.swift in Sources */,
+				C2F312AC2453DA5900B42E51 /* FollowersViewCell.swift in Sources */,
 				C2D9ED6424469F3700CC3690 /* BallerProfile.swift in Sources */,
 				C2B571CF244BE26A00EE3FC7 /* navaddcourt.swift in Sources */,
+				C2F312A82453C6B700B42E51 /* Followersviewcontroller.swift in Sources */,
 				C0A27B7824280DC700F6D70F /* Loginviewcontroller.swift in Sources */,
 				C20A2748244D397B00C6BFAD /* Editprofileviewcontroller.swift in Sources */,
 				C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */,
@@ -238,6 +249,7 @@
 				C222E539243EAAAF006098C6 /* SegueFromLeft.swift in Sources */,
 				C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */,
 				C0A27B7624280DC700F6D70F /* SceneDelegate.swift in Sources */,
+				C2F312AA2453C72E00B42E51 /* Followingviewcontroller.swift in Sources */,
 				C25392AF2438132D00F850E5 /* User.swift in Sources */,
 				C2012026243BFCE5006A4BB4 /* Registerviewcontroller2.swift in Sources */,
 				C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */,
