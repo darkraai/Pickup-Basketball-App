@@ -612,7 +612,7 @@
         <!--9.Friends List View Controller-->
         <scene sceneID="fce-PJ-0Ih">
             <objects>
-                <viewController id="P2U-dl-QLr" userLabel="9.Friends List View Controller" customClass="Followersviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Followers view controller" modalPresentationStyle="fullScreen" id="P2U-dl-QLr" userLabel="9.Friends List View Controller" customClass="Followersviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r9a-jU-MeI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -620,61 +620,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qSE-bt-Xwe">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FollowersViewCell" rowHeight="90" id="lxV-th-Uhs" userLabel="FollowersViewCell" customClass="FollowersViewCell" customModule="Pickup_Basketball_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="90"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lxV-th-Uhs" id="0kV-Ms-jsZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="27s-q1-SeA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="90"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MqW-fH-Ghs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="90" id="V6p-hI-dyZ"/>
-                                                                <constraint firstAttribute="height" constant="90" id="lz9-Vc-o5x"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WNW-xG-THZ">
-                                                            <rect key="frame" x="140" y="18" width="156" height="54"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surya Mamidyala" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-Ut-Fly" userLabel="NamefollowersLabel">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="25.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@suryam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnB-M6-vUq" userLabel="UsernamefollowersLabel">
-                                                                    <rect key="frame" x="0.0" y="33.5" width="71.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="27s-q1-SeA" firstAttribute="top" secondItem="0kV-Ms-jsZ" secondAttribute="top" id="Wms-uj-4qQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="27s-q1-SeA" secondAttribute="bottom" id="alW-Ea-8X0"/>
-                                                <constraint firstItem="27s-q1-SeA" firstAttribute="leading" secondItem="0kV-Ms-jsZ" secondAttribute="leading" id="fxy-7G-Y9U"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.76470588235294112" green="0.90872657300000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <connections>
-                                            <outlet property="nameLabel" destination="Kw2-Ut-Fly" id="aUd-G4-dVY"/>
-                                            <outlet property="namelabelfollowers" destination="Kw2-Ut-Fly" id="tdb-F3-to0"/>
-                                            <outlet property="pfpfollowers" destination="MqW-fH-Ghs" id="aKO-T9-7AW"/>
-                                            <outlet property="userImage" destination="MqW-fH-Ghs" id="Ikq-Mg-37T"/>
-                                            <outlet property="usernameLabel" destination="EnB-M6-vUq" id="L6e-Kw-Uxu"/>
-                                            <outlet property="usernamelabelfollowers" destination="EnB-M6-vUq" id="tuy-hc-YS9"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="P2U-dl-QLr" id="hPn-NA-P3d"/>
                                     <outlet property="delegate" destination="P2U-dl-QLr" id="is0-si-g7p"/>

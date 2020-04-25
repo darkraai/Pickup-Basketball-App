@@ -40,7 +40,8 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(user24!.username)
+        print("user is " + user24!.username)
+
         
     }
     
