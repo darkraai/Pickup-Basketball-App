@@ -16,6 +16,8 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     
     var user24:User?
 
+    @IBOutlet weak var FollowersTableView: UITableView!
+    
     var nameData: [String] = ["Surya Mamidyala", "Benjamin Svoboda", "Pranav Addepalli"]
     var usernameData: [String] = ["@suryam", "@bensvo", "@pranavaddy"]
     var imageData: [UIImage] = [UIImage(named: "surya")!, UIImage(named: "ben")!, UIImage(named: "pranav")!]
@@ -28,7 +30,7 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
         let cellf = tableView.dequeueReusableCell(withIdentifier: "FollowersViewCell") as! FollowersViewCell
         cellf.namelabelfollowers.text = nameData[indexPath.row]
         cellf.usernamelabelfollowers.text = usernameData[indexPath.row]
-        //cellf.pfpfollowers?.image = imageData[indexPath.row]
+        cellf.pfpfollowers?.image = imageData[indexPath.row]
         return cellf
     }
     
@@ -41,6 +43,10 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         print("user is " + user24!.username)
+        FollowersTableView.delegate = self
+        FollowersTableView.dataSource = self
+        
+
 
         
     }

@@ -33,6 +33,7 @@
 		C2B571CD244BE23800EE3FC7 /* navsearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CC244BE23800EE3FC7 /* navsearch.swift */; };
 		C2B571CF244BE26A00EE3FC7 /* navaddcourt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CE244BE26A00EE3FC7 /* navaddcourt.swift */; };
 		C2B571D1244BE3E900EE3FC7 /* Searchviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571D0244BE3E900EE3FC7 /* Searchviewcontroller.swift */; };
+		C2B7BF8424551752007B98B1 /* FollowingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BF8324551752007B98B1 /* FollowingViewCell.swift */; };
 		C2C8EA15244AA52B002CC5FB /* navballerprofile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */; };
 		C2D9ED6424469F3700CC3690 /* BallerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9ED6324469F3700CC3690 /* BallerProfile.swift */; };
 		C2D9ED6A2446B15B00CC3690 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D9ED682446B15B00CC3690 /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		C2B571CC244BE23800EE3FC7 /* navsearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navsearch.swift; sourceTree = "<group>"; };
 		C2B571CE244BE26A00EE3FC7 /* navaddcourt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navaddcourt.swift; sourceTree = "<group>"; };
 		C2B571D0244BE3E900EE3FC7 /* Searchviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchviewcontroller.swift; sourceTree = "<group>"; };
+		C2B7BF8324551752007B98B1 /* FollowingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewCell.swift; sourceTree = "<group>"; };
 		C2C8EA14244AA52B002CC5FB /* navballerprofile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navballerprofile.swift; sourceTree = "<group>"; };
 		C2D9ED6324469F3700CC3690 /* BallerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallerProfile.swift; sourceTree = "<group>"; };
 		C2D9ED692446B15B00CC3690 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				C2F312A72453C6B700B42E51 /* Followersviewcontroller.swift */,
 				C2F312AB2453DA5900B42E51 /* FollowersViewCell.swift */,
 				C2F312A92453C72E00B42E51 /* Followingviewcontroller.swift */,
+				C2B7BF8324551752007B98B1 /* FollowingViewCell.swift */,
 				C25392AE2438132D00F850E5 /* User.swift */,
 				C23FC943243F8861006AC17C /* SegueFromRight.swift */,
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2B7BF8424551752007B98B1 /* FollowingViewCell.swift in Sources */,
 				C2DBB52B244BEA8400DB50E4 /* Joingameviewcontroller.swift in Sources */,
 				18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */,
 				C0A27B7A24280DC700F6D70F /* Homeviewcontroller.swift in Sources */,
