@@ -23,6 +23,7 @@
 		C0A27B8524280DCB00F6D70F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */; };
 		C0E28CEC2436D92C00A25ABD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
 		C2012026243BFCE5006A4BB4 /* Registerviewcontroller2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2012025243BFCE5006A4BB4 /* Registerviewcontroller2.swift */; };
+		C207214D245620CD00665C49 /* Otherballerviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C207214C245620CD00665C49 /* Otherballerviewcontroller.swift */; };
 		C20A2748244D397B00C6BFAD /* Editprofileviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20A2747244D397B00C6BFAD /* Editprofileviewcontroller.swift */; };
 		C222E539243EAAAF006098C6 /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222E538243EAAAF006098C6 /* SegueFromLeft.swift */; };
 		C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23FC943243F8861006AC17C /* SegueFromRight.swift */; };
@@ -62,6 +63,7 @@
 		C0A27B8624280DCB00F6D70F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0E28CEB2436D92C00A25ABD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C2012025243BFCE5006A4BB4 /* Registerviewcontroller2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller2.swift; sourceTree = "<group>"; };
+		C207214C245620CD00665C49 /* Otherballerviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Otherballerviewcontroller.swift; sourceTree = "<group>"; };
 		C20A2747244D397B00C6BFAD /* Editprofileviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editprofileviewcontroller.swift; sourceTree = "<group>"; };
 		C222E538243EAAAF006098C6 /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		C23FC943243F8861006AC17C /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				C2F312AB2453DA5900B42E51 /* FollowersViewCell.swift */,
 				C2F312A92453C72E00B42E51 /* Followingviewcontroller.swift */,
 				C2B7BF8324551752007B98B1 /* FollowingViewCell.swift */,
+				C207214C245620CD00665C49 /* Otherballerviewcontroller.swift */,
 				C25392AE2438132D00F850E5 /* User.swift */,
 				C23FC943243F8861006AC17C /* SegueFromRight.swift */,
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2B7BF8424551752007B98B1 /* FollowingViewCell.swift in Sources */,
+				C207214D245620CD00665C49 /* Otherballerviewcontroller.swift in Sources */,
 				C2DBB52B244BEA8400DB50E4 /* Joingameviewcontroller.swift in Sources */,
 				18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */,
 				C0A27B7A24280DC700F6D70F /* Homeviewcontroller.swift in Sources */,

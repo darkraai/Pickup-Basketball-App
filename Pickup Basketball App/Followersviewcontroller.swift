@@ -34,6 +34,16 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
         return cellf
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedusername = usernameData[indexPath.row]
+        if let viewController = storyboard?.instantiateViewController(identifier: "Otherballerviewcontroller") as? Otherballerviewcontroller {
+            //username passed to next VC
+            viewController.followusername = selectedusername
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -45,11 +55,10 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
         print("user is " + user24!.username)
         FollowersTableView.delegate = self
         FollowersTableView.dataSource = self
-        
 
-
-        
     }
+    
+
     
 
 }
