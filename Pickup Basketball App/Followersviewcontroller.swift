@@ -19,7 +19,7 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var FollowersTableView: UITableView!
     
     var nameData: [String] = ["Surya Mamidyala", "Benjamin Svoboda", "Pranav Addepalli"]
-    var usernameData: [String] = ["@suryam", "@bensvo", "@pranavaddy"]
+    var usernameData: [String] = ["suryam", "bensvo", "pranavaddy"]
     var imageData: [UIImage] = [UIImage(named: "surya")!, UIImage(named: "ben")!, UIImage(named: "pranav")!]
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +29,7 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellf = tableView.dequeueReusableCell(withIdentifier: "FollowersViewCell") as! FollowersViewCell
         cellf.namelabelfollowers.text = nameData[indexPath.row]
-        cellf.usernamelabelfollowers.text = usernameData[indexPath.row]
+        cellf.usernamelabelfollowers.text = "@" + usernameData[indexPath.row]
         cellf.pfpfollowers?.image = imageData[indexPath.row]
         return cellf
     }
