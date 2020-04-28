@@ -32,8 +32,6 @@ class Followingviewcontroller: UIViewController, UITableViewDelegate, UITableVie
         cellf.nameLabelFollowing.text = nameData[indexPath.row]
         cellf.usernameLabelFollowing.text = "@" + usernameData[indexPath.row]
         cellf.pfpFollowing?.image = imageData[indexPath.row]
-        cellf.pfpFollowing.layer.cornerRadius = 45;
-        cellf.pfpFollowing.clipsToBounds = true;
         return cellf
     }
     

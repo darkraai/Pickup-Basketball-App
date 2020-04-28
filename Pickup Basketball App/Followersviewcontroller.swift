@@ -31,8 +31,6 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
         cellf.namelabelfollowers.text = nameData[indexPath.row]
         cellf.usernamelabelfollowers.text = "@" + usernameData[indexPath.row]
         cellf.pfpfollowers?.image = imageData[indexPath.row]
-        cellf.pfpfollowers.layer.cornerRadius = 45;
-        cellf.pfpfollowers.clipsToBounds = true;
         return cellf
     }
     
