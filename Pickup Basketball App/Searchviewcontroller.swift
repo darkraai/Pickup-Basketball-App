@@ -147,10 +147,7 @@ extension Searchviewcontroller : UISearchBarDelegate {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-
-        if let searchText = searchBar.text, !searchText.isEmpty {
             restoreCurrentDataSource()
-        }
         
     }
 }
