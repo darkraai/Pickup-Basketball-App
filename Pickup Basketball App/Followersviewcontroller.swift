@@ -16,8 +16,10 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     
     var user24:User?
 
+    @IBOutlet weak var FollowersTableView: UITableView!
+    
     var nameData: [String] = ["Surya Mamidyala", "Benjamin Svoboda", "Pranav Addepalli"]
-    var usernameData: [String] = ["@suryam", "@bensvo", "@pranavaddy"]
+    var usernameData: [String] = ["suryam", "bensvo", "pranavaddy"]
     var imageData: [UIImage] = [UIImage(named: "surya")!, UIImage(named: "ben")!, UIImage(named: "pranav")!]
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,10 +29,20 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellf = tableView.dequeueReusableCell(withIdentifier: "FollowersViewCell") as! FollowersViewCell
         cellf.namelabelfollowers.text = nameData[indexPath.row]
-        cellf.usernamelabelfollowers.text = usernameData[indexPath.row]
-        //cellf.pfpfollowers?.image = imageData[indexPath.row]
+        cellf.usernamelabelfollowers.text = "@" + usernameData[indexPath.row]
+        cellf.pfpfollowers?.image = imageData[indexPath.row]
         return cellf
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedusername = usernameData[indexPath.row]
+        if let viewController = storyboard?.instantiateViewController(identifier: "Otherballerviewcontroller") as? Otherballerviewcontroller {
+            //username passed to next VC
+            viewController.followusername = selectedusername
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -41,9 +53,12 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         print("user is " + user24!.username)
+        FollowersTableView.delegate = self
+        FollowersTableView.dataSource = self
 
-        
     }
+    
+
     
 
 }
