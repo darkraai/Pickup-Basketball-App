@@ -10,9 +10,9 @@ import UIKit
 
 class searchTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userImage: UIImageView!
     
     
     
