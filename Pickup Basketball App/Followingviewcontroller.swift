@@ -20,7 +20,7 @@ class Followingviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     
     
     var nameData: [String] = ["Surya Mamidyala", "Benjamin Svoboda", "Pranav Addepalli"]
-    var usernameData: [String] = ["@suryam", "@bensvo", "@pranavaddy"]
+    var usernameData: [String] = ["suryam", "bensvo", "pranavaddy"]
     var imageData: [UIImage] = [UIImage(named: "surya")!, UIImage(named: "ben")!, UIImage(named: "pranav")!]
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,7 +30,7 @@ class Followingviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellf = tableView.dequeueReusableCell(withIdentifier: "FollowingViewCell") as! FollowingViewCell
         cellf.nameLabelFollowing.text = nameData[indexPath.row]
-        cellf.usernameLabelFollowing.text = usernameData[indexPath.row]
+        cellf.usernameLabelFollowing.text = "@" + usernameData[indexPath.row]
         cellf.pfpFollowing?.image = imageData[indexPath.row]
         return cellf
     }

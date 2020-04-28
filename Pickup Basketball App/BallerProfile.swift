@@ -18,7 +18,6 @@ class BallerProfile: UIViewController {
     @IBOutlet weak var weightlabel: UILabel!
     @IBOutlet weak var prefpositionlabel: UILabel!
     @IBOutlet weak var hometownlabel: UILabel!
-    @IBOutlet weak var gamesplayedlabel: UILabel!
     @IBOutlet weak var fullnamelabel: UILabel!
     @IBOutlet weak var usernamelabel: UILabel!
     //edit button
