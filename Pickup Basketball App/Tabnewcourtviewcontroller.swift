@@ -16,12 +16,13 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
+    var annotation = MKPointAnnotation()
         
 //    private var destinations: [MKPointAnnotation] = []
 //    private var currentRoute: MKRoute?
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
-        print(user24!.username)
+//        print(user24!.username)
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -40,10 +41,8 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
         let location = gestureRecognizer.location(in: mapView) //gives the location object of where you are clicking on mapView
         locCoord = mapView.convert(location, toCoordinateFrom: mapView) //converts location object to coordinates
             
-        let annotation = MKPointAnnotation()
-            
         annotation.coordinate = locCoord!
-        annotation.title = "latitude:" + String(format: "%0.02f", annotation.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation.coordinate.longitude)
+        annotation.title = "latitude:" + String(format: "%0.02f", annotation.coordinate.latitude) + " & longitude:" + String(format: "%0.02f", annotation.coordinate.longitude)
         annotation.subtitle = "Loc of new bball court"
            
     //  self.mapView.removeAnnotations(mapView.annotations)
@@ -54,10 +53,12 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
 //        self.present(nextViewController, animated:true, completion:nil)
     }
     
-    func prepare(for segue: UIStoryboardSegue, sender: UITapGestureRecognizer) {
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
         super.prepare(for: segue, sender: sender)
         let vc = segue.destination as! Newcourtviewcontroller
-        vc.locCoord = self.locCoord
+        vc.annotation = annotation
+        mapView.removeAnnotation(self.annotation)
+        zoomToLatestLocation(with: currentCoordinate!)
     }
     
     
@@ -157,6 +158,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
 //            mapView.addAnnotations(annotations)
             
     }
+    
     
 //    private func constructRoute(userLocation: CLLocationCoordinate2D){
 //        let directionsRequest = MKDirections.Request()
