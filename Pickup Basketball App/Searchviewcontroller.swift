@@ -20,7 +20,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     
     var firstNameData: [String] = ["Surya", "Benjamin", "Pranav", "Aryan"]
     var lastNameData: [String] = ["Mamidyala", "Svoboda", "Addepalli", "Awal"]
-    var usernameData: [String] = ["@suryam", "@bensvo", "@pranavaddy", "@awaldasnipa"]
+    var usernameData: [String] = ["suryam", "bensvo", "pranavaddy", "awaldasnipa"]
     var imageData: [UIImage] = [UIImage(named: "surya")!, UIImage(named: "ben")!, UIImage(named: "pranav")!, UIImage(named: "aryan")!]
     var nameData: [String] = []
     var currentNameData : [String] = []
@@ -69,7 +69,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
         cell.nameLabel.text = user.fullname
         cell.usernameLabel.text = user.username
         cell.userImage.image = user.profilepic
-        cell.userImage.layer.cornerRadius = 45;
+        cell.userImage.layer.cornerRadius = (cell.userImage.frame.size.width)/2;
         cell.userImage.clipsToBounds = true;
         return cell
     }

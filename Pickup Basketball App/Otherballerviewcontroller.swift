@@ -18,7 +18,6 @@ class Otherballerviewcontroller: UIViewController {
     
     //labels
     @IBOutlet weak var fullnamelabel2: UILabel!
-    @IBOutlet weak var usernamelabel2: UILabel!
     @IBOutlet weak var heightlabel2: UILabel!
     @IBOutlet weak var weightlabel2: UILabel!
     @IBOutlet weak var prefpositionlabel2: UILabel!
@@ -26,6 +25,8 @@ class Otherballerviewcontroller: UIViewController {
     
     //image views
     @IBOutlet weak var obprofilepic: UIImageView!
+    
+    @IBOutlet weak var navtitle: UINavigationItem!
     
     
     //irl it will fetch the appropriate one from the database using followusername which was passed here
@@ -59,7 +60,6 @@ class Otherballerviewcontroller: UIViewController {
         }
         
         fullnamelabel2.text = chosen1!.firstname + " " + chosen1!.lastname
-        usernamelabel2.text = "@" + chosen1!.username
         obprofilepic.image = chosen1?.profilepic
         heightlabel2.text = chosen1!.userheightfeet + " ' " + chosen1!.userheightinches + " \" "
         weightlabel2.text = chosen1!.userweight
@@ -71,6 +71,8 @@ class Otherballerviewcontroller: UIViewController {
         self.obprofilepic.layer.cornerRadius = self.obprofilepic.frame.size.width / 2;
         self.obprofilepic.clipsToBounds = true;
         
+        navtitle.title = chosen1?.username
+                
     }
     
     
