@@ -19,13 +19,12 @@ class BallerProfile: UIViewController {
     @IBOutlet weak var prefpositionlabel: UILabel!
     @IBOutlet weak var hometownlabel: UILabel!
     @IBOutlet weak var fullnamelabel: UILabel!
-    @IBOutlet weak var usernamelabel: UILabel!
     //edit button
     @IBOutlet weak var editprofbutton: UIButton!
     @IBOutlet weak var bpprofilepic: UIImageView!
     
     
-    
+    @IBOutlet weak var navtitle: UINavigationItem!
     
     var user24:User?
 
@@ -54,12 +53,14 @@ class BallerProfile: UIViewController {
         prefpositionlabel.text = user24!.position
         hometownlabel.text = user24!.hometown
         fullnamelabel.text = user24!.firstname + " " + user24!.lastname
-        usernamelabel.text = "@" + user24!.username
         bpprofilepic.image = user24?.profilepic
         
         
         self.bpprofilepic.layer.cornerRadius = self.bpprofilepic.frame.size.width / 2;
         self.bpprofilepic.clipsToBounds = true;
+        
+        navtitle.title = user24?.username
+
         
     }
     
