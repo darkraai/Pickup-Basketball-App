@@ -16,6 +16,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
+    var annotation : MKPointAnnotation?
         
 //    private var destinations: [MKPointAnnotation] = []
 //    private var currentRoute: MKRoute?
@@ -39,32 +40,42 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
     @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: mapView) //gives the location object of where you are clicking on mapView
         locCoord = mapView.convert(location, toCoordinateFrom: mapView) //converts location object to coordinates
-            
-        let annotation = MKPointAnnotation()
-            
-        annotation.coordinate = locCoord!
-        annotation.title = "latitude:" + String(format: "%0.02f", annotation.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation.coordinate.longitude)
-        annotation.subtitle = "Loc of new bball court"
+        
+        annotation = MKPointAnnotation()
+        annotation!.coordinate = locCoord!
+        annotation!.title = "latitude:" + String(format: "%0.02f", annotation!.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation!.coordinate.longitude)
+        annotation!.subtitle = "Loc of new bball court"
            
     //  self.mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotation(annotation)
+        mapView.addAnnotation(annotation!)
         performSegue(withIdentifier: "new_court_segue", sender: UITapGestureRecognizer())
 //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 //        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Newcourtviewcontroller") as! Newcourtviewcontroller
 //        self.present(nextViewController, animated:true, completion:nil)
     }
     
-    func prepare(for segue: UIStoryboardSegue, sender: UITapGestureRecognizer) {
-        super.prepare(for: segue, sender: sender)
-        let vc = segue.destination as! Newcourtviewcontroller
-        vc.locCoord = self.locCoord
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
+        if segue.identifier == "new_court_segue"{
+            super.prepare(for: segue, sender: sender)
+            mapView.removeAnnotation(self.annotation!)
+            zoomToLatestLocation(with: currentCoordinate!)
+        }
+        else if segue.identifier == "unwindToMapSegue" {
+            super.prepare(for: segue, sender: sender)
+            let vc = segue.destination as! Homeviewcontroller
+            vc.annotation = self.annotation
+            
+        }
     }
-    
-    
+            
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
+    }
+    
+    @IBAction func unwindToTab(segue: UIStoryboardSegue) {
+        self.performSegue(withIdentifier: "unwindToMapSegue", sender: segue)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

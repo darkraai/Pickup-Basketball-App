@@ -18,6 +18,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
+    var annotation: MKPointAnnotation?
     
 //    private var destinations: [MKPointAnnotation] = []
 //    private var currentRoute: MKRoute?
@@ -185,6 +186,21 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
 //            }
 //        }
 //    }
+    
+    @IBAction func unwindToMap(segue: UIStoryboardSegue) {
+        if segue.source is Tabnewcourtviewcontroller{
+            zoomToLatestLocation(with: annotation!.coordinate)
+            mapView.addAnnotation(annotation!)
+            presentAlert()
+        }
+    }
+    
+    private func presentAlert(){
+        let alertController = UIAlertController(title: "Court added!", message: "The court requested has successfuly been added.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
         
  
 }
