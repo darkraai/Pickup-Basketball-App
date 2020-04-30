@@ -14,12 +14,16 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var dateTextField: UITextField!
     
     var timeData: [String] = ["1 - 2 pm", "2 - 3 pm", "3 - 4 pm"]
-    var gameData: [String] = ["5 v 5", "5 v 5", "N/A"]
-    var ownerData: [String] = ["@Bensvo", "@Sundar", "N/A"]
+    var gameData: [String] = ["5 v 5", "5 v 5", ""]
+    var ownerData: [String] = ["@Bensvo", "@Sundar", ""]
     var slotsFilledData : [String] = ["8/10", "6/6", ""]
     var buttonData : [String] = ["Join", "Full", "Create"]
     
     let datePicker = UIDatePicker()
+    
+    //formatter created
+    let formatter = DateFormatter()
+
     
     private func createDatePicker(forField field: UITextField){
         datePicker.datePickerMode = .date
@@ -46,7 +50,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     @objc private func donePressed(){
         //formatter
-        let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
 
@@ -72,9 +75,9 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         cell.gameStatusButton.setTitleColor(UIColor.white, for: .normal)
         cell.gameStatusButton.setTitle(buttonData[indexPath.row], for: .normal)
         if cell.gameStatusButton.currentTitle == "Join" {
-            cell.gameStatusButton.backgroundColor = UIColor.green
+            cell.gameStatusButton.backgroundColor = UIColor.systemGreen
         } else if cell.gameStatusButton.currentTitle == "Create" {
-            cell.gameStatusButton.backgroundColor = UIColor.blue
+            cell.gameStatusButton.backgroundColor = UIColor.orange
         } else {
             cell.gameStatusButton.backgroundColor = UIColor.gray
         }
@@ -103,6 +106,9 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         dateTextField.delegate = self
         self.createDatePicker(forField: dateTextField)
+        datePicker.setDate(Date(), animated: false)
+        formatter.dateStyle = .medium
+        dateTextField.text = formatter.string(from: Date())
 
         // Do any additional setup after loading the view.
     }
