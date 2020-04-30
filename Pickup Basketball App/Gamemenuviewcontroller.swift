@@ -76,7 +76,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         } else if cell.gameStatusButton.currentTitle == "Create" {
             cell.gameStatusButton.backgroundColor = UIColor.blue
         } else {
-            cell.gameStatusButton.backgroundColor = UIColor.red
+            cell.gameStatusButton.backgroundColor = UIColor.gray
         }
         cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return cell
