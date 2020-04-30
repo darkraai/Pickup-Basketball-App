@@ -23,10 +23,30 @@ class Otherballerviewcontroller: UIViewController {
     @IBOutlet weak var prefpositionlabel2: UILabel!
     @IBOutlet weak var hometownlabel2: UILabel!
     
-    //image views
+    //image view
     @IBOutlet weak var obprofilepic: UIImageView!
     
+    //nav item
     @IBOutlet weak var navtitle: UINavigationItem!
+    
+    //button
+    @IBOutlet weak var followbutton: UIButton!
+    
+    //in this function, we will need to connect to database
+    @IBAction func followpressed(_ sender: Any) {
+        
+        if(followbutton.titleLabel!.text! == "Following"){
+            followbutton.setTitle("Follow", for: .normal)
+        }
+        else if(followbutton.titleLabel!.text! == "Follow"){
+            followbutton.setTitle("Following", for: .normal)
+
+        }
+        else{
+            fatalError("L in da chat")
+        }
+        
+    }
     
     
     //irl it will fetch the appropriate one from the database using followusername which was passed here
