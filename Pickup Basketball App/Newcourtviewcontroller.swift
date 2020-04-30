@@ -20,7 +20,6 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var membershipSwitch: UISwitch!
     @IBOutlet weak var startHoopingButton: UIButton!
     
-    
     var parkName = ""
     var numCourts = ""
     var address = ""
@@ -62,14 +61,14 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
            return true
        }
     
-    @IBAction func indoorSwitchToggled(_ sender: UISwitch) {
+
+    @IBAction func indoorSwitchedToggled(_ sender: UISwitch) {
         if (sender.isOn){
             indoorSelected = true
         } else {
             indoorSelected = false
         }
     }
-    
     @IBAction func membershipSwitchToggled(_ sender: UISwitch) {
         if (sender.isOn){
             membershipSelected = true
@@ -77,6 +76,9 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
             membershipSelected = false
         }
     }
+    
+    
+ 
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
