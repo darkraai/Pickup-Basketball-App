@@ -20,7 +20,6 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var membershipSwitch: UISwitch!
     @IBOutlet weak var startHoopingButton: UIButton!
     
-    
     var parkName = ""
     var numCourts = ""
     var address = ""
