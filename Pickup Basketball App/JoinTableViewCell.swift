@@ -11,8 +11,14 @@ import UIKit
 class JoinTableViewCell: UITableViewCell {
     
     //MARK: Properties
-    @IBOutlet weak var team1Label: UILabel!
-    @IBOutlet weak var team2Label: UILabel!
+    @IBOutlet weak var team1username: UILabel!
+    @IBOutlet weak var team2username: UILabel!
+    @IBOutlet weak var team1fullname: UILabel!
+    @IBOutlet weak var team2fullname: UILabel!
+    @IBOutlet weak var team1pfp: UIImageView!
+    @IBOutlet weak var team2pfp: UIImageView!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
