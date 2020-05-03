@@ -14,11 +14,10 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     @IBOutlet weak var startTimeTextField: UITextField!
     @IBOutlet weak var endTimeTextField: UITextField!
     @IBOutlet weak var gameModePicker: UIPickerView!
-    @IBOutlet weak var publicToggle: UISwitch!
     @IBOutlet weak var bringBallToggle: UISwitch!
     @IBOutlet weak var startHoopingButton: UIButton!
     
-    let gameModes = ["1 v 1", "2 v 2", "3 v 3", "4 v 4", "5 v 5"]
+    let gameModes = [" ", "1 v 1", "2 v 2", "3 v 3", "4 v 4", "5 v 5"]
    
     var selectedGameMode = ""
     var selectedStartTime = ""
@@ -113,7 +112,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     private func updateDoneButtonState(){
         startHoopingButton.isEnabled = false
-        if (selectedGameMode != "" && endTimeTextFieldDate != nil && startTimeTextFieldDate != nil){
+        if (selectedGameMode != " " && endTimeTextFieldDate != nil && startTimeTextFieldDate != nil){
             if (endTimeTextFieldDate!.compare(startTimeTextFieldDate!) == ComparisonResult.orderedDescending){
                 startHoopingButton.isEnabled = true
             }

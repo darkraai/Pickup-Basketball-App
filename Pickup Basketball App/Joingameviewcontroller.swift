@@ -18,10 +18,10 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     private func configureButtons(){
         joinButton.layer.cornerRadius = 5
         joinButton.setTitleColor(UIColor.white, for: .normal)
-        joinButton.backgroundColor = UIColor.green
+        joinButton.backgroundColor = UIColor.systemGreen
         fullButton.layer.cornerRadius = 5
         fullButton.setTitleColor(UIColor.white, for: .normal)
-        fullButton.backgroundColor = UIColor.red
+        fullButton.backgroundColor = UIColor.gray
     }
     
     

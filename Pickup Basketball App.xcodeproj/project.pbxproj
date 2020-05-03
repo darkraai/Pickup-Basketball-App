@@ -29,6 +29,8 @@
 		C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23FC943243F8861006AC17C /* SegueFromRight.swift */; };
 		C25392AF2438132D00F850E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25392AE2438132D00F850E5 /* User.swift */; };
 		C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25922F3243AC037006A5420 /* MainTabBarController.swift */; };
+		C28B00B9245D05DA00DEC740 /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28B00B8245D05DA00DEC740 /* Court.swift */; };
+		C28B00BB245D0C7C00DEC740 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28B00BA245D0C7C00DEC740 /* Game.swift */; };
 		C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */; };
 		C2B571CB244BDFF500EE3FC7 /* navhome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CA244BDFF500EE3FC7 /* navhome.swift */; };
 		C2B571CD244BE23800EE3FC7 /* navsearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CC244BE23800EE3FC7 /* navsearch.swift */; };
@@ -69,6 +71,8 @@
 		C23FC943243F8861006AC17C /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		C25392AE2438132D00F850E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C25922F3243AC037006A5420 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C28B00B8245D05DA00DEC740 /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
+		C28B00BA245D0C7C00DEC740 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller.swift; sourceTree = "<group>"; };
 		C2B571CA244BDFF500EE3FC7 /* navhome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navhome.swift; sourceTree = "<group>"; };
 		C2B571CC244BE23800EE3FC7 /* navsearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navsearch.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				C2B7BF8324551752007B98B1 /* FollowingViewCell.swift */,
 				C207214C245620CD00665C49 /* Otherballerviewcontroller.swift */,
 				C25392AE2438132D00F850E5 /* User.swift */,
+				C28B00B8245D05DA00DEC740 /* Court.swift */,
+				C28B00BA245D0C7C00DEC740 /* Game.swift */,
 				C23FC943243F8861006AC17C /* SegueFromRight.swift */,
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
 				C2D9ED682446B15B00CC3690 /* Main.storyboard */,
@@ -234,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C28B00BB245D0C7C00DEC740 /* Game.swift in Sources */,
 				C2B7BF8424551752007B98B1 /* FollowingViewCell.swift in Sources */,
 				C207214D245620CD00665C49 /* Otherballerviewcontroller.swift in Sources */,
 				C2DBB52B244BEA8400DB50E4 /* Joingameviewcontroller.swift in Sources */,
@@ -253,6 +260,7 @@
 				C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */,
 				C2C8EA15244AA52B002CC5FB /* navballerprofile.swift in Sources */,
 				C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */,
+				C28B00B9245D05DA00DEC740 /* Court.swift in Sources */,
 				18013ADA244CE9D500AAB54F /* JoinTableViewCell.swift in Sources */,
 				C222E539243EAAAF006098C6 /* SegueFromLeft.swift in Sources */,
 				C23FC944243F8861006AC17C /* SegueFromRight.swift in Sources */,
