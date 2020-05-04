@@ -15,6 +15,12 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
    
     var user24:User?
     
+    
+    //these parks will be loaded in IRL
+    var applepark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100), parkname: "Apple Park", numcourts: 2, Address: "Pleasantview Avenue", indoor: false, membership: false, game: [])
+    
+    var ortegapark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617), parkname: "Ortega Park", numcourts: 4, Address: "Mexi Avenue", indoor: false, membership: true, game: [])
+    
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
@@ -148,12 +154,12 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     
     private func addAnnotations(){
         let appleParkAnnotation = MKPointAnnotation()
-        appleParkAnnotation.title = "Apple Park"
-        appleParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100)
+        appleParkAnnotation.title = applepark!.parkname
+        appleParkAnnotation.coordinate = applepark!.coordinates!
         
         let ortegaParkAnnotation = MKPointAnnotation()
-        ortegaParkAnnotation.title = "Ortega Park"
-        ortegaParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617)
+        ortegaParkAnnotation.title = ortegapark!.parkname
+        ortegaParkAnnotation.coordinate = ortegapark!.coordinates!
         
 //        destinations.append(appleParkAnnotation)
 //        destinations.append(ortegaParkAnnotation)

@@ -13,17 +13,73 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var dateTextField: UITextField!
     
-    var timeData: [String] = ["1 - 2 pm", "2 - 3 pm", "3 - 4 pm"]
-    var gameData: [String] = ["5 v 5", "5 v 5", ""]
-    var ownerData: [String] = ["@Bensvo", "@Sundar", ""]
-    var slotsFilledData : [String] = ["8/10", "6/6", ""]
-    var buttonData : [String] = ["Join", "Full", "Create"]
+    //Users that will be loaded in irl
+    var userayush = User(firstname: "Ayush", lastname: "Hariharan", username: "ayushluvshali", password: "fjwei", userweight: "160", hometown: "boo", userheightinches: "9", userheightfeet: "5", position: "SG", profilepic: UIImage(named: "ayush")!)
+    var usersurya = User(firstname: "Surya", lastname: "Mamidyala", username: "suryam", password: "jfwoef", userweight: "105", hometown: "jfwe", userheightinches: "11", userheightfeet: "5", position: "SF", profilepic: UIImage(named: "surya")!)
+    var useryash = User(firstname: "Yash", lastname: "Halal", username: "sirhalalyash", password: "fjwofej", userweight: "300", hometown: "pakistan", userheightinches: "4", userheightfeet: "4", position: "C", profilepic: UIImage(named: "yashipoo")!)
+    var userben = User(firstname: "Ben", lastname: "Svoboda", username: "bensvo", password: "jfoewj", userweight: "215", hometown: "jfweo", userheightinches: "3", userheightfeet: "6", position: "PG", profilepic: UIImage(named: "ben")!)
+    var userbik = User(firstname: "Bikram", lastname: "Kohli", username: "lightskinb", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "bik")!)
+    var userxan = User(firstname: "Xan", lastname: "Manshoota", username: "xanmanshoota", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "xanman")!)
+    var usertrey = User(firstname: "Trey", lastname: "Watts", username: "treyvonsteals", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "trey")!)
+    var userawal = User(firstname: "Awal", lastname: "Awal", username: "awaldasnipa", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "aryan")!)
+    
+    
+    
+    
+    //timeslots that will be loaded in irl
+    lazy var timeslot1 = Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "04 May 2020")
+    
+    lazy var timeslot2 = Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "04 May 2020")
+    
+    lazy var alltimeslots = [timeslot1,timeslot2]
+    
+    lazy var timeData: [String] = ["6-7 am", "7-8 am", "8-9 am","9-10 am","10-11 am", "11-12 pm","12-1 pm","1-2 pm","2-3 pm", "3-4 pm", "4-5 pm", "5-6 pm", "6-7 pm", "7-8 pm", "8-9 pm", "9-10 pm", "10-11 pm"]
+    lazy var gameData: [String] = ["","","","","","","",timeslot1!.gametype!, timeslot2!.gametype!, "","","","","","","",""]
+    lazy var ownerData: [String] = ["","","","","","","",timeslot1!.creator!, timeslot2!.creator!, "","","","","","","",""]
+    lazy var slotsFilledData : [String] = ["","","","","","","",String(timeslot1!.slotsfilled)+"/" + String(determinetotslots(curgame: timeslot1!)), String(timeslot2!.slotsfilled) + "/" + String(determinetotslots(curgame: timeslot2!)), "","","","","","","",""]
+    
+    lazy var buttonData : [String] = ["Create","Create","Create","Create","Create","Create","Create",determinebuttonstatus(curgame: timeslot1!), determinebuttonstatus(curgame: timeslot2!), "Create","Create","Create","Create","Create","Create","Create","Create"]
     
     let datePicker = UIDatePicker()
     
     //formatter created
     let formatter = DateFormatter()
 
+    func determinebuttonstatus(curgame: Game) -> String{
+        if((curgame.totalslots != curgame.slotsfilled) && (curgame.totalslots != 0)){
+            return "Join"
+        }
+        else if((curgame.totalslots == curgame.slotsfilled) && (curgame.totalslots != 0)){
+            return "Full"
+        }
+        else{
+            return "Create"
+        }
+    }
+    
+    func determinetotslots(curgame: Game) -> Int{
+        if(curgame.gametype == "5 v 5"){
+            curgame.totalslots = 10
+            return 10
+        }
+        else if(curgame.gametype == "4 v 4"){
+            curgame.totalslots = 8
+            return 8
+        }
+        else if(curgame.gametype == "3 v 3"){
+            curgame.totalslots = 6
+            return 6
+        }
+        else if(curgame.gametype == "2 v 2"){
+            curgame.totalslots = 4
+            return 4
+        }
+        else{
+            curgame.totalslots = 2
+            return 2
+
+        }
+    }
     
     private func createDatePicker(forField field: UITextField){
         datePicker.datePickerMode = .date
@@ -66,7 +122,15 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell") as! GameTableViewCell
-
+        
+//        datePicker.datePickerMode = UIDatePicker.Mode.date
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd MMMM yyyy"
+//        let selectedDate = dateFormatter.string(from: datePicker.date)
+//        print(selectedDate)
+//        print(timeslot1!.date!)
+        
+        
         cell.timeLabel.text = timeData[indexPath.row]
         cell.gameLabel.text = gameData[indexPath.row]
         cell.ownerLabel.text = ownerData[indexPath.row]
@@ -83,6 +147,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         }
         cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return cell
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

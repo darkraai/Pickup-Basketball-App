@@ -19,7 +19,7 @@ class Court{
     var Address: String?
     var indoor: Bool
     var membership: Bool
-    var game: [Game]
+    var game: [Game]?
 
     
 
