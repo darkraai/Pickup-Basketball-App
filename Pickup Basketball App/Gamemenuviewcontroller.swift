@@ -11,6 +11,7 @@ import UIKit
 class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     
+    @IBOutlet weak var gamemenutableview: UITableView!
     @IBOutlet weak var dateTextField: UITextField!
     
     //Users that will be loaded in irl
@@ -27,18 +28,14 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     //timeslots that will be loaded in irl
-    lazy var timeslot1 = Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "04 May 2020")
+    lazy var timeslot1 = Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 6, 2020")
     
-    lazy var timeslot2 = Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "04 May 2020")
+    lazy var timeslot2 = Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 7, 2020")
     
-    lazy var alltimeslots = [timeslot1,timeslot2]
+    lazy var timeslot3 = Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 7, 2020")
     
-    lazy var timeData: [String] = ["6-7 am", "7-8 am", "8-9 am","9-10 am","10-11 am", "11-12 pm","12-1 pm","1-2 pm","2-3 pm", "3-4 pm", "4-5 pm", "5-6 pm", "6-7 pm", "7-8 pm", "8-9 pm", "9-10 pm", "10-11 pm"]
-    lazy var gameData: [String] = ["","","","","","","",timeslot1!.gametype!, timeslot2!.gametype!, "","","","","","","",""]
-    lazy var ownerData: [String] = ["","","","","","","",timeslot1!.creator!, timeslot2!.creator!, "","","","","","","",""]
-    lazy var slotsFilledData : [String] = ["","","","","","","",String(timeslot1!.slotsfilled)+"/" + String(determinetotslots(curgame: timeslot1!)), String(timeslot2!.slotsfilled) + "/" + String(determinetotslots(curgame: timeslot2!)), "","","","","","","",""]
-    
-    lazy var buttonData : [String] = ["Create","Create","Create","Create","Create","Create","Create",determinebuttonstatus(curgame: timeslot1!), determinebuttonstatus(curgame: timeslot2!), "Create","Create","Create","Create","Create","Create","Create","Create"]
+    lazy var alltimeslots = [timeslot1!,timeslot2!,timeslot3!]
+    lazy var currenttimeslots:[Game] = [timeslot1!]
     
     let datePicker = UIDatePicker()
     
@@ -104,20 +101,12 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var dateTextFieldDate : Date?
     
-    @objc private func donePressed(){
-        //formatter
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
 
-        dateTextField.text = formatter.string(from: datePicker.date)
-        dateTextFieldDate = datePicker.date
-        
-        self.view.endEditing(true)
-    }
     
      
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timeData.count
+        print(currenttimeslots.count)
+        return currenttimeslots.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -129,30 +118,36 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 //        let selectedDate = dateFormatter.string(from: datePicker.date)
 //        print(selectedDate)
 //        print(timeslot1!.date!)
-        
-        
-        cell.timeLabel.text = timeData[indexPath.row]
-        cell.gameLabel.text = gameData[indexPath.row]
-        cell.ownerLabel.text = ownerData[indexPath.row]
-        cell.slotsFilledLabel.text = slotsFilledData[indexPath.row]
-        cell.gameStatusButton.layer.cornerRadius = 5
-        cell.gameStatusButton.setTitleColor(UIColor.white, for: .normal)
-        cell.gameStatusButton.setTitle(buttonData[indexPath.row], for: .normal)
-        if cell.gameStatusButton.currentTitle == "Join" {
-            cell.gameStatusButton.backgroundColor = UIColor.systemGreen
-        } else if cell.gameStatusButton.currentTitle == "Create" {
-            cell.gameStatusButton.backgroundColor = UIColor.orange
-        } else {
-            cell.gameStatusButton.backgroundColor = UIColor.gray
-        }
-        cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        return cell
 
+        if(dateTextField.text! == currenttimeslots[indexPath.row].date!){
+            cell.timeLabel.text = currenttimeslots[indexPath.row].timeslot
+            cell.gameLabel.text = currenttimeslots[indexPath.row].gametype
+            cell.ownerLabel.text = currenttimeslots[indexPath.row].creator
+            cell.slotsFilledLabel.text = String(currenttimeslots[indexPath.row].slotsfilled) + "/" + String(determinetotslots(curgame: currenttimeslots[indexPath.row]))
+            cell.gameStatusButton.layer.cornerRadius = 5
+            cell.gameStatusButton.setTitleColor(UIColor.white, for: .normal)
+            cell.gameStatusButton.setTitle(String(determinebuttonstatus(curgame: currenttimeslots[indexPath.row])), for: .normal)
+            if cell.gameStatusButton.currentTitle == "Join" {
+                cell.gameStatusButton.backgroundColor = UIColor.systemGreen
+            } else if cell.gameStatusButton.currentTitle == "Create" {
+                cell.gameStatusButton.backgroundColor = UIColor.orange
+            } else {
+                cell.gameStatusButton.backgroundColor = UIColor.gray
+            }
+            cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        }
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    
     
     @objc func buttonAction(sender: UIButton!) {
         if (sender.currentTitle == "Join" && dateTextField.text != ""){
@@ -169,13 +164,45 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        gamemenutableview.delegate = self
+        gamemenutableview.dataSource = self
         dateTextField.delegate = self
         self.createDatePicker(forField: dateTextField)
         datePicker.setDate(Date(), animated: false)
         formatter.dateStyle = .medium
         dateTextField.text = formatter.string(from: Date())
 
+        
+//        for x in alltimeslots{
+//            if(x.date! == dateTextField.text!){
+//                currenttimeslots.append(x)
+//            }
+//        }
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @objc private func donePressed(){
+        //formatter
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+
+        dateTextField.text = formatter.string(from: datePicker.date)
+        dateTextFieldDate = datePicker.date
+        
+        self.view.endEditing(true)
+        
+        currenttimeslots.removeAll()
+        gamemenutableview.reloadData()
+        //add for to do this
+        currenttimeslots.append(timeslot2!)
+        currenttimeslots.append(timeslot3!)
+        print(currenttimeslots[0].date!)
+        print(currenttimeslots[1].date!)
+
+        gamemenutableview.reloadData()
+
+
     }
     
 

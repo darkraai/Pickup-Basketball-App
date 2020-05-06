@@ -151,16 +151,15 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GameTableViewCell" id="Oug-g9-OC1" customClass="GameTableViewCell" customModule="Pickup_Basketball_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Oug-g9-OC1" id="Gw7-0D-w4j">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 - 2 pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkL-jt-Pg8">
-                                                    <rect key="frame" x="8" y="14.5" width="65" height="19"/>
+                                                    <rect key="frame" x="8" y="14.5" width="65" height="18.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="18.5" id="39F-XV-925"/>
                                                         <constraint firstAttribute="width" constant="65" id="hFB-Ki-UA8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -168,7 +167,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 v 5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xn-d3-PyV">
-                                                    <rect key="frame" x="113" y="15" width="38" height="18"/>
+                                                    <rect key="frame" x="113" y="14.5" width="38" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="QCa-D8-65F"/>
                                                         <constraint firstAttribute="width" constant="38" id="m0I-22-5tP"/>
@@ -178,7 +177,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@suryam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lp-Ge-s47">
-                                                    <rect key="frame" x="191" y="15" width="66" height="18"/>
+                                                    <rect key="frame" x="191" y="14.5" width="66" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="CFi-za-fJa"/>
                                                         <constraint firstAttribute="width" constant="66" id="taL-pX-g9K"/>
@@ -188,7 +187,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy2-JH-dMB">
-                                                    <rect key="frame" x="287" y="15" width="30.5" height="18"/>
+                                                    <rect key="frame" x="287" y="14.5" width="30.5" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30.5" id="KCA-2k-jW1"/>
                                                         <constraint firstAttribute="height" constant="18" id="Nbg-uu-8m7"/>
@@ -198,7 +197,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfT-XV-4c1">
-                                                    <rect key="frame" x="337.5" y="9" width="68" height="30"/>
+                                                    <rect key="frame" x="337.5" y="8.5" width="68" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="6ys-DM-GGz"/>
                                                         <constraint firstAttribute="width" constant="68" id="MUS-Jw-WOs"/>
@@ -253,6 +252,7 @@
                     <navigationItem key="navigationItem" title="Game Menu" id="IXL-XG-TwF"/>
                     <connections>
                         <outlet property="dateTextField" destination="gzo-7b-acm" id="8ya-OO-B3j"/>
+                        <outlet property="gamemenutableview" destination="Ojp-2q-CY1" id="dVP-qb-GDL"/>
                         <segue destination="HoG-UR-PaG" kind="show" identifier="create_game_segue" id="Mjy-gH-IHK"/>
                         <segue destination="ziq-5v-RzB" kind="show" identifier="join_game_segue" id="CXs-3y-QvP"/>
                     </connections>
