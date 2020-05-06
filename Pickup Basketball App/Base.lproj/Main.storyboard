@@ -249,7 +249,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QLp-k4-Ebp"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Game Menu" id="IXL-XG-TwF"/>
+                    <navigationItem key="navigationItem" title="Game Menu" id="IXL-XG-TwF">
+                        <barButtonItem key="rightBarButtonItem" title="Create game" id="8rU-Vn-IVn">
+                            <connections>
+                                <action selector="creategamepressed:" destination="HlM-Fj-27q" id="dem-vI-ulF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateTextField" destination="gzo-7b-acm" id="8ya-OO-B3j"/>
                         <outlet property="gamemenutableview" destination="Ojp-2q-CY1" id="dVP-qb-GDL"/>
