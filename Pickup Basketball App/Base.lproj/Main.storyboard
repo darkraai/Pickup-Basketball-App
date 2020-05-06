@@ -488,7 +488,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjx-hR-jZm">
+                            <pickerView tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjx-hR-jZm">
                                 <rect key="frame" x="47" y="378" width="320" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="GBt-AD-mUy"/>
@@ -514,14 +514,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="BWn-6d-tCp"/>
                                     <constraint firstAttribute="height" constant="34" id="RdP-Dp-CpG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FPz-2x-JIq">
-                                <rect key="frame" x="119.5" y="280" width="175" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="1bl-PA-hed"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -559,15 +551,13 @@
                             <constraint firstItem="tjx-hR-jZm" firstAttribute="top" secondItem="TcW-H3-yqK" secondAttribute="bottom" constant="5" id="JWv-1l-tgE"/>
                             <constraint firstItem="qJr-sQ-Z7z" firstAttribute="top" secondItem="hYN-DZ-a1s" secondAttribute="bottom" constant="53" id="JYa-hc-ciz"/>
                             <constraint firstItem="D4R-5d-Yk9" firstAttribute="top" secondItem="DEj-WN-96c" secondAttribute="bottom" constant="15" id="N23-Kq-aEQ"/>
-                            <constraint firstItem="FPz-2x-JIq" firstAttribute="top" secondItem="tik-cK-QIR" secondAttribute="bottom" constant="15" id="PnD-aP-YBa"/>
                             <constraint firstItem="tik-cK-QIR" firstAttribute="centerX" secondItem="5Yo-YN-gkN" secondAttribute="centerX" id="RV1-CE-LXC"/>
                             <constraint firstItem="D4R-5d-Yk9" firstAttribute="centerX" secondItem="5Yo-YN-gkN" secondAttribute="centerX" id="SnH-Yh-Z7f"/>
                             <constraint firstItem="hYN-DZ-a1s" firstAttribute="centerY" secondItem="iCV-NQ-6xT" secondAttribute="centerY" id="T1u-TZ-fQR"/>
                             <constraint firstItem="TcW-H3-yqK" firstAttribute="centerX" secondItem="5Yo-YN-gkN" secondAttribute="centerX" id="TjQ-s6-wVC"/>
-                            <constraint firstItem="FPz-2x-JIq" firstAttribute="centerX" secondItem="5Yo-YN-gkN" secondAttribute="centerX" id="Uyv-DT-cUe"/>
                             <constraint firstItem="tjx-hR-jZm" firstAttribute="centerX" secondItem="5Yo-YN-gkN" secondAttribute="centerX" id="bF1-ZY-dcK"/>
+                            <constraint firstItem="TcW-H3-yqK" firstAttribute="top" secondItem="tik-cK-QIR" secondAttribute="bottom" constant="79" id="da6-4m-4hZ"/>
                             <constraint firstItem="iCV-NQ-6xT" firstAttribute="leading" secondItem="KW5-yw-o1A" secondAttribute="leading" constant="75" id="mWL-u3-ZsA"/>
-                            <constraint firstItem="TcW-H3-yqK" firstAttribute="top" secondItem="FPz-2x-JIq" secondAttribute="bottom" constant="30" id="oc7-Z6-0Ju"/>
                             <constraint firstItem="tik-cK-QIR" firstAttribute="top" secondItem="D4R-5d-Yk9" secondAttribute="bottom" constant="30" id="swA-JB-l2i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KW5-yw-o1A"/>
@@ -575,10 +565,9 @@
                     <navigationItem key="navigationItem" title="Create game" id="7Bn-Ep-ZJy"/>
                     <connections>
                         <outlet property="bringBallToggle" destination="csk-QR-WPn" id="01C-f9-huf"/>
-                        <outlet property="endTimeTextField" destination="FPz-2x-JIq" id="7oU-tL-nMx"/>
                         <outlet property="gameModePicker" destination="tjx-hR-jZm" id="qKY-cl-2wx"/>
                         <outlet property="startHoopingButton" destination="qJr-sQ-Z7z" id="NvB-UK-WBQ"/>
-                        <outlet property="startTimeTextField" destination="D4R-5d-Yk9" id="F3F-el-zpE"/>
+                        <outlet property="timeTextField" destination="D4R-5d-Yk9" id="5F0-3u-f6d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkH-0g-U6s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

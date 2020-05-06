@@ -11,17 +11,18 @@ import UIKit
 class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
     
-    @IBOutlet weak var startTimeTextField: UITextField!
-    @IBOutlet weak var endTimeTextField: UITextField!
+    @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var gameModePicker: UIPickerView!
     @IBOutlet weak var bringBallToggle: UISwitch!
     @IBOutlet weak var startHoopingButton: UIButton!
     
     let gameModes = [" ", "1 v 1", "2 v 2", "3 v 3", "4 v 4", "5 v 5"]
-   
+    let timeModes = [" ", "6 am - 7 am", "7 am - 8 am", "8 am - 9 am", "9 am - 10 am", "10 am - 11 am","11 am - 12 pm","12 pm - 1 pm","1 pm - 2 pm","2 pm - 3 pm","3 pm - 4 pm","4 pm - 5 pm","5 pm - 6 pm","6 pm - 7 pm","7 pm - 8 pm","8 pm - 9 pm","9 pm - 10 pm","10 pm - 11 pm","11 pm - 12 am"]
+
+    
     var selectedGameMode = ""
-    var selectedStartTime = ""
-    var selectedEndTime = ""
+    var selectedTimeSlot = ""
+ 
     var bringBall = true
     var publicValue = true
     
@@ -31,15 +32,29 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return gameModes.count
+            if (pickerView.tag == 4){
+                return gameModes.count
+        }
+        return timeModes.count
+
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if (pickerView.tag == 4){
             return gameModes[row]
+        }
+        return timeModes[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedGameMode = gameModes[row]
+        if (pickerView.tag == 4){
+            selectedGameMode = gameModes[row]
+        }
+        else{
+            selectedTimeSlot = timeModes[row]
+        }
+        
         updateDoneButtonState()
 
     }
@@ -50,12 +65,11 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
          activeTextField = textField
     }
     
-    let datePicker = UIDatePicker()
+    let datePicker = UIPickerView()
     
     private func createDatePicker(forField field : UITextField){
         
-        datePicker.datePickerMode = .time
-        datePicker.minuteInterval = 30
+
         field.textAlignment = .center
         
         //toolbar
@@ -76,8 +90,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         
     }
     
-    var startTimeTextFieldDate : Date?
-    var endTimeTextFieldDate : Date?
     
     @objc private func donePressed(){
         //formatter
@@ -85,15 +97,18 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         
-        if (activeTextField == startTimeTextField){
-            startTimeTextField.text = formatter.string(from: datePicker.date)
-            startTimeTextFieldDate = datePicker.date
-            updateDoneButtonState()
-        } else if (activeTextField == endTimeTextField){
-            endTimeTextField.text = formatter.string(from: datePicker.date)
-            endTimeTextFieldDate = datePicker.date
-            updateDoneButtonState()
-        }
+        
+        timeTextField.text = selectedTimeSlot
+//        if (activeTextField == startTimeTextField){
+//            print("ufo gang" + formatter.string(from: datePicker.date))
+//            startTimeTextField.text = formatter.string(from: datePicker.date)
+//            startTimeTextFieldDate = datePicker.date
+//            updateDoneButtonState()
+//        } else if (activeTextField == endTimeTextField){
+//            endTimeTextField.text = formatter.string(from: datePicker.date)
+//            endTimeTextFieldDate = datePicker.date
+//            updateDoneButtonState()
+//        }
         self.view.endEditing(true)
     }
     
@@ -102,21 +117,20 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
 
         gameModePicker.delegate = self
         gameModePicker.dataSource = self
-        startTimeTextField.delegate = self
-        endTimeTextField.delegate = self
+        timeTextField.delegate = self
         
+        datePicker.delegate = self
         updateDoneButtonState()
-        self.createDatePicker(forField: startTimeTextField)
-        self.createDatePicker(forField: endTimeTextField)
+        self.createDatePicker(forField: timeTextField)
     }
     
     private func updateDoneButtonState(){
-        startHoopingButton.isEnabled = false
-        if (selectedGameMode != " " && endTimeTextFieldDate != nil && startTimeTextFieldDate != nil){
-            if (endTimeTextFieldDate!.compare(startTimeTextFieldDate!) == ComparisonResult.orderedDescending){
-                startHoopingButton.isEnabled = true
-            }
-        }
+        startHoopingButton.isEnabled = true
+//        if (selectedGameMode != " " && endTimeTextFieldDate != nil && startTimeTextFieldDate != nil){
+//            if (endTimeTextFieldDate!.compare(startTimeTextFieldDate!) == ComparisonResult.orderedDescending){
+//                startHoopingButton.isEnabled = true
+//            }
+//        }
         
     }
     
