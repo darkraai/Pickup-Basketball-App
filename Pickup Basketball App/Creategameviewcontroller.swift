@@ -20,8 +20,8 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     let timeModes = [" ", "6 am - 7 am", "7 am - 8 am", "8 am - 9 am", "9 am - 10 am", "10 am - 11 am","11 am - 12 pm","12 pm - 1 pm","1 pm - 2 pm","2 pm - 3 pm","3 pm - 4 pm","4 pm - 5 pm","5 pm - 6 pm","6 pm - 7 pm","7 pm - 8 pm","8 pm - 9 pm","9 pm - 10 pm","10 pm - 11 pm","11 pm - 12 am"]
 
     
-    var selectedGameMode = ""
-    var selectedTimeSlot = ""
+    var selectedGameMode = " "
+    var selectedTimeSlot = " "
  
     var bringBall = true
     var publicValue = true
@@ -99,17 +99,9 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         
         
         timeTextField.text = selectedTimeSlot
-//        if (activeTextField == startTimeTextField){
-//            print("ufo gang" + formatter.string(from: datePicker.date))
-//            startTimeTextField.text = formatter.string(from: datePicker.date)
-//            startTimeTextFieldDate = datePicker.date
-//            updateDoneButtonState()
-//        } else if (activeTextField == endTimeTextField){
-//            endTimeTextField.text = formatter.string(from: datePicker.date)
-//            endTimeTextFieldDate = datePicker.date
-//            updateDoneButtonState()
-//        }
+
         self.view.endEditing(true)
+        updateDoneButtonState()
     }
     
     override func viewDidLoad() {
@@ -125,12 +117,12 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     private func updateDoneButtonState(){
-        startHoopingButton.isEnabled = true
-//        if (selectedGameMode != " " && endTimeTextFieldDate != nil && startTimeTextFieldDate != nil){
-//            if (endTimeTextFieldDate!.compare(startTimeTextFieldDate!) == ComparisonResult.orderedDescending){
-//                startHoopingButton.isEnabled = true
-//            }
-//        }
+        startHoopingButton.isEnabled = false
+        print("selectedgamemode"+selectedGameMode)
+        if (selectedGameMode != " " && selectedTimeSlot != " "){
+            startHoopingButton.isEnabled = true
+
+        }
         
     }
     
