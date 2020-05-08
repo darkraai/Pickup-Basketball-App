@@ -10,11 +10,13 @@ import UIKit
 
 class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
+    var user24:User?
     
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var gameModePicker: UIPickerView!
     @IBOutlet weak var bringBallToggle: UISwitch!
     @IBOutlet weak var startHoopingButton: UIButton!
+    
     
     let gameModes = [" ", "1 v 1", "2 v 2", "3 v 3", "4 v 4", "5 v 5"]
     let timeModes = [" ", "6 am - 7 am", "7 am - 8 am", "8 am - 9 am", "9 am - 10 am", "10 am - 11 am","11 am - 12 pm","12 pm - 1 pm","1 pm - 2 pm","2 pm - 3 pm","3 pm - 4 pm","4 pm - 5 pm","5 pm - 6 pm","6 pm - 7 pm","7 pm - 8 pm","8 pm - 9 pm","9 pm - 10 pm","10 pm - 11 pm","11 pm - 12 am"]
@@ -22,6 +24,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     var selectedGameMode = " "
     var selectedTimeSlot = " "
+    var selectedTimeSlotProc = " "
  
     var bringBall = true
     var publicValue = true
@@ -40,6 +43,8 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     
+    
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView.tag == 4){
             return gameModes[row]
@@ -53,6 +58,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         }
         else{
             selectedTimeSlot = timeModes[row]
+            print(selectedTimeSlot)
         }
         
         updateDoneButtonState()
@@ -90,7 +96,65 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         
     }
     
-    
+    //converts timeslot in pickerview to same format of the slots in gamemenu controller screen
+    func converttimeslot(){
+        if(selectedTimeSlot == "6 am - 7 am"){
+            selectedTimeSlotProc = "6-7 am"
+        }
+        if(selectedTimeSlot == "7 am - 8 am"){
+            selectedTimeSlotProc = "7-8 am"
+        }
+        if(selectedTimeSlot == "8 am - 9 am"){
+            selectedTimeSlotProc = "8-9 am"
+        }
+        if(selectedTimeSlot == "9 am - 10 am"){
+            selectedTimeSlotProc = "9-10 am"
+        }
+        if(selectedTimeSlot == "10 am - 11 am"){
+            selectedTimeSlotProc = "10-11 am"
+        }
+        if(selectedTimeSlot == "11 am - 12 pm"){
+            selectedTimeSlotProc = "11-12 pm"
+        }
+        if(selectedTimeSlot == "12 pm - 1 pm"){
+            selectedTimeSlotProc = "12-1 pm"
+        }
+        if(selectedTimeSlot == "1 pm - 2 pm"){
+            selectedTimeSlotProc = "1-2 pm"
+        }
+        if(selectedTimeSlot == "2 pm - 3 pm"){
+            selectedTimeSlotProc = "2-3 pm"
+        }
+        if(selectedTimeSlot == "3 pm - 4 pm"){
+            selectedTimeSlotProc = "3-4 pm"
+        }
+        if(selectedTimeSlot == "4 pm - 5 pm"){
+            selectedTimeSlotProc = "4-5 pm"
+        }
+        if(selectedTimeSlot == "5 pm - 6 pm"){
+            selectedTimeSlotProc = "5-6 pm"
+        }
+        if(selectedTimeSlot == "6 pm - 7 pm"){
+            selectedTimeSlotProc = "6-7 pm"
+        }
+        if(selectedTimeSlot == "7 pm - 8 pm"){
+            selectedTimeSlotProc = "7-8 pm"
+        }
+        if(selectedTimeSlot == "8 pm - 9 pm"){
+            selectedTimeSlotProc = "8-9 pm"
+        }
+        if(selectedTimeSlot == "9 pm - 10 pm"){
+            selectedTimeSlotProc = "9-10 pm"
+        }
+        if(selectedTimeSlot == "10 pm - 11 pm"){
+            selectedTimeSlotProc = "10-11 pm"
+        }
+        if(selectedTimeSlot == "11 pm - 12 am"){
+            selectedTimeSlotProc = "11-12 am"
+        }
+
+    }
+
     @objc private func donePressed(){
         //formatter
         let formatter = DateFormatter()
@@ -107,6 +171,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print(user24!.username)
         gameModePicker.delegate = self
         gameModePicker.dataSource = self
         timeTextField.delegate = self
@@ -118,7 +183,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     private func updateDoneButtonState(){
         startHoopingButton.isEnabled = false
-        print("selectedgamemode"+selectedGameMode)
         if (selectedGameMode != " " && selectedTimeSlot != " "){
             startHoopingButton.isEnabled = true
 
@@ -147,6 +211,9 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        converttimeslot()
+        print(selectedTimeSlotProc)
+//        Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: <#T##String#>, slotsfilled: 1, team1: [], team2: [], date: <#T##String#>)
     }
 
 

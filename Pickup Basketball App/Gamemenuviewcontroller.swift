@@ -10,14 +10,20 @@ import UIKit
 
 class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    var user24:User?
+
     
     @IBOutlet weak var gamemenutableview: UITableView!
     @IBOutlet weak var dateTextField: UITextField!
     
 
     @IBAction func creategamepressed(_ sender: Any) {
+        if user24?.hometown != "N/A"{
             performSegue(withIdentifier: "create_game_segue", sender: self)
-
+        }
+        else{
+            print("Sorry you got to go the long (registration) way")
+        }
     }
     
     
@@ -35,14 +41,14 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     //timeslots that will be loaded in irl
-    lazy var timeslot1 = Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 6, 2020")
+    lazy var timeslot1 = Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 7, 2020")
     
 
-    lazy var timeslot2 = Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 7, 2020")
+    lazy var timeslot2 = Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 8, 2020")
     
-    lazy var timeslot3 = Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 7, 2020")
+    lazy var timeslot3 = Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 8, 2020")
     
-    lazy var timeslot4 = Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 7, 2020")
+    lazy var timeslot4 = Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 8, 2020")
     
     lazy var alltimeslots = [timeslot1!,timeslot2!,timeslot3!,timeslot4!]
     lazy var currenttimeslots:[Game] = [timeslot1!]
@@ -111,23 +117,14 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var dateTextFieldDate : Date?
     
-
-    
-     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(currenttimeslots.count)
         return currenttimeslots.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell") as! GameTableViewCell
         
-//        datePicker.datePickerMode = UIDatePicker.Mode.date
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd MMMM yyyy"
-//        let selectedDate = dateFormatter.string(from: datePicker.date)
-//        print(selectedDate)
-//        print(timeslot1!.date!)
+
 
         if(dateTextField.text! == currenttimeslots[indexPath.row].date!){
             cell.timeLabel.text = currenttimeslots[indexPath.row].timeslot
@@ -161,7 +158,12 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     @objc func buttonAction(sender: UIButton!) {
         if (sender.currentTitle == "Join" && dateTextField.text != ""){
-               performSegue(withIdentifier: "join_game_segue", sender: self)
+               if user24!.hometown != "N/A"{
+                   performSegue(withIdentifier: "join_game_segue", sender: self)
+               }
+               else{
+                   print("Sorry you got to go the long (registration) way")
+               }
             }
           
         }
@@ -215,14 +217,21 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     }
     
 
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        let destinationViewController = segue.destination
+        
+        if let MainVC = destinationViewController as? Creategameviewcontroller{
+            
+            MainVC.user24 = user24
+            
+        }
+        
     }
-    */
+
 
 }

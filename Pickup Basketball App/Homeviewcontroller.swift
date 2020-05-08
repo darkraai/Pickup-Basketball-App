@@ -266,4 +266,18 @@ extension Homeviewcontroller: MKMapViewDelegate {
         performSegue(withIdentifier: "home_gamemenu_segue", sender: MKAnnotationView.self)
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination
+        
+        if let MainVC = destinationViewController as? Gamemenuviewcontroller{
+            
+            MainVC.user24 = user24
+            
+        }
+    }
+    
+    
+    
+    
 }
