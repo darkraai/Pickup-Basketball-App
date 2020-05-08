@@ -16,6 +16,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var gamemenutableview: UITableView!
     @IBOutlet weak var dateTextField: UITextField!
     
+    
 
     @IBAction func creategamepressed(_ sender: Any) {
         if user24?.hometown != "N/A"{
@@ -26,6 +27,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    var todaysdate = ""
     
     //Users that will be loaded in irl
     var userayush = User(firstname: "Ayush", lastname: "Hariharan", username: "ayushluvshali", password: "fjwei", userweight: "160", hometown: "boo", userheightinches: "9", userheightfeet: "5", position: "SG", profilepic: UIImage(named: "ayush")!)
@@ -41,14 +43,14 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     //timeslots that will be loaded in irl
-    lazy var timeslot1 = Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 7, 2020")
+    lazy var timeslot1 = Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 8, 2020")
     
 
-    lazy var timeslot2 = Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 8, 2020")
+    lazy var timeslot2 = Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 9, 2020")
     
-    lazy var timeslot3 = Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 8, 2020")
+    lazy var timeslot3 = Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 9, 2020")
     
-    lazy var timeslot4 = Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 8, 2020")
+    lazy var timeslot4 = Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 9, 2020")
     
     lazy var alltimeslots = [timeslot1!,timeslot2!,timeslot3!,timeslot4!]
     lazy var currenttimeslots:[Game] = [timeslot1!]
@@ -180,8 +182,13 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         datePicker.setDate(Date(), animated: false)
         formatter.dateStyle = .medium
         dateTextField.text = formatter.string(from: Date())
+        todaysdate = dateTextField.text!
+        
+        print(currenttimeslots.count)
 
         
+
+
 //        for x in alltimeslots{
 //            if(x.date! == dateTextField.text!){
 //                currenttimeslots.append(x)
@@ -190,6 +197,10 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        gamemenutableview.reloadData()
+
+    }
     
     @objc private func donePressed(){
         //formatter
@@ -228,9 +239,11 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         if let MainVC = destinationViewController as? Creategameviewcontroller{
             
             MainVC.user24 = user24
-            
+            MainVC.selecteddate = dateTextField.text!
+            MainVC.todaysdate = todaysdate
         }
         
+
     }
 
 
