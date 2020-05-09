@@ -223,14 +223,10 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         if let MainVC = destinationViewController as? Gamemenuviewcontroller{
             
             MainVC.alltimeslots.append(Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: user24!.username, slotsfilled: 1, team1: [user24!], team2: [], date: selecteddate)!)
-            
-            
-            print(todaysdate)
-            print(selecteddate)
-            if(todaysdate == selecteddate){
-                print("sucess")
+                        
+
                  MainVC.currenttimeslots.append(Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: user24!.username, slotsfilled: 1, team1: [user24!], team2: [], date: selecteddate)!)
-            }
+            
         }
 
     }

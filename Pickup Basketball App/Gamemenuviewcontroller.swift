@@ -52,7 +52,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     lazy var timeslot4 = Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 9, 2020")
     
-    lazy var alltimeslots = [timeslot1!,timeslot2!,timeslot3!,timeslot4!]
+    lazy var alltimeslots:[Game] = [timeslot1!,timeslot2!,timeslot3!,timeslot4!]
     lazy var currenttimeslots:[Game] = [timeslot1!]
     
     let datePicker = UIDatePicker()
@@ -220,7 +220,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                 currenttimeslots.append(x)
             }
         }
- 
 
         gamemenutableview.reloadData()
 
