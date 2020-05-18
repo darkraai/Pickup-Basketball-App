@@ -27,7 +27,6 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     var currentUsernameData : [String] = []
     var searchController : UISearchController!
     var boolFilter : [Bool] = []
-    var boolFilter2: [Bool] = []
     var counter = 0
     
     override func viewDidLoad() {
@@ -80,17 +79,11 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let alertController = UIAlertController(title: "Selection", message: "Selected: \(currentUsers[indexPath.row].fullname)", preferredStyle: .alert)
-//        searchController.isActive = false
-//        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-//        alertController.addAction(okAction)
-//        present(alertController, animated: true, completion: nil)
-        let selectedusername = usernameData[indexPath.row]
-        if let viewController = storyboard?.instantiateViewController(identifier: "Otherballerviewcontroller") as? Otherballerviewcontroller {
-            //username passed to next VC
-            viewController.followusername = selectedusername
-            navigationController?.pushViewController(viewController, animated: true)
-        }
+        let alertController = UIAlertController(title: "Selection", message: "Selected: \(currentUsers[indexPath.row].fullname)", preferredStyle: .alert)
+        searchController.isActive = false
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
      
     
@@ -105,36 +98,24 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
 
             let filteredResults = nameData.filter { $0.replacingOccurrences(of: " ", with: "").lowercased().contains(searchTerm.replacingOccurrences(of: " ", with: "").lowercased())}
             boolFilter.removeAll()
-            let filteredResults2 = usernameData.filter { $0.replacingOccurrences(of: " ", with: "").lowercased().contains(searchTerm.replacingOccurrences(of: " ", with: "").lowercased())}
-            boolFilter2.removeAll()
-            
             for name in nameData{
                 if filteredResults.contains(name){
                     boolFilter.append(true)
-//                    print("Filtered Results contains: \(name)")
+                    print("Filtered Results contains: \(name)")
                 } else{
                     boolFilter.append(false)
-//                    print("Filtered Results doesn't contain: \(name)")
+                    print("Filtered Results doesn't contain: \(name)")
                 }
             }
-            for username in usernameData{
-                if filteredResults2.contains(username){
-                    boolFilter2.append(true)
-                } else{
-                    boolFilter2.append(false)
-                }
-            }
-            
             counter = 0
-            for index in 0...(boolFilter.count - 1){
-                if (boolFilter[index] == true || boolFilter2[index] == true){
+            for (index,bool) in boolFilter.enumerated(){
+                if bool == true{
                     continue
                 } else{
                     currentUsers.remove(at: index + counter)
                     counter -= 1
                 }
             }
-            
             tableView.reloadData()
         }
     }

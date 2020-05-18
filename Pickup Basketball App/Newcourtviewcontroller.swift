@@ -48,7 +48,7 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
             parkName = parkNameTextField.text!
         } else if textField == numCourtsTextField{
             numCourts = numCourtsTextField.text!
-        } else if textField == addressTextField{
+        } else {
             address = addressTextField.text!
         }
         updateDoneButtonState()
@@ -84,9 +84,6 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
         addressTextField.text = ""
         membershipSwitch.isOn = false
         indoorSwitch.isOn = false
-        let vc = segue.destination as! Tabnewcourtviewcontroller
-        vc.parkName = parkName
-        vc.address = address
     }
  
 }
