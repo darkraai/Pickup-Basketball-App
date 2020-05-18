@@ -15,11 +15,14 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
    
     var user24:User?
     
-    
+    var clickedannotation:MKAnnotation?
     //these parks will be loaded in IRL
     var applepark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100), parkname: "Apple Park", numcourts: 2, Address: "Pleasantview Avenue", indoor: false, membership: false, game: [])
     
     var ortegapark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617), parkname: "Ortega Park", numcourts: 4, Address: "Mexi Avenue", indoor: false, membership: true, game: [])
+    
+    //courts will be loaded in automatically irl
+    lazy var allcourts:[Court] = [applepark!,ortegapark!]
     
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
@@ -263,17 +266,44 @@ extension Homeviewcontroller: MKMapViewDelegate {
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         //print("The annotation was selected: \(String(describing: view.annotation?.title))")
+        for x in allcourts{
+            if(view.annotation!.title!! == x.parkname){
+                clickedannotation = view.annotation
+        }
+        }
         performSegue(withIdentifier: "home_gamemenu_segue", sender: MKAnnotationView.self)
     }
+
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
         
         if let MainVC = destinationViewController as? Gamemenuviewcontroller{
+            let now = Date()
+
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+
+            let datetime = formatter.string(from: now)
             
+            print(datetime)
             MainVC.user24 = user24
-            
+            for x in allcourts{
+                if(clickedannotation!.title!! == x.parkname){
+                    MainVC.chosencourt = x
+            }
+            }
+
+            //for some reason, with the below code only the first day works
+//            //here we need to make datetextField the current date
+//            MainVC.alltimeslots = MainVC.chosencourt.game!
+//            for z in MainVC.alltimeslots{
+//                if(z.date! == MainVC.dateTextField.text!){
+//                    MainVC.currenttimeslots.append(z)
+//                }
+//            }
         }
     }
     
