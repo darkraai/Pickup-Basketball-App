@@ -12,6 +12,10 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
 
     var user24:User?
     
+    var currentslots:[Game] = []
+    
+    var chosencourt:Court?
+    
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var gameModePicker: UIPickerView!
     @IBOutlet weak var bringBallToggle: UISwitch!
@@ -63,7 +67,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         }
         else{
             selectedTimeSlot = timeModes[row]
-            print(selectedTimeSlot)
         }
         
         updateDoneButtonState()
@@ -188,6 +191,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     private func updateDoneButtonState(){
         startHoopingButton.isEnabled = false
+        
         if (selectedGameMode != " " && selectedTimeSlot != " "){
             startHoopingButton.isEnabled = true
 
@@ -218,6 +222,15 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         // Pass the selected object to the new view controller.
         converttimeslot()
         
+        var counter = 0
+        for z in currentslots{
+            if(selectedTimeSlotProc == z.timeslot){
+                counter+=1
+            }
+        }
+
+        
+        if(counter < chosencourt!.numcourts){
         let destinationViewController = segue.destination
 
         if let MainVC = destinationViewController as? Gamemenuviewcontroller{
@@ -227,6 +240,13 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
 
                  MainVC.currenttimeslots.append(Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: user24!.username, slotsfilled: 1, team1: [user24!], team2: [], date: selecteddate)!)
             
+        }
+        }
+        else{
+            let alert = UIAlertController(title: "Error", message: "Sorry, All courts are already booked for this time slot", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            print("too many games")
         }
 
     }

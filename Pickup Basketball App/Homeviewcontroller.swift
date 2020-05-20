@@ -16,10 +16,21 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     var user24:User?
     
     var clickedannotation:MKAnnotation?
-    //these parks will be loaded in IRL
-    var applepark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100), parkname: "Apple Park", numcourts: 2, Address: "Pleasantview Avenue", indoor: false, membership: false, game: [])
     
-    var ortegapark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617), parkname: "Ortega Park", numcourts: 4, Address: "Mexi Avenue", indoor: false, membership: true, game: [])
+    //Users that will be loaded in irl
+    var userayush = User(firstname: "Ayush", lastname: "Hariharan", username: "ayushluvshali", password: "fjwei", userweight: "160", hometown: "boo", userheightinches: "9", userheightfeet: "5", position: "SG", profilepic: UIImage(named: "ayush")!)
+    var usersurya = User(firstname: "Surya", lastname: "Mamidyala", username: "suryam", password: "jfwoef", userweight: "105", hometown: "jfwe", userheightinches: "11", userheightfeet: "5", position: "SF", profilepic: UIImage(named: "surya")!)
+    var useryash = User(firstname: "Yash", lastname: "Halal", username: "sirhalalyash", password: "fjwofej", userweight: "300", hometown: "pakistan", userheightinches: "4", userheightfeet: "4", position: "C", profilepic: UIImage(named: "yashipoo")!)
+    var userben = User(firstname: "Ben", lastname: "Svoboda", username: "bensvo", password: "jfoewj", userweight: "215", hometown: "jfweo", userheightinches: "3", userheightfeet: "6", position: "PG", profilepic: UIImage(named: "ben")!)
+    var userbik = User(firstname: "Bikram", lastname: "Kohli", username: "lightskinb", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "bik")!)
+    var userxan = User(firstname: "Xan", lastname: "Manshoota", username: "xanmanshoota", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "xanman")!)
+    var usertrey = User(firstname: "Trey", lastname: "Watts", username: "treyvonsteals", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "trey")!)
+    var userawal = User(firstname: "Awal", lastname: "Awal", username: "awaldasnipa", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "aryan")!)
+    
+    //these parks will be loaded in IRL
+    lazy var applepark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100), parkname: "Apple Park", numcourts: 2, Address: "Pleasantview Avenue", indoor: false, membership: false, game: [Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 19, 2020")!,Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 20, 2020")!,Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 20, 2020")!,Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 20, 2020")!])
+    
+    lazy var ortegapark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617), parkname: "Ortega Park", numcourts: 2, Address: "Mexi Avenue", indoor: false, membership: true, game: [Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 19, 2020")!,Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 19, 2020")!,Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 22, 2020")!,Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 22, 2020")!])
     
     //courts will be loaded in automatically irl
     lazy var allcourts:[Court] = [applepark!,ortegapark!]
@@ -35,7 +46,6 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(user24?.username)
         // Do any additional setup after loading the view.
         //print("Loaded sucessfully2")
         mapView.delegate = self
@@ -288,7 +298,7 @@ extension Homeviewcontroller: MKMapViewDelegate {
 
             let datetime = formatter.string(from: now)
             
-            print(datetime)
+            
             MainVC.user24 = user24
             for x in allcourts{
                 if(clickedannotation!.title!! == x.parkname){
@@ -296,18 +306,23 @@ extension Homeviewcontroller: MKMapViewDelegate {
             }
             }
 
-            //for some reason, with the below code only the first day works
-//            //here we need to make datetextField the current date
-//            MainVC.alltimeslots = MainVC.chosencourt.game!
-//            for z in MainVC.alltimeslots{
-//                if(z.date! == MainVC.dateTextField.text!){
-//                    MainVC.currenttimeslots.append(z)
-//                }
-//            }
+          //for some reason, with the below code only the first day works
+          //here we need to make datetextField the current date
+            for z in MainVC.chosencourt.game!{
+                MainVC.alltimeslots.append(z)
+            }
+
+            for z in MainVC.alltimeslots{
+                if(z.date! == datetime){
+                    print("hello")
+                    MainVC.currenttimeslots.append(z)
+                }
+                }
+            }
         }
     }
     
     
     
     
-}
+ 

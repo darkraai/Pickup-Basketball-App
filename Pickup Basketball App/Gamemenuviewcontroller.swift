@@ -52,8 +52,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     lazy var timeslot4 = Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 19, 2020")
     
-    lazy var alltimeslots:[Game] = [timeslot1!,timeslot2!,timeslot3!,timeslot4!]
-    lazy var currenttimeslots:[Game] = [timeslot1!]
+    lazy var alltimeslots:[Game] = []
+    lazy var currenttimeslots:[Game] = []
     
     let datePicker = UIDatePicker()
     
@@ -183,9 +183,12 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         formatter.dateStyle = .medium
         dateTextField.text = formatter.string(from: Date())
         todaysdate = dateTextField.text!
+//        for z in chosencourt.game!{
+//            alltimeslots.append(z)
+//            print("hello")
+//        }
         
-        print(chosencourt.parkname)
-        print(dateTextField.text!)
+        
 
 
 //        for x in alltimeslots{
@@ -239,6 +242,11 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             MainVC.user24 = user24
             MainVC.selecteddate = dateTextField.text!
             MainVC.todaysdate = todaysdate
+            
+            for z in currenttimeslots{
+                MainVC.currentslots.append(z)
+            }
+            MainVC.chosencourt = chosencourt
         }
         
 
