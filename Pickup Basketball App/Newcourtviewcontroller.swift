@@ -84,6 +84,9 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
         addressTextField.text = ""
         membershipSwitch.isOn = false
         indoorSwitch.isOn = false
+        let vc = segue.destination as! Tabnewcourtviewcontroller
+        vc.parkName = parkName
+        vc.address = address
     }
  
 }

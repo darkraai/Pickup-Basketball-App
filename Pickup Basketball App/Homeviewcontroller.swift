@@ -39,6 +39,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
     var annotation: MKPointAnnotation?
+    var alert = false
     
 //    private var destinations: [MKPointAnnotation] = []
 //    private var currentRoute: MKRoute?
@@ -56,6 +57,28 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         
         configureLocationServices()
  
+    }
+    
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        if (alert == true){
+    //            presentAlert()
+    //            alert = false
+    //        }
+    //    }
+    
+    private func presentAlert(){
+        let alertController = UIAlertController(title: "Court added!", message: "The court requested has successfuly been added.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func unwindToMap(segue: UIStoryboardSegue) {
+        if segue.source is Tabnewcourtviewcontroller{
+            zoomToLatestLocation(with: annotation!.coordinate)
+            mapView.addAnnotation(annotation!)
+//            presentAlert()
+        }
     }
     
 //    @objc func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
@@ -205,21 +228,6 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
 //            }
 //        }
 //    }
-    
-    @IBAction func unwindToMap(segue: UIStoryboardSegue) {
-        if segue.source is Tabnewcourtviewcontroller{
-            zoomToLatestLocation(with: annotation!.coordinate)
-            mapView.addAnnotation(annotation!)
-            presentAlert()
-        }
-    }
-    
-    private func presentAlert(){
-        let alertController = UIAlertController(title: "Court added!", message: "The court requested has successfuly been added.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
-    }
         
  
 }
