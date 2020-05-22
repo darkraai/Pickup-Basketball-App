@@ -17,6 +17,12 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var dateTextField: UITextField!
     
     var chosencourt: Court!
+    
+    var chosengameid: String?
+    
+    var chosengame: Game?
+    
+    var timesloti: String?
 
     @IBAction func creategamepressed(_ sender: Any) {
         if user24?.hometown != "N/A"{
@@ -127,7 +133,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell") as! GameTableViewCell
         
 
-
+        cell.delegate = self
         if(dateTextField.text! == currenttimeslots[indexPath.row].date!){
             cell.timeLabel.text = currenttimeslots[indexPath.row].timeslot
             cell.gameLabel.text = currenttimeslots[indexPath.row].gametype
@@ -144,7 +150,18 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                 cell.gameStatusButton.backgroundColor = UIColor.gray
             }
             cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+            
+//            chosengameid = currenttimeslots[indexPath.row].timeslot + currenttimeslots[indexPath.row].gametype! + currenttimeslots[indexPath.row].creator!
+//            for x in chosencourt.game!{
+//                if(x.gameid == chosengameid!){
+//                    chosengame = x
+//                    print("success")
+//                    print(chosengameid!)
+//                    print(x.gameid)
+//                }
+//            }
         }
+
         return cell
     }
     
@@ -156,11 +173,14 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         true
     }
     
+
+    
     
     
     @objc func buttonAction(sender: UIButton!) {
         if (sender.currentTitle == "Join" && dateTextField.text != ""){
                if user24!.hometown != "N/A"{
+                
                    performSegue(withIdentifier: "join_game_segue", sender: self)
                }
                else{
@@ -249,8 +269,42 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             MainVC.chosencourt = chosencourt
         }
         
+        if let MainVC = destinationViewController as? Joingameviewcontroller{
+            
+            MainVC.user24 = user24
+            
+//            for x in chosencourt.game!{
+//                if(x.gameid == chosengameid){
+//                    chosengame = x
+//                    print("success")
+//                }
+//            }
+            print(timesloti!)
+//            print("IDS")
+//            print(chosengameid!)
+//            print(chosengame!.gameid)
+//
+//            print("team 1")
+//            for y in chosengame!.team1{
+//                print(y.fullname)
+//                MainVC.team1usersingame.append(y)
+//            }
+//
+//            print("team 2")
+//            for z in chosengame!.team2{
+//                print(z.fullname)
+//                MainVC.team2usersingame.append(z)
+//            }
+            
+        }
 
     }
 
 
+}
+extension Gamemenuviewcontroller: delegate{
+    func didtapbutton(timeslot: String) {
+        var timesloti = timeslot
+        
+    }
 }

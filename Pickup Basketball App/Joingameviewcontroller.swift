@@ -15,6 +15,9 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var fullButton: UIButton!
     
+    var user24:User?
+    
+    
     private func configureButtons(){
         joinButton.layer.cornerRadius = 5
         joinButton.setTitleColor(UIColor.white, for: .normal)
@@ -24,49 +27,51 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         fullButton.backgroundColor = UIColor.gray
     }
     
+
+    lazy var team1usersingame : [User] = []
     
+    lazy var team2usersingame : [User] = []
     
-    var team1Data : [String] = ["@ayushluvshali", "@suryam", "@sirhalalyash"]
-    var team2Data : [String] = ["@bensvo", "@lightskinb", "@xanmanshoota", "@treyvonsteals", "@awaldasnipa"]
-    var team1Pics : [UIImage] = [UIImage(named: "ayush")!, UIImage(named: "surya")!, UIImage(named: "yashipoo")!]
-    var team2Pics : [UIImage] = [UIImage(named: "ben")!, UIImage(named: "bik")!, UIImage(named: "xanman")!, UIImage(named: "trey")!,UIImage(named: "aryan")!]
-    var team1first : [String] = ["Ayush", "Surya", "Yash"]
-    var team1last : [String] = ["Hariharan", "Mamidyala", "Halal"]
-    var team2first : [String] = ["Ben", "Bikram", "Xan", "Trey","Awal"]
-    var team2last : [String] = ["Svoboda", "Kohli", "Manshoota", "Watts","Awal"]
+//    lazy var team1usernames : [String] = [userayush!.username, usersurya!.username, useryash!.username]
+//    lazy var team2usernames : [String] = [userben!.username, "@lightskinb", "@xanmanshoota", "@treyvonsteals", "@awaldasnipa"]
+//    lazy var team1Pics : [UIImage] = [UIImage(named: "ayush")!, UIImage(named: "surya")!, UIImage(named: "yashipoo")!]
+//    lazy var team2Pics : [UIImage] = [UIImage(named: "ben")!, UIImage(named: "bik")!, UIImage(named: "xanman")!, UIImage(named: "trey")!,UIImage(named: "aryan")!]
+//    var team1first : [String] = ["Ayush", "Surya", "Yash"]
+//    var team1last : [String] = ["Hariharan", "Mamidyala", "Halal"]
+//    var team2first : [String] = ["Ben", "Bikram", "Xan", "Trey","Awal"]
+//    var team2last : [String] = ["Svoboda", "Kohli", "Manshoota", "Watts","Awal"]
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if team1Data.count > team2Data.count{
-            return team1Data.count
+        if team1usersingame.count > team2usersingame.count{
+            return team1usersingame.count
         } else {
-            return team2Data.count
+            return team2usersingame.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JoinTableViewCell") as! JoinTableViewCell
-        if team1Data.count > team2Data.count{
-            cell.team1username.text = team1Data[indexPath.row]
-            cell.team1fullname.text = team1first[indexPath.row] + " " + team1last[indexPath.row]
-            cell.team1pfp.image = team1Pics[indexPath.row]
-            if (indexPath.row < team2Data.count){
-                cell.team2username.text = team2Data[indexPath.row]
-                cell.team2fullname.text = team2first[indexPath.row] + " " + team2last[indexPath.row]
-                cell.team2pfp.image = team2Pics[indexPath.row]
-
+        if team1usersingame.count > team2usersingame.count{
+            cell.team1username.text = team1usersingame[indexPath.row].username
+            cell.team1fullname.text = team1usersingame[indexPath.row].firstname + " " + team1usersingame[indexPath.row].lastname
+            cell.team1pfp.image = team1usersingame[indexPath.row].profilepic!
+            if (indexPath.row < team2usersingame.count){
+                cell.team2username.text = team2usersingame[indexPath.row].username
+                cell.team2fullname.text = team2usersingame[indexPath.row].firstname + " " + team2usersingame[indexPath.row].lastname
+                cell.team2pfp.image = team2usersingame[indexPath.row].profilepic!
             }
         }
-        if team2Data.count > team1Data.count{
-            if (indexPath.row < team1Data.count){
-                cell.team1username.text = team1Data[indexPath.row]
-                cell.team1fullname.text = team1first[indexPath.row] + " " + team1last[indexPath.row]
-                cell.team1pfp.image = team1Pics[indexPath.row]
+        if team2usersingame.count > team1usersingame.count{
+            if (indexPath.row < team1usersingame.count){
+                cell.team1username.text = team1usersingame[indexPath.row].username
+                cell.team1fullname.text = team1usersingame[indexPath.row].firstname + " " + team1usersingame[indexPath.row].lastname
+                cell.team1pfp.image = team1usersingame[indexPath.row].profilepic
 
             }
-                cell.team2username.text = team2Data[indexPath.row]
-                cell.team2fullname.text = team2first[indexPath.row] + " " + team2last[indexPath.row]
-                cell.team2pfp.image = team2Pics[indexPath.row]
+            cell.team2username.text = team2usersingame[indexPath.row].username
+            cell.team2fullname.text = team2usersingame[indexPath.row].firstname + " " + team2usersingame[indexPath.row].lastname
+            cell.team2pfp.image = team2usersingame[indexPath.row].profilepic!
 
         }
         //configures image view for team 1
@@ -83,6 +88,14 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print("team1")
+//        for x in team1usersingame{
+//            print(x.fullname)
+//        }
+//        print("team2")
+//        for y in team2usersingame{
+//            print(y.fullname)
+//        }
         configureButtons()
 
         
