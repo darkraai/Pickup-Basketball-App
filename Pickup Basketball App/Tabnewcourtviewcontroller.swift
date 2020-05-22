@@ -17,8 +17,6 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
     var currentCoordinate: CLLocationCoordinate2D?
     var locCoord: CLLocationCoordinate2D?
     var annotation : MKPointAnnotation?
-    var parkName: String?
-    var address : String?
         
 //    private var destinations: [MKPointAnnotation] = []
 //    private var currentRoute: MKRoute?
@@ -45,8 +43,8 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
         
         annotation = MKPointAnnotation()
         annotation!.coordinate = locCoord!
-//        annotation!.title = "latitude:" + String(format: "%0.02f", annotation!.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation!.coordinate.longitude)
-//        annotation!.subtitle = "Loc of new bball court"
+        annotation!.title = "latitude:" + String(format: "%0.02f", annotation!.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation!.coordinate.longitude)
+        annotation!.subtitle = "Loc of new bball court"
            
     //  self.mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(annotation!)
@@ -65,14 +63,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
         else if segue.identifier == "unwindToMapSegue" {
             super.prepare(for: segue, sender: sender)
             let vc = segue.destination as! Homeviewcontroller
-            annotation!.title = parkName!
-            if address != nil{
-                annotation!.subtitle = address!
-            } else {
-                annotation!.subtitle = "Default Subtitle."
-            }
             vc.annotation = self.annotation
-            vc.alert = true
             
         }
     }
