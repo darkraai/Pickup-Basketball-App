@@ -133,7 +133,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell") as! GameTableViewCell
         
 
-        cell.delegate = self
         if(dateTextField.text! == currenttimeslots[indexPath.row].date!){
             cell.timeLabel.text = currenttimeslots[indexPath.row].timeslot
             cell.gameLabel.text = currenttimeslots[indexPath.row].gametype
@@ -150,6 +149,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                 cell.gameStatusButton.backgroundColor = UIColor.gray
             }
             cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+            cell.setGame(game: currenttimeslots[indexPath.row])
+            cell.delegate = self
             
 //            chosengameid = currenttimeslots[indexPath.row].timeslot + currenttimeslots[indexPath.row].gametype! + currenttimeslots[indexPath.row].creator!
 //            for x in chosencourt.game!{
@@ -178,15 +179,15 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     @objc func buttonAction(sender: UIButton!) {
-        if (sender.currentTitle == "Join" && dateTextField.text != ""){
-               if user24!.hometown != "N/A"{
-                
-                   performSegue(withIdentifier: "join_game_segue", sender: self)
-               }
-               else{
-                   print("Sorry you got to go the long (registration) way")
-               }
-            }
+//        if (sender.currentTitle == "Join" && dateTextField.text != ""){
+//               if user24!.hometown != "N/A"{
+//                
+//                   performSegue(withIdentifier: "join_game_segue", sender: self)
+//               }
+//               else{
+//                   print("Sorry you got to go the long (registration) way")
+//               }
+//            }
           
         }
     
@@ -304,7 +305,12 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 }
 extension Gamemenuviewcontroller: delegate{
     func didtapbutton(timeslot: String) {
-        var timesloti = timeslot
+        //var timesloti = timeslot
+        let alertTitle = "You clicked on a button"
+        let message = "\(timeslot) button was clicked"
+        let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
+        present(alert, animated: true, completion: nil)
+        
         
     }
 }

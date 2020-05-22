@@ -28,10 +28,10 @@ class GameTableViewCell: UITableViewCell {
 
     func setGame(game: Game){
         gameitem = game
-        timeLabel.text! = game.timeslot
-        gameLabel.text! = game.gametype!
-        ownerLabel.text! = game.creator!
-        
+//        timeLabel.text! = game.timeslot
+//        gameLabel.text! = game.gametype!
+//        ownerLabel.text! = game.creator!
+
     }
     
     @IBAction func Joinbutton(_ sender: Any) {
@@ -44,3 +44,4 @@ class GameTableViewCell: UITableViewCell {
 protocol delegate {
     func didtapbutton(timeslot: String)
 }
+ 
