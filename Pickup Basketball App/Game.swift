@@ -19,6 +19,7 @@ class Game {
     var team1:[User]
     var team2:[User]
     var date: String?
+    var gameid: String
     
     init?(timeslot: String, gametype: String, creator: String, slotsfilled: Int, team1: [User], team2: [User], date:String) {
 
@@ -46,6 +47,8 @@ class Game {
             self.totalslots = 2
 
         }
+        
+        self.gameid = timeslot+gametype+creator
 
         
 

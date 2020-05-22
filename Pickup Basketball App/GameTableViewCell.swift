@@ -17,17 +17,30 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var slotsFilledLabel: UILabel!
     @IBOutlet weak var gameStatusButton: UIButton!
     
-    
+    var gameitem: Game!
+    var gameid: String?
+    var delegate: delegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func setGame(game: Game){
+        gameitem = game
+        timeLabel.text! = game.timeslot
+        gameLabel.text! = game.gametype!
+        ownerLabel.text! = game.creator!
+        
     }
+    
+    @IBAction func Joinbutton(_ sender: Any) {
+        delegate?.didtapbutton(timeslot: gameitem.timeslot)
+    }
+    
 
+}
+
+protocol delegate {
+    func didtapbutton(timeslot: String)
 }
