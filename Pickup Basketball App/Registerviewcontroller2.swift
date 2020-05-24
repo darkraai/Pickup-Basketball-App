@@ -145,9 +145,11 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         let finalvcac = navac.topViewController as! Tabnewcourtviewcontroller
         
         finalvcac.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
+        
+
     }
     
-    
+        
         //MARK: UITextFieldDelegate
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
                // Hide the keyboard.

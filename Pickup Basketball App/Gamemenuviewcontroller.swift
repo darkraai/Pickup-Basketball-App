@@ -22,8 +22,11 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var chosengame: Game?
     
-    var timesloti: String?
+    var chosenteam1:[User] = []
+    
+    var chosenteam2:[User] = []
 
+    
     @IBAction func creategamepressed(_ sender: Any) {
         if user24?.hometown != "N/A"{
             performSegue(withIdentifier: "create_game_segue", sender: self)
@@ -147,6 +150,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                 cell.gameStatusButton.backgroundColor = UIColor.orange
             } else {
                 cell.gameStatusButton.backgroundColor = UIColor.gray
+                cell.gameStatusButton.isEnabled = false
+
             }
             cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
             cell.setGame(game: currenttimeslots[indexPath.row])
@@ -274,28 +279,19 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             
             MainVC.user24 = user24
             
-//            for x in chosencourt.game!{
-//                if(x.gameid == chosengameid){
-//                    chosengame = x
-//                    print("success")
-//                }
-//            }
-            print(timesloti!)
-//            print("IDS")
-//            print(chosengameid!)
-//            print(chosengame!.gameid)
-//
-//            print("team 1")
-//            for y in chosengame!.team1{
-//                print(y.fullname)
-//                MainVC.team1usersingame.append(y)
-//            }
-//
-//            print("team 2")
-//            for z in chosengame!.team2{
-//                print(z.fullname)
-//                MainVC.team2usersingame.append(z)
-//            }
+            MainVC.team1usersingame.removeAll()
+            MainVC.team2usersingame.removeAll()
+
+            
+            print("team 1")
+            for y in chosenteam1{
+                MainVC.team1usersingame.append(y)
+            }
+
+            print("team 2")
+            for z in chosenteam2{
+                MainVC.team2usersingame.append(z)
+            }
             
         }
 
@@ -304,13 +300,21 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
 }
 extension Gamemenuviewcontroller: delegate{
-    func didtapbutton(timeslot: String) {
-        //var timesloti = timeslot
-        let alertTitle = "You clicked on a button"
-        let message = "\(timeslot) button was clicked"
-        let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
-        present(alert, animated: true, completion: nil)
+    
+    func didtapbutton(timeslot: String, team1: [User], team2: [User]) {
         
+        chosenteam1.removeAll()
+        chosenteam2.removeAll()
+
+        for x in team1{
+            chosenteam1.append(x)
+        }
         
+        for z in team2{
+            chosenteam2.append(z)
+        }
+        
+
+        performSegue(withIdentifier: "join_game_segue", sender: nil)
     }
 }

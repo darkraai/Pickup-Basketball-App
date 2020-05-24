@@ -12,6 +12,9 @@ import MapKit
  
 class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    
+    @IBOutlet weak var teamstableview: UITableView!
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var fullButton: UIButton!
     
@@ -32,14 +35,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     lazy var team2usersingame : [User] = []
     
-//    lazy var team1usernames : [String] = [userayush!.username, usersurya!.username, useryash!.username]
-//    lazy var team2usernames : [String] = [userben!.username, "@lightskinb", "@xanmanshoota", "@treyvonsteals", "@awaldasnipa"]
-//    lazy var team1Pics : [UIImage] = [UIImage(named: "ayush")!, UIImage(named: "surya")!, UIImage(named: "yashipoo")!]
-//    lazy var team2Pics : [UIImage] = [UIImage(named: "ben")!, UIImage(named: "bik")!, UIImage(named: "xanman")!, UIImage(named: "trey")!,UIImage(named: "aryan")!]
-//    var team1first : [String] = ["Ayush", "Surya", "Yash"]
-//    var team1last : [String] = ["Hariharan", "Mamidyala", "Halal"]
-//    var team2first : [String] = ["Ben", "Bikram", "Xan", "Trey","Awal"]
-//    var team2last : [String] = ["Svoboda", "Kohli", "Manshoota", "Watts","Awal"]
+
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +70,17 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
             cell.team2pfp.image = team2usersingame[indexPath.row].profilepic!
 
         }
+        
+        if team1usersingame.count == team2usersingame.count{
+            cell.team1username.text = team1usersingame[indexPath.row].username
+            cell.team1fullname.text = team1usersingame[indexPath.row].firstname + " " + team1usersingame[indexPath.row].lastname
+            cell.team1pfp.image = team1usersingame[indexPath.row].profilepic
+            cell.team2username.text = team2usersingame[indexPath.row].username
+            cell.team2fullname.text = team2usersingame[indexPath.row].firstname + " " + team2usersingame[indexPath.row].lastname
+            cell.team2pfp.image = team2usersingame[indexPath.row].profilepic!
+            
+        }
+        
         //configures image view for team 1
         cell.team1pfp.layer.cornerRadius = (cell.team1pfp.frame.size.width)/2;
         cell.team1pfp.clipsToBounds = true;
@@ -88,18 +95,24 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("team1")
-//        for x in team1usersingame{
-//            print(x.fullname)
-//        }
-//        print("team2")
-//        for y in team2usersingame{
-//            print(y.fullname)
-//        }
+        print("team1")
+        for x in team1usersingame{
+            print(x.fullname)
+        }
+        print("team2")
+        for y in team2usersingame{
+            print(y.fullname)
+        }
+        print(team1usersingame.count)
+        print(team2usersingame.count)
+        
         configureButtons()
 
         
     }
+    
+
+
     
 
  

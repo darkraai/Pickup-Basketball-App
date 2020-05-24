@@ -278,9 +278,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="7k6-DI-dc0">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7k6-DI-dc0">
                                 <rect key="frame" x="0.0" y="259.5" width="414" height="385"/>
-                                <color key="backgroundColor" red="0.79215686269999996" green="0.90588235289999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.792156862745098" green="0.90588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="btU-Ou-Ysg"/>
                                     <constraint firstAttribute="height" constant="385" id="flo-ne-xrL"/>
@@ -315,7 +315,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JoinTableViewCell" id="bi4-bP-Azu" customClass="JoinTableViewCell" customModule="Pickup_Basketball_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.5" width="414" height="65"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bi4-bP-Azu" id="vAc-eY-2Ao">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
@@ -464,6 +464,7 @@
                     <connections>
                         <outlet property="fullButton" destination="1uT-he-TpQ" id="9X1-rH-xNf"/>
                         <outlet property="joinButton" destination="Y87-li-Umo" id="LzZ-7Y-D6V"/>
+                        <outlet property="teamstableview" destination="7k6-DI-dc0" id="BnC-Jy-zDJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCR-nX-tXI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
