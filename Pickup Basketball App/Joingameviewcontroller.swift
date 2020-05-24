@@ -15,19 +15,46 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     @IBOutlet weak var teamstableview: UITableView!
-    @IBOutlet weak var joinButton: UIButton!
-    @IBOutlet weak var fullButton: UIButton!
+    @IBOutlet weak var team1button: UIButton!
+    @IBOutlet weak var team2button: UIButton!
     
     var user24:User?
     
     
     private func configureButtons(){
-        joinButton.layer.cornerRadius = 5
-        joinButton.setTitleColor(UIColor.white, for: .normal)
-        joinButton.backgroundColor = UIColor.systemGreen
-        fullButton.layer.cornerRadius = 5
-        fullButton.setTitleColor(UIColor.white, for: .normal)
-        fullButton.backgroundColor = UIColor.gray
+        
+        if (totalslots!/2) > team1usersingame.count{
+            team1button.layer.cornerRadius = 5
+            team1button.setTitleColor(UIColor.white, for: .normal)
+            team1button.backgroundColor = UIColor.systemGreen
+            team1button.setTitle("Join", for: .normal)
+        }
+        else{
+            team1button.layer.cornerRadius = 5
+            team1button.setTitleColor(UIColor.white, for: .normal)
+            team1button.backgroundColor = UIColor.gray
+            team1button.setTitle("Full", for: .normal)
+
+        }
+        
+        if (totalslots!/2) > team2usersingame.count{
+            team2button.layer.cornerRadius = 5
+            team2button.setTitleColor(UIColor.white, for: .normal)
+            team2button.backgroundColor = UIColor.systemGreen
+            team2button.setTitle("Join", for: .normal)
+
+        }
+        else{
+            team2button.layer.cornerRadius = 5
+            team2button.setTitleColor(UIColor.white, for: .normal)
+            team2button.backgroundColor = UIColor.gray
+            team2button.setTitle("Full", for: .normal)
+
+        }
+        
+        
+        
+
     }
     
 
@@ -35,7 +62,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     lazy var team2usersingame : [User] = []
     
-
+    var totalslots : Int?
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,18 +121,10 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
  
     
     override func viewDidLoad() {
+        print("here too")
         super.viewDidLoad()
-        print("team1")
-        for x in team1usersingame{
-            print(x.fullname)
-        }
-        print("team2")
-        for y in team2usersingame{
-            print(y.fullname)
-        }
-        print(team1usersingame.count)
-        print(team2usersingame.count)
         
+
         configureButtons()
 
         

@@ -18,7 +18,6 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet weak var gameStatusButton: UIButton!
     
     var gameitem: Game!
-    var gameid: String?
     var delegate: delegate?
 
     override func awakeFromNib() {
@@ -33,13 +32,13 @@ class GameTableViewCell: UITableViewCell {
     }
     
     @IBAction func Joinbutton(_ sender: Any) {
-        delegate?.didtapbutton(timeslot: gameitem.timeslot,team1: gameitem.team1,team2: gameitem.team2)
+        delegate?.didtapbutton(timeslot: gameitem.timeslot,team1: gameitem.team1,team2: gameitem.team2, totalslots: gameitem.totalslots)
     }
     
 
 }
 
 protocol delegate {
-    func didtapbutton(timeslot: String, team1: [User], team2: [User])
+    func didtapbutton(timeslot: String, team1: [User], team2: [User], totalslots: Int)
 }
  

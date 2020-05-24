@@ -20,6 +20,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var chosengameid: String?
     
+    var totalslotsx:Int = 0
+    
     var chosengame: Game?
     
     var chosenteam1:[User] = []
@@ -277,21 +279,26 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         
         if let MainVC = destinationViewController as? Joingameviewcontroller{
             
+            
             MainVC.user24 = user24
+            
+            MainVC.totalslots = totalslotsx
+            
             
             MainVC.team1usersingame.removeAll()
             MainVC.team2usersingame.removeAll()
 
             
-            print("team 1")
             for y in chosenteam1{
                 MainVC.team1usersingame.append(y)
             }
 
-            print("team 2")
             for z in chosenteam2{
                 MainVC.team2usersingame.append(z)
             }
+            
+            print("functioning here")
+            
             
         }
 
@@ -301,7 +308,9 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 }
 extension Gamemenuviewcontroller: delegate{
     
-    func didtapbutton(timeslot: String, team1: [User], team2: [User]) {
+    func didtapbutton(timeslot: String, team1: [User], team2: [User], totalslots: Int) {
+
+        totalslotsx = totalslots
         
         chosenteam1.removeAll()
         chosenteam2.removeAll()

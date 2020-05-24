@@ -462,8 +462,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Join Game" id="Ygd-eu-WdN"/>
                     <connections>
-                        <outlet property="fullButton" destination="1uT-he-TpQ" id="9X1-rH-xNf"/>
-                        <outlet property="joinButton" destination="Y87-li-Umo" id="LzZ-7Y-D6V"/>
+                        <outlet property="team1button" destination="Y87-li-Umo" id="mAf-Qh-1s7"/>
+                        <outlet property="team2button" destination="1uT-he-TpQ" id="Ckp-yt-xvN"/>
                         <outlet property="teamstableview" destination="7k6-DI-dc0" id="BnC-Jy-zDJ"/>
                     </connections>
                 </viewController>
