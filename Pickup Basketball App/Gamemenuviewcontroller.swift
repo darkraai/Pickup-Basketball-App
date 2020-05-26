@@ -27,6 +27,10 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     var chosenteam1:[User] = []
     
     var chosenteam2:[User] = []
+    
+    var selectedgameids:[String] = []
+
+    var buttondistinguisher:Int?
 
     
     @IBAction func creategamepressed(_ sender: Any) {
@@ -40,28 +44,9 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var todaysdate = ""
     
-    //Users that will be loaded in irl
-    var userayush = User(firstname: "Ayush", lastname: "Hariharan", username: "ayushluvshali", password: "fjwei", userweight: "160", hometown: "boo", userheightinches: "9", userheightfeet: "5", position: "SG", profilepic: UIImage(named: "ayush")!)
-    var usersurya = User(firstname: "Surya", lastname: "Mamidyala", username: "suryam", password: "jfwoef", userweight: "105", hometown: "jfwe", userheightinches: "11", userheightfeet: "5", position: "SF", profilepic: UIImage(named: "surya")!)
-    var useryash = User(firstname: "Yash", lastname: "Halal", username: "sirhalalyash", password: "fjwofej", userweight: "300", hometown: "pakistan", userheightinches: "4", userheightfeet: "4", position: "C", profilepic: UIImage(named: "yashipoo")!)
-    var userben = User(firstname: "Ben", lastname: "Svoboda", username: "bensvo", password: "jfoewj", userweight: "215", hometown: "jfweo", userheightinches: "3", userheightfeet: "6", position: "PG", profilepic: UIImage(named: "ben")!)
-    var userbik = User(firstname: "Bikram", lastname: "Kohli", username: "lightskinb", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "bik")!)
-    var userxan = User(firstname: "Xan", lastname: "Manshoota", username: "xanmanshoota", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "xanman")!)
-    var usertrey = User(firstname: "Trey", lastname: "Watts", username: "treyvonsteals", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "trey")!)
-    var userawal = User(firstname: "Awal", lastname: "Awal", username: "awaldasnipa", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "aryan")!)
     
-    
-    
-    
-    //timeslots that will be loaded in irl
-    lazy var timeslot1 = Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 18, 2020")
     
 
-    lazy var timeslot2 = Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 19, 2020")
-    
-    lazy var timeslot3 = Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 19, 2020")
-    
-    lazy var timeslot4 = Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 19, 2020")
     
     lazy var alltimeslots:[Game] = []
     lazy var currenttimeslots:[Game] = []
@@ -78,9 +63,9 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         else if((curgame.totalslots == curgame.slotsfilled) && (curgame.totalslots != 0)){
             return "Full"
         }
-        else{
-            return "Create"
-        }
+        
+        return "Joined"
+
     }
     
     func determinetotslots(curgame: Game) -> Int{
@@ -148,7 +133,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             cell.gameStatusButton.setTitle(String(determinebuttonstatus(curgame: currenttimeslots[indexPath.row])), for: .normal)
             if cell.gameStatusButton.currentTitle == "Join" {
                 cell.gameStatusButton.backgroundColor = UIColor.systemGreen
-            } else if cell.gameStatusButton.currentTitle == "Create" {
+            } else if cell.gameStatusButton.currentTitle == "Joined" {
                 cell.gameStatusButton.backgroundColor = UIColor.orange
             } else {
                 cell.gameStatusButton.backgroundColor = UIColor.gray
@@ -211,20 +196,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         formatter.dateStyle = .medium
         dateTextField.text = formatter.string(from: Date())
         todaysdate = dateTextField.text!
-//        for z in chosencourt.game!{
-//            alltimeslots.append(z)
-//            print("hello")
-//        }
-        
-        
 
-
-//        for x in alltimeslots{
-//            if(x.date! == dateTextField.text!){
-//                currenttimeslots.append(x)
-//            }
-//        }
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -297,9 +269,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                 MainVC.team2usersingame.append(z)
             }
             
-            print("functioning here")
-            
-            
         }
 
     }
@@ -308,20 +277,23 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 }
 extension Gamemenuviewcontroller: delegate{
     
-    func didtapbutton(timeslot: String, team1: [User], team2: [User], totalslots: Int) {
+    func didtapbutton(timeslot: String, team1: [User], team2: [User], totalslots: Int, gameid: String) {
 
         totalslotsx = totalslots
+        
         
         chosenteam1.removeAll()
         chosenteam2.removeAll()
 
-        for x in team1{
-            chosenteam1.append(x)
-        }
+            for x in team1{
+                chosenteam1.append(x)
+            }
+            
+            for z in team2{
+                chosenteam2.append(z)
+            }
         
-        for z in team2{
-            chosenteam2.append(z)
-        }
+        
         
 
         performSegue(withIdentifier: "join_game_segue", sender: nil)

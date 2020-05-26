@@ -18,6 +18,9 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var team1button: UIButton!
     @IBOutlet weak var team2button: UIButton!
     
+    
+    var buttondistinguisher:Int = 0
+    
     var user24:User?
     
     
@@ -28,12 +31,16 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
             team1button.setTitleColor(UIColor.white, for: .normal)
             team1button.backgroundColor = UIColor.systemGreen
             team1button.setTitle("Join", for: .normal)
+            team1button.isEnabled = true
+
         }
         else{
             team1button.layer.cornerRadius = 5
             team1button.setTitleColor(UIColor.white, for: .normal)
             team1button.backgroundColor = UIColor.gray
             team1button.setTitle("Full", for: .normal)
+            team1button.isEnabled = false
+
 
         }
         
@@ -42,6 +49,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
             team2button.setTitleColor(UIColor.white, for: .normal)
             team2button.backgroundColor = UIColor.systemGreen
             team2button.setTitle("Join", for: .normal)
+            team2button.isEnabled = true
+
 
         }
         else{
@@ -49,6 +58,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
             team2button.setTitleColor(UIColor.white, for: .normal)
             team2button.backgroundColor = UIColor.gray
             team2button.setTitle("Full", for: .normal)
+            team2button.isEnabled = false
 
         }
         
@@ -121,18 +131,34 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
  
     
     override func viewDidLoad() {
-        print("here too")
         super.viewDidLoad()
         
-
         configureButtons()
-
         
     }
     
-
-
+    @IBAction func button1pressed(_ sender: UIButton) {
+        buttondistinguisher = 1
+    }
     
+    
+    
+    @IBAction func button2pressed(_ sender: Any) {
+        buttondistinguisher = 2
+    }
+    
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //add in database code to add user to the selected game
+        let destinationViewController = segue.destination
+        
+        if let MainVC = destinationViewController as? Gamemenuviewcontroller{
+            MainVC.buttondistinguisher = buttondistinguisher
+        }
+    }
 
  
 }

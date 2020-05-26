@@ -32,13 +32,13 @@ class GameTableViewCell: UITableViewCell {
     }
     
     @IBAction func Joinbutton(_ sender: Any) {
-        delegate?.didtapbutton(timeslot: gameitem.timeslot,team1: gameitem.team1,team2: gameitem.team2, totalslots: gameitem.totalslots)
+        delegate?.didtapbutton(timeslot: gameitem.timeslot,team1: gameitem.team1,team2: gameitem.team2, totalslots: gameitem.totalslots, gameid: gameitem.gameid)
     }
     
 
 }
 
 protocol delegate {
-    func didtapbutton(timeslot: String, team1: [User], team2: [User], totalslots: Int)
+    func didtapbutton(timeslot: String, team1: [User], team2: [User], totalslots: Int, gameid: String)
 }
  
