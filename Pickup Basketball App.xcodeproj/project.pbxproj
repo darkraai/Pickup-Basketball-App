@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18013ADA244CE9D500AAB54F /* JoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */; };
+		1853590D247E00AB003A69EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1853590C247E00AB003A69EB /* GoogleService-Info.plist */; };
 		189AAFCE2446C5100035E722 /* Gamemenuviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */; };
 		189AAFD02446C5490035E722 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCF2446C5490035E722 /* GameTableViewCell.swift */; };
 		18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FF29244A08920060672A /* Creategameviewcontroller.swift */; };
@@ -44,14 +45,18 @@
 		C2F312A82453C6B700B42E51 /* Followersviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F312A72453C6B700B42E51 /* Followersviewcontroller.swift */; };
 		C2F312AA2453C72E00B42E51 /* Followingviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F312A92453C72E00B42E51 /* Followingviewcontroller.swift */; };
 		C2F312AC2453DA5900B42E51 /* FollowersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F312AB2453DA5900B42E51 /* FollowersViewCell.swift */; };
+		E0E4758576120DCD7EFDF4CE /* Pods_Pickup_Basketball_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTableViewCell.swift; sourceTree = "<group>"; };
+		1853590C247E00AB003A69EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamemenuviewcontroller.swift; sourceTree = "<group>"; };
 		189AAFCF2446C5490035E722 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		18B4FF29244A08920060672A /* Creategameviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creategameviewcontroller.swift; sourceTree = "<group>"; };
 		18DA8E572450BAB8000B7DA9 /* searchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchTableViewCell.swift; sourceTree = "<group>"; };
+		76E9EAFC0A8049891FA76815 /* Pods-Pickup Basketball App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pickup Basketball App.release.xcconfig"; path = "Target Support Files/Pods-Pickup Basketball App/Pods-Pickup Basketball App.release.xcconfig"; sourceTree = "<group>"; };
+		AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pickup_Basketball_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabnewcourtviewcontroller.swift; sourceTree = "<group>"; };
 		C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newcourtviewcontroller.swift; sourceTree = "<group>"; };
 		C0A27B7024280DC700F6D70F /* Pickup Basketball App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pickup Basketball App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +91,7 @@
 		C2F312A72453C6B700B42E51 /* Followersviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followersviewcontroller.swift; sourceTree = "<group>"; };
 		C2F312A92453C72E00B42E51 /* Followingviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followingviewcontroller.swift; sourceTree = "<group>"; };
 		C2F312AB2453DA5900B42E51 /* FollowersViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewCell.swift; sourceTree = "<group>"; };
+		CA04E9A405A8ADE74D5DA0D0 /* Pods-Pickup Basketball App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pickup Basketball App.debug.xcconfig"; path = "Target Support Files/Pods-Pickup Basketball App/Pods-Pickup Basketball App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,18 +100,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0E28CEC2436D92C00A25ABD /* MapKit.framework in Frameworks */,
+				E0E4758576120DCD7EFDF4CE /* Pods_Pickup_Basketball_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5336758F332CFCBF2236733F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA04E9A405A8ADE74D5DA0D0 /* Pods-Pickup Basketball App.debug.xcconfig */,
+				76E9EAFC0A8049891FA76815 /* Pods-Pickup Basketball App.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C0A27B6724280DC700F6D70F = {
 			isa = PBXGroup;
 			children = (
 				C0A27B7224280DC700F6D70F /* Pickup Basketball App */,
 				C0A27B7124280DC700F6D70F /* Products */,
 				C0E28CEA2436D92C00A25ABD /* Frameworks */,
+				5336758F332CFCBF2236733F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,6 +174,7 @@
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
 				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
 				C0A27B8624280DCB00F6D70F /* Info.plist */,
+				1853590C247E00AB003A69EB /* GoogleService-Info.plist */,
 				C0A27B7E24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld */,
 			);
 			path = "Pickup Basketball App";
@@ -165,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				C0E28CEB2436D92C00A25ABD /* MapKit.framework */,
+				AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,9 +196,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0A27B8924280DCB00F6D70F /* Build configuration list for PBXNativeTarget "Pickup Basketball App" */;
 			buildPhases = (
+				4A74670ADF5C5C0E5701B4FF /* [CP] Check Pods Manifest.lock */,
 				C0A27B6C24280DC700F6D70F /* Sources */,
 				C0A27B6D24280DC700F6D70F /* Frameworks */,
 				C0A27B6E24280DC700F6D70F /* Resources */,
+				D73634910C417E16A71B97BB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,12 +250,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2D9ED6A2446B15B00CC3690 /* Main.storyboard in Resources */,
+				1853590D247E00AB003A69EB /* GoogleService-Info.plist in Resources */,
 				C0A27B8524280DCB00F6D70F /* LaunchScreen.storyboard in Resources */,
 				C0A27B8224280DCB00F6D70F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A74670ADF5C5C0E5701B4FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pickup Basketball App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D73634910C417E16A71B97BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pickup Basketball App/Pods-Pickup Basketball App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pickup Basketball App/Pods-Pickup Basketball App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pickup Basketball App/Pods-Pickup Basketball App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C0A27B6C24280DC700F6D70F /* Sources */ = {
@@ -414,6 +479,7 @@
 		};
 		C0A27B8A24280DCB00F6D70F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA04E9A405A8ADE74D5DA0D0 /* Pods-Pickup Basketball App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -432,6 +498,7 @@
 		};
 		C0A27B8B24280DCB00F6D70F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76E9EAFC0A8049891FA76815 /* Pods-Pickup Basketball App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

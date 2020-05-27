@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>307441027701-10833aotnvs92or59bdu3intccb7c94m.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.307441027701-10833aotnvs92or59bdu3intccb7c94m</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAh6hAOULMW1GCy9Hmol8KLxmO9Pn_G_Cs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>307441027701</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hoopbreak.Pickup-Basketball-App</string>
+	<key>PROJECT_ID</key>
+	<string>pickup-basketball-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pickup-basketball-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:307441027701:ios:d03791d3076e7e1dea063c</string>
+	<key>DATABASE_URL</key>
+	<string>https://pickup-basketball-app.firebaseio.com</string>
+</dict>
+</plist>
