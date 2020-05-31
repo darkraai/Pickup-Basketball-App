@@ -39,10 +39,14 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
         var user = UsernameTextField.text!
         var pass = PasswordTextField.text!
         ref.child("Users").queryOrdered(byChild:  "username").queryStarting(atValue: user).queryEnding(atValue: user + "\u{f8ff}").observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot)
             if let snapDict = snapshot.value as? [String:AnyObject]{
+                print(snapDict)
                 for each in snapDict{
                     let key = each.key as! String
                     let password = each.value["password"] as! String
+                    print(key)
+                    print(password)
                     if (pass == password){
                         self.performSegue(withIdentifier: "Logintohomesegue", sender: self)
                     }else{
