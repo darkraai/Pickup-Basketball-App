@@ -84,20 +84,47 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
 
     private func updateNextButtonState() {
         // Disable the login button if the text field is empty.
+        
+        var check = true
 
         let userfirsttext = userfirstname.text ?? ""
-        registernext.isEnabled = !userfirsttext.isEmpty
+        if userfirsttext.isEmpty{
+            check = false
+        }
         
         let userlasttext = userlastname.text ?? ""
-        registernext.isEnabled = !userlasttext.isEmpty
+        if userlasttext.isEmpty{
+            check = false
+        }
         
         let usernametext = userusername.text ?? ""
-        registernext.isEnabled = !usernametext.isEmpty
+        if usernametext.isEmpty{
+            check = false
+        }
         
         let userpasswordtext = userpassword.text ?? ""
-        registernext.isEnabled = !userpasswordtext.isEmpty
+        if userpasswordtext.isEmpty{
+            check = false
+        }
+        
+        if (!usernametext.isEmpty){
+            let charset = CharacterSet(charactersIn: ".#$[]")
+            if usernametext.rangeOfCharacter(from: charset) != nil{
+                check = false
+                presentAlert()
+            }
+        }
+        
+        registernext.isEnabled = check
         
 
+    }
+    
+    private func presentAlert(){
+        let alertController = UIAlertController(title: "Enter another username", message: "The username you entered is already taken or contains one of the following characters '.#$[]'", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
 
