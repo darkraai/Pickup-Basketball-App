@@ -7,7 +7,7 @@
 //
 import UIKit
 import os.log
-
+import FirebaseDatabase
 
 
 class RegisterViewController: UIViewController,UITextFieldDelegate {
@@ -15,6 +15,9 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     
     
     //MARK: Properties
+    
+    var ref: DatabaseReference!
+    
     @IBOutlet weak var userfirstname: UITextField!
     @IBOutlet weak var userlastname: UITextField!
     @IBOutlet weak var userusername: UITextField!
@@ -27,6 +30,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
         userfirstname.delegate = self
         userlastname.delegate = self

@@ -7,13 +7,16 @@
 
 import UIKit
 import os.log
-
+import FirebaseDatabase
 
 
 class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     
     //MARK: Properties
+    
+    var ref: DatabaseReference!
+    
     //@IBOutlet weak var userheightf: UITextField!
     @IBOutlet weak var userweight: UITextField!
     @IBOutlet weak var userhometown: UITextField!
@@ -93,6 +96,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            ref = Database.database().reference()
             // Do any additional setup after loading the view.
             //text fields
             userweight.delegate = self
@@ -121,6 +125,8 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         let finalvcbp = navvc.topViewController as! BallerProfile
         
         let image14 = UIImage(named: "user")
+        
+        self.ref.child("Users").child(uname!).setValue(["firstname":fname!, "lastname":lname!, "password":pword!,"weight":userweight.text!, "hometown":userhometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":uname!])
         
 
         finalvcbp.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)

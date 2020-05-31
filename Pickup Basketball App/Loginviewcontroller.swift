@@ -8,27 +8,26 @@
 
 import os.log
 import UIKit
+import FirebaseDatabase
 
 
 class Loginviewcontroller: UIViewController, UITextFieldDelegate {
 
     //MARK: Properties
     
+    var ref: DatabaseReference!
+    
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var donthaveaccount: UIButton!
     
-
-    //When login is tapped,  it goes to home page
-    @IBAction func Loginbuttonpressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "Logintohomesegue", sender: self)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //sets text field delegates to themselves
+        ref = Database.database().reference()
         UsernameTextField.delegate = self
         PasswordTextField.delegate = self
         
@@ -39,7 +38,26 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     @IBAction func LoginTapped(_ sender: Any) {
         var user = UsernameTextField.text!
         var pass = PasswordTextField.text!
-
+        ref.child("Users").queryOrdered(byChild:  "username").queryStarting(atValue: user).queryEnding(atValue: user + "\u{f8ff}").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapDict = snapshot.value as? [String:AnyObject]{
+                for each in snapDict{
+                    let key = each.key as! String
+                    let password = each.value["password"] as! String
+                    if (pass == password){
+                        self.performSegue(withIdentifier: "Logintohomesegue", sender: self)
+                    }else{
+                        self.presentAlert()
+                    }
+                }
+            }
+        })
+    }
+    
+    private func presentAlert(){
+        let alertController = UIAlertController(title: "Incorrect password for \(UsernameTextField.text!)", message: "The password you entered is incorrect. Please try again.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     
