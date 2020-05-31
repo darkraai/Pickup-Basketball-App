@@ -8,7 +8,7 @@
 import UIKit
 import os.log
 import FirebaseDatabase
-
+import FirebaseStorage
 
 class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -125,8 +125,28 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         let finalvcbp = navvc.topViewController as! BallerProfile
         
         let image14 = UIImage(named: "user")
+        let imageData = image14!.jpegData(compressionQuality: 0.4)!
         
-        self.ref.child("Users").child(uname!).setValue(["firstname":fname!, "lastname":lname!, "password":pword!,"weight":userweight.text!, "hometown":userhometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":uname!])
+        let storageRef = Storage.storage().reference(forURL: "gs://pickup-basketball-app.appspot.com")
+        let storageProfileRef = storageRef.child("profile").child(uname!)
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+        
+        storageProfileRef.putData(imageData, metadata: metadata, completion:
+            {(storageMetaData, error) in
+            if error != nil{
+                print(error?.localizedDescription)
+                return
+            }
+            storageProfileRef.downloadURL(completion: {(url, error) in
+                if let metaImageURL = url?.absoluteString{
+                    print(metaImageURL)
+                    
+                    self.ref.child("Users").child(self.uname!).setValue(["firstname":self.fname!, "lastname":self.lname!, "password":self.pword!,"weight":self.userweight.text!, "hometown":self.userhometown.text!,"heightfeet":self.heightinfeet!,"heightinches":self.heightininches!,"position":self.positions2!, "username":self.uname!, "pfp":metaImageURL])
+                }
+            })
+        })
         
 
         finalvcbp.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
