@@ -8,11 +8,16 @@
 
 import UIKit
 import os.log
-
+import FirebaseDatabase
+import FirebaseStorage
 
 class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var user24:User?
+    
+    var metaImageURL:String?
+    
+    var ref: DatabaseReference!
     
     //textfields initialization
     @IBOutlet weak var editusername: UITextField!
@@ -89,7 +94,6 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
             heightininches = heightinches[row]
         }
         
-       // updateDoneButtonState2()
         updateDoneButtonState3()
 
     }
@@ -97,6 +101,9 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
+        
         editusername.text = user24?.username
         editpassword.text = user24?.password
         editfirst.text = user24?.firstname
@@ -179,7 +186,6 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     func textFieldDidEndEditing(_ textField: UITextField) {
         //when done editing, updates save button state
         updateDoneButtonState3()
-        //navigationItem.title = textField.text
     }
     
 
@@ -200,6 +206,21 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         // The info dictionary may contain multiple representations of the image. You want to use the original.
         if let selectedImage = info[.editedImage] as? UIImage{
             self.pfpimageview.image = selectedImage
+            let imageData = selectedImage.jpegData(compressionQuality: 0.4)!
+            let storageRef = Storage.storage().reference(forURL: "gs://pickup-basketball-app.appspot.com")
+            let storageProfileRef = storageRef.child("profile").child(user24!.username)
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            
+            storageProfileRef.putData(imageData, metadata: metadata, completion:
+                {(storageMetaData, error) in
+                    
+                storageProfileRef.downloadURL(completion: {(url, error) in
+                    if let metaImageURL = url?.absoluteString{
+                        self.metaImageURL = metaImageURL
+                    }
+                })
+            })
         }else {fatalError("Expected a dictonary containing an image, but was provided the following: \(info)")}
         
 
@@ -217,12 +238,21 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         pfpimageview.layer.cornerRadius = pfpimageview.frame.size.width / 2;
         pfpimageview.clipsToBounds = true;
         let destinationViewController = segue.destination as! BallerProfile
-        destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image)
+        
+        if (self.metaImageURL == nil){
+            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.user24?.pfplink)
+            
+            self.ref.child("Users").child(self.user24!.username).setValue(["firstname":editfirst.text!, "lastname":editlast.text!, "password":editpassword.text!,"weight":editweight.text!, "hometown":edithometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":self.user24?.username, "pfp":self.user24?.pfplink])
+        } else{
+            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.metaImageURL)
+            
+            self.ref.child("Users").child(self.user24!.username).setValue(["firstname":editfirst.text!, "lastname":editlast.text!, "password":editpassword.text!,"weight":editweight.text!, "hometown":edithometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":self.user24?.username, "pfp":self.metaImageURL])
         }
+    }
+    
+        
     
     //MARK: Actions
-    
-
     
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
@@ -298,7 +328,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
             }
     }
         
-    }
+}
 
     
 

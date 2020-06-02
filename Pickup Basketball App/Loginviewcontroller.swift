@@ -9,13 +9,24 @@
 import os.log
 import UIKit
 import FirebaseDatabase
-
+import FirebaseStorage
 
 class Loginviewcontroller: UIViewController, UITextFieldDelegate {
 
     //MARK: Properties
-    
+   
     var ref: DatabaseReference!
+    
+    var FirstName:String?
+    var LastName:String?
+    var Password:String?
+    var UserWeight:String?
+    var Hometown:String?
+    var UserHeightInches:String?
+    var UserHeightFeet:String?
+    var Position:String?
+    var ProfilePic:UIImage?
+    var PFPLink:String?
     
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
@@ -25,74 +36,97 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //sets text field delegates to themselves
+        
         ref = Database.database().reference()
+        
         UsernameTextField.delegate = self
         PasswordTextField.delegate = self
         
         updateLoginButtonState()
     }
 
-    //When login is tapped,  it saves the username and password
+
     @IBAction func LoginTapped(_ sender: Any) {
-        var user = UsernameTextField.text!
-        var pass = PasswordTextField.text!
-        ref.child("Users").queryOrdered(byChild:  "username").queryStarting(atValue: user).queryEnding(atValue: user + "\u{f8ff}").observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot)
+        let user = UsernameTextField.text!
+        let pass = PasswordTextField.text!
+        
+        ref.child("Users").queryOrdered(byChild: "username").queryStarting(atValue: user).queryEnding(atValue: user + "\u{f8ff}").observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapDict = snapshot.value as? [String:AnyObject]{
-                print(snapDict)
                 for each in snapDict{
-                    let key = each.key as! String
-                    let password = each.value["password"] as! String
-                    print(key)
-                    print(password)
-                    if (pass == password){
+                    self.Password = each.value["password"] as? String
+                    if (pass == self.Password){
+                        self.FirstName = each.value["firstname"] as? String
+                        self.LastName = each.value["lastname"] as? String
+                        self.Hometown = each.value["hometown"] as? String
+                        self.Position = each.value["position"] as? String
+                        self.PFPLink = each.value["pfp"] as? String
+                        self.UserWeight = each.value["weight"] as? String
+                        self.UserHeightFeet = each.value["heightfeet"] as? String
+                        self.UserHeightInches = each.value["heightinches"] as? String
                         self.performSegue(withIdentifier: "Logintohomesegue", sender: self)
                     }else{
-                        self.presentAlert()
+                        self.presentAlert1()
                     }
                 }
+            }else{
+                self.presentAlert2()
             }
         })
     }
     
-    private func presentAlert(){
+    private func presentAlert1(){
         let alertController = UIAlertController(title: "Incorrect password for \(UsernameTextField.text!)", message: "The password you entered is incorrect. Please try again.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
     
+    private func presentAlert2(){
+        let alertController = UIAlertController(title: "Enter another username", message: "The username entered does not exist.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "Logintohomesegue" else {return}
+
+        let url = URL(string: self.PFPLink!)
+        do{
+            let data = try Data(contentsOf: url!)
+            self.ProfilePic = UIImage(data: data)
+        }catch _{
+            print("Error")
+        }
+        
         let barViewControllers = segue.destination as! UITabBarController
         //confirmed sets firstdc to nav controller before  baller profile
         let navvcbp = barViewControllers.viewControllers![3] as! navballerprofile
         
         let finalvcbp = navvcbp.topViewController as! BallerProfile
-        
-        finalvcbp.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A", profilepic: UIImage(named: "user"))
+ 
+        finalvcbp.user24 = User(firstname: self.FirstName!, lastname: self.LastName!, username: UsernameTextField.text!, password: self.Password!, userweight: self.UserWeight!, hometown: self.Hometown!, userheightinches: self.UserHeightInches!, userheightfeet: self.UserHeightFeet!, position: self.Position!, profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
         
         let navh = barViewControllers.viewControllers![0] as! navhome
         
         let finalvch = navh.topViewController as! Homeviewcontroller
         
-        finalvch.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A", profilepic: UIImage(named: "user"))
+        finalvch.user24 = User(firstname: self.FirstName!, lastname: self.LastName!, username: UsernameTextField.text!, password: self.Password!, userweight: self.UserWeight!, hometown: self.Hometown!, userheightinches: self.UserHeightInches!, userheightfeet: self.UserHeightFeet!, position: self.Position!, profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
         
         let navs = barViewControllers.viewControllers![1] as! navsearch
         
         let finalvcs = navs.topViewController as! Searchviewcontroller
         
-        finalvcs.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A", profilepic: UIImage(named: "user"))
+        finalvcs.user24 = User(firstname: self.FirstName!, lastname: self.LastName!, username: UsernameTextField.text!, password: self.Password!, userweight: self.UserWeight!, hometown: self.Hometown!, userheightinches: self.UserHeightInches!, userheightfeet: self.UserHeightFeet!, position: self.Position!, profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
         
         
         let navac = barViewControllers.viewControllers![2] as! navaddcourt
         
         let finalvcac = navac.topViewController as! Tabnewcourtviewcontroller
         
-        finalvcac.user24 = User(firstname: "N/A", lastname: "N/A", username: UsernameTextField.text!, password: PasswordTextField.text!, userweight: "N/A", hometown: "N/A", userheightinches: "N/A", userheightfeet: "N/A", position: "N/A", profilepic: UIImage(named: "user"))
+        finalvcac.user24 = User(firstname: self.FirstName!, lastname: self.LastName!, username: UsernameTextField.text!, password: self.Password!, userweight: self.UserWeight!, hometown: self.Hometown!, userheightinches: self.UserHeightInches!, userheightfeet: self.UserHeightFeet!, position: self.Position!, profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
         
     }
     
@@ -115,7 +149,6 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         //when done editing, updates save button state
         updateLoginButtonState()
-        //navigationItem.title = textField.text
     }
     
     
@@ -124,15 +157,26 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
 
     private func updateLoginButtonState() {
         // Disable the login button if the text field is empty.
-
+        var check = true
+        
         let usertext = UsernameTextField.text ?? ""
-        LoginButton.isEnabled = !usertext.isEmpty
+        if usertext.isEmpty{
+            check = false
+        }
         
         let passtext = PasswordTextField.text ?? ""
-        LoginButton.isEnabled = !passtext.isEmpty
+        if passtext.isEmpty{
+            check = false
+        }
+        
+        LoginButton.isEnabled = check
 
     }
     
 }
+
+
+
+
 
 

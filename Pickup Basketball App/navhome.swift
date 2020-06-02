@@ -11,7 +11,6 @@ import UIKit
 
 class navhome: UINavigationController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

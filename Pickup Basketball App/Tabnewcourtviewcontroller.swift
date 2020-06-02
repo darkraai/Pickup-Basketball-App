@@ -18,14 +18,11 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
     var locCoord: CLLocationCoordinate2D?
     var annotation : MKPointAnnotation?
         
-//    private var destinations: [MKPointAnnotation] = []
-//    private var currentRoute: MKRoute?
     @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
-        print(user24!.username)
-
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         mapView.delegate = self
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -46,12 +43,9 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
         annotation!.title = "latitude:" + String(format: "%0.02f", annotation!.coordinate.latitude) + "& longitude:" + String(format: "%0.02f", annotation!.coordinate.longitude)
         annotation!.subtitle = "Loc of new bball court"
            
-    //  self.mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(annotation!)
+        
         performSegue(withIdentifier: "new_court_segue", sender: UITapGestureRecognizer())
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Newcourtviewcontroller") as! Newcourtviewcontroller
-//        self.present(nextViewController, animated:true, completion:nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
@@ -67,15 +61,15 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
             
         }
     }
+    
+    @IBAction func unwindToTab(segue: UIStoryboardSegue) {
+        self.performSegue(withIdentifier: "unwindToMapSegue", sender: segue)
+    }
             
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
-    }
-    
-    @IBAction func unwindToTab(segue: UIStoryboardSegue) {
-        self.performSegue(withIdentifier: "unwindToMapSegue", sender: segue)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -107,16 +101,9 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
                 }
                 
                 else {
-    //                let annotations = self.mapView.annotations
-    //                self.mapView.removeAnnotation(annotations as! MKAnnotation)
                     
                     let latitude = response!.boundingRegion.center.latitude
                     let longitude = response!.boundingRegion.center.longitude
-                    
-    //                let annotation = MKPointAnnotation()
-    //                annotation.title = searchBar.text
-    //                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-    //                self.mapView.addAnnotation(annotation)
                     
                     let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
                     let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -129,7 +116,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
             }
         }
     func configureLocationServices(){
-        locationManager.delegate = self //set location manager delegate to view controller
+        locationManager.delegate = self
         
         let status  = CLLocationManager.authorizationStatus()
         if status == .notDetermined{
@@ -151,62 +138,21 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
             mapView.setRegion(zoomRegion, animated: true)
     }
         
-    private func addAnnotations(){
-//            let appleParkAnnotation = MKPointAnnotation()
-//            appleParkAnnotation.title = "Apple Park"
-//            appleParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100)
-//
-//            let ortegaParkAnnotation = MKPointAnnotation()
-//            ortegaParkAnnotation.title = "Ortega Park"
-//            ortegaParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617)
-//
-    //        destinations.append(appleParkAnnotation)
-    //        destinations.append(ortegaParkAnnotation)
-            
-//            let annotations: [MKAnnotation] = [appleParkAnnotation, ortegaParkAnnotation]
-//
-//            mapView.addAnnotations(annotations)
-            
-    }
-    
-//    private func constructRoute(userLocation: CLLocationCoordinate2D){
-//        let directionsRequest = MKDirections.Request()
-//        directionsRequest.source = MKMapItem(placemark: MKPlacemark(coordinate: userLocation))
-//        directionsRequest.destination = MKMapItem(placemark: MKPlacemark(coordinate: destinations[0].coordinate))
-//        directionsRequest.requestsAlternateRoutes = true
-//        directionsRequest.transportType = .automobile
-//
-//        let directions = MKDirections(request: directionsRequest)
-//
-//        directions.calculate { [weak self] (directionsReponse, error) in
-//            guard let strongSelf = self else { return }
-//
-//            if let error = error {
-//                print(error.localizedDescription)
-//            } else if let response = directionsReponse, response.routes.count > 0{
-//                strongSelf.currentRoute = response.routes[0]
-//
-//                strongSelf.mapView.addOverlay(response.routes[0].polyline)
-//                strongSelf.mapView.setVisibleMapRect(response.routes[0].polyline.boundingMapRect, animated: true)
-//            }
-//        }
-//    }
- 
 }
  
 extension Tabnewcourtviewcontroller: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let latestLocation = locations.first else { return }
+       
         if currentCoordinate == nil {
             zoomToLatestLocation(with: latestLocation.coordinate)
-            addAnnotations()
-//            constructRoute(userLocation: latestLocation.coordinate)
         }
+        
         currentCoordinate = latestLocation.coordinate
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("Authorization status changed!")
+
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             beginLocationUpdates(locationManager: manager)
         }
@@ -215,17 +161,6 @@ extension Tabnewcourtviewcontroller: CLLocationManagerDelegate {
  
 extension Tabnewcourtviewcontroller: MKMapViewDelegate {
     
-//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//        guard let currentRoute = currentRoute else {
-//            return MKOverlayRenderer()
-//        }
-//        let polyLineRenderer = MKPolylineRenderer(polyline: currentRoute.polyline)
-//        polyLineRenderer.strokeColor = UIColor.blue
-//        polyLineRenderer.lineWidth = 5
-//
-//        return polyLineRenderer
-//    }
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
         if annotationView == nil {
@@ -233,7 +168,7 @@ extension Tabnewcourtviewcontroller: MKMapViewDelegate {
         }
         
         
-        if annotation === mapView.userLocation{ //if the annotation passed in to the function is an instance (has the identity of:) the user location, then we render the user image
+        if annotation === mapView.userLocation{
             annotationView?.image = UIImage(named: "user")
         } else if (annotation.title) != nil{
             annotationView?.image = UIImage(named: "slimyBall")
@@ -244,7 +179,7 @@ extension Tabnewcourtviewcontroller: MKMapViewDelegate {
         return annotationView
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("The annotation was selected: \(String(describing: view.annotation?.title))")
+        
     }
     
 }

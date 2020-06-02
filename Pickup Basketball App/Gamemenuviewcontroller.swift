@@ -34,19 +34,10 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     
     @IBAction func creategamepressed(_ sender: Any) {
-        if user24?.hometown != "N/A"{
-            performSegue(withIdentifier: "create_game_segue", sender: self)
-        }
-        else{
-            print("Sorry you got to go the long (registration) way")
-        }
+        performSegue(withIdentifier: "create_game_segue", sender: self)
     }
     
     var todaysdate = ""
-    
-    
-    
-
     
     lazy var alltimeslots:[Game] = []
     lazy var currenttimeslots:[Game] = []
@@ -144,15 +135,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             cell.setGame(game: currenttimeslots[indexPath.row])
             cell.delegate = self
             
-//            chosengameid = currenttimeslots[indexPath.row].timeslot + currenttimeslots[indexPath.row].gametype! + currenttimeslots[indexPath.row].creator!
-//            for x in chosencourt.game!{
-//                if(x.gameid == chosengameid!){
-//                    chosengame = x
-//                    print("success")
-//                    print(chosengameid!)
-//                    print(x.gameid)
-//                }
-//            }
         }
 
         return cell
@@ -166,22 +148,10 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         true
     }
     
-
-    
-    
     
     @objc func buttonAction(sender: UIButton!) {
-//        if (sender.currentTitle == "Join" && dateTextField.text != ""){
-//               if user24!.hometown != "N/A"{
-//                
-//                   performSegue(withIdentifier: "join_game_segue", sender: self)
-//               }
-//               else{
-//                   print("Sorry you got to go the long (registration) way")
-//               }
-//            }
-          
-        }
+
+    }
     
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
     
@@ -201,7 +171,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         gamemenutableview.reloadData()
-
     }
     
     @objc private func donePressed(){
@@ -218,6 +187,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         gamemenutableview.reloadData()
         //add for to do this
         for x in alltimeslots{
+            
             if(x.date! == dateTextField.text!){
                 currenttimeslots.append(x)
             }
@@ -225,14 +195,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
         gamemenutableview.reloadData()
 
-
     }
     
-
-    
-
-
-   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destinationViewController = segue.destination
@@ -285,16 +249,13 @@ extension Gamemenuviewcontroller: delegate{
         chosenteam1.removeAll()
         chosenteam2.removeAll()
 
-            for x in team1{
+            for x in team1 {
                 chosenteam1.append(x)
             }
             
-            for z in team2{
+            for z in team2 {
                 chosenteam2.append(z)
             }
-        
-        
-        
 
         performSegue(withIdentifier: "join_game_segue", sender: nil)
     }

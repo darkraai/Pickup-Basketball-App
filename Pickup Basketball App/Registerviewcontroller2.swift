@@ -17,6 +17,8 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     
     var ref: DatabaseReference!
     
+    var metaImageURL: String? //url of image uploaded to firebase storage
+    
     //@IBOutlet weak var userheightf: UITextField!
     @IBOutlet weak var userweight: UITextField!
     @IBOutlet weak var userhometown: UITextField!
@@ -96,12 +98,12 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
             ref = Database.database().reference()
-            // Do any additional setup after loading the view.
-            //text fields
+  
             userweight.delegate = self
             userhometown.delegate = self
-            //pickers
+  
             self.pickerviewheight.delegate = self
             self.pickerviewheight.dataSource = self
             self.pickerviewheight2.delegate = self
@@ -135,21 +137,19 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         
         storageProfileRef.putData(imageData, metadata: metadata, completion:
             {(storageMetaData, error) in
-            if error != nil{
-                print(error?.localizedDescription)
-                return
-            }
-            storageProfileRef.downloadURL(completion: {(url, error) in
-                if let metaImageURL = url?.absoluteString{
-                    print(metaImageURL)
-                    
-                    self.ref.child("Users").child(self.uname!).setValue(["firstname":self.fname!, "lastname":self.lname!, "password":self.pword!,"weight":self.userweight.text!, "hometown":self.userhometown.text!,"heightfeet":self.heightinfeet!,"heightinches":self.heightininches!,"position":self.positions2!, "username":self.uname!, "pfp":metaImageURL])
-                }
+            
+                storageProfileRef.downloadURL(completion: {(url, error) in
+                
+                    if let metaImageURL = url?.absoluteString{
+                        self.metaImageURL = metaImageURL
+                        self.ref.child("Users").child(self.uname!).setValue(["firstname":self.fname!, "lastname":self.lname!, "password":self.pword!,"weight":self.userweight.text!, "hometown":self.userhometown.text!,"heightfeet":self.heightinfeet!,"heightinches":self.heightininches!,"position":self.positions2!, "username":self.uname!, "pfp":self.metaImageURL])
+                    }
+                
+                })
             })
-        })
         
 
-        finalvcbp.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
+        finalvcbp.user24 = User(firstname: self.fname!, lastname: self.lname!, username: self.uname!, password: self.pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14, pfplink: self.metaImageURL)
 
         
         let navh = barViewControllers.viewControllers![0] as! navhome
@@ -157,20 +157,20 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         let finalvch = navh.topViewController as! Homeviewcontroller
         
         
-        finalvch.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
+        finalvch.user24 = User(firstname: self.fname!, lastname: self.lname!, username: self.uname!, password: self.pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14, pfplink: self.metaImageURL)
         
         let navs = barViewControllers.viewControllers![1] as! navsearch
         
         let finalvcs = navs.topViewController as! Searchviewcontroller
         
-        finalvcs.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
+        finalvcs.user24 = User(firstname: self.fname!, lastname: self.lname!, username: self.uname!, password: self.pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14, pfplink: self.metaImageURL)
         
         
         let navac = barViewControllers.viewControllers![2] as! navaddcourt
         
         let finalvcac = navac.topViewController as! Tabnewcourtviewcontroller
         
-        finalvcac.user24 = User(firstname: fname!, lastname: lname!, username: uname!, password: pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14)
+        finalvcac.user24 = User(firstname: self.fname!, lastname: self.lname!, username: self.uname!, password: self.pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14, pfplink: self.metaImageURL)
         
 
     }
@@ -192,7 +192,6 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         func textFieldDidEndEditing(_ textField: UITextField) {
             //when done editing, updates save button state
             updateDoneButtonState2()
-            //navigationItem.title = textField.text
         }
         
         private func updateDoneButtonState2() {
@@ -207,8 +206,8 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
                 
                 registerdone.isEnabled = true
             
-
             }
-    }
+        
+        }
         
 }

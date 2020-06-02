@@ -179,7 +179,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(user24!.username)
         gameModePicker.delegate = self
         gameModePicker.dataSource = self
         timeTextField.delegate = self
@@ -246,7 +245,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
             let alert = UIAlertController(title: "Error", message: "Sorry, All courts are already booked for this time slot", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            print("too many games")
         }
 
     }

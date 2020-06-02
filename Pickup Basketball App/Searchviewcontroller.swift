@@ -13,10 +13,14 @@ import os.log
 
 class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
+    //MARK: Properties
+    
+    var user24:User?
     
     var users = [User]()
     var currentUsers = [User]()
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var firstNameData: [String] = ["Surya", "Benjamin", "Pranav", "Aryan"]
     var lastNameData: [String] = ["Mamidyala", "Svoboda", "Addepalli", "Awal"]
@@ -30,19 +34,18 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     var counter = 0
     
     override func viewDidLoad() {
-//        print(user24!.username)
         super.viewDidLoad()
+        
         loadSampleUsers()
         currentUsers = users
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
         searchController = UISearchController(searchResultsController: nil)
-        
         searchController.searchResultsUpdater = self
-        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        
         navigationItem.titleView = searchController.searchBar
         searchController.searchBar.delegate = self
         
@@ -51,7 +54,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     
     func loadSampleUsers(){
         for index in 0..<firstNameData.count {
-            guard let user = User(firstname: firstNameData[index], lastname: lastNameData[index], username: usernameData[index], password: "password", userweight: "100", hometown: "Ashburn", userheightinches: "0", userheightfeet: "6", position: "PG", profilepic: imageData[index]) else{
+            guard let user = User(firstname: firstNameData[index], lastname: lastNameData[index], username: usernameData[index], password: "password", userweight: "100", hometown: "Ashburn", userheightinches: "0", userheightfeet: "6", position: "PG", profilepic: imageData[index], pfplink: "N/A") else{
                 fatalError("Unable to instantiate user")
             }
             nameData.append(user.fullname)
@@ -87,11 +90,6 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     }
      
     
-    //MARK: Properties
-    var user24:User?
-
-
-    
     func filterCurrentDataSource (searchTerm: String) {
         if searchTerm.count > 0 {
             currentUsers = users
@@ -101,10 +99,10 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
             for name in nameData{
                 if filteredResults.contains(name){
                     boolFilter.append(true)
-                    print("Filtered Results contains: \(name)")
+//                    print("Filtered Results contains: \(name)")
                 } else{
                     boolFilter.append(false)
-                    print("Filtered Results doesn't contain: \(name)")
+//                    print("Filtered Results doesn't contain: \(name)")
                 }
             }
             counter = 0

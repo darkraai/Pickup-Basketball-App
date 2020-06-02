@@ -7,7 +7,6 @@
 //
 import UIKit
 import os.log
-import FirebaseDatabase
 
 
 class RegisterViewController: UIViewController,UITextFieldDelegate {
@@ -16,22 +15,17 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     
     //MARK: Properties
     
-    var ref: DatabaseReference!
-    
     @IBOutlet weak var userfirstname: UITextField!
     @IBOutlet weak var userlastname: UITextField!
     @IBOutlet weak var userusername: UITextField!
     @IBOutlet weak var userpassword: UITextField!
     @IBOutlet weak var registernext: UIBarButtonItem!
     
-
-
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
-        // Do any additional setup after loading the view.
+
         userfirstname.delegate = self
         userlastname.delegate = self
         userusername.delegate = self
@@ -63,10 +57,9 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
            // Hide the keyboard.
            textField.resignFirstResponder()
-           return  true
+           return true
        }
     
-    //Disables the done button while the user is editing the text field
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
         registernext.isEnabled = false
@@ -75,7 +68,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         //when done editing, updates save button state
         updateNextButtonState()
-        //navigationItem.title = textField.text
     }
     
     
