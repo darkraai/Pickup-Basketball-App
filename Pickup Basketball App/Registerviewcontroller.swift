@@ -19,6 +19,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var userlastname: UITextField!
     @IBOutlet weak var userusername: UITextField!
     @IBOutlet weak var userpassword: UITextField!
+    @IBOutlet weak var userreenterpassword: UITextField!
     @IBOutlet weak var registernext: UIBarButtonItem!
     
     
@@ -30,14 +31,26 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         userlastname.delegate = self
         userusername.delegate = self
         userpassword.delegate = self
+        userreenterpassword.delegate = self
         
         updateNextButtonState()
     }
     
-
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if(userreenterpassword.text! != userpassword.text){
+            let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    return false
+                }
+        return true
+        
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
         let destinationViewController = segue.destination
         
         if let MainVC = destinationViewController as? RegisterViewController2{
@@ -99,6 +112,11 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
             check = false
         }
         
+        let userreentertext = userreenterpassword.text ?? ""
+        if userreentertext.isEmpty{
+            check = false
+        }
+        
         if (!usernametext.isEmpty){
             let charset = CharacterSet(charactersIn: ".#$[]")
             if usernametext.rangeOfCharacter(from: charset) != nil{
@@ -106,6 +124,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
                 presentAlert()
             }
         }
+        
+
+        
+    
         
         registernext.isEnabled = check
         

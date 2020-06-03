@@ -20,8 +20,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     var ref: DatabaseReference!
     
     //textfields initialization
-    @IBOutlet weak var editusername: UITextField!
     @IBOutlet weak var editpassword: UITextField!
+    @IBOutlet weak var editpasswordre: UITextField!
     @IBOutlet weak var editfirst: UITextField!
     @IBOutlet weak var editlast: UITextField!
     @IBOutlet weak var editweight: UITextField!
@@ -104,8 +104,11 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         
         ref = Database.database().reference()
         
-        editusername.text = user24?.username
+        editpassword.isSecureTextEntry = true
+        editpasswordre.isSecureTextEntry = true
+        
         editpassword.text = user24?.password
+        editpasswordre.text = user24?.password
         editfirst.text = user24?.firstname
         editlast.text = user24?.lastname
         editweight.text = user24?.userweight
@@ -113,8 +116,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         pfpimageview.image = user24?.profilepic
         
         //text field delegates
-        editusername.delegate = self
         editpassword.delegate = self
+        editpasswordre.delegate = self
         editfirst.delegate = self
         editlast.delegate = self
         editweight.delegate = self
@@ -187,6 +190,17 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         //when done editing, updates save button state
         updateDoneButtonState3()
     }
+
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if(editpassword.text! != editpasswordre.text){
+            let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    return false
+                }
+        return true
+    }
     
 
     
@@ -240,11 +254,11 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         let destinationViewController = segue.destination as! BallerProfile
         
         if (self.metaImageURL == nil){
-            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.user24?.pfplink)
+            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: user24!.username, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.user24?.pfplink)
             
             self.ref.child("Users").child(self.user24!.username).setValue(["firstname":editfirst.text!, "lastname":editlast.text!, "password":editpassword.text!,"weight":editweight.text!, "hometown":edithometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":self.user24?.username, "pfp":self.user24?.pfplink])
         } else{
-            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: editusername.text!, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.metaImageURL)
+            destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: user24!.username, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.metaImageURL)
             
             self.ref.child("Users").child(self.user24!.username).setValue(["firstname":editfirst.text!, "lastname":editlast.text!, "password":editpassword.text!,"weight":editweight.text!, "hometown":edithometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":self.user24?.username, "pfp":self.metaImageURL])
         }
@@ -257,7 +271,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         //closes keyboards for text fields
-        editusername.resignFirstResponder()
+        editpasswordre.resignFirstResponder()
         editpassword.resignFirstResponder()
         editfirst.resignFirstResponder()
         editlast.resignFirstResponder()
@@ -283,7 +297,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func selectImageFromPhotoLibrary2(_ sender: UITapGestureRecognizer) {
         //closes keyboards for text fields
-        editusername.resignFirstResponder()
+        editpasswordre.resignFirstResponder()
         editpassword.resignFirstResponder()
         editfirst.resignFirstResponder()
         editlast.resignFirstResponder()
@@ -314,7 +328,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
             
         let userlasttext = editlast.text ?? ""
             
-        let usernametext = editusername.text ?? ""
+        let usernametext = editpasswordre.text ?? ""
             
         let userpasswordtext = editpassword.text ?? ""
             
@@ -330,7 +344,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         
 }
 
-    
+
 
 
 
