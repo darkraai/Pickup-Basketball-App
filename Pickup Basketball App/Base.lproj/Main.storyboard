@@ -1253,7 +1253,7 @@
                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="LoginTapped:" destination="AIn-h6-WXl" eventType="touchUpInside" id="JQd-wc-j3u"/>
+                                    <action selector="LoginTapped:" destination="AIn-h6-WXl" eventType="touchUpInside" id="o7I-Tp-ab6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2176,7 +2176,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mqI-p8-gv1"/>
-        <segue reference="72R-9Y-AX5"/>
+        <segue reference="Zrs-uK-FMh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Oval" width="248.5" height="81"/>

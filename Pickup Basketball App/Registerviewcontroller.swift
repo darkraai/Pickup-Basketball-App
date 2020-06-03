@@ -56,7 +56,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         if let MainVC = destinationViewController as? RegisterViewController2{
             MainVC.fname = userfirstname.text
             MainVC.lname = userlastname.text
-            MainVC.uname = userusername.text
+            MainVC.uname = userusername.text!.lowercased()
             MainVC.pword = userpassword.text
             let backItem = UIBarButtonItem()
             backItem.title = "Back"

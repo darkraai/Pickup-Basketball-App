@@ -47,7 +47,7 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func LoginTapped(_ sender: Any) {
-        let user = UsernameTextField.text!
+        let user = UsernameTextField.text!.lowercased()
         let pass = PasswordTextField.text!
         
         ref.child("Users").queryOrdered(byChild: "username").queryStarting(atValue: user).queryEnding(atValue: user + "\u{f8ff}").observeSingleEvent(of: .value, with: { (snapshot) in
