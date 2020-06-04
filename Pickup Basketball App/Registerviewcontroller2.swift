@@ -100,7 +100,9 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             super.viewDidLoad()
             
             ref = Database.database().reference()
-  
+            
+            
+            
             userweight.delegate = self
             userhometown.delegate = self
   

@@ -9,8 +9,12 @@
  
 import UIKit
 import MapKit
+import FirebaseDatabase
+
  
 class Homeviewcontroller: UIViewController, UISearchBarDelegate {
+    
+    var ref:DatabaseReference?
     
     var user24:User?
     
@@ -21,6 +25,8 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     var annotation: MKPointAnnotation?
     
     let locationManager = CLLocationManager()
+    
+    var courtslist = [Court]()
     
     //Users that will be loaded in irl
     var userayush = User(firstname: "Ayush", lastname: "Hariharan", username: "ayushluvshali", password: "fjwei", userweight: "160", hometown: "boo", userheightinches: "9", userheightfeet: "5", position: "SG", profilepic: UIImage(named: "ayush")!, pfplink: "N/A")
@@ -35,7 +41,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     //these parks will be loaded in IRL
     lazy var applepark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100), parkname: "Apple Park", numcourts: 2, Address: "Pleasantview Avenue", indoor: false, membership: false, game: [Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 19, 2020")!,Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 20, 2020")!,Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!], team2: [userben!],date: "May 20, 2020")!,Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!], team2: [userben!,userbik!],date: "May 20, 2020")!])
     
-    lazy var ortegapark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617), parkname: "Ortega Park", numcourts: 2, Address: "Mexi Avenue", indoor: false, membership: true, game: [Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 23, 2020")!,Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 23, 2020")!,Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!], team2: [useryash!],date: "May 24, 2020")!,Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [usersurya!,useryash!], team2: [userbik!,userxan!],date: "May 24, 2020")!])
+    lazy var ortegapark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617), parkname: "Ortega Park", numcourts: 2, Address: "West Avenue", indoor: false, membership: true, game: [Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 23, 2020")!,Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 23, 2020")!,Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!], team2: [useryash!],date: "May 24, 2020")!,Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [usersurya!,useryash!], team2: [userbik!,userxan!],date: "May 24, 2020")!])
     
     //courts will be loaded in automatically irl
     lazy var allcourts:[Court] = [applepark!,ortegapark!]
@@ -45,6 +51,8 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadcourts()
+
         mapView.delegate = self
         
         configureLocationServices()
@@ -128,6 +136,31 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
             beginLocationUpdates(locationManager: locationManager)
         }
         
+    }
+    
+    func loadcourts(){
+        ref = Database.database().reference().child("Parks")
+        
+        
+        ref?.observe(DataEventType.value, with: {(snapshot) in
+            if snapshot.childrenCount > 0{
+                self.courtslist.removeAll()
+                for courts in snapshot.children.allObjects as![DataSnapshot]{
+                    let courtobject = courts.value as? [String:AnyObject]
+                    let parkname = courtobject?["parkname"]
+                    let lat = courtobject?["coordinateslat"]
+                    let long = courtobject?["coordinateslong"]
+                    print(long!)
+                let annotation = MKPointAnnotation()
+                    annotation.title = (parkname! as! String)
+                    annotation.coordinate = CLLocationCoordinate2DMake(lat as! CLLocationDegrees,long as! CLLocationDegrees)
+                    
+                    self.mapView.addAnnotation(annotation)
+
+                }
+            }
+            
+        })
     }
     
     private func beginLocationUpdates(locationManager: CLLocationManager){

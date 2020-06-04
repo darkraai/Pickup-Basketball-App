@@ -53,6 +53,9 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
             super.prepare(for: segue, sender: sender)
             mapView.removeAnnotation(self.annotation!)
             zoomToLatestLocation(with: currentCoordinate!)
+            let MainVC = segue.destination as! Newcourtviewcontroller
+            MainVC.coordinates = locCoord
+            
         }
         else if segue.identifier == "unwindToMapSegue" {
             super.prepare(for: segue, sender: sender)

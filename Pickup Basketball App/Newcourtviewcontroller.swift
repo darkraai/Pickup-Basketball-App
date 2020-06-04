@@ -8,8 +8,10 @@
  
 import UIKit
 import MapKit
- 
- 
+import FirebaseDatabase
+import Firebase
+
+
 class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
     
     //MARK: Properties
@@ -20,6 +22,10 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var membershipSwitch: UISwitch!
     @IBOutlet weak var startHoopingButton: UIButton!
     
+    
+    var ref:DatabaseReference!
+
+    var coordinates:CLLocationCoordinate2D?
     var parkName = ""
     var numCourts = ""
     var address = ""
@@ -28,6 +34,7 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         parkNameTextField.delegate = self
         numCourtsTextField.delegate = self
         addressTextField.delegate = self
@@ -76,9 +83,10 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
             membershipSelected = false
         }
     }
-    
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        self.ref.child("Parks").childByAutoId().setValue(["coordinateslat": coordinates!.latitude,"coordinateslong":coordinates!.longitude,"parkname":self.parkName,"numcourts":Int(self.numCourts)!, "Address":self.address, "indoor":self.indoorSelected, "membership":self.membershipSelected])
+        
         parkNameTextField.text = ""
         numCourtsTextField.text = ""
         addressTextField.text = ""
