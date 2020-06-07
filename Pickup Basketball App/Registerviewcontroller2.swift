@@ -37,7 +37,6 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     var pword: String?
     
     
-    
     var heightfeet = [" ","4","5","6","7"]
     
     var heightinches = [" ","0","1","2","3","4","5","6","7","8","9","10","11"]
@@ -131,6 +130,8 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         let image14 = UIImage(named: "user")
         let imageData = image14!.jpegData(compressionQuality: 0.4)!
         
+        let fullname = self.fname! + " " + self.lname!
+        
         let storageRef = Storage.storage().reference(forURL: "gs://pickup-basketball-app.appspot.com")
         let storageProfileRef = storageRef.child("profile").child(uname!)
         
@@ -144,7 +145,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
                 
                     if let metaImageURL = url?.absoluteString{
                         self.metaImageURL = metaImageURL
-                        self.ref.child("Users").child(self.uname!).setValue(["firstname":self.fname!, "lastname":self.lname!, "password":self.pword!,"weight":self.userweight.text!, "hometown":self.userhometown.text!,"heightfeet":self.heightinfeet!,"heightinches":self.heightininches!,"position":self.positions2!, "username":self.uname!, "pfp":self.metaImageURL])
+                        self.ref.child("Users").child(self.uname!).setValue(["firstname":self.fname!, "lastname":self.lname!, "password":self.pword!,"weight":self.userweight.text!, "hometown":self.userhometown.text!,"heightfeet":self.heightinfeet!,"heightinches":self.heightininches!,"position":self.positions2!, "username":self.uname!, "fullname":fullname, "pfp":self.metaImageURL])
                     }
                 
                 })

@@ -9,35 +9,35 @@
 
 import UIKit
 import os.log
-
+import FirebaseDatabase
+import FirebaseStorage
 
 class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Properties
     
+    var ref: DatabaseReference!
+    
     var user24:User?
     
-    var users = [User]()
     var currentUsers = [User]()
+    var tempUsernames = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     
-    var firstNameData: [String] = ["Surya", "Benjamin", "Pranav", "Aryan"]
-    var lastNameData: [String] = ["Mamidyala", "Svoboda", "Addepalli", "Awal"]
-    var usernameData: [String] = ["suryam", "bensvo", "pranavaddy", "awaldasnipa"]
-    var imageData: [UIImage] = [UIImage(named: "surya")!, UIImage(named: "ben")!, UIImage(named: "pranav")!, UIImage(named: "aryan")!]
-    var nameData: [String] = []
-    var currentNameData : [String] = []
-    var currentUsernameData : [String] = []
+    var FullName:String?
+    var FirstName:String?
+    var LastName:String?
+    var UserName: String?
+    var ProfilePic:UIImage?
+    var PFPLink:String?
+    
     var searchController : UISearchController!
-    var boolFilter : [Bool] = []
-    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadSampleUsers()
-        currentUsers = users
+        ref = Database.database().reference()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -50,16 +50,6 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
         searchController.searchBar.delegate = self
         
         self.definesPresentationContext = true
-    }
-    
-    func loadSampleUsers(){
-        for index in 0..<firstNameData.count {
-            guard let user = User(firstname: firstNameData[index], lastname: lastNameData[index], username: usernameData[index], password: "password", userweight: "100", hometown: "Ashburn", userheightinches: "0", userheightfeet: "6", position: "PG", profilepic: imageData[index], pfplink: "N/A") else{
-                fatalError("Unable to instantiate user")
-            }
-            nameData.append(user.fullname)
-            users.append(user)
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,34 +82,81 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     
     func filterCurrentDataSource (searchTerm: String) {
         if searchTerm.count > 0 {
-            currentUsers = users
-
-            let filteredResults = nameData.filter { $0.replacingOccurrences(of: " ", with: "").lowercased().contains(searchTerm.replacingOccurrences(of: " ", with: "").lowercased())}
-            boolFilter.removeAll()
-            for name in nameData{
-                if filteredResults.contains(name){
-                    boolFilter.append(true)
-//                    print("Filtered Results contains: \(name)")
-                } else{
-                    boolFilter.append(false)
-//                    print("Filtered Results doesn't contain: \(name)")
+            
+            currentUsers.removeAll()
+            self.tableView.reloadData()
+            
+            let searchValue = searchTerm.replacingOccurrences(of: " ", with: "").lowercased()
+            let searchValue2 = searchTerm.lowercased()
+            
+            ref.child("Users").queryOrdered(byChild: "username").queryStarting(atValue: searchValue).queryEnding(atValue: searchValue + "\u{f8ff}").observeSingleEvent(of: .value) { (snapshot) in
+                if let snapDict = snapshot.value as? [String:AnyObject]{
+                    for each in snapDict{
+                        self.UserName = each.value["username"] as? String
+                        if (self.UserName != self.user24?.username){
+                            self.FullName = each.value["fullname"] as? String
+                            self.FirstName = self.FullName?.components(separatedBy: " ")[0]
+                            self.LastName = self.FullName?.components(separatedBy: " ")[1]
+                            self.PFPLink = each.value["pfp"] as? String
+                            
+                            let url = URL(string: self.PFPLink!)
+                            do{
+                                let data = try Data(contentsOf: url!)
+                                self.ProfilePic = UIImage(data: data)
+                            }catch _{
+                                self.ProfilePic = UIImage(named: "user")
+                                print("Error")
+                            }
+                            
+                            let user = User(firstname: self.FirstName!, lastname: self.LastName!, username: self.UserName!, password: "", userweight: "", hometown: "", userheightinches: "", userheightfeet: "", position: "", profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
+                            
+                            self.currentUsers.append(user!)
+                            
+                            self.tableView.reloadData()
+                        }
+                    }
                 }
             }
-            counter = 0
-            for (index,bool) in boolFilter.enumerated(){
-                if bool == true{
-                    continue
-                } else{
-                    currentUsers.remove(at: index + counter)
-                    counter -= 1
+            
+            ref.child("Users").queryOrdered(byChild: "fullname").queryStarting(atValue: searchValue2).queryEnding(atValue: searchValue2 + "\u{f8ff}").observeSingleEvent(of: .value) { (snapshot) in
+                if let snapDict = snapshot.value as? [String:AnyObject]{
+                    
+                    var tempUsers = [String]()
+                    for user in self.currentUsers{
+                        tempUsers.append(user.username)
+                    }
+                    for each in snapDict{
+                        self.UserName = each.value["username"] as? String
+                        if (self.UserName != self.user24?.username && !tempUsers.contains(self.UserName!)){
+                            self.FullName = each.value["fullname"] as? String
+                            self.FirstName = self.FullName?.components(separatedBy: " ")[0]
+                            self.LastName = self.FullName?.components(separatedBy: " ")[1]
+                            self.PFPLink = each.value["pfp"] as? String
+                            
+                            let url = URL(string: self.PFPLink!)
+                            do{
+                                let data = try Data(contentsOf: url!)
+                                self.ProfilePic = UIImage(data: data)
+                            }catch _{
+                                self.ProfilePic = UIImage(named: "user")
+                                print("Error")
+                            }
+                            
+                            let user = User(firstname: self.FirstName!, lastname: self.LastName!, username: self.UserName!, password: "", userweight: "", hometown: "", userheightinches: "", userheightfeet: "", position: "", profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
+                            
+                            self.currentUsers.append(user!)
+                            
+                            self.tableView.reloadData()
+                        }
+                    }
                 }
             }
-            tableView.reloadData()
+            
         }
     }
     
     func restoreCurrentDataSource() {
-        currentUsers = users
+        currentUsers.removeAll()
         tableView.reloadData()
     }
 
@@ -129,23 +166,19 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
 extension Searchviewcontroller : UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text{
-            filterCurrentDataSource(searchTerm: searchText)
-        }
     }
 }
 
 extension Searchviewcontroller : UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchController.isActive = false
-        if let searchText = searchBar.text {
+        searchController.isEditing = false
+        if let searchText = searchController.searchBar.text {
             filterCurrentDataSource(searchTerm: searchText)
         }
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
             restoreCurrentDataSource()
-        
     }
 }

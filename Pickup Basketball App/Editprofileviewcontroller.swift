@@ -256,11 +256,11 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         if (self.metaImageURL == nil){
             destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: user24!.username, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.user24?.pfplink)
             
-            self.ref.child("Users").child(self.user24!.username).setValue(["firstname":editfirst.text!, "lastname":editlast.text!, "password":editpassword.text!,"weight":editweight.text!, "hometown":edithometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":self.user24?.username, "pfp":self.user24?.pfplink])
+            self.ref.child("Users").child(self.user24!.username).setValue(["firstname":editfirst.text!, "lastname":editlast.text!,"fullname": (editfirst.text! + " " + editlast.text!).lowercased(), "password":editpassword.text!,"weight":editweight.text!, "hometown":edithometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":self.user24?.username, "pfp":self.user24?.pfplink])
         } else{
             destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: user24!.username, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.metaImageURL)
             
-            self.ref.child("Users").child(self.user24!.username).setValue(["firstname":editfirst.text!, "lastname":editlast.text!, "password":editpassword.text!,"weight":editweight.text!, "hometown":edithometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":self.user24?.username, "pfp":self.metaImageURL])
+            self.ref.child("Users").child(self.user24!.username).setValue(["firstname":editfirst.text!, "lastname":editlast.text!, "fullname": (editfirst.text! + " " + editlast.text!).lowercased(), "password":editpassword.text!,"weight":editweight.text!, "hometown":edithometown.text!,"heightfeet":heightinfeet!,"heightinches":heightininches!,"position":positions2!, "username":self.user24?.username, "pfp":self.metaImageURL])
         }
     }
     

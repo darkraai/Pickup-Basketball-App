@@ -50,7 +50,7 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
         let user = UsernameTextField.text!.lowercased()
         let pass = PasswordTextField.text!
         
-        ref.child("Users").queryOrdered(byChild: "username").queryStarting(atValue: user).queryEnding(atValue: user + "\u{f8ff}").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: user).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapDict = snapshot.value as? [String:AnyObject]{
                 for each in snapDict{
                     self.Password = each.value["password"] as? String
