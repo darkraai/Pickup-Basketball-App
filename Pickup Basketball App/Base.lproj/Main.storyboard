@@ -823,6 +823,8 @@
                     <navigationItem key="navigationItem" id="CzB-s2-C8l"/>
                     <connections>
                         <outlet property="followbutton" destination="QwN-wm-0lq" id="D8J-jk-bF3"/>
+                        <outlet property="followersNumberBtn" destination="NUW-WW-CsP" id="3Fc-7m-Fch"/>
+                        <outlet property="followingNumberBtn" destination="gSI-Mp-GIB" id="yEe-Tw-mrK"/>
                         <outlet property="fullnamelabel2" destination="htj-lv-Use" id="ehp-XJ-JjI"/>
                         <outlet property="heightlabel2" destination="3fX-fc-8r6" id="3Y2-Yd-hfu"/>
                         <outlet property="hometownlabel2" destination="Oh4-ha-Ebu" id="jTJ-rP-YpH"/>

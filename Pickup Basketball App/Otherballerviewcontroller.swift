@@ -8,12 +8,16 @@
 
 import UIKit
 import os.log
-
+import FirebaseDatabase
+import FirebaseStorage
 
 class Otherballerviewcontroller: UIViewController {
     
     
     //MARK: Properties
+    
+    var ref: DatabaseReference!
+    
     var followusername:String?
     
     //labels
@@ -22,6 +26,10 @@ class Otherballerviewcontroller: UIViewController {
     @IBOutlet weak var weightlabel2: UILabel!
     @IBOutlet weak var prefpositionlabel2: UILabel!
     @IBOutlet weak var hometownlabel2: UILabel!
+    
+    
+    @IBOutlet weak var followersNumberBtn: UIButton!
+    @IBOutlet weak var followingNumberBtn: UIButton!
     
     //image view
     @IBOutlet weak var obprofilepic: UIImageView!
@@ -36,9 +44,13 @@ class Otherballerviewcontroller: UIViewController {
     @IBAction func followpressed(_ sender: Any) {
         
         if(followbutton.titleLabel!.text! == "Following"){
+            self.ref.child("Interactions").child(self.user24!.username).child("Following").child("\(chosen1!.username)").setValue(nil)
+            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").setValue(nil)
             followbutton.setTitle("Follow", for: .normal)
         }
         else if(followbutton.titleLabel!.text! == "Follow"){
+            self.ref.child("Interactions").child(self.user24!.username).child("Following").setValue(["\(chosen1!.username)" : true])
+            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").setValue(["\(self.user24!.username)" : true])
             followbutton.setTitle("Following", for: .normal)
 
         }
@@ -48,43 +60,51 @@ class Otherballerviewcontroller: UIViewController {
         
     }
     
-    
-    //irl it will fetch the appropriate one from the database using followusername which was passed here
-    var surya = User(firstname: "Surya", lastname: "Mamidyala", username: "suryam", password: "jfowejeo", userweight: "157", hometown: "Reston", userheightinches: "10", userheightfeet: "5", position: "SF", profilepic: UIImage(named: "surya"), pfplink: "N/A")
-    var ben = User(firstname: "Ben", lastname: "Svoboda", username: "bensvo", password: "fjjwoe", userweight: "215", hometown: "Huntington", userheightinches: "3", userheightfeet: "6", position: "PF", profilepic: UIImage(named: "ben"), pfplink: "N/A")
-    var pranav = User(firstname: "Pranav", lastname: "Addepali", username: "pranavaddy", password: "SHAKTAAYYYY", userweight: "184", hometown: "Ashburn", userheightinches: "8", userheightfeet: "5", position: "C", profilepic: UIImage(named: "pranav"), pfplink: "N/A")
-    
     var chosen1:User?
+    
+    var user24:User?
     
     override func viewWillAppear(_ animated: Bool) {
         
-        if(followusername == surya!.username){
-            chosen1 = surya
-
-        }
-        
-        if(followusername == ben!.username){
-            chosen1 = ben
-
-        }
-        
-        if(followusername == pranav!.username){
-            chosen1 = pranav
-        }
+        ref = Database.database().reference()
         
         //now chosen1 is the selected cell
         if(chosen1!.hometown == "N/A"){
             fatalError("users in followers/following aren't properly configured")
         }
         
-        fullnamelabel2.text = chosen1!.firstname + " " + chosen1!.lastname
+        fullnamelabel2.text = chosen1!.firstname.capitalizingFirstLetter() + " " + chosen1!.lastname.capitalizingFirstLetter()
         obprofilepic.image = chosen1?.profilepic
         heightlabel2.text = chosen1!.userheightfeet + " ' " + chosen1!.userheightinches + " \" "
         weightlabel2.text = chosen1!.userweight
         prefpositionlabel2.text = chosen1!.position
         hometownlabel2.text = chosen1!.hometown
         
+        ref.child("Interactions").child(self.chosen1!.username).child("Following").observeSingleEvent(of: .value) { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                self.followingNumberBtn.setTitle("\(snapshots.count) Following", for: .normal)
+            } else {
+                self.followingNumberBtn.setTitle("0 Following", for: .normal)
+            }
+        }
         
+        ref.child("Interactions").child(self.chosen1!.username).child("Followers").observeSingleEvent(of: .value) { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                self.followersNumberBtn.setTitle("\(snapshots.count) Followers", for: .normal)
+                
+                let value = snapshot.value as? [String:AnyObject]
+                let followers = value?.keys
+                
+                if (followers?.contains(self.user24!.username)) != nil{
+                    self.followbutton.setTitle("Following", for: .normal)
+                } else {
+                    self.followbutton.setTitle("Follow", for: .normal)
+                }
+                
+            }else {
+                self.followersNumberBtn.setTitle("0 Followers", for: .normal)
+            }
+        }
         
         self.obprofilepic.layer.cornerRadius = self.obprofilepic.frame.size.width / 2;
         self.obprofilepic.clipsToBounds = true;
@@ -93,8 +113,21 @@ class Otherballerviewcontroller: UIViewController {
                 
     }
     
+    override func viewDidLoad() {
+    }
+    
     
 
     
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }
 

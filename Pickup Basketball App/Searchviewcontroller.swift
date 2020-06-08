@@ -19,6 +19,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     var ref: DatabaseReference!
     
     var user24:User?
+    var userSelected:User?
     
     var currentUsers = [User]()
     var tempUsernames = [String]()
@@ -32,7 +33,13 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     var ProfilePic:UIImage?
     var PFPLink:String?
     
+    
     var searchController : UISearchController!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        currentUsers.removeAll()
+        self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +57,15 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
         searchController.searchBar.delegate = self
         
         self.definesPresentationContext = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination
+        
+        if let vc = destinationViewController as? Otherballerviewcontroller{
+            vc.chosen1 = self.userSelected
+            vc.user24 = user24
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,11 +88,22 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alertController = UIAlertController(title: "Selection", message: "Selected: \(currentUsers[indexPath.row].fullname)", preferredStyle: .alert)
         searchController.isActive = false
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
+        let usernameSelected = currentUsers[indexPath.row].username
+        ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: usernameSelected).observeSingleEvent(of: .value) { (snapshot) in
+            if let snapDict = snapshot.value as? [String:AnyObject]{
+                for each in snapDict{
+                    self.currentUsers[indexPath.row].hometown = (each.value["hometown"] as? String)!
+                    self.currentUsers[indexPath.row].position = (each.value["position"] as? String)!
+                    self.currentUsers[indexPath.row].userweight = (each.value["weight"] as? String)!
+                    self.currentUsers[indexPath.row].userheightfeet = (each.value["heightfeet"] as? String)!
+                    self.currentUsers[indexPath.row].userheightinches = (each.value["heightinches"] as? String)!
+                    self.userSelected = self.currentUsers[indexPath.row]
+                    self.performSegue(withIdentifier: "search_ballerinfo_segue", sender: self)
+                }
+            }
+        }
+        
     }
      
     
