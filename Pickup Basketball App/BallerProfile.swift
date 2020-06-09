@@ -8,6 +8,8 @@
 
 import UIKit
 import os.log
+import FirebaseDatabase
+import FirebaseStorage
 
 
 class BallerProfile: UIViewController {
@@ -22,20 +24,21 @@ class BallerProfile: UIViewController {
     //edit button
     @IBOutlet weak var editprofbutton: UIButton!
     @IBOutlet weak var bpprofilepic: UIImageView!
+    @IBOutlet weak var followersBtn: UIButton!
+    @IBOutlet weak var followingBtn: UIButton!
     
     
     @IBOutlet weak var navtitle: UINavigationItem!
     
     var user24:User?
+    
+    var ref: DatabaseReference!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-
-        
-
+        ref = Database.database().reference()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +58,21 @@ class BallerProfile: UIViewController {
         fullnamelabel.text = user24!.firstname + " " + user24!.lastname
         bpprofilepic.image = user24?.profilepic
         
+        ref.child("Interactions").child(self.user24!.username).child("Following").observeSingleEvent(of: .value) { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                self.followingBtn.setTitle("\(snapshots.count) Following", for: .normal)
+            } else {
+                self.followingBtn.setTitle("0 Following", for: .normal)
+            }
+        }
+        
+        ref.child("Interactions").child(self.user24!.username).child("Followers").observeSingleEvent(of: .value) { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                self.followersBtn.setTitle("\(snapshots.count) Followers", for: .normal)
+            }else {
+                self.followersBtn.setTitle("0 Followers", for: .normal)
+            }
+        }
         
         self.bpprofilepic.layer.cornerRadius = self.bpprofilepic.frame.size.width / 2;
         self.bpprofilepic.clipsToBounds = true;
@@ -69,6 +87,14 @@ class BallerProfile: UIViewController {
     @IBAction func unwindtobp(_ sender: UIStoryboardSegue) {
     }
     
+    @IBAction func followersBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "bptofollowers", sender: self)
+    }
+    
+    @IBAction func followingBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "bptofollowing", sender: self)
+    }
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "bptoeditbp"){
@@ -97,7 +123,7 @@ class BallerProfile: UIViewController {
                     
             }
         }
-        
+            
 
         
     }

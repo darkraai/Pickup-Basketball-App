@@ -691,11 +691,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="149" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="X Followers"/>
+                                        <connections>
+                                            <action selector="followerBtnPressed:" destination="zhe-k3-abk" eventType="touchUpInside" id="XC1-R1-ud9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSI-Mp-GIB">
                                         <rect key="frame" x="219" y="0.0" width="148" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Y Following"/>
+                                        <connections>
+                                            <action selector="followingBtnPressed:" destination="zhe-k3-abk" eventType="touchUpInside" id="sQ1-ez-uut"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -918,6 +924,7 @@
                     <navigationItem key="navigationItem" title="Followers" id="5MO-td-2yJ"/>
                     <connections>
                         <outlet property="FollowersTableView" destination="qSE-bt-Xwe" id="iVo-Eu-e9m"/>
+                        <segue destination="zhe-k3-abk" kind="show" identifier="followers_ballerinfo_segue" id="c5a-dx-0zF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCt-oW-pqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1095,7 +1102,7 @@
         <!--Followingviewcontroller-->
         <scene sceneID="hZe-1m-d1e">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="43n-54-RN2" userLabel="Followingviewcontroller" customClass="Followingviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Followingviewcontroller" modalPresentationStyle="fullScreen" id="43n-54-RN2" userLabel="Followingviewcontroller" customClass="Followingviewcontroller" customModule="Pickup_Basketball_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AbY-Ar-Byh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1167,6 +1174,7 @@
                     <navigationItem key="navigationItem" title="Following" id="x2U-CR-nTE"/>
                     <connections>
                         <outlet property="FollowingTableView" destination="p0f-OU-uCo" id="aU9-oD-u6h"/>
+                        <segue destination="zhe-k3-abk" kind="show" identifier="following_ballerinfo_segue" id="7IX-or-AKa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l11-Kn-UHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1851,7 +1859,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="X Followers"/>
                                         <connections>
-                                            <segue destination="P2U-dl-QLr" kind="show" identifier="bptofollowers" id="Nqs-dx-hgN"/>
+                                            <action selector="followersBtnPressed:" destination="0fP-H0-n8r" eventType="touchUpInside" id="Bd6-xV-17W"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvl-9C-Kfa">
@@ -1859,7 +1867,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Y Following"/>
                                         <connections>
-                                            <segue destination="43n-54-RN2" kind="show" identifier="bptofollowing" id="FjR-5s-VmW"/>
+                                            <action selector="followingBtnPressed:" destination="0fP-H0-n8r" eventType="touchUpInside" id="SSh-Hq-O1S"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1916,12 +1924,16 @@
                     <connections>
                         <outlet property="bpprofilepic" destination="DQX-t2-7jB" id="Ap8-id-Eky"/>
                         <outlet property="editprofbutton" destination="cbs-Ii-khy" id="Y9H-e0-GQr"/>
+                        <outlet property="followersBtn" destination="6WM-fN-tNN" id="ODd-aA-rgR"/>
+                        <outlet property="followingBtn" destination="vvl-9C-Kfa" id="4mP-kf-52h"/>
                         <outlet property="fullnamelabel" destination="ACz-Ps-BfY" id="BN5-A8-M47"/>
                         <outlet property="heightlabel" destination="PJF-Da-A3O" id="tp5-TJ-7r3"/>
                         <outlet property="hometownlabel" destination="brh-LY-Lba" id="7Fr-wh-sjI"/>
                         <outlet property="navtitle" destination="qkP-vT-Mqa" id="cUS-5p-gxX"/>
                         <outlet property="prefpositionlabel" destination="56u-qw-8ki" id="EmV-wx-eah"/>
                         <outlet property="weightlabel" destination="zaf-5k-q0b" id="BvG-VD-K4J"/>
+                        <segue destination="P2U-dl-QLr" kind="show" identifier="bptofollowers" id="HB9-n3-iTB"/>
+                        <segue destination="43n-54-RN2" kind="show" identifier="bptofollowing" id="M4a-MK-T1f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEE-WP-dbS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2179,6 +2191,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="mqI-p8-gv1"/>
         <segue reference="Zrs-uK-FMh"/>
+        <segue reference="7IX-or-AKa"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Oval" width="248.5" height="81"/>

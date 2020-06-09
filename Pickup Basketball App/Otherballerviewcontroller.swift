@@ -60,6 +60,21 @@ class Otherballerviewcontroller: UIViewController {
         
     }
     
+    @IBAction func followerBtnPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "Followersviewcontroller") as Followersviewcontroller
+        vc.user24 = self.chosen1
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func followingBtnPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "Followingviewcontroller") as Followingviewcontroller
+        vc.user24 = self.chosen1
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     var chosen1:User?
     
     var user24:User?

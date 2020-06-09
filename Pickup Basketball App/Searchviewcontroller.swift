@@ -76,7 +76,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchTableViewCell", for: indexPath) as! searchTableViewCell
         let user = currentUsers[indexPath.row]
         cell.nameLabel.text = user.fullname
-        cell.usernameLabel.text = user.username
+        cell.usernameLabel.text = "@" + user.username
         cell.userImage.image = user.profilepic
         cell.userImage.layer.cornerRadius = (cell.userImage.frame.size.width)/2;
         cell.userImage.clipsToBounds = true;
@@ -121,7 +121,8 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
                     for each in snapDict{
                         self.UserName = each.value["username"] as? String
                         if (self.UserName != self.user24?.username){
-                            self.FullName = each.value["fullname"] as? String
+                            let fullNameArr = (each.value["fullname"] as? String)?.components(separatedBy: " ")
+                            self.FullName = fullNameArr![0].capitalizingFirstLetter() + " " + fullNameArr![1].capitalizingFirstLetter()
                             self.FirstName = self.FullName?.components(separatedBy: " ")[0]
                             self.LastName = self.FullName?.components(separatedBy: " ")[1]
                             self.PFPLink = each.value["pfp"] as? String
@@ -209,3 +210,4 @@ extension Searchviewcontroller : UISearchBarDelegate {
             restoreCurrentDataSource()
     }
 }
+
