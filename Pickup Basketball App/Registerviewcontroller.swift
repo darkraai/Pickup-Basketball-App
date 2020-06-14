@@ -110,8 +110,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         let usernametext = userusername.text ?? ""
         if usernametext.isEmpty{
             check = false
-        } else if usernametext.count > 30 || usernametext.count < 8 || (usernametext != usernametext.lowercased()){
-            let alert = UIAlertController(title: "Error", message: "Your username must be LOWERCASED and between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+        } else if usernametext.count > 30{
+            let alert = UIAlertController(title: "Error", message: "Your username must be less than 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
