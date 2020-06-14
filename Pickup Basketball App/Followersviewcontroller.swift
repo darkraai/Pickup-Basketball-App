@@ -95,30 +95,32 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
         
         ref.child("Interactions").child(self.user24!.username).child("Followers").observeSingleEvent(of: .value) { (snapshot) in
             let value = snapshot.value as? [String:AnyObject]
-            for username in value!.keys{
-                self.ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: username).observeSingleEvent(of: .value) { (snapshot) in
-                    if let snapDict = snapshot.value as? [String:AnyObject]{
-                        for each in snapDict{
-                            self.UserName = each.value["username"] as? String
-                            let fullNameArr = (each.value["fullname"] as? String)?.components(separatedBy: " ")
-                            self.FullName = fullNameArr![0].capitalizingFirstLetter() + " " + fullNameArr![1].capitalizingFirstLetter()
-                            self.FirstName = self.FullName?.components(separatedBy: " ")[0]
-                            self.LastName = self.FullName?.components(separatedBy: " ")[1]
-                            self.PFPLink = each.value["pfp"] as? String
-                            
-                            let url = URL(string: self.PFPLink!)
-                            do{
-                                let data = try Data(contentsOf: url!)
-                                self.ProfilePic = UIImage(data: data)
-                            }catch _{
-                                self.ProfilePic = UIImage(named: "user")
-                                print("Error")
+            if value != nil{
+                for username in value!.keys{
+                    self.ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: username).observeSingleEvent(of: .value) { (snapshot) in
+                        if let snapDict = snapshot.value as? [String:AnyObject]{
+                            for each in snapDict{
+                                self.UserName = each.value["username"] as? String
+                                let fullNameArr = (each.value["fullname"] as? String)?.components(separatedBy: " ")
+                                self.FullName = fullNameArr![0].capitalizingFirstLetter() + " " + fullNameArr![1].capitalizingFirstLetter()
+                                self.FirstName = self.FullName?.components(separatedBy: " ")[0]
+                                self.LastName = self.FullName?.components(separatedBy: " ")[1]
+                                self.PFPLink = each.value["pfp"] as? String
+                                
+                                let url = URL(string: self.PFPLink!)
+                                do{
+                                    let data = try Data(contentsOf: url!)
+                                    self.ProfilePic = UIImage(data: data)
+                                }catch _{
+                                    self.ProfilePic = UIImage(named: "user")
+                                    print("Error")
+                                }
+                                
+                                let user = User(firstname: self.FirstName!, lastname: self.LastName!, username: self.UserName!, password: "", userweight: "", hometown: "", userheightinches: "", userheightfeet: "", position: "", profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
+                                
+                                self.currentUsers.append(user!)
+                                self.FollowersTableView.reloadData()
                             }
-                            
-                            let user = User(firstname: self.FirstName!, lastname: self.LastName!, username: self.UserName!, password: "", userweight: "", hometown: "", userheightinches: "", userheightfeet: "", position: "", profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
-                            
-                            self.currentUsers.append(user!)
-                            self.FollowersTableView.reloadData()
                         }
                     }
                 }

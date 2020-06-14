@@ -107,8 +107,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         editpassword.isSecureTextEntry = true
         editpasswordre.isSecureTextEntry = true
         
-        editpassword.text = user24?.password
-        editpasswordre.text = user24?.password
+//        editpassword.text = user24?.password
+//        editpasswordre.text = user24?.password
         editfirst.text = user24?.firstname
         editlast.text = user24?.lastname
         editweight.text = user24?.userweight

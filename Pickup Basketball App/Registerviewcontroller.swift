@@ -7,13 +7,16 @@
 //
 import UIKit
 import os.log
-
+import FirebaseDatabase
+import FirebaseStorage
 
 class RegisterViewController: UIViewController,UITextFieldDelegate {
 
     
     
     //MARK: Properties
+    
+    var ref: DatabaseReference!
     
     @IBOutlet weak var userfirstname: UITextField!
     @IBOutlet weak var userlastname: UITextField!
@@ -26,6 +29,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
 
         userfirstname.delegate = self
         userlastname.delegate = self
@@ -34,17 +39,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         userreenterpassword.delegate = self
         
         updateNextButtonState()
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if(userreenterpassword.text! != userpassword.text){
-            let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    return false
-                }
-        return true
-        
+
     }
     
     
@@ -95,20 +90,40 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         let userfirsttext = userfirstname.text ?? ""
         if userfirsttext.isEmpty{
             check = false
+        } else if userfirsttext.count > 30{
+            let alert = UIAlertController(title: "Error", message: "Your first name exceeded the limit of 30 characters. Please provide an abbreviated version.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            check = false
         }
         
         let userlasttext = userlastname.text ?? ""
         if userlasttext.isEmpty{
+            check = false
+        } else if userlasttext.count > 30{
+            let alert = UIAlertController(title: "Error", message: "Your last name exceeded the limit of 30 characters. Please provide an abbreviated version.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             check = false
         }
         
         let usernametext = userusername.text ?? ""
         if usernametext.isEmpty{
             check = false
+        } else if usernametext.count > 30 || usernametext.count < 8 || (usernametext != usernametext.lowercased()){
+            let alert = UIAlertController(title: "Error", message: "Your username must be LOWERCASED and between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            check = false
         }
         
         let userpasswordtext = userpassword.text ?? ""
         if userpasswordtext.isEmpty{
+            check = false
+        } else if userpasswordtext.count > 30 || userpasswordtext.count < 8{
+            let alert = UIAlertController(title: "Error", message: "Your password must be between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             check = false
         }
         
@@ -123,14 +138,26 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
                 check = false
                 presentAlert()
             }
+            ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: usernametext).observeSingleEvent(of: .value) { (snapshot) in
+                let snapDict = snapshot.value as? [String:AnyObject]
+                if snapDict != nil{
+                    check = false
+                    self.presentAlert()
+                }
+            }
         }
         
+        let userpasswordtext2 = userreenterpassword.text ?? ""
+        
+        if (!userpasswordtext.isEmpty && !userpasswordtext2.isEmpty){
+            if(userreenterpassword.text! != userpassword.text){
+            let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+            }
+        }
 
-        
-    
-        
         registernext.isEnabled = check
-        
 
     }
     

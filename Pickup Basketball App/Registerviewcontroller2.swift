@@ -205,11 +205,29 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             
             let userhometowntext = userhometown.text ?? ""
             
+            var check = true
+            
             if((!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
                 
-                registerdone.isEnabled = true
+                check = true
             
+            } else {
+                check = false
             }
+            
+            if userweighttext.count > 3{
+                let alert = UIAlertController(title: "Error", message: "Your weight must be between 1 and 3 characters in length.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                check = false
+            } else if userhometowntext.count > 30{
+                let alert = UIAlertController(title: "Error", message: "Your hometown must be less than 30 characters in length. Please provide an abbreviated hometown.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                check = false
+            }
+            
+            registerdone.isEnabled = check
         
         }
         
