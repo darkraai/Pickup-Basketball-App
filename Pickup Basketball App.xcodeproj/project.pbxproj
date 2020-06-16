@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		18013ADA244CE9D500AAB54F /* JoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */; };
-		1853590D247E00AB003A69EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1853590C247E00AB003A69EB /* GoogleService-Info.plist */; };
 		189AAFCE2446C5100035E722 /* Gamemenuviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */; };
 		189AAFD02446C5490035E722 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCF2446C5490035E722 /* GameTableViewCell.swift */; };
+		189C797724992BE20019EAF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189C797624992BE20019EAF9 /* GoogleService-Info.plist */; };
 		18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FF29244A08920060672A /* Creategameviewcontroller.swift */; };
 		18DA8E582450BAB8000B7DA9 /* searchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA8E572450BAB8000B7DA9 /* searchTableViewCell.swift */; };
 		C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */; };
@@ -50,9 +50,9 @@
 
 /* Begin PBXFileReference section */
 		18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTableViewCell.swift; sourceTree = "<group>"; };
-		1853590C247E00AB003A69EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamemenuviewcontroller.swift; sourceTree = "<group>"; };
 		189AAFCF2446C5490035E722 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		189C797624992BE20019EAF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18B4FF29244A08920060672A /* Creategameviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creategameviewcontroller.swift; sourceTree = "<group>"; };
 		18DA8E572450BAB8000B7DA9 /* searchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchTableViewCell.swift; sourceTree = "<group>"; };
 		76E9EAFC0A8049891FA76815 /* Pods-Pickup Basketball App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pickup Basketball App.release.xcconfig"; path = "Target Support Files/Pods-Pickup Basketball App/Pods-Pickup Basketball App.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,7 +113,6 @@
 				CA04E9A405A8ADE74D5DA0D0 /* Pods-Pickup Basketball App.debug.xcconfig */,
 				76E9EAFC0A8049891FA76815 /* Pods-Pickup Basketball App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -174,7 +173,7 @@
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
 				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
 				C0A27B8624280DCB00F6D70F /* Info.plist */,
-				1853590C247E00AB003A69EB /* GoogleService-Info.plist */,
+				189C797624992BE20019EAF9 /* GoogleService-Info.plist */,
 				C0A27B7E24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld */,
 			);
 			path = "Pickup Basketball App";
@@ -250,7 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2D9ED6A2446B15B00CC3690 /* Main.storyboard in Resources */,
-				1853590D247E00AB003A69EB /* GoogleService-Info.plist in Resources */,
+				189C797724992BE20019EAF9 /* GoogleService-Info.plist in Resources */,
 				C0A27B8524280DCB00F6D70F /* LaunchScreen.storyboard in Resources */,
 				C0A27B8224280DCB00F6D70F /* Assets.xcassets in Resources */,
 			);

@@ -32,5 +32,7 @@
 	<string>1:307441027701:ios:d03791d3076e7e1dea063c</string>
 	<key>DATABASE_URL</key>
 	<string>https://pickup-basketball-app.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-3329292800278297~6225960097</string>
 </dict>
 </plist>

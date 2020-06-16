@@ -105,5 +105,7 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to change your profile picture</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3329292800278297~6225960097</string>
 </dict>
 </plist>
