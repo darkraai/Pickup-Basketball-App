@@ -52,6 +52,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     var timeslotforalert: String?
     
     var courtnameforalert: String?
+    
+    var ProfilePic: UIImage?
 
 
     
@@ -378,14 +380,22 @@ extension Gamemenuviewcontroller: delegate{
                     let userheightinches = user?["heightinches"]
                     let userheightfeet = user?["heightfeet"]
                     let position = user?["position"]
-                    let pfplink = user?["pfp"]
+                    let pfplink = user?["pfp"] as? String
+                    
+                    let url = URL(string:pfplink!)
+                    do{
+                        let data = try Data(contentsOf: url!)
+                        self.ProfilePic = UIImage(data: data)
+                    }catch _{
+                        print("Error")
+                    }
                     
                  for x in team1{
                     if(x == userusername as! String){
                         if(x == self.user24!.username){
                             self.user24team = "team 1"
                         }
-                        self.chosenteam1.append(User(firstname: userfirstname as! String, lastname: userlastname as! String, username: userusername as! String, password: userpassword as! String, userweight: userweight as! String, hometown: userhometown as! String, userheightinches: userheightinches as! String, userheightfeet: userheightfeet as! String, position: position as! String, profilepic: UIImage(named: "user"), pfplink: (pfplink as! String))!)
+                        self.chosenteam1.append(User(firstname: userfirstname as! String, lastname: userlastname as! String, username: userusername as! String, password: userpassword as! String, userweight: userweight as! String, hometown: userhometown as! String, userheightinches: userheightinches as! String, userheightfeet: userheightfeet as! String, position: position as! String, profilepic: self.ProfilePic, pfplink: pfplink)!)
                     }
                     
                     }
@@ -397,7 +407,7 @@ extension Gamemenuviewcontroller: delegate{
                         if(y == self.user24!.username){
                             self.user24team = "team 2"
                         }
-                       self.chosenteam2.append(User(firstname: userfirstname as! String, lastname: userlastname as! String, username: userusername as! String, password: userpassword as! String, userweight: userweight as! String, hometown: userhometown as! String, userheightinches: userheightinches as! String, userheightfeet: userheightfeet as! String, position: position as! String, profilepic: UIImage(named: "user"), pfplink: (pfplink as! String))!)
+                        self.chosenteam2.append(User(firstname: userfirstname as! String, lastname: userlastname as! String, username: userusername as! String, password: userpassword as! String, userweight: userweight as! String, hometown: userhometown as! String, userheightinches: userheightinches as! String, userheightfeet: userheightfeet as! String, position: position as! String, profilepic: self.ProfilePic, pfplink: pfplink)!)
                    }
                    }
 
