@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
 
 class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
@@ -15,6 +17,13 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     var currentslots:[Game] = []
     
     var chosencourt:Court?
+    
+    var courtkey = ""
+    
+    var ref:DatabaseReference?
+    
+    var ref2:DatabaseReference?
+
     
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var gameModePicker: UIPickerView!
@@ -43,6 +52,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         1
     }
     
+    //configures number of pickerview rows for both gametypes and times
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             if (pickerView.tag == 4){
                 return gameModes.count
@@ -53,7 +63,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     
     
-    
+    //configures titles of pickerview rows for both gametypes and times
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView.tag == 4){
             return gameModes[row]
@@ -61,6 +71,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         return timeModes[row]
     }
     
+    //saves selected value when row is selected
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView.tag == 4){
             selectedGameMode = gameModes[row]
@@ -81,9 +92,9 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     let datePicker = UIPickerView()
     
+    
+    //configures the date picker
     private func createDatePicker(forField field : UITextField){
-        
-
         field.textAlignment = .center
         
         //toolbar
@@ -103,7 +114,35 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         field.inputView = datePicker
         
     }
-    
+    //adds created game to database
+    func addgametodatabase(){
+        ref = Database.database().reference()
+        ref2 = Database.database().reference().child("Parks")
+
+        
+        ref2?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            if snapshot.childrenCount > 0{
+                for courts in snapshot.children.allObjects as![DataSnapshot]{
+                    let courtobject = courts.value as? [String:AnyObject]
+                    let parkname = courtobject?["parkname"]
+                    let lat = courtobject?["coordinateslat"]
+                    let long = courtobject?["coordinateslong"]
+                    
+                    self.courtkey = courts.key
+                    
+                    if(((self.chosencourt!.coordinates!.latitude) == lat as! Double) && (self.chosencourt!.coordinates!.longitude == long as! Double) && (self.chosencourt!.parkname == parkname as! String)){
+                        
+                        self.ref?.child("Games").childByAutoId().setValue(["timeslot":self.selectedTimeSlotProc, "gametype":self.selectedGameMode, "creator":self.user24!.username, "slotsfilled": 1,"date":self.selecteddate, "courtid":self.courtkey, "team 1": [self.user24!.username], "team 2": ["placeholder"]])
+                        
+                            
+                        
+                    }
+                }
+            }
+            
+        })
+
+    }
     //converts timeslot in pickerview to same format of the slots in gamemenu controller screen
     func converttimeslot(){
         if(selectedTimeSlot == "6 am - 7 am"){
@@ -176,9 +215,10 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         updateDoneButtonState()
     }
     
+    //configures pickers and disables done button
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         gameModePicker.delegate = self
         gameModePicker.dataSource = self
         timeTextField.delegate = self
@@ -188,6 +228,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         self.createDatePicker(forField: timeTextField)
     }
     
+    //makes sure that done can only be pressed if certain conditions are met
     private func updateDoneButtonState(){
         startHoopingButton.isEnabled = false
         
@@ -198,6 +239,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         
     }
     
+    //checks if the two switches are selected
     @IBAction func publicSwitchToggled(_ sender: UISwitch) {
         if (sender.isOn){
             publicValue = true
@@ -221,6 +263,8 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         // Pass the selected object to the new view controller.
         converttimeslot()
         
+        addgametodatabase()
+        
         var counter = 0
         for z in currentslots{
             if(selectedTimeSlotProc == z.timeslot){
@@ -234,10 +278,10 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
 
         if let MainVC = destinationViewController as? Gamemenuviewcontroller{
             
-            MainVC.alltimeslots.append(Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: user24!.username, slotsfilled: 1, team1: [user24!], team2: [], date: selecteddate)!)
+            MainVC.alltimeslots.append(Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: user24!.username, slotsfilled: 1, team1: [user24!.username], team2: [], date: selecteddate, courtid: "")!)
                         
 
-                 MainVC.currenttimeslots.append(Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: user24!.username, slotsfilled: 1, team1: [user24!], team2: [], date: selecteddate)!)
+            MainVC.currenttimeslots.append(Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: user24!.username, slotsfilled: 1, team1: [user24!.username], team2: [], date: selecteddate, courtid: "")!)
             
         }
         }

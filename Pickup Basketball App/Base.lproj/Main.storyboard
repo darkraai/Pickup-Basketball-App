@@ -261,6 +261,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateTextField" destination="gzo-7b-acm" id="8ya-OO-B3j"/>
+                        <outlet property="gamemenunavbar" destination="IXL-XG-TwF" id="i79-CE-NtL"/>
                         <outlet property="gamemenutableview" destination="Ojp-2q-CY1" id="dVP-qb-GDL"/>
                         <segue destination="HoG-UR-PaG" kind="show" identifier="create_game_segue" id="Mjy-gH-IHK"/>
                         <segue destination="ziq-5v-RzB" kind="show" identifier="join_game_segue" id="CXs-3y-QvP"/>
@@ -415,24 +416,22 @@
                                     <constraint firstAttribute="width" constant="125" id="aNc-Mz-vkY"/>
                                     <constraint firstAttribute="height" constant="52" id="pMM-dV-etj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Full"/>
                                 <connections>
                                     <action selector="button2pressed:" destination="ziq-5v-RzB" eventType="touchUpInside" id="a1x-Zb-vyF"/>
-                                    <segue destination="ijc-eQ-NPV" kind="unwind" unwindAction="unwindToMenuWithSegue:" id="bBT-cg-cZm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y87-li-Umo">
-                                <rect key="frame" x="45" y="613" width="125" height="52"/>
+                                <rect key="frame" x="45" y="612.5" width="125" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="5GU-Q0-2Ud"/>
                                     <constraint firstAttribute="height" constant="52" id="qAd-ZB-Q3z"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Join"/>
                                 <connections>
                                     <action selector="button1pressed:" destination="ziq-5v-RzB" eventType="touchUpInside" id="4g4-qi-65u"/>
-                                    <segue destination="ijc-eQ-NPV" kind="unwind" unwindAction="unwindToMenuWithSegue:" id="9gy-l7-CzK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoop Break" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfh-5q-0zh">
@@ -470,6 +469,7 @@
                         <outlet property="team1button" destination="Y87-li-Umo" id="mAf-Qh-1s7"/>
                         <outlet property="team2button" destination="1uT-he-TpQ" id="Ckp-yt-xvN"/>
                         <outlet property="teamstableview" destination="7k6-DI-dc0" id="BnC-Jy-zDJ"/>
+                        <segue destination="ijc-eQ-NPV" kind="unwind" identifier="unwindtohome" unwindAction="unwindToHomeWithSegue:" id="g0e-rJ-PUN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCR-nX-tXI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

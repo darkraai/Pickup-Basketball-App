@@ -27,18 +27,17 @@ class GameTableViewCell: UITableViewCell {
 
     func setGame(game: Game){
         gameitem = game
-
-
+        
     }
     
     @IBAction func Joinbutton(_ sender: Any) {
-        delegate?.didtapbutton(timeslot: gameitem.timeslot,team1: gameitem.team1,team2: gameitem.team2, totalslots: gameitem.totalslots, gameid: gameitem.gameid)
+        delegate?.didtapbutton(timeslot: gameitem.timeslot,team1: gameitem.team1,team2: gameitem.team2, totalslots: gameitem.totalslots, gameid: gameitem.gameid, courtid: gameitem.courtid!, gamestat: gameStatusButton)
     }
     
 
 }
 
 protocol delegate {
-    func didtapbutton(timeslot: String, team1: [User], team2: [User], totalslots: Int, gameid: String)
+    func didtapbutton(timeslot: String, team1: [String], team2: [String], totalslots: Int, gameid: String, courtid: String, gamestat: UIButton)
 }
  

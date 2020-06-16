@@ -19,12 +19,13 @@ class Court{
     var Address: String?
     var indoor: Bool
     var membership: Bool
-    var game: [Game]?
+    var courtid: String
+    
+    
 
     
 
-    init?(coordinates: CLLocationCoordinate2D, parkname: String, numcourts: Int, Address: String?, indoor: Bool, membership: Bool, game: [Game]) {
-        
+    init?(coordinates: CLLocationCoordinate2D, parkname: String, numcourts: Int, Address: String?, indoor: Bool, membership: Bool, courtid:String) {
         // Initialize stored properties.
         self.coordinates = coordinates
         self.parkname = parkname
@@ -32,7 +33,7 @@ class Court{
         self.Address = Address
         self.indoor = indoor
         self.membership = membership
-        self.game = game
+        self.courtid = courtid
 
       
     }

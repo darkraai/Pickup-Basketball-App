@@ -16,8 +16,12 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     
     var ref:DatabaseReference?
     
+    var ref2:DatabaseReference?
+        
     var user24:User?
     
+    public var chosencourt:Court?
+        
     var clickedannotation:MKAnnotation?
     
     var currentCoordinate: CLLocationCoordinate2D?
@@ -25,38 +29,27 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     var annotation: MKPointAnnotation?
     
     let locationManager = CLLocationManager()
+            
     
-    var courtslist = [Court]()
-    
-    //Users that will be loaded in irl
-    var userayush = User(firstname: "Ayush", lastname: "Hariharan", username: "ayushluvshali", password: "fjwei", userweight: "160", hometown: "boo", userheightinches: "9", userheightfeet: "5", position: "SG", profilepic: UIImage(named: "ayush")!, pfplink: "N/A")
-    var usersurya = User(firstname: "Surya", lastname: "Mamidyala", username: "suryam", password: "jfwoef", userweight: "105", hometown: "jfwe", userheightinches: "11", userheightfeet: "5", position: "SF", profilepic: UIImage(named: "surya")!, pfplink: "N/A")
-    var useryash = User(firstname: "Yash", lastname: "Halal", username: "sirhalalyash", password: "fjwofej", userweight: "300", hometown: "pakistan", userheightinches: "4", userheightfeet: "4", position: "C", profilepic: UIImage(named: "yashipoo")!, pfplink: "N/A")
-    var userben = User(firstname: "Ben", lastname: "Svoboda", username: "bensvo", password: "jfoewj", userweight: "215", hometown: "jfweo", userheightinches: "3", userheightfeet: "6", position: "PG", profilepic: UIImage(named: "ben")!, pfplink: "N/A")
-    var userbik = User(firstname: "Bikram", lastname: "Kohli", username: "lightskinb", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "bik")!, pfplink: "N/A")
-    var userxan = User(firstname: "Xan", lastname: "Manshoota", username: "xanmanshoota", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "xanman")!, pfplink: "N/A")
-    var usertrey = User(firstname: "Trey", lastname: "Watts", username: "treyvonsteals", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "trey")!, pfplink: "N/A")
-    var userawal = User(firstname: "Awal", lastname: "Awal", username: "awaldasnipa", password: "fjwe", userweight: "190", hometown: "fjwof", userheightinches: "3", userheightfeet: "6", position: "SF", profilepic: UIImage(named: "aryan")!, pfplink: "N/A")
-    
-    //these parks will be loaded in IRL
-    lazy var applepark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.332072300, longitude: -122.011138100), parkname: "Apple Park", numcourts: 2, Address: "Pleasantview Avenue", indoor: false, membership: false, game: [Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 19, 2020")!,Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 20, 2020")!,Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!], team2: [userben!],date: "May 20, 2020")!,Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [userayush!,usersurya!], team2: [userben!,userbik!],date: "May 20, 2020")!])
-    
-    lazy var ortegapark = Court(coordinates: CLLocationCoordinate2D(latitude: 37.342226, longitude: -122.025617), parkname: "Ortega Park", numcourts: 2, Address: "West Avenue", indoor: false, membership: true, game: [Game(timeslot: "1-2 pm", gametype: "5 v 5", creator: userben!.username, slotsfilled: 8, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!,usertrey!,userawal!],date: "May 23, 2020")!,Game(timeslot: "2-3 pm", gametype: "3 v 3", creator: usersurya!.username, slotsfilled: 6, team1: [userayush!,usersurya!,useryash!], team2: [userben!,userbik!,userxan!],date: "May 23, 2020")!,Game(timeslot: "10-11 am", gametype: "2 v 2", creator: userxan!.username, slotsfilled: 3, team1: [userayush!,usersurya!], team2: [useryash!],date: "May 24, 2020")!,Game(timeslot: "3-4 pm", gametype: "3 v 3", creator: userbik!.username, slotsfilled: 4, team1: [usersurya!,useryash!], team2: [userbik!,userxan!],date: "May 24, 2020")!])
-    
-    //courts will be loaded in automatically irl
-    lazy var allcourts:[Court] = [applepark!,ortegapark!]
+
+
  
     @IBOutlet weak var mapView: MKMapView!
     
+    
+    //configures location and map stuff
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadcourts()
 
         mapView.delegate = self
         
         configureLocationServices()
  
+    }
+    //courts are loaded from datapoints in the database to annotations on the map
+    override func viewWillAppear(_ animated: Bool) {
+        loadcourts()
+
     }
     
     @IBAction func unwindToMap(segue: UIStoryboardSegue) {
@@ -67,6 +60,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         }
     }
     
+    //alert when new court is added
     private func presentAlert(){
         let alertController = UIAlertController(title: "Court added!", message: "The court requested has successfuly been added.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -74,13 +68,14 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
+    //configures search button
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
     
-    
+    //handles what happens when something is entered in search
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.isUserInteractionEnabled = false
         
@@ -139,18 +134,20 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     }
     
     func loadcourts(){
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        
         ref = Database.database().reference().child("Parks")
         
         
-        ref?.observe(DataEventType.value, with: {(snapshot) in
+        ref?.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            
             if snapshot.childrenCount > 0{
-                self.courtslist.removeAll()
-                for courts in snapshot.children.allObjects as![DataSnapshot]{
+                 for courts in snapshot.children.allObjects as![DataSnapshot]{
                     let courtobject = courts.value as? [String:AnyObject]
                     let parkname = courtobject?["parkname"]
                     let lat = courtobject?["coordinateslat"]
                     let long = courtobject?["coordinateslong"]
-                    print(long!)
                 let annotation = MKPointAnnotation()
                     annotation.title = (parkname! as! String)
                     annotation.coordinate = CLLocationCoordinate2DMake(lat as! CLLocationDegrees,long as! CLLocationDegrees)
@@ -161,7 +158,12 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
             }
             
         })
+
     }
+    
+    
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {}
+
     
     private func beginLocationUpdates(locationManager: CLLocationManager){
         mapView.showsUserLocation = true
@@ -174,20 +176,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         mapView.setRegion(zoomRegion, animated: true)
     }
     
-    private func addSampleAnnotations(){
-        let appleParkAnnotation = MKPointAnnotation()
-        appleParkAnnotation.title = applepark!.parkname
-        appleParkAnnotation.coordinate = applepark!.coordinates!
-        
-        let ortegaParkAnnotation = MKPointAnnotation()
-        ortegaParkAnnotation.title = ortegapark!.parkname
-        ortegaParkAnnotation.coordinate = ortegapark!.coordinates!
-        
-        let annotations: [MKAnnotation] = [appleParkAnnotation, ortegaParkAnnotation]
-        
-        mapView.addAnnotations(annotations)
-        
-    }
+
         
  
 }
@@ -199,7 +188,6 @@ extension Homeviewcontroller: CLLocationManagerDelegate {
         
         if currentCoordinate == nil {
             zoomToLatestLocation(with: latestLocation.coordinate)
-            addSampleAnnotations()
         }
         
         currentCoordinate = latestLocation.coordinate
@@ -212,7 +200,7 @@ extension Homeviewcontroller: CLLocationManagerDelegate {
         
     }
 }
- 
+ //extension designed to handle mapview stuff
 extension Homeviewcontroller: MKMapViewDelegate {
     
     
@@ -235,15 +223,41 @@ extension Homeviewcontroller: MKMapViewDelegate {
         
         return annotationView
     }
+    //looks for the clicked court. Once it's found, the home to game menu segue is executed
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-
-        for x in allcourts{
-            
-            if(view.annotation!.title! == x.parkname){
-                clickedannotation = view.annotation
+        ref2 = Database.database().reference().child("Parks")
+        ref2?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+         if snapshot.childrenCount > 0{
+             for courts in snapshot.children.allObjects as![DataSnapshot]{
+                 let courtobject = courts.value as? [String:AnyObject]
+                 let parkname = courtobject?["parkname"]
+                 let numcourts = courtobject?["numcourts"]
+                 let address = courtobject?["Address"]
+                 let lat = courtobject?["coordinateslat"]
+                 let long = courtobject?["coordinateslong"]
+                 let indoor = courtobject?["indoor"]
+                 let membership = courtobject?["membership"]
+                 let courtkey2 = courts.key
+                let annotation = MKPointAnnotation()
+                annotation.title = (parkname! as! String)
+                annotation.coordinate = CLLocationCoordinate2DMake(lat as! CLLocationDegrees,long as! CLLocationDegrees)
+                
+                //checks if the the database is cycling on the selected annotation
+                if((annotation.coordinate.longitude == ((view.annotation?.coordinate.longitude)! as Double)) && (annotation.coordinate.latitude == ((view.annotation?.coordinate.latitude)! as Double))){
+                    self.clickedannotation = view.annotation
+                    self.chosencourt = Court(coordinates: self.clickedannotation!.coordinate, parkname: parkname! as! String, numcourts: numcourts! as! Int, Address: (address as! String), indoor: indoor! as! Bool, membership: membership! as! Bool, courtid: courtkey2)
+                    self.performSegue(withIdentifier: "home_gamemenu_segue", sender: MKAnnotationView.self)
+                }
+                
             }
-        }
-        performSegue(withIdentifier: "home_gamemenu_segue", sender: MKAnnotationView.self)
+                
+
+            
+     }
+
+ })
+
+
     }
 
     
@@ -252,36 +266,12 @@ extension Homeviewcontroller: MKMapViewDelegate {
         let destinationViewController = segue.destination
         
         if let MainVC = destinationViewController as? Gamemenuviewcontroller{
-            let now = Date()
 
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .none
-
-            let datetime = formatter.string(from: now)
-            
             
             MainVC.user24 = user24
             
-            for x in allcourts{
-                
-                if(clickedannotation!.title! == x.parkname){
-                    MainVC.chosencourt = x
-                }
-            }
-
-          //for some reason, with the below code only the first day works
-          //here we need to make datetextField the current date
-            for z in MainVC.chosencourt.game!{
-                MainVC.alltimeslots.append(z)
-            }
-
-            for z in MainVC.alltimeslots{
-                
-                if(z.date! == datetime){
-                    MainVC.currenttimeslots.append(z)
-                }
-            }
+            MainVC.chosencourt = chosencourt
+                        
         }
     }
 }

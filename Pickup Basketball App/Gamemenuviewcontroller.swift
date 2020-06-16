@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
 
 class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var user24:User?
 
     
+    @IBOutlet weak var gamemenunavbar: UINavigationItem!
     @IBOutlet weak var gamemenutableview: UITableView!
     @IBOutlet weak var dateTextField: UITextField!
     
-    var chosencourt: Court!
+    var chosencourt: Court?
     
     var chosengameid: String?
     
@@ -24,13 +27,32 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var chosengame: Game?
     
+    var chosengamestatus: String?
+    
+    var alltimeslotsids:[String] = []
+    
     var chosenteam1:[User] = []
     
     var chosenteam2:[User] = []
     
-    var selectedgameids:[String] = []
-
+    var hasuserjoined = false
+    
+    var team1o:[String] = []
+    
+    var team2o:[String] = []
+    
+    var user24team:String?
+    
     var buttondistinguisher:Int?
+    
+    var ref:DatabaseReference?
+    
+    var refgame:DatabaseReference?
+    
+    var timeslotforalert: String?
+    
+    var courtnameforalert: String?
+
 
     
     @IBAction func creategamepressed(_ sender: Any) {
@@ -39,16 +61,33 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var todaysdate = ""
     
-    lazy var alltimeslots:[Game] = []
-    lazy var currenttimeslots:[Game] = []
+    var alltimeslots:[Game] = []
+    var currenttimeslots:[Game] = []
     
     let datePicker = UIDatePicker()
     
     //formatter created
     let formatter = DateFormatter()
 
+    //determines what a games button should be
     func determinebuttonstatus(curgame: Game) -> String{
-        if((curgame.totalslots != curgame.slotsfilled) && (curgame.totalslots != 0)){
+        
+        for w in curgame.team1{
+            if(user24!.username == w){
+                hasuserjoined = true
+            }
+        }
+        
+        for z in curgame.team2{
+            if(user24!.username == z){
+                hasuserjoined = true
+            }
+        }
+        if(hasuserjoined == true){
+            return "Joined"
+        }
+        
+        else if((curgame.totalslots != curgame.slotsfilled) && (curgame.totalslots != 0)){
             return "Join"
         }
         else if((curgame.totalslots == curgame.slotsfilled) && (curgame.totalslots != 0)){
@@ -59,6 +98,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     }
     
+    //determines the total # of slots from gametype
     func determinetotslots(curgame: Game) -> Int{
         if(curgame.gametype == "5 v 5"){
             curgame.totalslots = 10
@@ -83,6 +123,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    //creates date picker in the text field
     private func createDatePicker(forField field: UITextField){
         datePicker.datePickerMode = .date
         field.textAlignment = .center
@@ -106,10 +147,12 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var dateTextFieldDate : Date?
     
+    //sets the number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currenttimeslots.count
     }
-
+    
+    //creates each tableview cell and sets its properties
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell") as! GameTableViewCell
         
@@ -150,14 +193,15 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     @objc func buttonAction(sender: UIButton!) {
-
+        
     }
     
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
     
-
+    //sets up tableview and date picker stuff
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         gamemenutableview.delegate = self
         gamemenutableview.dataSource = self
         dateTextField.delegate = self
@@ -166,13 +210,62 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         formatter.dateStyle = .medium
         dateTextField.text = formatter.string(from: Date())
         todaysdate = dateTextField.text!
-
+        loadgames()
+        gamemenunavbar.title = chosencourt!.parkname
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         gamemenutableview.reloadData()
+        
     }
     
+
+    
+
+    //loads in games from the database into the tableview
+    func loadgames(){
+        ref = Database.database().reference().child("Games")
+        ref?.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            
+            if snapshot.childrenCount > 0{
+                for courts in snapshot.children.allObjects as![DataSnapshot]{
+                    let gameobject = courts.value as? [String:AnyObject]
+                    let courtid = gameobject?["courtid"]
+                    let creator = gameobject?["creator"]
+                    let date = gameobject?["date"]
+                    let gametype = gameobject?["gametype"]
+                    let slotsfilled = gameobject?["slotsfilled"]
+                    let team1 = gameobject?["team 1"]
+                    let team2 = gameobject?["team 2"]
+                    let timeslot = gameobject?["timeslot"]
+                    let key = courts.key
+                    
+                    
+                    if(courtid as! String == self.chosencourt!.courtid){
+                        self.alltimeslots.append(Game(timeslot: timeslot as! String, gametype: gametype as! String, creator: creator as! String, slotsfilled: slotsfilled as! Int, team1: team1 as! [String], team2: team2 as! [String], date: date as! String, courtid: courtid as! String)!)
+                        self.alltimeslotsids.append(key)
+                    }
+
+                }
+            }
+            for x in self.alltimeslots{
+                
+                if(x.date! == self.dateTextField.text!){
+                    self.currenttimeslots.append(x)
+                }
+            }
+            self.gamemenutableview.reloadData()
+
+        })
+
+
+        
+    }
+    
+    
+    //when the date is changed, the game menu is updated accordingly
     @objc private func donePressed(){
         //formatter
         formatter.dateStyle = .medium
@@ -184,7 +277,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         self.view.endEditing(true)
         
         currenttimeslots.removeAll()
-        gamemenutableview.reloadData()
         //add for to do this
         for x in alltimeslots{
             
@@ -196,6 +288,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         gamemenutableview.reloadData()
 
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -210,20 +303,32 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             for z in currenttimeslots{
                 MainVC.currentslots.append(z)
             }
+            
             MainVC.chosencourt = chosencourt
         }
         
         if let MainVC = destinationViewController as? Joingameviewcontroller{
             
+            MainVC.courtnameforalert = chosencourt!.parkname
+            
+            MainVC.timeslotforalert = timeslotforalert
             
             MainVC.user24 = user24
             
             MainVC.totalslots = totalslotsx
             
+            MainVC.alltimeslotsids = alltimeslotsids
+            
+            MainVC.chosengamestatus = chosengamestatus
             
             MainVC.team1usersingame.removeAll()
             MainVC.team2usersingame.removeAll()
+            
+            MainVC.chosengameid = chosengameid
+            
+            print(chosengameid!)
 
+            MainVC.user24team = user24team
             
             for y in chosenteam1{
                 MainVC.team1usersingame.append(y)
@@ -241,22 +346,70 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 }
 extension Gamemenuviewcontroller: delegate{
     
-    func didtapbutton(timeslot: String, team1: [User], team2: [User], totalslots: Int, gameid: String) {
+    func didtapbutton(timeslot: String, team1: [String], team2: [String], totalslots: Int, gameid: String, courtid: String, gamestat: UIButton) {
 
-        totalslotsx = totalslots
+        chosengameid = gameid
+        
+        self.totalslotsx = totalslots
+
+        self.chosenteam1.removeAll()
+        self.chosenteam2.removeAll()
+        
+        //print("button status = "+gamestat.titleLabel!.text!)
+        
+        chosengamestatus = gamestat.titleLabel!.text!
+        
+        timeslotforalert = timeslot
         
         
-        chosenteam1.removeAll()
-        chosenteam2.removeAll()
 
-            for x in team1 {
-                chosenteam1.append(x)
-            }
-            
-            for z in team2 {
-                chosenteam2.append(z)
-            }
+        refgame = Database.database().reference().child("Users")
+        refgame?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            if snapshot.childrenCount > 0{
+                for auser in snapshot.children.allObjects as![DataSnapshot]{
+                    
+                    let user = auser.value as? [String:AnyObject]
+                    let userfirstname = user?["firstname"]
+                    let userlastname = user?["lastname"]
+                    let userusername = user?["username"]
+                    let userpassword = user?["password"]
+                    let userweight = user?["weight"]
+                    let userhometown = user?["hometown"]
+                    let userheightinches = user?["heightinches"]
+                    let userheightfeet = user?["heightfeet"]
+                    let position = user?["position"]
+                    let pfplink = user?["pfp"]
+                    
+                 for x in team1{
+                    if(x == userusername as! String){
+                        if(x == self.user24!.username){
+                            self.user24team = "team 1"
+                        }
+                        self.chosenteam1.append(User(firstname: userfirstname as! String, lastname: userlastname as! String, username: userusername as! String, password: userpassword as! String, userweight: userweight as! String, hometown: userhometown as! String, userheightinches: userheightinches as! String, userheightfeet: userheightfeet as! String, position: position as! String, profilepic: UIImage(named: "user"), pfplink: (pfplink as! String))!)
+                    }
+                    
+                    }
 
-        performSegue(withIdentifier: "join_game_segue", sender: nil)
+                for y in team2{
+                    if (y == "placeholder"){
+                    }
+                   else if(y == userusername as! String){
+                        if(y == self.user24!.username){
+                            self.user24team = "team 2"
+                        }
+                       self.chosenteam2.append(User(firstname: userfirstname as! String, lastname: userlastname as! String, username: userusername as! String, password: userpassword as! String, userweight: userweight as! String, hometown: userhometown as! String, userheightinches: userheightinches as! String, userheightfeet: userheightfeet as! String, position: position as! String, profilepic: UIImage(named: "user"), pfplink: (pfplink as! String))!)
+                   }
+                   }
+
+                }
+            }
+            self.performSegue(withIdentifier: "join_game_segue", sender: nil)
+        })
+
+        
+        
+        
+        
+        
     }
 }

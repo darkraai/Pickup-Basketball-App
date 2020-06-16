@@ -16,12 +16,13 @@ class Game {
     var creator:String?
     var slotsfilled:Int
     var totalslots:Int
-    var team1:[User]
-    var team2:[User]
+    var team1:[String]
+    var team2:[String]
     var date: String?
     var gameid: String
+    var courtid: String?
     
-    init?(timeslot: String, gametype: String, creator: String, slotsfilled: Int, team1: [User], team2: [User], date:String) {
+    init?(timeslot: String, gametype: String, creator: String, slotsfilled: Int, team1: [String], team2: [String], date:String, courtid:String) {
 
         // Initialize stored properties.
         self.timeslot = timeslot
@@ -30,6 +31,7 @@ class Game {
         self.slotsfilled = slotsfilled
         self.team1 = team1
         self.team2 = team2
+        self.courtid = courtid
         self.date = date
         if(gametype == "5 v 5"){
             self.totalslots = 10

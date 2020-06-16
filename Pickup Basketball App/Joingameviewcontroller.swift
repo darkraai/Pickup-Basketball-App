@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FirebaseDatabase
  
  
 class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -23,10 +24,47 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var user24:User?
     
+    var chosengamestatus: String?
+    
+    var timeslotforalert: String?
+    
+    var courtnameforalert: String?
+    
+    var alltimeslotsids:[String] = []
+    
+    var chosengameid: String?
+    
+    var user24team: String?
+    
+    var key2 = ""
+    
+    var ref:DatabaseReference?
+        
+    var team1users:[String] = []
+    
+    var team2users:[String] = []
     
     private func configureButtons(){
         
-        if (totalslots!/2) > team1usersingame.count{
+        if ((chosengamestatus == "Joined") && (user24team == "team 1"))
+        {
+            team1button.layer.cornerRadius = 5
+            team1button.setTitleColor(UIColor.white, for: .normal)
+            team1button.backgroundColor = UIColor.orange
+            team1button.setTitle("Joined", for: .normal)
+            team1button.isEnabled = false
+            
+            
+            team2button.layer.cornerRadius = 5
+            team2button.setTitleColor(UIColor.white, for: .normal)
+            team2button.backgroundColor = UIColor.gray
+            team2button.setTitle("Opponent", for: .normal)
+            team2button.isEnabled = false
+            
+            return
+
+        }
+        else if (totalslots!/2) > team1usersingame.count{
             team1button.layer.cornerRadius = 5
             team1button.setTitleColor(UIColor.white, for: .normal)
             team1button.backgroundColor = UIColor.systemGreen
@@ -44,7 +82,25 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
         }
         
-        if (totalslots!/2) > team2usersingame.count{
+        if ((chosengamestatus == "Joined") && (user24team == "team 2"))
+        {
+            team2button.layer.cornerRadius = 5
+            team2button.setTitleColor(UIColor.white, for: .normal)
+            team2button.backgroundColor = UIColor.orange
+            team2button.setTitle("Joined", for: .normal)
+            team2button.isEnabled = false
+            
+            
+            team1button.layer.cornerRadius = 5
+            team1button.setTitleColor(UIColor.white, for: .normal)
+            team1button.backgroundColor = UIColor.gray
+            team1button.setTitle("Opponent", for: .normal)
+            team1button.isEnabled = false
+            
+            return
+
+        }
+        else if (totalslots!/2) > team2usersingame.count{
             team2button.layer.cornerRadius = 5
             team2button.setTitleColor(UIColor.white, for: .normal)
             team2button.backgroundColor = UIColor.systemGreen
@@ -136,15 +192,127 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         configureButtons()
         
     }
-    
-    @IBAction func button1pressed(_ sender: UIButton) {
-        buttondistinguisher = 1
+    override func viewWillAppear(_ animated: Bool) {
+        teamstableview.reloadData()
     }
     
     
     
+    @IBAction func button1pressed(_ sender: UIButton) {
+        buttondistinguisher = 1
+        ref = Database.database().reference().child("Games")
+        ref?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            if snapshot.childrenCount > 0{
+                for game3 in snapshot.children.allObjects as![DataSnapshot]{
+                    
+                    
+                    let gam3 = game3.value as? [String:AnyObject]
+                    let timeslot = gam3?["timeslot"] as! String
+                    let gamemode = gam3?["gametype"] as! String
+                    let creator = gam3?["creator"] as! String
+                    let team1 = gam3?["team 1"] as! [String]
+                    let slotsfilled = gam3?["slotsfilled"] as! Int
+
+
+                    
+                    for x in self.alltimeslotsids{
+                        if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
+                            for b in team1{
+                                self.team1users.append(b)
+                                self.key2 = game3.key
+                            }
+                            
+                        }
+                    }
+                    self.ref?.child(self.key2).child("slotsfilled").setValue(slotsfilled+1)
+                    
+                    
+                    
+                }
+                self.team1users.append(self.user24!.username)
+
+                
+                self.ref?.child(self.key2).child("team 1").setValue(self.team1users)
+
+                
+                self.presentAlert()
+
+            }
+            self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
+ 
+        })
+
+            
+    }
+    
+    private func presentAlert(){
+        let alertController = UIAlertController(title: "Sucess", message: "You have joined a " + timeslotforalert! + " game at " + courtnameforalert!, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: {_ in CATransaction.setCompletionBlock({
+            
+            self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
+            
+        })
+            
+            
+        })
+             
+            
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @IBAction func button2pressed(_ sender: Any) {
         buttondistinguisher = 2
+        
+        ref = Database.database().reference().child("Games")
+        ref?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            if snapshot.childrenCount > 0{
+                for game3 in snapshot.children.allObjects as![DataSnapshot]{
+
+                    let gg = game3.value as? [String:AnyObject]
+                    let timeslot = gg?["timeslot"] as! String
+                    let gamemode = gg?["gametype"] as! String
+                    let creator = gg?["creator"] as! String
+                    var team2 = gg?["team 2"] as! [String]
+                    let slotsfilled = gg?["slotsfilled"] as! Int
+                    
+                    self.key2 = game3.key
+                    
+                    if (team2.contains("placeholder")){
+                        team2.removeAll()
+                        self.team2users.append(self.user24!.username)
+                        self.ref?.child(self.key2).child("team 2").setValue(self.team2users)
+                        self.ref?.child(self.key2).child("slotsfilled").setValue(slotsfilled+1)
+                        self.presentAlert()
+                        
+                        self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
+                    }
+                    else{
+                        for x in self.alltimeslotsids{
+                            if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
+                                       for b in team2{
+                                           self.team2users.append(b)
+                                           self.key2 = game3.key
+                                       }
+
+                                   }
+                               }
+                        self.team2users.append(self.user24!.username)
+                        
+                        self.ref?.child(self.key2).child("slotsfilled").setValue(slotsfilled+1)
+                        
+                        self.ref?.child(self.key2).child("team 2").setValue(self.team2users)
+                        self.presentAlert()
+
+                 self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
+                           }
+
+
+                   }
+            }
+  
+
+               })
     }
     
     
@@ -154,11 +322,11 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //add in database code to add user to the selected game
         let destinationViewController = segue.destination
-        
         if let MainVC = destinationViewController as? Gamemenuviewcontroller{
-            MainVC.buttondistinguisher = buttondistinguisher
+            
         }
-    }
 
  
+}
+    
 }
