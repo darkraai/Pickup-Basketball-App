@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import FirebaseDatabase
+import GoogleMobileAds
  
  
 class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -47,6 +48,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     var team1users:[String] = []
     
     var team2users:[String] = []
+    
+    var interstitial: GADInterstitial!
     
     private func configureButtons(){
         
@@ -193,6 +196,10 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
+        
         configureButtons()
         
     }
@@ -203,6 +210,13 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     @IBAction func button1pressed(_ sender: UIButton) {
+        
+        if interstitial.isReady{
+            interstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready.")
+        }
+        
         buttondistinguisher = 1
         ref = Database.database().reference().child("Games")
         ref?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
@@ -269,6 +283,13 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func button2pressed(_ sender: Any) {
+        
+        if interstitial.isReady{
+            interstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready.")
+        }
+        
         buttondistinguisher = 2
         team2users.removeAll()
 

@@ -12,7 +12,15 @@ import FirebaseDatabase
 import Firebase
 
 
-class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
+class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADRewardedAdDelegate {
+   
+    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+    }
+    
+    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
+        self.performSegue(withIdentifier: "unwindToTabSegue", sender: self)
+    }
     
     //MARK: Properties
     @IBOutlet weak var parkNameTextField: UITextField!
@@ -24,6 +32,8 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
     
     
     var ref:DatabaseReference!
+    
+    var rewardedAd: GADRewardedAd?
 
     var coordinates:CLLocationCoordinate2D?
     var parkName = ""
@@ -34,6 +44,14 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+        rewardedAd?.load(GADRequest()) {error in
+            if let error = error {
+                print("Ad failed to load.")
+            } else {
+                print("Ad successfully loaded")
+            }
+        }
         ref = Database.database().reference()
         parkNameTextField.delegate = self
         numCourtsTextField.delegate = self
@@ -83,6 +101,13 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate {
             membershipSelected = false
         }
     }
+    
+    @IBAction func startHoopingBtnPressed(_ sender: UIButton) {
+        if rewardedAd?.isReady == true {
+            rewardedAd?.present(fromRootViewController: self, delegate: self)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         self.ref.child("Parks").childByAutoId().setValue(["coordinateslat": coordinates!.latitude,"coordinateslong":coordinates!.longitude,"parkname":self.parkName,"numcourts":Int(self.numCourts)!, "Address":self.address, "indoor":self.indoorSelected, "membership":self.membershipSelected])

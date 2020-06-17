@@ -1035,7 +1035,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="Start Hooping"/>
                                 <connections>
-                                    <segue destination="dhB-MH-Lh3" kind="unwind" unwindAction="unwindToTabWithSegue:" id="Ein-dh-8wL"/>
+                                    <action selector="startHoopingBtnPressed:" destination="8Yj-zF-Yo1" eventType="touchUpInside" id="7hH-tj-DxO"/>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cve-iG-AEe">
@@ -1092,6 +1092,7 @@
                         <outlet property="numCourtsTextField" destination="4ja-bU-I9g" id="fwR-c4-bbc"/>
                         <outlet property="parkNameTextField" destination="Usc-dW-9PY" id="Fxl-76-YB6"/>
                         <outlet property="startHoopingButton" destination="h5t-ia-fvI" id="k0w-O2-mhd"/>
+                        <segue destination="dhB-MH-Lh3" kind="unwind" identifier="unwindToTabSegue" unwindAction="unwindToTabWithSegue:" id="tJX-1v-0n3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HM-Ix-r0N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

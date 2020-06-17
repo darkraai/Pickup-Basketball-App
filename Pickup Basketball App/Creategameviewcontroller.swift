@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
-
+import GoogleMobileAds
 
 class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
@@ -23,6 +23,8 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     var ref:DatabaseReference?
     
     var ref2:DatabaseReference?
+    
+    var interstitial: GADInterstitial!
 
     
     @IBOutlet weak var timeTextField: UITextField!
@@ -219,6 +221,10 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
+        
         gameModePicker.delegate = self
         gameModePicker.dataSource = self
         timeTextField.delegate = self
@@ -292,6 +298,15 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         }
 
     }
-
+    
+    @IBAction func startHoopingBtnPressed(_ sender: Any) {
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready.")
+        }
+        
+        self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
+    }
 
 }

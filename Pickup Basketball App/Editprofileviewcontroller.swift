@@ -10,6 +10,7 @@ import UIKit
 import os.log
 import FirebaseDatabase
 import FirebaseStorage
+import GoogleMobileAds
 
 class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -18,6 +19,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     var metaImageURL:String?
     
     var ref: DatabaseReference!
+    
+    var interstitial: GADInterstitial!
     
     //textfields initialization
     @IBOutlet weak var editpassword: UITextField!
@@ -101,6 +104,10 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
         
         ref = Database.database().reference()
         
@@ -245,7 +252,17 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         dismiss(animated: true, completion: nil)
     }
     
-
+    @IBAction func saveBtnPressed(_ sender: UIBarButtonItem) {
+        
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready.")
+        }
+        
+        self.performSegue(withIdentifier: "unwindToBP", sender: self)
+    }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
