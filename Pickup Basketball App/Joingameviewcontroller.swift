@@ -36,7 +36,11 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var user24team: String?
     
-    var key2 = ""
+    var key1: String?
+    
+    var key2: String?
+    
+    var unislotsfilled: Int?
     
     var ref:DatabaseReference?
         
@@ -212,27 +216,30 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     let creator = gam3?["creator"] as! String
                     let team1 = gam3?["team 1"] as! [String]
                     let slotsfilled = gam3?["slotsfilled"] as! Int
-
-
                     
+                    self.unislotsfilled = slotsfilled
+                    
+
+
                     for x in self.alltimeslotsids{
                         if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
                             for b in team1{
                                 self.team1users.append(b)
-                                self.key2 = game3.key
+                                self.key1 = game3.key
                             }
                             
                         }
                     }
-                    self.ref?.child(self.key2).child("slotsfilled").setValue(slotsfilled+1)
                     
                     
                     
                 }
+                self.ref?.child(self.key1!).child("slotsfilled").setValue(self.unislotsfilled!+1)
+
                 self.team1users.append(self.user24!.username)
 
                 
-                self.ref?.child(self.key2).child("team 1").setValue(self.team1users)
+                self.ref?.child(self.key1!).child("team 1").setValue(self.team1users)
 
                 
                 self.presentAlert()
@@ -263,7 +270,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func button2pressed(_ sender: Any) {
         buttondistinguisher = 2
-        
+        team2users.removeAll()
+
         ref = Database.database().reference().child("Games")
         ref?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount > 0{
@@ -276,32 +284,36 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     var team2 = gg?["team 2"] as! [String]
                     let slotsfilled = gg?["slotsfilled"] as! Int
                     
+                    self.unislotsfilled = slotsfilled
+                    
                     self.key2 = game3.key
                     
-                    if (team2.contains("placeholder")){
+
+                    
+                    if ((team2.contains("placeholder")) && (self.chosengameid == (timeslot + gamemode + creator))){
+                        print("in if")
                         team2.removeAll()
                         self.team2users.append(self.user24!.username)
-                        self.ref?.child(self.key2).child("team 2").setValue(self.team2users)
-                        self.ref?.child(self.key2).child("slotsfilled").setValue(slotsfilled+1)
+                        self.ref?.child(self.key2!).child("team 2").setValue(self.team2users)
+                        
                         self.presentAlert()
                         
                         self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
                     }
-                    else{
+                    else if (((team2.contains("placeholder")) == false) && (self.chosengameid == (timeslot + gamemode + creator))){
+                        print("in else")
                         for x in self.alltimeslotsids{
                             if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
                                        for b in team2{
                                            self.team2users.append(b)
                                            self.key2 = game3.key
                                        }
-
                                    }
                                }
                         self.team2users.append(self.user24!.username)
                         
-                        self.ref?.child(self.key2).child("slotsfilled").setValue(slotsfilled+1)
                         
-                        self.ref?.child(self.key2).child("team 2").setValue(self.team2users)
+                        self.ref?.child(self.key2!).child("team 2").setValue(self.team2users)
                         self.presentAlert()
 
                  self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
@@ -309,6 +321,9 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
 
                    }
+                self.ref?.child(self.key2!).child("slotsfilled").setValue(self.unislotsfilled!+1)
+
+                
             }
   
 

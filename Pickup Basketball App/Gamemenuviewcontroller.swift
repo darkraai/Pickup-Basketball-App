@@ -73,7 +73,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     //determines what a games button should be
     func determinebuttonstatus(curgame: Game) -> String{
-        
+        hasuserjoined = false
         for w in curgame.team1{
             if(user24!.username == w){
                 hasuserjoined = true
