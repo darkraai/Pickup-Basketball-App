@@ -509,7 +509,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="46"/>
                                 <state key="normal" title="Start Hooping"/>
                                 <connections>
-                                    <segue destination="zqH-QB-LCm" kind="unwind" unwindAction="unwindToMenuWithSegue:" id="jLa-SP-gHQ"/>
+                                    <action selector="startHoopingBtnPressed:" destination="HoG-UR-PaG" eventType="touchUpInside" id="TeP-5h-J3t"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="iCV-NQ-6xT">
@@ -569,6 +569,7 @@
                         <outlet property="gameModePicker" destination="tjx-hR-jZm" id="qKY-cl-2wx"/>
                         <outlet property="startHoopingButton" destination="qJr-sQ-Z7z" id="NvB-UK-WBQ"/>
                         <outlet property="timeTextField" destination="D4R-5d-Yk9" id="5F0-3u-f6d"/>
+                        <segue destination="zqH-QB-LCm" kind="unwind" identifier="unwindToMenuSegue" unwindAction="unwindToMenuWithSegue:" id="oXL-Jy-h3r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkH-0g-U6s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2154,8 +2155,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="W0v-eS-AWo"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="wzD-T6-a4Q">
                             <connections>
-                                <action selector="unwindtobp:" destination="IkC-zq-uLc" id="BTO-GQ-wUW"/>
-                                <segue destination="IkC-zq-uLc" kind="unwind" unwindAction="unwindtobp:" id="gTy-bz-XeF"/>
+                                <action selector="saveBtnPressed:" destination="Zbb-4K-Abh" id="Dsr-0h-XQy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2171,6 +2171,7 @@
                         <outlet property="pfpimageview" destination="isR-Au-aTZ" id="WP1-cp-2Wd"/>
                         <outlet property="positionpv" destination="dOJ-1y-xdk" id="6ph-PF-n7R"/>
                         <outlet property="saveedits" destination="wzD-T6-a4Q" id="Lrk-SJ-4UW"/>
+                        <segue destination="IkC-zq-uLc" kind="unwind" identifier="unwindToBP" unwindAction="unwindtobp:" id="9hI-iX-Ale"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6p-9I-JDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

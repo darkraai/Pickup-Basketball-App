@@ -12,7 +12,7 @@ import FirebaseDatabase
 import FirebaseStorage
 import GoogleMobileAds
 
-class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GADInterstitialDelegate {
     
     var user24:User?
     
@@ -105,9 +105,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        let request = GADRequest()
-        interstitial.load(request)
+        interstitial = createAndLoadInterstitial()
         
         ref = Database.database().reference()
         
@@ -177,6 +175,18 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         updateDoneButtonState3()
         
     
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
+    }
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
+        self.performSegue(withIdentifier: "unwindToBP", sender: self)
     }
     
     
@@ -252,16 +262,14 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveBtnPressed(_ sender: UIBarButtonItem) {
-        
+    @IBAction func saveBtnPressed(_ sender: Any) {
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
         } else {
             print("Ad wasn't ready.")
         }
-        
-        self.performSegue(withIdentifier: "unwindToBP", sender: self)
     }
+    
     
     
     

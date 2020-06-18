@@ -12,7 +12,7 @@ import FirebaseDatabase
 import GoogleMobileAds
  
  
-class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource, GADInterstitialDelegate {
     
     
     
@@ -196,13 +196,23 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        let request = GADRequest()
-        interstitial.load(request)
+        interstitial = createAndLoadInterstitial()
         
         configureButtons()
         
     }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+      var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+      interstitial.delegate = self
+      interstitial.load(GADRequest())
+      return interstitial
+    }
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         teamstableview.reloadData()
     }

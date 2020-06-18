@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import GoogleMobileAds
 
-class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, GADInterstitialDelegate {
 
     var user24:User?
     
@@ -220,10 +220,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     //configures pickers and disables done button
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        let request = GADRequest()
-        interstitial.load(request)
+        interstitial = createAndLoadInterstitial()
         
         gameModePicker.delegate = self
         gameModePicker.dataSource = self
@@ -232,6 +229,18 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         datePicker.delegate = self
         updateDoneButtonState()
         self.createDatePicker(forField: timeTextField)
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
+    }
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
+        self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
     }
     
     //makes sure that done can only be pressed if certain conditions are met
@@ -305,8 +314,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         } else {
             print("Ad wasn't ready.")
         }
-        
-        self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
     }
-
+    
 }
