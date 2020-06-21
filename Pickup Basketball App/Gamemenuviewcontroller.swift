@@ -37,10 +37,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var hasuserjoined = false
     
-    var team1o:[String] = []
-    
-    var team2o:[String] = []
-    
     var user24team:String?
     
     var buttondistinguisher:Int?
@@ -54,6 +50,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     var courtnameforalert: String?
     
     var ProfilePic: UIImage?
+    
+    var creatorsandtimesofgames:[String] = []
 
 
     
@@ -181,6 +179,9 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             cell.delegate = self
             
         }
+        
+        creatorsandtimesofgames.append(cell.ownerLabel.text!)
+        creatorsandtimesofgames.append(cell.timeLabel.text!)
 
         return cell
     }
@@ -245,6 +246,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     let key = courts.key
                     
                     
+                    
                     if(courtid as! String == self.chosencourt!.courtid){
                         self.alltimeslots.append(Game(timeslot: timeslot as! String, gametype: gametype as! String, creator: creator as! String, slotsfilled: slotsfilled as! Int, team1: team1 as! [String], team2: team2 as! [String], date: date as! String, courtid: courtid as! String)!)
                         self.alltimeslotsids.append(key)
@@ -301,6 +303,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             MainVC.user24 = user24
             MainVC.selecteddate = dateTextField.text!
             MainVC.todaysdate = todaysdate
+            MainVC.creatorsandtimesofgames = creatorsandtimesofgames
+
             
             for z in currenttimeslots{
                 MainVC.currentslots.append(z)
@@ -311,6 +315,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         
         if let MainVC = destinationViewController as? Joingameviewcontroller{
             
+
+                        
             MainVC.courtnameforalert = chosencourt!.parkname
             
             MainVC.timeslotforalert = timeslotforalert
@@ -356,6 +362,8 @@ extension Gamemenuviewcontroller: delegate{
 
         self.chosenteam1.removeAll()
         self.chosenteam2.removeAll()
+        
+
         
         //print("button status = "+gamestat.titleLabel!.text!)
         

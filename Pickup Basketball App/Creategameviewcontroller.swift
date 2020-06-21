@@ -25,6 +25,10 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     var ref2:DatabaseReference?
     
     var interstitial: GADInterstitial!
+    
+    var creatorsandtimesofgames:[String] = []
+    
+    var iscreatorerror:Bool = false
 
     
     @IBOutlet weak var timeTextField: UITextField!
@@ -83,7 +87,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         }
         
         updateDoneButtonState()
-
     }
     
     var activeTextField: UITextField!
@@ -133,13 +136,24 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
                     self.courtkey = courts.key
                     
                     if(((self.chosencourt!.coordinates!.latitude) == lat as! Double) && (self.chosencourt!.coordinates!.longitude == long as! Double) && (self.chosencourt!.parkname == parkname as! String)){
-                        
-                        self.ref?.child("Games").childByAutoId().setValue(["timeslot":self.selectedTimeSlotProc, "gametype":self.selectedGameMode, "creator":self.user24!.username, "slotsfilled": 1,"date":self.selecteddate, "courtid":self.courtkey, "team 1": [self.user24!.username], "team 2": ["placeholder"]])
-                        
+                        for index in 0...(self.creatorsandtimesofgames.count-1){
+                            // check if chosencourt timeslot and creators correspond to those in creatorsandtimesofgames
+                            if((self.creatorsandtimesofgames[index] == self.user24!.username) && (self.creatorsandtimesofgames[index+1] == self.selectedTimeSlotProc)){
+                                self.iscreatorerror = true
+                                self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
+
+                                
+                            }
+                        }
+                        if(self.iscreatorerror == false){
+                            self.ref?.child("Games").childByAutoId().setValue(["timeslot":self.selectedTimeSlotProc, "gametype":self.selectedGameMode, "creator":self.user24!.username, "slotsfilled": 1,"date":self.selecteddate, "courtid":self.courtkey, "team 1": [self.user24!.username], "team 2": ["placeholder"]])
+                            self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
+                        }
                             
                         
                     }
                 }
+
             }
             
         })
@@ -220,6 +234,9 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     //configures pickers and disables done button
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(self.creatorsandtimesofgames.count)
+        
         interstitial = createAndLoadInterstitial()
         
         gameModePicker.delegate = self
@@ -237,10 +254,13 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         interstitial.load(GADRequest())
         return interstitial
     }
-    
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
-        self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
+        
+        converttimeslot()
+
+        addgametodatabase()
+
     }
     
     //makes sure that done can only be pressed if certain conditions are met
@@ -272,14 +292,17 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         }
     }
     
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        converttimeslot()
-        
-        addgametodatabase()
-        
+        if(iscreatorerror == true){
+            let alert = UIAlertController(title: "Error", message: "Sorry, you cannot create two games at the same time", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
         var counter = 0
         for z in currentslots{
             if(selectedTimeSlotProc == z.timeslot){
@@ -305,15 +328,20 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
             alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-
+        }
     }
     
     @IBAction func startHoopingBtnPressed(_ sender: Any) {
+        iscreatorerror = false
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
+
+            
         } else {
             print("Ad wasn't ready.")
         }
+        
+
     }
     
 }
