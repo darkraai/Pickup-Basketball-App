@@ -136,14 +136,16 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
                     self.courtkey = courts.key
                     
                     if(((self.chosencourt!.coordinates!.latitude) == lat as! Double) && (self.chosencourt!.coordinates!.longitude == long as! Double) && (self.chosencourt!.parkname == parkname as! String)){
-                        for index in 0...(self.creatorsandtimesofgames.count-1){
-                            // check if chosencourt timeslot and creators correspond to those in creatorsandtimesofgames
-                            if((self.creatorsandtimesofgames[index] == self.user24!.username) && (self.creatorsandtimesofgames[index+1] == self.selectedTimeSlotProc)){
-                                self.iscreatorerror = true
-                                self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
+                        if(self.creatorsandtimesofgames.count>0){
+                            for index in 0...(self.creatorsandtimesofgames.count-1){
+                                // check if chosencourt timeslot and creators correspond to those in creatorsandtimesofgames
+                                if((self.creatorsandtimesofgames[index] == self.user24!.username) && (self.creatorsandtimesofgames[index+1] == self.selectedTimeSlotProc)){
+                                    self.iscreatorerror = true
+                                    self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
 
                                 
                             }
+                        }
                         }
                         if(self.iscreatorerror == false){
                             self.ref?.child("Games").childByAutoId().setValue(["timeslot":self.selectedTimeSlotProc, "gametype":self.selectedGameMode, "creator":self.user24!.username, "slotsfilled": 1,"date":self.selecteddate, "courtid":self.courtkey, "team 1": [self.user24!.username], "team 2": ["placeholder"]])

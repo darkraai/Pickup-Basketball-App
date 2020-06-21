@@ -234,21 +234,33 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             
             if snapshot.childrenCount > 0{
                 for courts in snapshot.children.allObjects as![DataSnapshot]{
+                    
+                    var counter = 0
                     let gameobject = courts.value as? [String:AnyObject]
                     let courtid = gameobject?["courtid"]
                     let creator = gameobject?["creator"]
                     let date = gameobject?["date"]
                     let gametype = gameobject?["gametype"]
                     let slotsfilled = gameobject?["slotsfilled"]
-                    let team1 = gameobject?["team 1"]
-                    let team2 = gameobject?["team 2"]
+                    let team1 = gameobject?["team 1"] as! [String]
+                    let team2 = gameobject?["team 2"] as! [String]
                     let timeslot = gameobject?["timeslot"]
                     let key = courts.key
                     
                     
                     
+                    for a in team1{
+                        counter+=1
+                    }
+                    
+                    for b in team2{
+                        if(b != "placeholder"){
+                            counter+=1
+                        }
+                    }
+                    
                     if(courtid as! String == self.chosencourt!.courtid){
-                        self.alltimeslots.append(Game(timeslot: timeslot as! String, gametype: gametype as! String, creator: creator as! String, slotsfilled: slotsfilled as! Int, team1: team1 as! [String], team2: team2 as! [String], date: date as! String, courtid: courtid as! String)!)
+                        self.alltimeslots.append(Game(timeslot: timeslot as! String, gametype: gametype as! String, creator: creator as! String, slotsfilled: counter, team1: team1, team2: team2, date: date as! String, courtid: courtid as! String)!)
                         self.alltimeslotsids.append(key)
                     }
 

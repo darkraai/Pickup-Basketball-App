@@ -233,15 +233,27 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
             if snapshot.childrenCount > 0{
                 for game3 in snapshot.children.allObjects as![DataSnapshot]{
                     
-                    
+                    var counter = 0
                     let gam3 = game3.value as? [String:AnyObject]
                     let timeslot = gam3?["timeslot"] as! String
                     let gamemode = gam3?["gametype"] as! String
                     let creator = gam3?["creator"] as! String
                     let team1 = gam3?["team 1"] as! [String]
+                    let team2 = gam3?["team 2"] as! [String]
                     let slotsfilled = gam3?["slotsfilled"] as! Int
                     
-                    self.unislotsfilled = slotsfilled
+                    for a in team1{
+                        counter+=1
+                    }
+                    
+                    for b in team2{
+                        if(b != "placeholder"){
+                            counter+=1
+                        }
+                    }
+                    counter+=1
+                    
+                    self.unislotsfilled = counter
                     
 
 
@@ -258,7 +270,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     
                     
                 }
-                self.ref?.child(self.key1!).child("slotsfilled").setValue(self.unislotsfilled!+1)
+                self.ref?.child(self.key1!).child("slotsfilled").setValue(self.unislotsfilled!)
 
                 self.team1users.append(self.user24!.username)
 
@@ -308,22 +320,41 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
             if snapshot.childrenCount > 0{
                 for game3 in snapshot.children.allObjects as![DataSnapshot]{
 
+                    var counter = 0
                     let gg = game3.value as? [String:AnyObject]
                     let timeslot = gg?["timeslot"] as! String
                     let gamemode = gg?["gametype"] as! String
                     let creator = gg?["creator"] as! String
-                    var team2 = gg?["team 2"] as! [String]
+                    let team1 = gg?["team 1"] as! [String]
+                    let team2 = gg?["team 2"] as! [String]
                     let slotsfilled = gg?["slotsfilled"] as! Int
                     
-                    self.unislotsfilled = slotsfilled
+                    
+ 
                     
                     self.key2 = game3.key
                     
 
                     
                     if ((team2.contains("placeholder")) && (self.chosengameid == (timeslot + gamemode + creator))){
-                        print("in if")
-                        team2.removeAll()
+                        //counts number of slots
+                        for a in team1{
+                             counter+=1
+                         }
+                         
+                         for b in team2{
+                             if(b != "placeholder"){
+                                 counter+=1
+                             }
+                         }
+                         counter+=1
+                         
+                         print(counter)
+                        
+                        self.unislotsfilled = counter
+                        
+                        self.ref?.child(self.key2!).child("slotsfilled").setValue(self.unislotsfilled!)
+                        self.unislotsfilled = counter
                         self.team2users.append(self.user24!.username)
                         self.ref?.child(self.key2!).child("team 2").setValue(self.team2users)
                         
@@ -332,7 +363,22 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                         self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
                     }
                     else if (((team2.contains("placeholder")) == false) && (self.chosengameid == (timeslot + gamemode + creator))){
-                        print("in else")
+                        //counts number of slots
+                        for a in team1{
+                             counter+=1
+                         }
+                         
+                         for b in team2{
+                             if(b != "placeholder"){
+                                 counter+=1
+                             }
+                         }
+                         counter+=1
+                        
+                        self.unislotsfilled = counter
+                        
+                        self.ref?.child(self.key2!).child("slotsfilled").setValue(self.unislotsfilled!)
+
                         for x in self.alltimeslotsids{
                             if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
                                        for b in team2{
@@ -341,6 +387,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                                        }
                                    }
                                }
+ 
                         self.team2users.append(self.user24!.username)
                         
                         
@@ -352,7 +399,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
 
                    }
-                self.ref?.child(self.key2!).child("slotsfilled").setValue(self.unislotsfilled!+1)
+
 
                 
             }
