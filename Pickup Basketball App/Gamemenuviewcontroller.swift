@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
-
+import MapKit
 
 class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -54,6 +54,34 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     var creatorsandtimesofgames:[String] = []
 
 
+    @IBAction func getDirectionsPressed(_ sender: UIButton) {
+        
+        //gets long and lat from chosencourt
+        let latitude:CLLocationDegrees = (chosencourt?.coordinates!.latitude)!
+        let longitude: CLLocationDegrees = (chosencourt?.coordinates!.longitude)!
+        
+        //regionDistance is the amount of distance on the map that should be shown
+        let regionDistance:CLLocationDistance = 1000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        
+        //specifications of what it should look like in the maps app
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+        
+        //defines where final location is set
+        let placemark = MKPlacemark(coordinate: coordinates)
+        let mapItem = MKMapItem(placemark: placemark)
+        
+        //sets name in maps app
+        mapItem.name = chosencourt?.parkname
+        
+        //actually launches the app
+        mapItem.openInMaps(launchOptions: options)
+        
+    }
+    
+    
+    
     
     @IBAction func creategamepressed(_ sender: Any) {
         performSegue(withIdentifier: "create_game_segue", sender: self)

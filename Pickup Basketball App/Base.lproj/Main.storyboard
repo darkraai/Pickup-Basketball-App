@@ -101,8 +101,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ojp-2q-CY1">
-                                <rect key="frame" x="0.0" y="199.5" width="414" height="559.5"/>
+                                <rect key="frame" x="0.0" y="200" width="414" height="496"/>
                                 <color key="backgroundColor" red="0.792156862745098" green="0.90588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="496" id="Gam-Dw-sR9"/>
+                                </constraints>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="eCW-Rc-pjw">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -238,14 +241,23 @@
                                     <outlet property="delegate" destination="HlM-Fj-27q" id="0Kk-0g-b1L"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvR-sG-yRq">
+                                <rect key="frame" x="101" y="708.5" width="212" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Get Directions To Court"/>
+                                <connections>
+                                    <action selector="getDirectionsPressed:" destination="HlM-Fj-27q" eventType="touchUpInside" id="5Tz-AC-Yvo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.792156862745098" green="0.90588235294117647" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="VGN-rE-Brb" firstAttribute="centerX" secondItem="ver-N4-jir" secondAttribute="centerX" id="GMI-Zn-tpQ"/>
-                            <constraint firstItem="Ojp-2q-CY1" firstAttribute="bottom" secondItem="QLp-k4-Ebp" secondAttribute="bottom" id="LWZ-MP-EF9"/>
+                            <constraint firstItem="hvR-sG-yRq" firstAttribute="centerX" secondItem="ver-N4-jir" secondAttribute="centerX" id="HWZ-cE-oqq"/>
+                            <constraint firstItem="Ojp-2q-CY1" firstAttribute="top" secondItem="gzo-7b-acm" secondAttribute="bottom" constant="33.5" id="L8a-kO-mfO"/>
                             <constraint firstItem="gzo-7b-acm" firstAttribute="top" secondItem="VGN-rE-Brb" secondAttribute="bottom" constant="8" id="Q8O-nW-Prz"/>
                             <constraint firstItem="Ojp-2q-CY1" firstAttribute="centerX" secondItem="ver-N4-jir" secondAttribute="centerX" id="Yge-t6-AOk"/>
-                            <constraint firstItem="Ojp-2q-CY1" firstAttribute="top" secondItem="gzo-7b-acm" secondAttribute="bottom" constant="33" id="fOl-uc-xfI"/>
+                            <constraint firstItem="hvR-sG-yRq" firstAttribute="top" secondItem="Ojp-2q-CY1" secondAttribute="bottom" constant="12.5" id="bfS-Hp-6sN"/>
                             <constraint firstItem="gzo-7b-acm" firstAttribute="centerX" secondItem="ver-N4-jir" secondAttribute="centerX" id="jQI-tc-74A"/>
                             <constraint firstItem="VGN-rE-Brb" firstAttribute="top" secondItem="QLp-k4-Ebp" secondAttribute="top" constant="35" id="p3u-P5-soE"/>
                             <constraint firstItem="Ojp-2q-CY1" firstAttribute="leading" secondItem="QLp-k4-Ebp" secondAttribute="leading" id="vM9-mW-ZiS"/>
@@ -2192,7 +2204,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mqI-p8-gv1"/>
-        <segue reference="72R-9Y-AX5"/>
+        <segue reference="Zrs-uK-FMh"/>
         <segue reference="7IX-or-AKa"/>
     </inferredMetricsTieBreakers>
     <resources>
