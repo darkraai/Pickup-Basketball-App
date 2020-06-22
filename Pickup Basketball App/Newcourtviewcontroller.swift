@@ -12,7 +12,7 @@ import FirebaseDatabase
 import Firebase
 
 
-class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADRewardedAdDelegate {
+class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADInterstitialDelegate {
     
     //MARK: Properties
     @IBOutlet weak var parkNameTextField: UITextField!
@@ -25,7 +25,7 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADRewarded
     
     var ref:DatabaseReference!
     
-    var rewardedAd: GADRewardedAd?
+    var interstitial: GADInterstitial!
 
     var coordinates:CLLocationCoordinate2D?
     var parkName = ""
@@ -34,18 +34,21 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADRewarded
     var indoorSelected = false
     var membershipSelected = false
     
-    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
-        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+    func createAndLoadInterstitial() -> GADInterstitial {
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
     }
     
-    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
-        self.rewardedAd = createAndLoadRewardedAd()
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
         self.performSegue(withIdentifier: "unwindToTabSegue", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        rewardedAd = createAndLoadRewardedAd()
+        interstitial = createAndLoadInterstitial()
         ref = Database.database().reference()
         parkNameTextField.delegate = self
         numCourtsTextField.delegate = self
@@ -53,18 +56,6 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADRewarded
         indoorSwitch.isOn = false
         membershipSwitch.isOn = false
         updateDoneButtonState()
-    }
-    
-    func createAndLoadRewardedAd() -> GADRewardedAd{
-      let rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
-      rewardedAd.load(GADRequest()) { error in
-        if let error = error {
-          print("Loading failed: \(error)")
-        } else {
-          print("Loading Succeeded")
-        }
-      }
-      return rewardedAd
     }
     
     private func updateDoneButtonState(){
@@ -109,8 +100,10 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADRewarded
     }
     
     @IBAction func startHoopingBtnPressed(_ sender: UIButton) {
-        if rewardedAd?.isReady == true {
-            rewardedAd?.present(fromRootViewController: self, delegate: self)
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready.")
         }
     }
     

@@ -45,7 +45,7 @@ class Otherballerviewcontroller: UIViewController {
         
         if(followbutton.titleLabel!.text! == "Following"){
             self.ref.child("Interactions").child(self.user24!.username).child("Following").child("\(chosen1!.username)").setValue(nil)
-            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").setValue(nil)
+            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").child("\(user24!.username)").setValue(nil)
             followbutton.setTitle("Follow", for: .normal)
         }
         else if(followbutton.titleLabel!.text! == "Follow"){
@@ -110,7 +110,7 @@ class Otherballerviewcontroller: UIViewController {
                 let value = snapshot.value as? [String:AnyObject]
                 let followers = value?.keys
                 
-                if (followers?.contains(self.user24!.username)) != nil{
+                if ((followers?.contains(self.user24!.username)) == true){
                     self.followbutton.setTitle("Following", for: .normal)
                 } else {
                     self.followbutton.setTitle("Follow", for: .normal)

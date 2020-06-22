@@ -335,10 +335,9 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     @IBAction func startHoopingBtnPressed(_ sender: Any) {
         iscreatorerror = false
+        
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
-
-            
         } else {
             print("Ad wasn't ready.")
         }
