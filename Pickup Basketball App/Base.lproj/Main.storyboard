@@ -1963,7 +1963,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="A0M-kT-8w6">
-                                <rect key="frame" x="188.5" y="305" width="200" height="279"/>
+                                <rect key="frame" x="179.5" y="305" width="200" height="279"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n6S-WZ-Acy">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="34"/>
@@ -2002,43 +2002,43 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9Y-xG-VOF">
-                                <rect key="frame" x="47" y="408" width="99.5" height="24"/>
+                                <rect key="frame" x="45" y="408" width="99.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lU-KN-PP3">
-                                <rect key="frame" x="30" y="310" width="133.5" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lU-KN-PP3">
+                                <rect key="frame" x="50" y="310" width="89.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re-enter Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvO-P1-aQi">
-                                <rect key="frame" x="11.5" y="359" width="170.5" height="24"/>
+                                <rect key="frame" x="9.5" y="359" width="170.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRG-fA-XqQ">
-                                <rect key="frame" x="47.5" y="457" width="99" height="24"/>
+                                <rect key="frame" x="45.5" y="457" width="99" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs0-Zu-jqJ">
-                                <rect key="frame" x="63" y="506" width="67.5" height="24"/>
+                                <rect key="frame" x="61" y="506" width="67.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hometown:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zi-Sq-dYB">
-                                <rect key="frame" x="46.5" y="555" width="100.5" height="24"/>
+                                <rect key="frame" x="44.5" y="555" width="100.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOJ-1y-xdk">
-                                <rect key="frame" x="156.5" y="686" width="77" height="101"/>
+                                <rect key="frame" x="154.5" y="686" width="77" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="77" id="8Io-jS-kaq"/>
                                     <constraint firstAttribute="height" constant="101" id="gaO-Ba-efw"/>
@@ -2049,7 +2049,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ita-iu-es1">
-                                <rect key="frame" x="59.5" y="726" width="75" height="24"/>
+                                <rect key="frame" x="57.5" y="726" width="75" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="bQP-aY-g9k"/>
                                     <constraint firstAttribute="width" constant="75" id="uG2-1M-aTL"/>
@@ -2059,7 +2059,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJO-AB-fHi">
-                                <rect key="frame" x="218" y="621" width="4.5" height="20.5"/>
+                                <rect key="frame" x="216" y="621" width="4.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2072,7 +2072,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgD-6m-gPV">
-                                <rect key="frame" x="154" y="592" width="58" height="86"/>
+                                <rect key="frame" x="152" y="592" width="58" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="DZF-pn-e4w"/>
                                     <constraint firstAttribute="height" constant="86" id="iJg-W1-gpa"/>
@@ -2083,13 +2083,13 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjv-Mw-ogY">
-                                <rect key="frame" x="65" y="629" width="64" height="24"/>
+                                <rect key="frame" x="63" y="629" width="64" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w53-QN-6e2">
-                                <rect key="frame" x="230.5" y="592" width="58" height="86"/>
+                                <rect key="frame" x="228.5" y="592" width="58" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="5jT-qP-YbB"/>
                                     <constraint firstAttribute="height" constant="86" id="XO5-rD-fkc"/>
@@ -2100,7 +2100,7 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOm-ej-4GA">
-                                <rect key="frame" x="294.5" y="621" width="9" height="20.5"/>
+                                <rect key="frame" x="292.5" y="621" width="9" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2133,7 +2133,7 @@
                             <constraint firstItem="isR-Au-aTZ" firstAttribute="centerX" secondItem="rro-RO-nXn" secondAttribute="centerX" id="2YX-Wn-dAz"/>
                             <constraint firstItem="VvO-P1-aQi" firstAttribute="centerX" secondItem="4lU-KN-PP3" secondAttribute="centerX" id="4Bb-SJ-fhg"/>
                             <constraint firstItem="rRG-fA-XqQ" firstAttribute="top" secondItem="v9Y-xG-VOF" secondAttribute="bottom" constant="25" id="5Ig-C8-tzF"/>
-                            <constraint firstItem="4lU-KN-PP3" firstAttribute="leading" secondItem="Rrl-Fd-dhE" secondAttribute="leading" constant="30" id="A4O-VG-qVc"/>
+                            <constraint firstItem="4lU-KN-PP3" firstAttribute="leading" secondItem="Rrl-Fd-dhE" secondAttribute="leading" constant="50" id="A4O-VG-qVc"/>
                             <constraint firstItem="rRG-fA-XqQ" firstAttribute="centerX" secondItem="4lU-KN-PP3" secondAttribute="centerX" id="Ago-we-Daq"/>
                             <constraint firstItem="1Zi-Sq-dYB" firstAttribute="centerX" secondItem="4lU-KN-PP3" secondAttribute="centerX" id="BDt-wb-rNI"/>
                             <constraint firstItem="tjv-Mw-ogY" firstAttribute="top" secondItem="1Zi-Sq-dYB" secondAttribute="bottom" constant="50" id="Eut-Xo-Iq7"/>
@@ -2144,7 +2144,7 @@
                             <constraint firstItem="1Zi-Sq-dYB" firstAttribute="top" secondItem="rs0-Zu-jqJ" secondAttribute="bottom" constant="25" id="OzA-Bd-3Ya"/>
                             <constraint firstItem="A0M-kT-8w6" firstAttribute="top" secondItem="isR-Au-aTZ" secondAttribute="bottom" constant="65" id="Par-Rf-oFe"/>
                             <constraint firstItem="qgD-6m-gPV" firstAttribute="leading" secondItem="tjv-Mw-ogY" secondAttribute="trailing" constant="25" id="S07-aS-d4W"/>
-                            <constraint firstItem="A0M-kT-8w6" firstAttribute="leading" secondItem="4lU-KN-PP3" secondAttribute="trailing" constant="25" id="UV7-cR-r1N"/>
+                            <constraint firstItem="A0M-kT-8w6" firstAttribute="leading" secondItem="4lU-KN-PP3" secondAttribute="trailing" constant="40" id="UV7-cR-r1N"/>
                             <constraint firstItem="SzM-jZ-wA1" firstAttribute="centerX" secondItem="rro-RO-nXn" secondAttribute="centerX" id="Vhi-SX-C2O"/>
                             <constraint firstItem="fJO-AB-fHi" firstAttribute="leading" secondItem="qgD-6m-gPV" secondAttribute="trailing" constant="6" id="W2q-Z4-E40"/>
                             <constraint firstItem="v9Y-xG-VOF" firstAttribute="centerX" secondItem="4lU-KN-PP3" secondAttribute="centerX" id="XtO-Sb-eEN"/>
@@ -2205,7 +2205,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="mqI-p8-gv1"/>
         <segue reference="Zrs-uK-FMh"/>
-        <segue reference="7IX-or-AKa"/>
+        <segue reference="c5a-dx-0zF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Oval" width="248.5" height="81"/>

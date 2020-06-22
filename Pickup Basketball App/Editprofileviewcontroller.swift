@@ -112,8 +112,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         editpassword.isSecureTextEntry = true
         editpasswordre.isSecureTextEntry = true
         
-//        editpassword.text = user24?.password
-//        editpasswordre.text = user24?.password
+        editpassword.text = user24?.password
+        editpasswordre.text = user24?.password
         editfirst.text = user24?.firstname
         editlast.text = user24?.lastname
         editweight.text = user24?.userweight
@@ -263,13 +263,24 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func saveBtnPressed(_ sender: Any) {
-        if interstitial.isReady {
+        
+        //passwords must match alert
+        if((editpassword.text!) != (editpasswordre.text!)){
+            let alert = UIAlertController(title: "Error", message: "The passwords must match.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+
+        }
+        
+        else{
+            if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
         } else {
             print("Ad wasn't ready.")
         }
     }
-    
+    }
     
     
     
@@ -353,18 +364,34 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
             
         let userlasttext = editlast.text ?? ""
             
-        let usernametext = editpasswordre.text ?? ""
+        let userpasswordretext = editpasswordre.text ?? ""
             
         let userpasswordtext = editpassword.text ?? ""
             
         let userweighttext = editweight.text ?? ""
         
         let userhometowntext = edithometown.text ?? ""
-            
-        if((!userfirsttext.isEmpty)&&(!userlasttext.isEmpty)&&(!usernametext.isEmpty)&&(!userpasswordtext.isEmpty)&&(!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
+        
+
+        
+        //password length alert
+        
+        
+        if((!userfirsttext.isEmpty)&&(!userlasttext.isEmpty)&&(!userpasswordretext.isEmpty)&&(!userpasswordtext.isEmpty)&&(!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
                 saveedits.isEnabled = true
 
             }
+
+        
+        if(userpasswordtext.count > 30 || userpasswordtext.count < 8){
+            
+            let alert = UIAlertController(title: "Error", message: "Your password must be between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            saveedits.isEnabled = false
+
+            
+        }
     }
         
 }
