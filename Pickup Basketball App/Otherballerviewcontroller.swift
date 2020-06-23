@@ -49,8 +49,8 @@ class Otherballerviewcontroller: UIViewController {
             followbutton.setTitle("Follow", for: .normal)
         }
         else if(followbutton.titleLabel!.text! == "Follow"){
-            self.ref.child("Interactions").child(self.user24!.username).child("Following").setValue(["\(chosen1!.username)" : true])
-            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").setValue(["\(self.user24!.username)" : true])
+            self.ref.child("Interactions").child(self.user24!.username).child("Following").child("\(chosen1!.username)").setValue(true)
+            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").child("\(user24!.username)").setValue(true)
             followbutton.setTitle("Following", for: .normal)
 
         }

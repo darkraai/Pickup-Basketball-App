@@ -237,8 +237,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(self.creatorsandtimesofgames.count)
-        
         interstitial = createAndLoadInterstitial()
         
         gameModePicker.delegate = self
@@ -251,7 +249,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
-        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial

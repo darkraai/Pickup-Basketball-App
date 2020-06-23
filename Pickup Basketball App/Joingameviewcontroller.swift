@@ -203,7 +203,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
-      var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
       interstitial.delegate = self
       interstitial.load(GADRequest())
       return interstitial
@@ -240,9 +240,9 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     let creator = gam3?["creator"] as! String
                     let team1 = gam3?["team 1"] as! [String]
                     let team2 = gam3?["team 2"] as! [String]
-                    let slotsfilled = gam3?["slotsfilled"] as! Int
+                    _ = gam3?["slotsfilled"] as! Int
                     
-                    for a in team1{
+                    for _ in team1{
                         counter+=1
                     }
                     
@@ -327,7 +327,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     let creator = gg?["creator"] as! String
                     let team1 = gg?["team 1"] as! [String]
                     let team2 = gg?["team 2"] as! [String]
-                    let slotsfilled = gg?["slotsfilled"] as! Int
+                    _ = gg?["slotsfilled"] as! Int
                     
                     
  
@@ -338,7 +338,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     
                     if ((team2.contains("placeholder")) && (self.chosengameid == (timeslot + gamemode + creator))){
                         //counts number of slots
-                        for a in team1{
+                        for _ in team1{
                              counter+=1
                          }
                          
@@ -348,8 +348,6 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                              }
                          }
                          counter+=1
-                         
-                         print(counter)
                         
                         self.unislotsfilled = counter
                         
@@ -364,7 +362,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     }
                     else if (((team2.contains("placeholder")) == false) && (self.chosengameid == (timeslot + gamemode + creator))){
                         //counts number of slots
-                        for a in team1{
+                        for _ in team1{
                              counter+=1
                          }
                          
@@ -415,7 +413,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //add in database code to add user to the selected game
         let destinationViewController = segue.destination
-        if let MainVC = destinationViewController as? Gamemenuviewcontroller{
+        if destinationViewController is Gamemenuviewcontroller{
             
         }
 

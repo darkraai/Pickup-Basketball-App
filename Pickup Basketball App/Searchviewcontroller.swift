@@ -99,7 +99,9 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
                     self.currentUsers[indexPath.row].userheightfeet = (each.value["heightfeet"] as? String)!
                     self.currentUsers[indexPath.row].userheightinches = (each.value["heightinches"] as? String)!
                     self.userSelected = self.currentUsers[indexPath.row]
-                    self.performSegue(withIdentifier: "search_ballerinfo_segue", sender: self)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "search_ballerinfo_segue", sender: self)
+                    }
                 }
             }
         }

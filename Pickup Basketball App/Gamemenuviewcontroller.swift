@@ -269,7 +269,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     let creator = gameobject?["creator"]
                     let date = gameobject?["date"]
                     let gametype = gameobject?["gametype"]
-                    let slotsfilled = gameobject?["slotsfilled"]
+                    _ = gameobject?["slotsfilled"]
                     let team1 = gameobject?["team 1"] as! [String]
                     let team2 = gameobject?["team 2"] as! [String]
                     let timeslot = gameobject?["timeslot"]
@@ -277,7 +277,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     
                     
                     
-                    for a in team1{
+                    for _ in team1{
                         counter+=1
                     }
                     
@@ -373,8 +373,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             MainVC.team2usersingame.removeAll()
             
             MainVC.chosengameid = chosengameid
-            
-            print(chosengameid!)
 
             MainVC.user24team = user24team
             
@@ -404,8 +402,6 @@ extension Gamemenuviewcontroller: delegate{
         self.chosenteam2.removeAll()
         
 
-        
-        //print("button status = "+gamestat.titleLabel!.text!)
         
         chosengamestatus = gamestat.titleLabel!.text!
         
