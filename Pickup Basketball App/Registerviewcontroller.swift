@@ -84,8 +84,11 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
 
     private func updateNextButtonState() {
         // Disable the login button if the text field is empty.
+        registernext.isEnabled = false
+
         
         var check = true
+        var check2 = false
 
         let userfirsttext = userfirstname.text ?? ""
         if userfirsttext.isEmpty{
@@ -132,20 +135,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
             check = false
         }
         
-        if (!usernametext.isEmpty){
-            let charset = CharacterSet(charactersIn: ".#$[]")
-            if usernametext.rangeOfCharacter(from: charset) != nil{
-                check = false
-                presentAlert()
-            }
-            ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: usernametext).observeSingleEvent(of: .value) { (snapshot) in
-                let snapDict = snapshot.value as? [String:AnyObject]
-                if snapDict != nil{
-                    check = false
-                    self.presentAlert()
-                }
-            }
-        }
         
         let userpasswordtext2 = userreenterpassword.text ?? ""
         
@@ -156,8 +145,26 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
                     self.present(alert, animated: true, completion: nil)
             }
         }
+        
+        if (!usernametext.isEmpty){
+            let charset = CharacterSet(charactersIn: ".#$[]")
+            if usernametext.rangeOfCharacter(from: charset) != nil{
+                check = false
+                presentAlert()
+            }
+            ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: usernametext).observeSingleEvent(of: .value) { (snapshot) in
+                let snapDict = snapshot.value as? [String:AnyObject]
+                if snapDict != nil{
+                    check2 = false
+                    self.presentAlert()
+                } else {
+                    check2 = true
+                    self.registernext.isEnabled = check && check2
 
-        registernext.isEnabled = check
+                }
+                
+            }
+        }
 
     }
     
