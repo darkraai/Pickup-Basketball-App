@@ -5,6 +5,8 @@
 //  Created by Ben Svoboda on 4/14/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
+//cleaned by bs
+
 
 import UIKit
 import os.log
@@ -42,6 +44,7 @@ class BallerProfile: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //pulls the counts for followers and following from the database and updates them in the baller profile accordingly
         
         //configures height label
         if(user24!.userheightfeet != "N/A"){
@@ -49,15 +52,15 @@ class BallerProfile: UIViewController {
         }
         else{
             editprofbutton.isEnabled = false
-
         }
-        //configures other labels based on class values
+        //configures other labels based on passed values
         weightlabel.text = user24!.userweight
         prefpositionlabel.text = user24!.position
         hometownlabel.text = user24!.hometown
         fullnamelabel.text = user24!.firstname + " " + user24!.lastname
         bpprofilepic.image = user24?.profilepic
         
+        //updates the following count on the baller profile
         ref.child("Interactions").child(self.user24!.username).child("Following").observeSingleEvent(of: .value) { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 self.followingBtn.setTitle("\(snapshots.count) Following", for: .normal)
@@ -66,6 +69,7 @@ class BallerProfile: UIViewController {
             }
         }
         
+        //updates the followers count on the baller profile
         ref.child("Interactions").child(self.user24!.username).child("Followers").observeSingleEvent(of: .value) { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 self.followersBtn.setTitle("\(snapshots.count) Followers", for: .normal)
@@ -77,6 +81,7 @@ class BallerProfile: UIViewController {
         self.bpprofilepic.layer.cornerRadius = self.bpprofilepic.frame.size.width / 2;
         self.bpprofilepic.clipsToBounds = true;
         
+        //sets title to username
         navtitle.title = user24?.username
 
         
@@ -87,19 +92,22 @@ class BallerProfile: UIViewController {
     @IBAction func unwindtobp(_ sender: UIStoryboardSegue) {
     }
     
+    //if followers is pressed, goes to vc that shows followers
     @IBAction func followersBtnPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "bptofollowers", sender: self)
     }
     
+    //if following is pressed, goes to vc that shows following
     @IBAction func followingBtnPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "bptofollowing", sender: self)
     }
 
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "bptoeditbp"){
             let destinationViewController = segue.destination
             if let MainVC94 = destinationViewController as? Editprofileviewcontroller{
+                //sends info to edit
                     MainVC94.user24 = user24
                     let backItem = UIBarButtonItem()
                     backItem.title = "Back"
@@ -107,6 +115,7 @@ class BallerProfile: UIViewController {
 
             }
         }
+        //sends user to follower screen
         if(segue.identifier == "bptofollowers"){
             let destinationViewController = segue.destination
             if let MainVC97 = destinationViewController as? Followersviewcontroller{
@@ -116,6 +125,7 @@ class BallerProfile: UIViewController {
 
         }
         
+        //sends user to following screen
         if(segue.identifier == "bptofollowing"){
             let destinationViewController = segue.destination
             if let MainVC99 = destinationViewController as? Followingviewcontroller{

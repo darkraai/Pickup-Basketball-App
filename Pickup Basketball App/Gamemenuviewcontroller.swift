@@ -5,6 +5,7 @@
 //  Created by Surya Mamidyala on 4/14/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
+//cleaned by bs
 
 import UIKit
 import FirebaseDatabase
@@ -24,9 +25,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     var chosengameid: String?
     
     var totalslotsx:Int = 0
-    
-    var chosengame: Game?
-    
+        
     var chosengamestatus: String?
     
     var alltimeslotsids:[String] = []
@@ -39,8 +38,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var user24team:String?
     
-    var buttondistinguisher:Int?
-    
     var ref:DatabaseReference?
     
     var refgame:DatabaseReference?
@@ -52,8 +49,23 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     var ProfilePic: UIImage?
     
     var creatorsandtimesofgames:[String] = []
+    
+    var todaysdate = ""
+    
+    var alltimeslots:[Game] = []
+    
+    var currenttimeslots:[Game] = []
+    
+    let datePicker = UIDatePicker()
+    
+    //formatter created
+    let formatter = DateFormatter()
+    
+    var dateTextFieldDate : Date?
 
 
+
+    //opens maps and directs to court
     @IBAction func getDirectionsPressed(_ sender: UIButton) {
         
         //gets long and lat from chosencourt
@@ -82,22 +94,13 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     
-    
+    //if create is pressed, goes to create game vc
     @IBAction func creategamepressed(_ sender: Any) {
         performSegue(withIdentifier: "create_game_segue", sender: self)
     }
     
-    var todaysdate = ""
-    
-    var alltimeslots:[Game] = []
-    var currenttimeslots:[Game] = []
-    
-    let datePicker = UIDatePicker()
-    
-    //formatter created
-    let formatter = DateFormatter()
 
-    //determines what a games button should be
+    //determines what a games button status should be
     func determinebuttonstatus(curgame: Game) -> String{
         hasuserjoined = false
         for w in curgame.team1{
@@ -153,6 +156,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     //creates date picker in the text field
     private func createDatePicker(forField field: UITextField){
+        
+        //sets the date picker to the current date
         datePicker.datePickerMode = .date
         field.textAlignment = .center
         
@@ -173,18 +178,17 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         field.inputView = datePicker
     }
     
-    var dateTextFieldDate : Date?
     
-    //sets the number of rows
+    //sets the number of rows in the game menu
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currenttimeslots.count
     }
     
-    //creates each tableview cell and sets its properties
+    //creates each tableview (game) cell and sets its properties
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell") as! GameTableViewCell
         
-
+        //configures each cell in the game menu
         if(dateTextField.text! == currenttimeslots[indexPath.row].date!){
             cell.timeLabel.text = currenttimeslots[indexPath.row].timeslot
             cell.gameLabel.text = currenttimeslots[indexPath.row].gametype
@@ -205,9 +209,9 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             cell.gameStatusButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
             cell.setGame(game: currenttimeslots[indexPath.row])
             cell.delegate = self
-            
+              
         }
-        
+        //used later to make sure that one person doesn't create 2 games at the same time
         creatorsandtimesofgames.append(cell.ownerLabel.text!)
         creatorsandtimesofgames.append(cell.timeLabel.text!)
 
@@ -227,26 +231,30 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    //when used on other screens, unwinds to this one
+    
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
     
-    //sets up tableview and date picker stuff
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //sets up tableview delegate and datasource
         gamemenutableview.delegate = self
         gamemenutableview.dataSource = self
         dateTextField.delegate = self
+        //sets up datepicker
         self.createDatePicker(forField: dateTextField)
         datePicker.setDate(Date(), animated: false)
         formatter.dateStyle = .medium
         dateTextField.text = formatter.string(from: Date())
         todaysdate = dateTextField.text!
         loadgames()
+        //sets the game menu title to park name
         gamemenunavbar.title = chosencourt!.parkname
         
         
     }
-    
+    //adds games found in loadgames
     override func viewWillAppear(_ animated: Bool) {
         gamemenutableview.reloadData()
         
@@ -255,7 +263,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     
 
-    //loads in games from the database into the tableview
+    //loads in games from the database into the alltimeslots
     func loadgames(){
         ref = Database.database().reference().child("Games")
         ref?.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
@@ -294,6 +302,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
                 }
             }
+            //if the game in alltimeslots is of the correct date, it's added to current timeslots
             for x in self.alltimeslots{
                 
                 if(x.date! == self.dateTextField.text!){
@@ -321,7 +330,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         self.view.endEditing(true)
         
         currenttimeslots.removeAll()
-        //add for to do this
+        //adds every game that belongs to the newly selected date to currenttimeslots
         for x in alltimeslots{
             
             if(x.date! == dateTextField.text!){
@@ -339,10 +348,10 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         let destinationViewController = segue.destination
         
         if let MainVC = destinationViewController as? Creategameviewcontroller{
+            //sends necessary data to creategameviewcontroller
             
             MainVC.user24 = user24
             MainVC.selecteddate = dateTextField.text!
-            MainVC.todaysdate = todaysdate
             MainVC.creatorsandtimesofgames = creatorsandtimesofgames
 
             
@@ -355,8 +364,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         
         if let MainVC = destinationViewController as? Joingameviewcontroller{
             
+            //sends necessary data to joingameviewcontroller
 
-                        
             MainVC.courtnameforalert = chosencourt!.parkname
             
             MainVC.timeslotforalert = timeslotforalert

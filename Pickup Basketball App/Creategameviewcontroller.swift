@@ -5,6 +5,8 @@
 //  Created by Surya Mamidyala on 4/17/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
+//cleaned by bs
+
 
 import UIKit
 import FirebaseDatabase
@@ -47,7 +49,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     //needed to decide which date to add the new cell
     var selecteddate = ""
-    var todaysdate = ""
     
  
     var bringBall = true
@@ -136,6 +137,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
                     self.courtkey = courts.key
                     
                     if(((self.chosencourt!.coordinates!.latitude) == lat as! Double) && (self.chosencourt!.coordinates!.longitude == long as! Double) && (self.chosencourt!.parkname == parkname as! String)){
+                        //checks if the creator made 2 games at same time
                         if(self.creatorsandtimesofgames.count>0){
                             for index in 0...(self.creatorsandtimesofgames.count-1){
                                 // check if chosencourt timeslot and creators correspond to those in creatorsandtimesofgames
@@ -147,6 +149,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
                             }
                         }
                         }
+                        // if creator is good to go, adds game to database
                         if(self.iscreatorerror == false){
                             self.ref?.child("Games").childByAutoId().setValue(["timeslot":self.selectedTimeSlotProc, "gametype":self.selectedGameMode, "creator":self.user24!.username, "slotsfilled": 1,"date":self.selecteddate, "courtid":self.courtkey, "team 1": [self.user24!.username], "team 2": ["placeholder"]])
                             self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
@@ -220,6 +223,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
 
     }
 
+    //Saves the time slot
     @objc private func donePressed(){
         //formatter
         let formatter = DateFormatter()
@@ -236,18 +240,19 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     //configures pickers and disables done button
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //sets up ads/delegates
         interstitial = createAndLoadInterstitial()
-        
         gameModePicker.delegate = self
         gameModePicker.dataSource = self
         timeTextField.delegate = self
         
         datePicker.delegate = self
         updateDoneButtonState()
+        //initializes date picker
         self.createDatePicker(forField: timeTextField)
     }
     
+    //the next two functions create interstitial
     func createAndLoadInterstitial() -> GADInterstitial {
         let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         interstitial.delegate = self
@@ -295,13 +300,15 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
+        
+        //if theres a creator error, alerts the user
         if(iscreatorerror == true){
             let alert = UIAlertController(title: "Error", message: "Sorry, you cannot create two games at the same time", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+            //if not, good to continue
         else{
         var counter = 0
         for z in currentslots{
@@ -316,6 +323,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
 
         if let MainVC = destinationViewController as? Gamemenuviewcontroller{
             
+            //adds to games in gamemenuvc
             MainVC.alltimeslots.append(Game(timeslot: selectedTimeSlotProc, gametype: selectedGameMode, creator: user24!.username, slotsfilled: 1, team1: [user24!.username], team2: [], date: selecteddate, courtid: "")!)
                         
 
@@ -323,6 +331,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
             
         }
         }
+        //if a time slot is full, gives warning
         else{
             let alert = UIAlertController(title: "Error", message: "Sorry, All courts are already booked for this time slot", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: nil))
@@ -330,6 +339,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         }
         }
     }
+    
     
     @IBAction func startHoopingBtnPressed(_ sender: Any) {
         iscreatorerror = false

@@ -5,6 +5,8 @@
 //  Created by Ben Svoboda on 4/18/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
+//cleaned by bs
+
 
 import UIKit
 import MapKit
@@ -21,7 +23,6 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var team2button: UIButton!
     
     
-    var buttondistinguisher:Int = 0
     
     var user24:User?
     
@@ -51,6 +52,23 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var interstitial: GADInterstitial!
     
+    lazy var team1usersingame : [User] = []
+    
+    lazy var team2usersingame : [User] = []
+    
+    var totalslots : Int?
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        interstitial = createAndLoadInterstitial()
+        
+        configureButtons()
+        
+    }
+    
+    //sets the characteristics of each of the two buttons
     private func configureButtons(){
         
         if ((chosengamestatus == "Joined") && (user24team == "team 1"))
@@ -126,18 +144,12 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         }
         
         
-        
-
     }
     
 
-    lazy var team1usersingame : [User] = []
+
     
-    lazy var team2usersingame : [User] = []
-    
-    var totalslots : Int?
-    
-    
+    //determines the number of rows in the tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if team1usersingame.count > team2usersingame.count{
             return team1usersingame.count
@@ -146,6 +158,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    //adds users into the tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JoinTableViewCell") as! JoinTableViewCell
         if team1usersingame.count > team2usersingame.count{
@@ -193,15 +206,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
  
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        interstitial = createAndLoadInterstitial()
-        
-        configureButtons()
-        
-    }
-    
+    //activates google ads
     func createAndLoadInterstitial() -> GADInterstitial {
         let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
       interstitial.delegate = self
@@ -227,7 +232,6 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
             print("Ad wasn't ready.")
         }
         
-        buttondistinguisher = 1
         ref = Database.database().reference().child("Games")
         ref?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount > 0{
@@ -240,8 +244,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     let creator = gam3?["creator"] as! String
                     let team1 = gam3?["team 1"] as! [String]
                     let team2 = gam3?["team 2"] as! [String]
-                    _ = gam3?["slotsfilled"] as! Int
                     
+                    //calculates the number of slots filled
                     for _ in team1{
                         counter+=1
                     }
@@ -254,9 +258,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     counter+=1
                     
                     self.unislotsfilled = counter
-                    
-
-
+                
+                    //makes sure the user is being added to the right game and adds the user to that game
                     for x in self.alltimeslotsids{
                         if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
                             for b in team1{
@@ -270,6 +273,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     
                     
                 }
+                
+                //edits slotsfilled and team1 in the database
                 self.ref?.child(self.key1!).child("slotsfilled").setValue(self.unislotsfilled!)
 
                 self.team1users.append(self.user24!.username)
@@ -281,13 +286,14 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                 self.presentAlert()
 
             }
+            //unwinds to home
             self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
  
         })
 
             
     }
-    
+    //tells the user that they've sucessfully joined a game
     private func presentAlert(){
         let alertController = UIAlertController(title: "Sucess", message: "You have joined a " + timeslotforalert! + " game at " + courtnameforalert!, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: {_ in CATransaction.setCompletionBlock({
@@ -312,7 +318,6 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
             print("Ad wasn't ready.")
         }
         
-        buttondistinguisher = 2
         team2users.removeAll()
 
         ref = Database.database().reference().child("Games")
@@ -375,8 +380,10 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                         
                         self.unislotsfilled = counter
                         
+                       //sets number of slots in database
                         self.ref?.child(self.key2!).child("slotsfilled").setValue(self.unislotsfilled!)
 
+                        //makes sure the user is being added to the right game and time is being
                         for x in self.alltimeslotsids{
                             if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
                                        for b in team2{
@@ -388,10 +395,11 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
  
                         self.team2users.append(self.user24!.username)
                         
-                        
+                        //adds the user via database
                         self.ref?.child(self.key2!).child("team 2").setValue(self.team2users)
                         self.presentAlert()
-
+                        
+                //unwinds to home
                  self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
                            }
 
@@ -410,14 +418,6 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //add in database code to add user to the selected game
-        let destinationViewController = segue.destination
-        if destinationViewController is Gamemenuviewcontroller{
-            
-        }
 
- 
-}
     
 }

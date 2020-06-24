@@ -3,6 +3,7 @@
 //  Pickup Basketball App
 //
 //  Created by Ben Svoboda on 4/6/20.
+//cleaned by bs
 
 
 import UIKit
@@ -19,7 +20,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     
     var metaImageURL: String? //url of image uploaded to firebase storage
     
-    //@IBOutlet weak var userheightf: UITextField!
+
     @IBOutlet weak var userweight: UITextField!
     @IBOutlet weak var userhometown: UITextField!
     @IBOutlet weak var registerdone: UIBarButtonItem!
@@ -30,7 +31,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
     @IBOutlet weak var pickerviewposition: UIPickerView!
 
     
-    //properties to be retrieved from last slide
+    //properties to be retrieved from last vc
     var fname: String?
     var lname: String?
     var uname: String?
@@ -66,6 +67,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         
     }
     
+    //determines number of rows in each pickerview
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if pickerView.tag == 1{
@@ -79,6 +81,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         }
     }
     
+    //adjusts values based on what is selected on pickerview
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1{
             heightinfeet = heightfeet[row]
@@ -121,12 +124,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
 
 //sends data through tab bar and nav controllers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let barViewControllers = segue.destination as! UITabBarController
-        //confirmed sets firstdc to nav controller before  baller profile
-        let navvc = barViewControllers.viewControllers![3] as! navballerprofile
-
-        let finalvcbp = navvc.topViewController as! BallerProfile
-        
+        //sets default profile picture
         let image14 = UIImage(named: "user")
         let imageData = image14!.jpegData(compressionQuality: 0.4)!
         
@@ -138,6 +136,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
         
+        //adds profile picture to database
         storageProfileRef.putData(imageData, metadata: metadata, completion:
             {(storageMetaData, error) in
             
@@ -150,8 +149,17 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
                 
                 })
             })
+        //sets destination to tab bar controller
+        let barViewControllers = segue.destination as! UITabBarController
+        
+        //depending which tab is clicked on the tab bar controller, the user is passed to that VC
+        let navvc = barViewControllers.viewControllers![3] as! navballerprofile
+
+        let finalvcbp = navvc.topViewController as! BallerProfile
         
 
+        
+        //sends the user object that was just made to the next vc
         finalvcbp.user24 = User(firstname: self.fname!, lastname: self.lname!, username: self.uname!, password: self.pword!, userweight: userweight.text!, hometown: userhometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: image14, pfplink: self.metaImageURL)
 
         
@@ -198,7 +206,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
         }
         
         private func updateDoneButtonState2() {
-            // Disable the login button if the text field is empty.
+            // Disable the register button to start
             registerdone.isEnabled = false
             
             let userweighttext = userweight.text ?? ""
@@ -207,6 +215,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             
             var check = true
             
+            //makes sure all fields are filled out
             if((!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
                 
                 check = true
@@ -215,11 +224,13 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
                 check = false
             }
             
+            //makes sure the weight isn't over 3 digits
             if userweighttext.count > 3{
                 let alert = UIAlertController(title: "Error", message: "Your weight must be between 1 and 3 characters in length.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 check = false
+            //makes sure the hometown length isn't over 30 characters
             } else if userhometowntext.count > 30{
                 let alert = UIAlertController(title: "Error", message: "Your hometown must be less than 30 characters in length. Please provide an abbreviated hometown.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
@@ -227,6 +238,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
                 check = false
             }
             
+            //enables or doesn't enable done button depending on what check is
             registerdone.isEnabled = check
         
         }

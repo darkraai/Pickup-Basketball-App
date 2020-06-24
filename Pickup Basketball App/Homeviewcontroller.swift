@@ -6,6 +6,8 @@
 //  Created by Surya M on 3/22/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
+//cleaned by bs
+
  
 import UIKit
 import MapKit
@@ -31,13 +33,11 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     let locationManager = CLLocationManager()
             
     
-
-
  
     @IBOutlet weak var mapView: MKMapView!
     
     
-    //configures location and map stuff
+    //sets mapview delegate and incorporates location services
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +52,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
 
     }
     
+    // if unwindtomap is called, the current VC will change to home
     @IBAction func unwindToMap(segue: UIStoryboardSegue) {
         if segue.source is Tabnewcourtviewcontroller{
             zoomToLatestLocation(with: annotation!.coordinate)
@@ -79,6 +80,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.isUserInteractionEnabled = false
         
+        //sets up the loading circle
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = UIActivityIndicatorView.Style.medium
         activityIndicator.center = self.view.center
@@ -95,6 +97,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         
         let activeSearch = MKLocalSearch(request: searchRequest)
         
+        //starts actually searching for the location entered
         activeSearch.start {
             (response, error) in
             activityIndicator.stopAnimating()
@@ -105,7 +108,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
             }
             
             else {
-                
+                //gets the info of whats searched
                 let latitude = response!.boundingRegion.center.latitude
                 let longitude = response!.boundingRegion.center.longitude
                 
@@ -113,6 +116,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
                 let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
                 let region = MKCoordinateRegion(center: coordinate, span: span)
                 
+                //map zooms in on what's searched
                 self.mapView.setRegion(region, animated: true)
                 
             }
@@ -120,7 +124,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         }
     }
     
-    
+    //sets up location stuff
     func configureLocationServices(){
         locationManager.delegate = self
         
@@ -133,6 +137,7 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
         
     }
     
+    //retrieves existing courts from database and adds them to the map as annotations
     func loadcourts(){
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
@@ -161,10 +166,10 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
 
     }
     
-    
+    //unwinds to this view controller without sending anything here
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {}
 
-    
+    //updates the user's location constantly
     private func beginLocationUpdates(locationManager: CLLocationManager){
         mapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -182,7 +187,10 @@ class Homeviewcontroller: UIViewController, UISearchBarDelegate {
 }
  
 extension Homeviewcontroller: CLLocationManagerDelegate {
+    
+    //if location is updated, set currentcoordinate and and latestLocation to the new location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         
         guard let latestLocation = locations.first else { return }
         
@@ -192,6 +200,8 @@ extension Homeviewcontroller: CLLocationManagerDelegate {
         
         currentCoordinate = latestLocation.coordinate
     }
+    
+    //makes sure authorizations are correct
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         if status == .authorizedWhenInUse || status == .authorizedAlways {
@@ -251,7 +261,7 @@ extension Homeviewcontroller: MKMapViewDelegate {
                 
             }
                 
-
+ 
             
      }
 
@@ -261,7 +271,7 @@ extension Homeviewcontroller: MKMapViewDelegate {
     }
 
     
-    
+    //sends court and user to next VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
         

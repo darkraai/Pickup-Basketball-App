@@ -5,6 +5,8 @@
 //  Created by Ben Svoboda on 3/24/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
+//cleaned by bs
+
 import UIKit
 import os.log
 import FirebaseDatabase
@@ -29,9 +31,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //creates database reference
         ref = Database.database().reference()
 
+        //sets delegates
         userfirstname.delegate = self
         userlastname.delegate = self
         userusername.delegate = self
@@ -45,7 +48,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        //sends important user info to registerviewcontroller2
         let destinationViewController = segue.destination
         
         if let MainVC = destinationViewController as? RegisterViewController2{
@@ -90,6 +93,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         var check = true
         var check2 = false
 
+        //makes sure the user's first name is the right length
         let userfirsttext = userfirstname.text ?? ""
         if userfirsttext.isEmpty{
             check = false
@@ -100,6 +104,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
             check = false
         }
         
+        //makes sure the user's last name is the right length
         let userlasttext = userlastname.text ?? ""
         if userlasttext.isEmpty{
             check = false
@@ -110,6 +115,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
             check = false
         }
         
+        //makes sure the user's username is the right length
         let usernametext = userusername.text ?? ""
         if usernametext.isEmpty{
             check = false
@@ -120,6 +126,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
             check = false
         }
         
+        //makes sure user password is correct length
         let userpasswordtext = userpassword.text ?? ""
         if userpasswordtext.isEmpty{
             check = false
@@ -135,23 +142,27 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
             check = false
         }
         
+        //makes sure passwords math
         
         let userpasswordtext2 = userreenterpassword.text ?? ""
         
         if (!userpasswordtext.isEmpty && !userpasswordtext2.isEmpty){
             if(userreenterpassword.text! != userpassword.text){
+                check = false
             let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
             }
         }
-        
+        //makes sure username doesn't contain special characters
         if (!usernametext.isEmpty){
             let charset = CharacterSet(charactersIn: ".#$[]")
             if usernametext.rangeOfCharacter(from: charset) != nil{
                 check = false
                 presentAlert()
             }
+            
+            //makes sure username isnt already taken
             ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: usernametext).observeSingleEvent(of: .value) { (snapshot) in
                 let snapDict = snapshot.value as? [String:AnyObject]
                 if snapDict != nil{
@@ -168,6 +179,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
 
     }
     
+    //when function is called, an alert is presented
     private func presentAlert(){
         let alertController = UIAlertController(title: "Enter another username", message: "The username you entered is already taken or contains one of the following characters '.#$[]'", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Try Again", style: .default, handler: nil)

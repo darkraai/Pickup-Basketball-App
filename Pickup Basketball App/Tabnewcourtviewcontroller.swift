@@ -5,6 +5,8 @@
 //  Created by Surya M on 4/6/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
+//cleaned by bs
+
  
 import UIKit
 import MapKit
@@ -25,6 +27,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
 
         mapView.delegate = self
         
+        //set up gesture recognizer which marks the point that a screen is tapped
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         tapRecognizer.numberOfTapsRequired = 1
         tapRecognizer.numberOfTouchesRequired = 1
@@ -34,6 +37,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
  
     }
     
+    //this function turns a tap into an annotation w coordinates
     @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: mapView) //gives the location object of where you are clicking on mapView
         locCoord = mapView.convert(location, toCoordinateFrom: mapView) //converts location object to coordinates
@@ -49,13 +53,14 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
+        //depending on which segue is executed, sends info to the next vc
         if segue.identifier == "new_court_segue"{
             super.prepare(for: segue, sender: sender)
             mapView.removeAnnotation(self.annotation!)
             zoomToLatestLocation(with: currentCoordinate!)
             let MainVC = segue.destination as! Newcourtviewcontroller
+            //saves annotation coordinates
             MainVC.coordinates = locCoord
-            
         }
         else if segue.identifier == "unwindToMapSegue" {
             super.prepare(for: segue, sender: sender)
@@ -69,16 +74,19 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
         tabBarController?.selectedIndex = 0
         //self.performSegue(withIdentifier: "unwindToMapSegue", sender: segue)
     }
-            
+    
+    //activates search controller if search button clicked
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
     
+    //makes the search and changes the location of the view accordingly
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             self.view.isUserInteractionEnabled = false
             
+            //activates activity indicator
             let activityIndicator = UIActivityIndicatorView()
             activityIndicator.style = UIActivityIndicatorView.Style.medium
             activityIndicator.center = self.view.center
@@ -95,6 +103,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
             
             let activeSearch = MKLocalSearch(request: searchRequest)
             
+            //searches
             activeSearch.start {
                 (response, error) in
                 activityIndicator.stopAnimating()
@@ -104,6 +113,7 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
                     print("Error")
                 }
                 
+                //gets info of where the search is to and sets the view to that area
                 else {
                     
                     let latitude = response!.boundingRegion.center.latitude
@@ -119,6 +129,8 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
                 
             }
         }
+    
+    //deals with authorizations and location service configuration
     func configureLocationServices(){
         locationManager.delegate = self
         
@@ -131,12 +143,14 @@ class Tabnewcourtviewcontroller: UIViewController, UISearchBarDelegate {
         
     }
     
+    //starts updating user location
     private func beginLocationUpdates(locationManager: CLLocationManager){
         mapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
     }
     
+    //changes the view based on where the user is
     private func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D) {
             let zoomRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
             mapView.setRegion(zoomRegion, animated: true)
@@ -155,6 +169,7 @@ extension Tabnewcourtviewcontroller: CLLocationManagerDelegate {
         
         currentCoordinate = latestLocation.coordinate
     }
+    //if location authorization changed, and authorized, location updates begin
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
         if status == .authorizedWhenInUse || status == .authorizedAlways {
@@ -165,12 +180,12 @@ extension Tabnewcourtviewcontroller: CLLocationManagerDelegate {
  
 extension Tabnewcourtviewcontroller: MKMapViewDelegate {
     
+    //handles annotations and the image that represents them
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
         }
-        
         
         if annotation === mapView.userLocation{
             annotationView?.image = UIImage(named: "user")
@@ -182,9 +197,7 @@ extension Tabnewcourtviewcontroller: MKMapViewDelegate {
         
         return annotationView
     }
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-    }
+
     
 }
 

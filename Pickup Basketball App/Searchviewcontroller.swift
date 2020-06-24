@@ -5,6 +5,7 @@
 //  Created by Ben Svoboda on 4/18/20.
 //  Copyright © 2020 Hoop Break. All rights reserved.
 //
+//cleaned by bs
 
 
 import UIKit
@@ -22,7 +23,6 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     var userSelected:User?
     
     var currentUsers = [User]()
-    var tempUsernames = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,11 +44,14 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //sets reference
         ref = Database.database().reference()
         
+        //handles delegates
         tableView.delegate = self
         tableView.dataSource = self
         
+        //configures search controllers
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
@@ -62,16 +65,19 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
         
+        //sends data to other baller
         if let vc = destinationViewController as? Otherballerviewcontroller{
             vc.chosen1 = self.userSelected
             vc.user24 = user24
         }
     }
     
+    //defines the number of tableview rows should be filled
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentUsers.count
     }
     
+    //sets the items in the search
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchTableViewCell", for: indexPath) as! searchTableViewCell
         let user = currentUsers[indexPath.row]
@@ -87,6 +93,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
         return 1
     }
     
+    //if a user is selected, it save the user and goes to baller info
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         searchController.isActive = false
         let usernameSelected = currentUsers[indexPath.row].username
@@ -107,8 +114,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
     }
-     
-    
+    //this function finds similar usernames and full names to what is searched
     func filterCurrentDataSource (searchTerm: String) {
         if searchTerm.count > 0 {
             
@@ -147,6 +153,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                 }
             }
+            
             
             ref.child("Users").queryOrdered(byChild: "fullname").queryStarting(atValue: searchValue2).queryEnding(atValue: searchValue2 + "\u{f8ff}").observeSingleEvent(of: .value) { (snapshot) in
                 if let snapDict = snapshot.value as? [String:AnyObject]{
@@ -194,13 +201,16 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
 }
 
 extension Searchviewcontroller : UISearchResultsUpdating {
-
+    // updates results of whats in tableview based on the typing
     func updateSearchResults(for searchController: UISearchController) {
     }
 }
 
+
+
 extension Searchviewcontroller : UISearchBarDelegate {
 
+    //stop editing and searches if search is pressed
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchController.isEditing = false
         if let searchText = searchController.searchBar.text {
