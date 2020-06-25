@@ -29,14 +29,7 @@ class User{
     var fullname: String
     
 
-//    //creates property key
-//    struct PropertyKey{
-//        static let firstname = "first name"
-//        static let lastname = "last name"
-//        static let email = "email"
-//        static let username = "username"
-//        static let password = "password"
-//    }
+
     
     
     //MARK: Initialization

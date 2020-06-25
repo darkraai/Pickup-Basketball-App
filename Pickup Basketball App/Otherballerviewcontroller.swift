@@ -20,6 +20,10 @@ class Otherballerviewcontroller: UIViewController {
     
     var followusername:String?
     
+    var chosen1:User?
+    
+    var user24:User?
+    
     //labels
     @IBOutlet weak var fullnamelabel2: UILabel!
     @IBOutlet weak var heightlabel2: UILabel!
@@ -40,7 +44,7 @@ class Otherballerviewcontroller: UIViewController {
     //button
     @IBOutlet weak var followbutton: UIButton!
     
-    //in this function, we will need to connect to database
+    //in this function, we will need to connect to database to get the interaction that hold followers and following
     @IBAction func followpressed(_ sender: Any) {
         
         if(followbutton.titleLabel!.text! == "Following"){
@@ -60,6 +64,7 @@ class Otherballerviewcontroller: UIViewController {
         
     }
     
+    //gets followers via database and displays it in followersviewcontroller
     @IBAction func followerBtnPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "Followersviewcontroller") as Followersviewcontroller
@@ -67,6 +72,7 @@ class Otherballerviewcontroller: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    //gets following via database and displays it in followingsviewcontroller
     @IBAction func followingBtnPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "Followingviewcontroller") as Followingviewcontroller
@@ -75,9 +81,7 @@ class Otherballerviewcontroller: UIViewController {
     }
     
     
-    var chosen1:User?
-    
-    var user24:User?
+
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -88,6 +92,7 @@ class Otherballerviewcontroller: UIViewController {
             fatalError("users in followers/following aren't properly configured")
         }
         
+        //sets labels that show the characteristics of other baller
         fullnamelabel2.text = chosen1!.firstname.capitalizingFirstLetter() + " " + chosen1!.lastname.capitalizingFirstLetter()
         obprofilepic.image = chosen1?.profilepic
         heightlabel2.text = chosen1!.userheightfeet + " ' " + chosen1!.userheightinches + " \" "
@@ -95,6 +100,7 @@ class Otherballerviewcontroller: UIViewController {
         prefpositionlabel2.text = chosen1!.position
         hometownlabel2.text = chosen1!.hometown
         
+        //gets number of following and changes button title accordingly
         ref.child("Interactions").child(self.chosen1!.username).child("Following").observeSingleEvent(of: .value) { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 self.followingNumberBtn.setTitle("\(snapshots.count) Following", for: .normal)
@@ -103,6 +109,7 @@ class Otherballerviewcontroller: UIViewController {
             }
         }
         
+        //gets number of followers and changes button title accordingly
         ref.child("Interactions").child(self.chosen1!.username).child("Followers").observeSingleEvent(of: .value) { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 self.followersNumberBtn.setTitle("\(snapshots.count) Followers", for: .normal)
@@ -128,8 +135,6 @@ class Otherballerviewcontroller: UIViewController {
                 
     }
     
-    override func viewDidLoad() {
-    }
     
     
 

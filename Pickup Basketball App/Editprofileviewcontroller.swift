@@ -41,14 +41,14 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var heightipv: UIPickerView!
     @IBOutlet weak var positionpv: UIPickerView!
     
-    
+    var shouldperform = true
     //these will be set to the picked value on pickerview
     var heightinfeet: String?
     var heightininches: String?
     var positions2: String?
     
     
-    
+    //lists to be put into pickerview
     var heightfeet = [" ","4","5","6","7"]
     
     var heightinches = [" ","0","1","2","3","4","5","6","7","8","9","10","11"]
@@ -59,6 +59,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         return 1
     }
     
+    //sets titles of rows
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if pickerView.tag == 1{
@@ -73,6 +74,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
+    //sets number of rows in each pickerview
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if pickerView.tag == 1{
@@ -86,6 +88,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
+    //adjusts variables based on what is selected on pickerview
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1{
             heightinfeet = heightfeet[row]
@@ -105,10 +108,13 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //sets up ad
         interstitial = createAndLoadInterstitial()
         
+        //creates firebase reference
         ref = Database.database().reference()
         
+        //makes passwords dots
         editpassword.isSecureTextEntry = true
         editpasswordre.isSecureTextEntry = true
         
@@ -177,6 +183,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     
     }
     
+    //sets up ads
     func createAndLoadInterstitial() -> GADInterstitial {
         let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         interstitial.delegate = self
@@ -209,14 +216,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
-        if(editpassword.text! != editpasswordre.text){
-            let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    return false
-                }
-        return true
+        //cancels out of segue if and presents alert if passwords dont match
+        return shouldperform
     }
     
 
@@ -264,22 +265,21 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBAction func saveBtnPressed(_ sender: Any) {
         
-        //passwords must match alert
-        if((editpassword.text!) != (editpasswordre.text!)){
-            let alert = UIAlertController(title: "Error", message: "The passwords must match.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
-
-        }
+            print(editpassword.text!)
+            print(editpasswordre.text!)
+            if(editpassword.text! != editpasswordre.text!){
+                let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        shouldperform = false
+                    }
         
-        else{
-            if interstitial.isReady {
+        if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
-        } else {
+        }
+        else {
             print("Ad wasn't ready.")
         }
-    }
     }
     
     
@@ -289,6 +289,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         pfpimageview.clipsToBounds = true;
         let destinationViewController = segue.destination as! BallerProfile
         
+        //adds the changes of the user to the database.
+        //the if statements handle whether a new image is used or the previous one is
         if (self.metaImageURL == nil){
             destinationViewController.user24 = User(firstname: editfirst.text!, lastname: editlast.text!, username: user24!.username, password: editpassword.text!, userweight: editweight.text!, hometown: edithometown.text!, userheightinches: heightininches!, userheightfeet: heightinfeet!, position: positions2!, profilepic: pfpimageview.image,pfplink: self.user24?.pfplink)
             
@@ -305,8 +307,9 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     //MARK: Actions
     
     
+    //allows you to change picture when u click current pfp
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
-        //closes keyboards for text fields
+        //closes keyboards of text fields
         editpasswordre.resignFirstResponder()
         editpassword.resignFirstResponder()
         editfirst.resignFirstResponder()
@@ -331,6 +334,7 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
+    //allows you to change picture when u click "change pfp"
     @IBAction func selectImageFromPhotoLibrary2(_ sender: UITapGestureRecognizer) {
         //closes keyboards for text fields
         editpasswordre.resignFirstResponder()
@@ -356,10 +360,12 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         
     }
     
+    //checks if the save button should be activated
     private func updateDoneButtonState3() {
         // Disable the login button if the text field is empty.
         saveedits.isEnabled = false
     
+        //turns text fields into strings
         let userfirsttext = editfirst.text ?? ""
             
         let userlasttext = editlast.text ?? ""
@@ -373,16 +379,14 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         let userhometowntext = edithometown.text ?? ""
         
 
-        
-        //password length alert
-        
-        
+            
+        //makes sure all fields are filled
         if((!userfirsttext.isEmpty)&&(!userlasttext.isEmpty)&&(!userpasswordretext.isEmpty)&&(!userpasswordtext.isEmpty)&&(!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
                 saveedits.isEnabled = true
 
             }
 
-        
+        //if user password is too long or short, error message appears
         if(userpasswordtext.count > 30 || userpasswordtext.count < 8){
             
             let alert = UIAlertController(title: "Error", message: "Your password must be between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
