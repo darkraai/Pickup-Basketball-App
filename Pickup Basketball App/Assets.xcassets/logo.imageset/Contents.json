@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "hoopbreaklogpng-2.png",
+      "filename" : "hoopbreaklogpng-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,7 +11,7 @@
       "scale" : "2x"
     },
     {
-      "filename" : "hoopbreaklogpng-1.png",
+      "filename" : "hoopbreaklogpng-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

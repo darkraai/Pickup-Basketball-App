@@ -32,6 +32,7 @@
 		C25922F4243AC037006A5420 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25922F3243AC037006A5420 /* MainTabBarController.swift */; };
 		C28B00B9245D05DA00DEC740 /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28B00B8245D05DA00DEC740 /* Court.swift */; };
 		C28B00BB245D0C7C00DEC740 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28B00BA245D0C7C00DEC740 /* Game.swift */; };
+		C295254A24A54EA600B475D0 /* Aquatico-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C295254924A5476F00B475D0 /* Aquatico-Regular.otf */; };
 		C29DC2ED242AA51B000E36BE /* Registerviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */; };
 		C2B571CB244BDFF500EE3FC7 /* navhome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CA244BDFF500EE3FC7 /* navhome.swift */; };
 		C2B571CD244BE23800EE3FC7 /* navsearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B571CC244BE23800EE3FC7 /* navsearch.swift */; };
@@ -78,6 +79,7 @@
 		C25922F3243AC037006A5420 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C28B00B8245D05DA00DEC740 /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 		C28B00BA245D0C7C00DEC740 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		C295254924A5476F00B475D0 /* Aquatico-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aquatico-Regular.otf"; sourceTree = "<group>"; };
 		C29DC2EC242AA51B000E36BE /* Registerviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registerviewcontroller.swift; sourceTree = "<group>"; };
 		C2B571CA244BDFF500EE3FC7 /* navhome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navhome.swift; sourceTree = "<group>"; };
 		C2B571CC244BE23800EE3FC7 /* navsearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navsearch.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				C0A27B8624280DCB00F6D70F /* Info.plist */,
 				189C797624992BE20019EAF9 /* GoogleService-Info.plist */,
 				C0A27B7E24280DC700F6D70F /* Pickup_Basketball_App.xcdatamodeld */,
+				C295254824A5473000B475D0 /* fonts */,
 			);
 			path = "Pickup Basketball App";
 			sourceTree = "<group>";
@@ -186,6 +189,14 @@
 				AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C295254824A5473000B475D0 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C295254924A5476F00B475D0 /* Aquatico-Regular.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 				189C797724992BE20019EAF9 /* GoogleService-Info.plist in Resources */,
 				C0A27B8524280DCB00F6D70F /* LaunchScreen.storyboard in Resources */,
 				C0A27B8224280DCB00F6D70F /* Assets.xcassets in Resources */,
+				C295254A24A54EA600B475D0 /* Aquatico-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
