@@ -51,17 +51,15 @@ class Otherballerviewcontroller: UIViewController {
             self.ref.child("Interactions").child(self.user24!.username).child("Following").child("\(chosen1!.username)").setValue(nil)
             self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").child("\(user24!.username)").setValue(nil)
             followbutton.setTitle("Follow", for: .normal)
+            self.refreshData()
         }
         else if(followbutton.titleLabel!.text! == "Follow"){
             self.ref.child("Interactions").child(self.user24!.username).child("Following").child("\(chosen1!.username)").setValue(true)
             self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").child("\(user24!.username)").setValue(true)
             followbutton.setTitle("Following", for: .normal)
+            self.refreshData()
+        }
 
-        }
-        else{
-            fatalError("L in da chat")
-        }
-        
     }
     
     //gets followers via database and displays it in followersviewcontroller
@@ -80,25 +78,22 @@ class Otherballerviewcontroller: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-
-    
     override func viewWillAppear(_ animated: Bool) {
         
         ref = Database.database().reference()
         
         //now chosen1 is the selected cell
-        if(chosen1!.hometown == "N/A"){
-            fatalError("users in followers/following aren't properly configured")
-        }
         
         //sets labels that show the characteristics of other baller
         fullnamelabel2.text = chosen1!.firstname.capitalizingFirstLetter() + " " + chosen1!.lastname.capitalizingFirstLetter()
         obprofilepic.image = chosen1?.profilepic
+        self.obprofilepic.layer.cornerRadius = self.obprofilepic.frame.size.width / 2;
+        self.obprofilepic.clipsToBounds = true;
         heightlabel2.text = chosen1!.userheightfeet + " ' " + chosen1!.userheightinches + " \" "
         weightlabel2.text = chosen1!.userweight
         prefpositionlabel2.text = chosen1!.position
         hometownlabel2.text = chosen1!.hometown
+        navtitle.title = chosen1?.username
         
         //gets number of following and changes button title accordingly
         ref.child("Interactions").child(self.chosen1!.username).child("Following").observeSingleEvent(of: .value) { (snapshot) in
@@ -127,17 +122,33 @@ class Otherballerviewcontroller: UIViewController {
                 self.followersNumberBtn.setTitle("0 Followers", for: .normal)
             }
         }
-        
-        self.obprofilepic.layer.cornerRadius = self.obprofilepic.frame.size.width / 2;
-        self.obprofilepic.clipsToBounds = true;
-        
-        navtitle.title = chosen1?.username
                 
     }
     
-    
-    
-
+    func refreshData(){
+        ref.child("Interactions").child(self.chosen1!.username).child("Following").observeSingleEvent(of: .value) { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                DispatchQueue.main.async {
+                    self.followingNumberBtn.setTitle("\(snapshots.count) Following", for: .normal)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.followingNumberBtn.setTitle("0 Following", for: .normal)
+                }
+            }
+        }
+        ref.child("Interactions").child(self.chosen1!.username).child("Followers").observeSingleEvent(of: .value) { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                DispatchQueue.main.async {
+                    self.followersNumberBtn.setTitle("\(snapshots.count) Followers", for: .normal)
+                }
+            }else {
+                DispatchQueue.main.async {
+                    self.followersNumberBtn.setTitle("0 Followers", for: .normal)
+                }
+            }
+        }
+    }
     
 }
 
