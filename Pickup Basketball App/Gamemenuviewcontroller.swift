@@ -20,19 +20,19 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var gamemenutableview: UITableView!
     @IBOutlet weak var dateTextField: UITextField!
     
-    var chosencourt: Court?
+    var chosencourt: Court? //court that was clicked on in home screen
     
-    var chosengameid: String?
+    var chosengameid: String? //id of clicked court
     
     var totalslotsx:Int = 0
         
     var chosengamestatus: String?
     
-    var alltimeslotsids:[String] = []
+    var alltimeslotsids:[String] = [] //array with time slot ids
     
-    var chosenteam1:[User] = []
+    var chosenteam1:[User] = [] //array with users in team1
     
-    var chosenteam2:[User] = []
+    var chosenteam2:[User] = [] //array with users in team2
     
     var hasuserjoined = false
     
@@ -48,13 +48,13 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var ProfilePic: UIImage?
     
-    var creatorsandtimesofgames:[String] = []
+    var creatorsandtimesofgames:[String] = [] //string array of the person who created the game and its time
     
     var todaysdate = ""
     
-    var alltimeslots:[Game] = []
+    var alltimeslots:[Game] = [] //array with all games
     
-    var currenttimeslots:[Game] = []
+    var currenttimeslots:[Game] = [] //array with current games
     
     let datePicker = UIDatePicker()
     
@@ -193,7 +193,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             cell.timeLabel.text = currenttimeslots[indexPath.row].timeslot
             cell.gameLabel.text = currenttimeslots[indexPath.row].gametype
             cell.ownerLabel.text = currenttimeslots[indexPath.row].creator
-            cell.slotsFilledLabel.text = String(currenttimeslots[indexPath.row].slotsfilled) + "/" + String(determinetotslots(curgame: currenttimeslots[indexPath.row]))
+            cell.slotsFilledLabel.text = String(currenttimeslots[indexPath.row].slotsfilled) + "/" + String(determinetotslots(curgame: currenttimeslots[indexPath.row])) //sets slotsFilled label to # of slots filled in the game divided by total # of slots available for the game
             cell.gameStatusButton.layer.cornerRadius = 5
             cell.gameStatusButton.setTitleColor(UIColor.white, for: .normal)
             cell.gameStatusButton.setTitle(String(determinebuttonstatus(curgame: currenttimeslots[indexPath.row])), for: .normal)
@@ -424,30 +424,32 @@ extension Gamemenuviewcontroller: delegate{
                 for auser in snapshot.children.allObjects as![DataSnapshot]{
                     
                     let user = auser.value as? [String:AnyObject]
-                    let userfirstname = user?["firstname"]
-                    let userlastname = user?["lastname"]
                     let userusername = user?["username"]
-                    let userpassword = user?["password"]
-                    let userweight = user?["weight"]
-                    let userhometown = user?["hometown"]
-                    let userheightinches = user?["heightinches"]
-                    let userheightfeet = user?["heightfeet"]
-                    let position = user?["position"]
-                    let pfplink = user?["pfp"] as? String
-                    
-                    let url = URL(string:pfplink!)
-                    do{
-                        let data = try Data(contentsOf: url!)
-                        self.ProfilePic = UIImage(data: data)
-                    }catch _{
-                        print("Error")
-                    }
                     
                  for x in team1{
                     if(x == userusername as! String){
                         if(x == self.user24!.username){
                             self.user24team = "team 1"
                         }
+                        
+                        let userfirstname = user?["firstname"]
+                        let userlastname = user?["lastname"]
+                        let userpassword = user?["password"]
+                        let userweight = user?["weight"]
+                        let userhometown = user?["hometown"]
+                        let userheightinches = user?["heightinches"]
+                        let userheightfeet = user?["heightfeet"]
+                        let position = user?["position"]
+                        let pfplink = user?["pfp"] as? String
+                        
+                        let url = URL(string:pfplink!)
+                        do{
+                            let data = try Data(contentsOf: url!)
+                            self.ProfilePic = UIImage(data: data)
+                        }catch _{
+                            print("Error")
+                        }
+                        
                         self.chosenteam1.append(User(firstname: userfirstname as! String, lastname: userlastname as! String, username: userusername as! String, password: userpassword as! String, userweight: userweight as! String, hometown: userhometown as! String, userheightinches: userheightinches as! String, userheightfeet: userheightfeet as! String, position: position as! String, profilepic: self.ProfilePic, pfplink: pfplink)!)
                     }
                     
@@ -460,6 +462,25 @@ extension Gamemenuviewcontroller: delegate{
                         if(y == self.user24!.username){
                             self.user24team = "team 2"
                         }
+        
+                        let userfirstname = user?["firstname"]
+                        let userlastname = user?["lastname"]
+                        let userpassword = user?["password"]
+                        let userweight = user?["weight"]
+                        let userhometown = user?["hometown"]
+                        let userheightinches = user?["heightinches"]
+                        let userheightfeet = user?["heightfeet"]
+                        let position = user?["position"]
+                        let pfplink = user?["pfp"] as? String
+                        
+                        let url = URL(string:pfplink!)
+                        do{
+                            let data = try Data(contentsOf: url!)
+                            self.ProfilePic = UIImage(data: data)
+                        }catch _{
+                            print("Error")
+                        }
+                        
                         self.chosenteam2.append(User(firstname: userfirstname as! String, lastname: userlastname as! String, username: userusername as! String, password: userpassword as! String, userweight: userweight as! String, hometown: userhometown as! String, userheightinches: userheightinches as! String, userheightfeet: userheightfeet as! String, position: position as! String, profilepic: self.ProfilePic, pfplink: pfplink)!)
                    }
                    }

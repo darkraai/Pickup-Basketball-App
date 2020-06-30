@@ -15,12 +15,12 @@ import FirebaseStorage
 class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-    var user24:User?
-    var userSelected:User?
+    var user24:User? //logged in user
+    var userSelected:User? //other user selected
     
     var ref: DatabaseReference!
     
-    var currentUsers = [User]()
+    var currentUsers = [User]() //currentUsers array with users to populate table
     
     var FullName:String?
     var FirstName:String?
@@ -32,7 +32,7 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var FollowersTableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
-        filterCurrentDataSource()
+        filterCurrentDataSource() //every time viewcontroller appears, refresh screen
     }
     
     override func viewDidLoad() {
@@ -43,21 +43,13 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
         FollowersTableView.delegate = self
         FollowersTableView.dataSource = self
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationViewController = segue.destination
-        
-        if let vc = destinationViewController as? Otherballerviewcontroller{
-            vc.chosen1 = self.userSelected
-            vc.user24 = user24
-        }
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentUsers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //render the users that the user logged in follows in a table
         let cellf = tableView.dequeueReusableCell(withIdentifier: "FollowersViewCell", for: indexPath) as! FollowersViewCell
         let user = currentUsers[indexPath.row]
         cellf.namelabelfollowers.text = user.fullname
@@ -69,6 +61,7 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //processes what happens when a follower is selected
         let usernameSelected = currentUsers[indexPath.row].username
         ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: usernameSelected).observeSingleEvent(of: .value) { (snapshot) in
             if let snapDict = snapshot.value as? [String:AnyObject]{
@@ -82,6 +75,16 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
                     self.performSegue(withIdentifier: "followers_ballerinfo_segue", sender: self)
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination
+        
+        if let vc = destinationViewController as? Otherballerviewcontroller{
+            //assign the chosen1 variable to the user selected on this screen and user24 variable to the user logged in
+            vc.chosen1 = self.userSelected
+            vc.user24 = user24
         }
     }
     
@@ -101,8 +104,7 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
                         if let snapDict = snapshot.value as? [String:AnyObject]{
                             for each in snapDict{
                                 self.UserName = each.value["username"] as? String
-                                let fullNameArr = (each.value["fullname"] as? String)?.components(separatedBy: " ")
-                                self.FullName = fullNameArr![0].capitalizingFirstLetter() + " " + fullNameArr![1].capitalizingFirstLetter()
+                                self.FullName = (each.value["fullname"] as? String)!.components(separatedBy: " ")[0].capitalizingFirstLetter() + " " + (each.value["fullname"] as? String)!.components(separatedBy: " ")[1].capitalizingFirstLetter()
                                 self.FirstName = self.FullName?.components(separatedBy: " ")[0]
                                 self.LastName = self.FullName?.components(separatedBy: " ")[1]
                                 self.PFPLink = each.value["pfp"] as? String
