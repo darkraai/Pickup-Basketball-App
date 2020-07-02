@@ -20,6 +20,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var gamemenutableview: UITableView!
     @IBOutlet weak var dateTextField: UITextField!
     
+    var datetonum:[String:Int] = ["6-7 am":1,"7-8 am":2,"8-9 am":3,"9-10 am":4,"10-11 am":5,"11-12 pm":6,"12-1 pm":7,"1-2 pm":8,"2-3 pm":9,"3-4 pm":10,"4-5 pm":11,"5-6 pm":12,"6-7 pm":13,"7-8 pm":14,"8-9 pm":15,"9-10 pm":16,"10-11 pm":17,"11-12 am":18]
+    
     var chosencourt: Court? //court that was clicked on in home screen
     
     var chosengameid: String? //id of clicked court
@@ -233,7 +235,9 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     //when used on other screens, unwinds to this one
     
-    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {
+        self.currenttimeslots = self.currenttimeslots.sorted {self.datetonum[$0.timeslot]! < self.datetonum[$1.timeslot]!}
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -309,6 +313,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     self.currenttimeslots.append(x)
                 }
             }
+            self.currenttimeslots = self.currenttimeslots.sorted {self.datetonum[$0.timeslot]! < self.datetonum[$1.timeslot]!}
             self.gamemenutableview.reloadData()
 
         })
