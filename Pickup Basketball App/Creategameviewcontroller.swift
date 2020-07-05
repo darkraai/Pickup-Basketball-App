@@ -254,7 +254,8 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     //the next two functions create interstitial
     func createAndLoadInterstitial() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        //let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3329292800278297/8161103690")
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial
@@ -348,9 +349,21 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
             interstitial.present(fromRootViewController: self)
         } else {
             print("Ad wasn't ready.")
+            interstitial = createAndLoadInterstitial()
         }
         
 
+    }
+    
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        print("Ad received")
+        if ad.isReady{
+            interstitial.present(fromRootViewController: self)
+        }
+    }
+    
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        print(error)
     }
     
 }

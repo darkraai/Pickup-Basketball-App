@@ -208,10 +208,11 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     //activates google ads
     func createAndLoadInterstitial() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-      interstitial.delegate = self
-      interstitial.load(GADRequest())
-      return interstitial
+      //let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3329292800278297/8727794495")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
     }
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
