@@ -14,8 +14,8 @@ import FirebaseStorage
 
 class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
-    var user24:User? //logged in user
+    var userLoggedIn:User? //user logged in
+    var user24:User? //user whose profile was clicked on
     var userSelected:User? //other user selected
     
     var ref: DatabaseReference!
@@ -63,16 +63,22 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //processes what happens when a follower is selected
         let usernameSelected = currentUsers[indexPath.row].username
-        ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: usernameSelected).observeSingleEvent(of: .value) { (snapshot) in
-            if let snapDict = snapshot.value as? [String:AnyObject]{
-                for each in snapDict{
-                    self.currentUsers[indexPath.row].hometown = (each.value["hometown"] as? String)!
-                    self.currentUsers[indexPath.row].position = (each.value["position"] as? String)!
-                    self.currentUsers[indexPath.row].userweight = (each.value["weight"] as? String)!
-                    self.currentUsers[indexPath.row].userheightfeet = (each.value["heightfeet"] as? String)!
-                    self.currentUsers[indexPath.row].userheightinches = (each.value["heightinches"] as? String)!
-                    self.userSelected = self.currentUsers[indexPath.row]
-                    self.performSegue(withIdentifier: "followers_ballerinfo_segue", sender: self)
+        print(usernameSelected)
+        print(userLoggedIn!.username)
+        if usernameSelected == userLoggedIn!.username{
+            self.performSegue(withIdentifier: "unwindtobpsegue", sender: self)
+        }else{
+            ref.child("Users").queryOrdered(byChild: "username").queryEqual(toValue: usernameSelected).observeSingleEvent(of: .value) { (snapshot) in
+                if let snapDict = snapshot.value as? [String:AnyObject]{
+                    for each in snapDict{
+                        self.currentUsers[indexPath.row].hometown = (each.value["hometown"] as? String)!
+                        self.currentUsers[indexPath.row].position = (each.value["position"] as? String)!
+                        self.currentUsers[indexPath.row].userweight = (each.value["weight"] as? String)!
+                        self.currentUsers[indexPath.row].userheightfeet = (each.value["heightfeet"] as? String)!
+                        self.currentUsers[indexPath.row].userheightinches = (each.value["heightinches"] as? String)!
+                        self.userSelected = self.currentUsers[indexPath.row]
+                        self.performSegue(withIdentifier: "followers_ballerinfo_segue", sender: self)
+                    }
                 }
             }
         }
@@ -85,6 +91,7 @@ class Followersviewcontroller: UIViewController, UITableViewDelegate, UITableVie
             //assign the chosen1 variable to the user selected on this screen and user24 variable to the user logged in
             vc.chosen1 = self.userSelected
             vc.user24 = user24
+            vc.userLoggedIn = userLoggedIn
         }
     }
     

@@ -120,7 +120,7 @@ class BallerProfile: UIViewController {
             let destinationViewController = segue.destination
             if let MainVC97 = destinationViewController as? Followersviewcontroller{
                     MainVC97.user24 = user24
-
+                    MainVC97.userLoggedIn = user24
             }
 
         }
@@ -130,6 +130,7 @@ class BallerProfile: UIViewController {
             let destinationViewController = segue.destination
             if let MainVC99 = destinationViewController as? Followingviewcontroller{
                     MainVC99.user24 = user24
+                    MainVC99.userLoggedIn = user24
                     
             }
         }

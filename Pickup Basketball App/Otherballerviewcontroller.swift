@@ -20,6 +20,8 @@ class Otherballerviewcontroller: UIViewController {
     
     var followusername:String?
     
+    var userLoggedIn:User?
+    
     var chosen1:User?
     
     var user24:User?
@@ -67,6 +69,7 @@ class Otherballerviewcontroller: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "Followersviewcontroller") as Followersviewcontroller
         vc.user24 = self.chosen1
+        vc.userLoggedIn = userLoggedIn
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -75,6 +78,7 @@ class Otherballerviewcontroller: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "Followingviewcontroller") as Followingviewcontroller
         vc.user24 = self.chosen1
+        vc.userLoggedIn = userLoggedIn
         navigationController?.pushViewController(vc, animated: true)
     }
     

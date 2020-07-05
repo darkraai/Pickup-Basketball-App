@@ -69,6 +69,7 @@ class Searchviewcontroller: UIViewController, UITableViewDelegate, UITableViewDa
         if let vc = destinationViewController as? Otherballerviewcontroller{
             vc.chosen1 = self.userSelected
             vc.user24 = user24
+            vc.userLoggedIn = user24
         }
     }
     

@@ -693,7 +693,7 @@
                                     <constraint firstAttribute="width" constant="444.32999999999998" id="wb9-fv-wv6"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htj-lv-Use">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="htj-lv-Use">
                                 <rect key="frame" x="0.0" y="201" width="414" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="FlC-QU-E9M"/>
@@ -891,15 +891,15 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="wG4-hK-sn8">
-                                                    <rect key="frame" x="115" y="12" width="162.5" height="75.5"/>
+                                                    <rect key="frame" x="115" y="12" width="269" height="75.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1op-Vo-wZF">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1op-Vo-wZF">
                                                             <rect key="frame" x="0.0" y="0.0" width="162.5" height="42"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoF-I3-QcN">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GoF-I3-QcN">
                                                             <rect key="frame" x="0.0" y="49" width="144.5" height="26.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <nil key="textColor"/>
@@ -911,6 +911,7 @@
                                             <color key="backgroundColor" red="0.79215686269999996" green="0.90588235289999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="wG4-hK-sn8" firstAttribute="top" secondItem="5fO-kB-AQI" secondAttribute="top" constant="12" id="3D8-UJ-eaw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wG4-hK-sn8" secondAttribute="trailing" constant="10" id="Sxl-F3-aBD"/>
                                                 <constraint firstItem="wG4-hK-sn8" firstAttribute="leading" secondItem="ghj-6Y-kSe" secondAttribute="trailing" constant="25" id="ZlP-sX-4f1"/>
                                                 <constraint firstItem="ghj-6Y-kSe" firstAttribute="leading" secondItem="5fO-kB-AQI" secondAttribute="leading" id="fVD-el-v1H"/>
                                                 <constraint firstItem="ghj-6Y-kSe" firstAttribute="top" secondItem="5fO-kB-AQI" secondAttribute="top" constant="9" id="x2l-x4-bC3"/>
@@ -944,9 +945,11 @@
                     <connections>
                         <outlet property="FollowersTableView" destination="qSE-bt-Xwe" id="iVo-Eu-e9m"/>
                         <segue destination="zhe-k3-abk" kind="show" identifier="followers_ballerinfo_segue" id="c5a-dx-0zF"/>
+                        <segue destination="gR4-qf-882" kind="unwind" identifier="unwindtobpsegue" unwindAction="unwindtobp:" id="HUD-Zu-pPu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCt-oW-pqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="gR4-qf-882" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-433.33333333333337" y="1672.7678571428571"/>
         </scene>
@@ -1147,16 +1150,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JVI-kK-g34">
-                                                    <rect key="frame" x="115" y="12" width="162.5" height="76.5"/>
+                                                    <rect key="frame" x="115" y="12" width="269" height="76.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FX2-zb-2BS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="162.5" height="42"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FX2-zb-2BS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="269" height="42"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypI-cu-4ug">
-                                                            <rect key="frame" x="0.0" y="50" width="162.5" height="26.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ypI-cu-4ug">
+                                                            <rect key="frame" x="0.0" y="50" width="269" height="26.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1168,6 +1171,7 @@
                                             <constraints>
                                                 <constraint firstItem="JVI-kK-g34" firstAttribute="leading" secondItem="U9F-PR-N9o" secondAttribute="trailing" constant="25" id="3N2-5q-fB3"/>
                                                 <constraint firstItem="U9F-PR-N9o" firstAttribute="leading" secondItem="Vld-Of-T4D" secondAttribute="leading" id="BE6-ff-qNh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JVI-kK-g34" secondAttribute="trailing" constant="10" id="RRa-JJ-SOr"/>
                                                 <constraint firstItem="U9F-PR-N9o" firstAttribute="top" secondItem="Vld-Of-T4D" secondAttribute="top" constant="9" id="f9f-Q2-Nqo"/>
                                                 <constraint firstItem="JVI-kK-g34" firstAttribute="top" secondItem="Vld-Of-T4D" secondAttribute="top" constant="12" id="fzr-Wv-StQ"/>
                                             </constraints>
@@ -1195,9 +1199,11 @@
                     <connections>
                         <outlet property="FollowingTableView" destination="p0f-OU-uCo" id="aU9-oD-u6h"/>
                         <segue destination="zhe-k3-abk" kind="show" identifier="following_ballerinfo_segue" id="7IX-or-AKa"/>
+                        <segue destination="pLX-eb-5Cs" kind="unwind" identifier="unwindtobpsegue" unwindAction="unwindtobp:" id="qTH-79-sXP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l11-Kn-UHf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="pLX-eb-5Cs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="815.94202898550736" y="1672.7678571428571"/>
         </scene>
@@ -2207,7 +2213,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="UUT-jY-whn"/>
         <segue reference="72R-9Y-AX5"/>
-        <segue reference="7IX-or-AKa"/>
+        <segue reference="c5a-dx-0zF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Oval" width="248.5" height="81"/>
