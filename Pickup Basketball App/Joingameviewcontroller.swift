@@ -219,6 +219,10 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         interstitial = createAndLoadInterstitial()
     }
     
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        print(error)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         teamstableview.reloadData()
     }
@@ -320,12 +324,12 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         }
         
         team2users.removeAll()
-
+        
         ref = Database.database().reference().child("Games")
         ref?.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
             if snapshot.childrenCount > 0{
                 for game3 in snapshot.children.allObjects as![DataSnapshot]{
-
+                    
                     var counter = 0
                     let gg = game3.value as? [String:AnyObject]
                     let timeslot = gg?["timeslot"] as! String
@@ -336,24 +340,24 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     _ = gg?["slotsfilled"] as! Int
                     
                     
- 
+                    
                     
                     self.key2 = game3.key
                     
-
+                    
                     
                     if ((team2.contains("placeholder")) && (self.chosengameid == (timeslot + gamemode + creator))){
                         //counts number of slots
                         for _ in team1{
-                             counter+=1
-                         }
-                         
-                         for b in team2{
-                             if(b != "placeholder"){
-                                 counter+=1
-                             }
-                         }
-                         counter+=1
+                            counter+=1
+                        }
+                        
+                        for b in team2{
+                            if(b != "placeholder"){
+                                counter+=1
+                            }
+                        }
+                        counter+=1
                         
                         self.unislotsfilled = counter
                         
@@ -369,56 +373,51 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                     else if (((team2.contains("placeholder")) == false) && (self.chosengameid == (timeslot + gamemode + creator))){
                         //counts number of slots
                         for _ in team1{
-                             counter+=1
-                         }
-                         
-                         for b in team2{
-                             if(b != "placeholder"){
-                                 counter+=1
-                             }
-                         }
-                         counter+=1
+                            counter+=1
+                        }
+                        
+                        for b in team2{
+                            if(b != "placeholder"){
+                                counter+=1
+                            }
+                        }
+                        counter+=1
                         
                         self.unislotsfilled = counter
                         
-                       //sets number of slots in database
+                        //sets number of slots in database
                         self.ref?.child(self.key2!).child("slotsfilled").setValue(self.unislotsfilled!)
-
+                        
                         //makes sure the user is being added to the right game and time is being
                         for x in self.alltimeslotsids{
                             if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
-                                       for b in team2{
-                                           self.team2users.append(b)
-                                           self.key2 = game3.key
-                                       }
-                                   }
-                               }
- 
+                                for b in team2{
+                                    self.team2users.append(b)
+                                    self.key2 = game3.key
+                                }
+                            }
+                        }
+                        
                         self.team2users.append(self.user24!.username)
                         
                         //adds the user via database
                         self.ref?.child(self.key2!).child("team 2").setValue(self.team2users)
                         self.presentAlert()
                         
-                //unwinds to home
-                 self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
-                           }
-
-
-                   }
-
-
+                        //unwinds to home
+                        self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
+                    }
+                    
+                    
+                }
+                
+                
                 
             }
-  
-
-               })
+            
+            
+        })
     }
     
-    
-    
-    
-    
-
     
 }
