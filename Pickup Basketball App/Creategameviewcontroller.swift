@@ -21,7 +21,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     var chosencourt:Court?
     
     var courtkey = ""
-    
+        
     var ref:DatabaseReference?
     
     var ref2:DatabaseReference?
@@ -149,6 +149,9 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
                             }
                         }
                         }
+                        else{
+                            self.iscreatorerror = false
+                        }
                         // if creator is good to go, adds game to database
                         if(self.iscreatorerror == false){
                             self.ref?.child("Games").childByAutoId().setValue(["timeslot":self.selectedTimeSlotProc, "gametype":self.selectedGameMode, "creator":self.user24!.username, "slotsfilled": 1,"date":self.selecteddate, "courtid":self.courtkey, "team 1": [self.user24!.username], "team 2": ["placeholder"]])
@@ -239,6 +242,11 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     //configures pickers and disables done button
     override func viewDidLoad() {
+        
+        print("hello")
+        for x in creatorsandtimesofgames{
+            print(x)
+        }
         super.viewDidLoad()
         //sets up ads/delegates
         interstitial = createAndLoadInterstitial()

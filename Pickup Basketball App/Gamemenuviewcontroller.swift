@@ -357,6 +357,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             
             MainVC.user24 = user24
             MainVC.selecteddate = dateTextField.text!
+            creatorsandtimesofgames.append(dateTextField.text!)
             MainVC.creatorsandtimesofgames = creatorsandtimesofgames
 
             
