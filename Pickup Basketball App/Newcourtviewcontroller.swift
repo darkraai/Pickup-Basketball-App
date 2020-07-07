@@ -38,8 +38,8 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
     
     //handles ads
     func createAndLoadInterstitial() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        //let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3329292800278297/4704789006")
+        //let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3329292800278297/4704789006")
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial
