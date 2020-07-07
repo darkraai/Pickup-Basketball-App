@@ -264,8 +264,8 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     
     //the next two functions create interstitial
     func createAndLoadInterstitial() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        //let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3329292800278297/8161103690")
+        //let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3329292800278297/8161103690")
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial
