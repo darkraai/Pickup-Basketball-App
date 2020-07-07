@@ -32,6 +32,8 @@ class GameTableViewCell: UITableViewCell {
     
     @IBAction func Joinbutton(_ sender: Any) {
         delegate?.didtapbutton(timeslot: gameitem.timeslot,team1: gameitem.team1,team2: gameitem.team2, totalslots: gameitem.totalslots, gameid: gameitem.gameid, courtid: gameitem.courtid!, gamestat: gameStatusButton)
+        gameStatusButton.isEnabled = false
+        
     }
     
 

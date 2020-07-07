@@ -190,6 +190,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell") as! GameTableViewCell
         
+        cell.gameStatusButton.isEnabled = true
         //configures each cell in the game menu
         if(dateTextField.text! == currenttimeslots[indexPath.row].date!){
             cell.timeLabel.text = currenttimeslots[indexPath.row].timeslot
