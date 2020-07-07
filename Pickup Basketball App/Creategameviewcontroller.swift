@@ -138,11 +138,13 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
                     
                     if(((self.chosencourt!.coordinates!.latitude) == lat as! Double) && (self.chosencourt!.coordinates!.longitude == long as! Double) && (self.chosencourt!.parkname == parkname as! String)){
                         //checks if the creator made 2 games at same time
-                        if(self.creatorsandtimesofgames.count>0){
+                        if(self.creatorsandtimesofgames.count>1){
                             for index in 0...(self.creatorsandtimesofgames.count-1){
                                 // check if chosencourt timeslot and creators correspond to those in creatorsandtimesofgames
                                 if((self.creatorsandtimesofgames[index] == self.user24!.username) && (self.creatorsandtimesofgames[index+1] == self.selectedTimeSlotProc)){
                                     self.iscreatorerror = true
+                                    print("creator error")
+                                    print(self.creatorsandtimesofgames.count)
                                     self.performSegue(withIdentifier: "unwindToMenuSegue", sender: self)
 
                                 

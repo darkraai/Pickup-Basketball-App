@@ -260,6 +260,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     }
     //adds games found in loadgames
     override func viewWillAppear(_ animated: Bool) {
+        creatorsandtimesofgames.removeAll()
+
         gamemenutableview.reloadData()
         
     }
@@ -342,6 +344,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
                 currenttimeslots.append(x)
             }
         }
+        
+        creatorsandtimesofgames.removeAll()
 
         gamemenutableview.reloadData()
 
@@ -359,6 +363,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             MainVC.selecteddate = dateTextField.text!
             creatorsandtimesofgames.append(dateTextField.text!)
             MainVC.creatorsandtimesofgames = creatorsandtimesofgames
+            print(creatorsandtimesofgames.count)
 
             
             for z in currenttimeslots{
