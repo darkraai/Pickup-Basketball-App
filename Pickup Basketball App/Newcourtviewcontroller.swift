@@ -31,7 +31,7 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
 
     var coordinates:CLLocationCoordinate2D?
     var parkName = ""
-    var numCourts = ""
+    var numCourts = "0"
     var address = ""
     var indoorSelected = false
     var membershipSelected = false
@@ -44,6 +44,8 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
         interstitial.load(GADRequest())
         return interstitial
     }
+    
+
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
@@ -66,8 +68,15 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
     
     //makes sure that park name and numcourts have proper values
     private func updateDoneButtonState(){
+        var courtcheck = true
         startHoopingButton.isEnabled = false
-        if (parkName != "" && numCourts != "" && CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: numCourts))){
+        if(Int(numCourts)! > 10){
+            let alert = UIAlertController(title: "Error", message: "Sorry, one park cannot have more than 10 courts", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            courtcheck = false
+        }
+        if (parkName != "" && numCourts != "0" && CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: numCourts)) && (courtcheck == true)){
             startHoopingButton.isEnabled = true
         }
     }
