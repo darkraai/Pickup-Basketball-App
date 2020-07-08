@@ -41,7 +41,6 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var heightipv: UIPickerView!
     @IBOutlet weak var positionpv: UIPickerView!
     
-    var shouldperform = true
     //these will be set to the picked value on pickerview
     var heightinfeet: String?
     var heightininches: String?
@@ -185,7 +184,8 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     
     //sets up ads
     func createAndLoadInterstitial() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        //let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3329292800278297/6055020382")
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial
@@ -214,13 +214,6 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         //when done editing, updates save button state
         updateDoneButtonState3()
     }
-
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        //cancels out of segue if and presents alert if passwords dont match
-        return shouldperform
-    }
-    
-
     
     //MARK: UIImagePickerControllerDelegate
 
@@ -264,16 +257,6 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func saveBtnPressed(_ sender: Any) {
-        
-            print(editpassword.text!)
-            print(editpasswordre.text!)
-            if(editpassword.text! != editpasswordre.text!){
-                let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        shouldperform = false
-                    }
-        
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
         }
@@ -364,38 +347,76 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
     private func updateDoneButtonState3() {
         // Disable the login button if the text field is empty.
         saveedits.isEnabled = false
+        
+        var check = true
     
         //turns text fields into strings
         let userfirsttext = editfirst.text ?? ""
+        if userfirsttext.isEmpty{
+            check = false
+        } else if userfirsttext.count > 30{
+            let alert = UIAlertController(title: "Error", message: "Your first name exceeded the limit of 30 characters. Please provide an abbreviated version.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            check = false
+        }
             
         let userlasttext = editlast.text ?? ""
-            
-        let userpasswordretext = editpasswordre.text ?? ""
+        if userlasttext.isEmpty{
+            check = false
+        } else if userlasttext.count > 30{
+            let alert = UIAlertController(title: "Error", message: "Your last name exceeded the limit of 30 characters. Please provide an abbreviated version.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            check = false
+        }
             
         let userpasswordtext = editpassword.text ?? ""
+        if userpasswordtext.isEmpty{
+            check = false
+        } else if userpasswordtext.count > 30 || userpasswordtext.count < 8{
+            let alert = UIAlertController(title: "Error", message: "Your password must be between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            check = false
+        }
+        
+        let userpasswordretext = editpasswordre.text ?? ""
+        if userpasswordretext.isEmpty{
+            check = false
+        }
+        
+        if(!userpasswordtext.isEmpty && !userpasswordretext.isEmpty){
+            if (editpassword.text != editpasswordre.text){
+                check = false
+                let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
             
         let userweighttext = editweight.text ?? ""
         
         let userhometowntext = edithometown.text ?? ""
         
-
-            
-        //makes sure all fields are filled
-        if((!userfirsttext.isEmpty)&&(!userlasttext.isEmpty)&&(!userpasswordretext.isEmpty)&&(!userpasswordtext.isEmpty)&&(!userhometowntext.isEmpty) && (!userweighttext.isEmpty)&&(heightinfeet != nil)&&(heightinfeet != " ")&&(heightininches != nil)&&(heightininches != " ")&&(positions2 != nil)&&(positions2 != " ")&&(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
-                saveedits.isEnabled = true
-
-            }
-
-        //if user password is too long or short, error message appears
-        if(userpasswordtext.count > 30 || userpasswordtext.count < 8){
-            
-            let alert = UIAlertController(title: "Error", message: "Your password must be between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+        if userweighttext.count > 3{
+            let alert = UIAlertController(title: "Error", message: "Your weight must be between 1 and 3 characters in length.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            saveedits.isEnabled = false
-
-            
+            check = false
+        } else if userhometowntext.count > 30{
+            let alert = UIAlertController(title: "Error", message: "Your hometown must be less than 30 characters in length. Please provide an abbreviated hometown.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            check = false
         }
+        
+        if ((userhometowntext.isEmpty) || (userweighttext.isEmpty) || (heightinfeet == nil) || (heightininches == nil) || (heightinfeet == " ") || (heightininches == " ") || (positions2 == nil) || (positions2 == " ") || !(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
+            check = false
+        }
+        
+        saveedits.isEnabled = check
+        
     }
         
 }

@@ -149,9 +149,9 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         if (!userpasswordtext.isEmpty && !userpasswordtext2.isEmpty){
             if(userreenterpassword.text! != userpassword.text){
                 check = false
-            let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
         //makes sure username doesn't contain special characters
