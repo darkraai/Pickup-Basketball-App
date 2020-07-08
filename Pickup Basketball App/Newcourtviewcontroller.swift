@@ -31,7 +31,7 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
 
     var coordinates:CLLocationCoordinate2D?
     var parkName = ""
-    var numCourts = "0"
+    var numCourts = ""
     var address = ""
     var indoorSelected = false
     var membershipSelected = false
@@ -44,8 +44,6 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
         interstitial.load(GADRequest())
         return interstitial
     }
-    
-
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
@@ -68,17 +66,46 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
     
     //makes sure that park name and numcourts have proper values
     private func updateDoneButtonState(){
-        var courtcheck = true
+        var check = true
         startHoopingButton.isEnabled = false
-        if(Int(numCourts)! > 10){
-            let alert = UIAlertController(title: "Error", message: "Sorry, one park cannot have more than 10 courts", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+        
+        parkName = parkNameTextField.text ?? ""
+        address = addressTextField.text ?? ""
+        numCourts = numCourtsTextField.text ?? ""
+        
+        if (parkName == "" || numCourts == "" || !CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: numCourts)) || numCourts.trimmingCharacters(in: .whitespacesAndNewlines) == "0"){
+            check = false
+        }
+        
+        if !numCourts.isEmpty{
+            if(Int(numCourts)! > 10){
+                let alert = UIAlertController(title: "Error", message: "Sorry, one park cannot have more than 10 courts", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                check = false
+            }
+        }
+        
+        if parkName.isEmpty{
+            check = false
+        } else if (parkName.count > 30 || parkName.count < 5){
+            let alert = UIAlertController(title: "Error", message: "The parkname must be between 5 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            courtcheck = false
+            check = false
         }
-        if (parkName != "" && numCourts != "0" && CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: numCourts)) && (courtcheck == true)){
-            startHoopingButton.isEnabled = true
+        
+        if address.isEmpty{
+            check = false
+        } else if (address != " "){
+            if (address.count > 30 || address.count < 5){
+                let alert = UIAlertController(title: "Error", message: "The address must be between 5 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                check = false
+            }
         }
+        startHoopingButton.isEnabled = check
     }
     
     //updates values when text field is done being edited
@@ -92,6 +119,10 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
         }
         updateDoneButtonState()
         
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        startHoopingButton.isEnabled = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -141,3 +172,4 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
     }
  
 }
+
