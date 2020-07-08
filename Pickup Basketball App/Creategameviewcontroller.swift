@@ -311,7 +311,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         
         //if theres a creator error, alerts the user
         if(iscreatorerror == true){
