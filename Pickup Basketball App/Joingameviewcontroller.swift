@@ -397,6 +397,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         } else {
             print("Ad wasn't ready.")
         }
+        
+        team1button.isEnabled = false
     
     }
     
@@ -426,6 +428,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         } else {
             print("Ad wasn't ready.")
         }
+        
+        team2button.isEnabled = false
         
     }
     
