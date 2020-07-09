@@ -50,14 +50,14 @@ class Otherballerviewcontroller: UIViewController {
     @IBAction func followpressed(_ sender: Any) {
         
         if(followbutton.titleLabel!.text! == "Following"){
-            self.ref.child("Interactions").child(self.user24!.username).child("Following").child("\(chosen1!.username)").setValue(nil)
-            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").child("\(user24!.username)").setValue(nil)
+            self.ref.child("Interactions").child(self.userLoggedIn!.username).child("Following").child("\(chosen1!.username)").setValue(nil)
+            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").child("\(userLoggedIn!.username)").setValue(nil)
             followbutton.setTitle("Follow", for: .normal)
             self.refreshData()
         }
         else if(followbutton.titleLabel!.text! == "Follow"){
-            self.ref.child("Interactions").child(self.user24!.username).child("Following").child("\(chosen1!.username)").setValue(true)
-            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").child("\(user24!.username)").setValue(true)
+            self.ref.child("Interactions").child(self.userLoggedIn!.username).child("Following").child("\(chosen1!.username)").setValue(true)
+            self.ref.child("Interactions").child(self.chosen1!.username).child("Followers").child("\(userLoggedIn!.username)").setValue(true)
             followbutton.setTitle("Following", for: .normal)
             self.refreshData()
         }
@@ -116,7 +116,7 @@ class Otherballerviewcontroller: UIViewController {
                 let value = snapshot.value as? [String:AnyObject]
                 let followers = value?.keys
                 
-                if ((followers?.contains(self.user24!.username)) == true){
+                if ((followers?.contains(self.userLoggedIn!.username)) == true){
                     self.followbutton.setTitle("Following", for: .normal)
                 } else {
                     self.followbutton.setTitle("Follow", for: .normal)

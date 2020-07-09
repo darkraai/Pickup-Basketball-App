@@ -97,49 +97,58 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         let userfirsttext = userfirstname.text ?? ""
         if userfirsttext.isEmpty{
             check = false
+            return
         } else if userfirsttext.count > 30{
             let alert = UIAlertController(title: "Error", message: "Your first name exceeded the limit of 30 characters. Please provide an abbreviated version.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
         
         //makes sure the user's last name is the right length
         let userlasttext = userlastname.text ?? ""
         if userlasttext.isEmpty{
             check = false
+            return
         } else if userlasttext.count > 30{
             let alert = UIAlertController(title: "Error", message: "Your last name exceeded the limit of 30 characters. Please provide an abbreviated version.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
         
         //makes sure the user's username is the right length
         let usernametext = userusername.text ?? ""
         if usernametext.isEmpty{
             check = false
+            return
         } else if usernametext.count > 30{
             let alert = UIAlertController(title: "Error", message: "Your username must be less than 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
         
         //makes sure user password is correct length
         let userpasswordtext = userpassword.text ?? ""
         if userpasswordtext.isEmpty{
             check = false
+            return
         } else if userpasswordtext.count > 30 || userpasswordtext.count < 8{
             let alert = UIAlertController(title: "Error", message: "Your password must be between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
         
         let userreentertext = userreenterpassword.text ?? ""
         if userreentertext.isEmpty{
             check = false
+            return
         }
         
         //makes sure passwords math
@@ -148,18 +157,20 @@ class RegisterViewController: UIViewController,UITextFieldDelegate {
         
         if (!userpasswordtext.isEmpty && !userpasswordtext2.isEmpty){
             if(userreenterpassword.text! != userpassword.text){
-                check = false
                 let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                check = false
+                return
             }
         }
         //makes sure username doesn't contain special characters
         if (!usernametext.isEmpty){
             let charset = CharacterSet(charactersIn: ".#$[]")
             if usernametext.rangeOfCharacter(from: charset) != nil{
-                check = false
                 presentAlert()
+                check = false
+                return
             }
             
             //makes sure username isnt already taken

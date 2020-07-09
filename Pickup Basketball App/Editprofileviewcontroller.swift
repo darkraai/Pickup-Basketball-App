@@ -354,44 +354,52 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
         let userfirsttext = editfirst.text ?? ""
         if userfirsttext.isEmpty{
             check = false
+            return
         } else if userfirsttext.count > 30{
             let alert = UIAlertController(title: "Error", message: "Your first name exceeded the limit of 30 characters. Please provide an abbreviated version.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
             
         let userlasttext = editlast.text ?? ""
         if userlasttext.isEmpty{
             check = false
+            return
         } else if userlasttext.count > 30{
             let alert = UIAlertController(title: "Error", message: "Your last name exceeded the limit of 30 characters. Please provide an abbreviated version.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
             
         let userpasswordtext = editpassword.text ?? ""
         if userpasswordtext.isEmpty{
             check = false
+            return
         } else if userpasswordtext.count > 30 || userpasswordtext.count < 8{
             let alert = UIAlertController(title: "Error", message: "Your password must be between 8 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
         
         let userpasswordretext = editpasswordre.text ?? ""
         if userpasswordretext.isEmpty{
             check = false
+            return
         }
         
         if(!userpasswordtext.isEmpty && !userpasswordretext.isEmpty){
             if (editpassword.text != editpasswordre.text){
-                check = false
                 let alert = UIAlertController(title: "Error", message: "Your passwords must match", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                check = false
+                return
             }
         }
             
@@ -404,15 +412,18 @@ class Editprofileviewcontroller: UIViewController, UIPickerViewDelegate, UIPicke
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         } else if userhometowntext.count > 30{
             let alert = UIAlertController(title: "Error", message: "Your hometown must be less than 30 characters in length. Please provide an abbreviated hometown.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
         
         if ((userhometowntext.isEmpty) || (userweighttext.isEmpty) || (heightinfeet == nil) || (heightininches == nil) || (heightinfeet == " ") || (heightininches == " ") || (positions2 == nil) || (positions2 == " ") || !(CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: userweighttext)))){
             check = false
+            return
         }
         
         saveedits.isEnabled = check

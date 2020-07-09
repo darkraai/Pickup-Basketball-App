@@ -245,7 +245,6 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
     //configures pickers and disables done button
     override func viewDidLoad() {
         
-        print("hello")
         for x in creatorsandtimesofgames{
             print(x)
         }

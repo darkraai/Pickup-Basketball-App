@@ -346,8 +346,10 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             }
         }
         
+        self.currenttimeslots = self.currenttimeslots.sorted {self.datetonum[$0.timeslot]! < self.datetonum[$1.timeslot]!}
+        
         creatorsandtimesofgames.removeAll()
-
+        
         gamemenutableview.reloadData()
 
     }

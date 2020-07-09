@@ -222,6 +222,7 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             
             } else {
                 check = false
+                return
             }
             
             //makes sure the weight isn't over 3 digits
@@ -230,12 +231,14 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
                 alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 check = false
+                return
             //makes sure the hometown length isn't over 30 characters
             } else if userhometowntext.count > 30{
                 let alert = UIAlertController(title: "Error", message: "Your hometown must be less than 30 characters in length. Please provide an abbreviated hometown.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 check = false
+                return
             }
             
             //enables or doesn't enable done button depending on what check is

@@ -65,8 +65,6 @@ class Followingviewcontroller: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //processes what happens when a follower is selected
         let usernameSelected = currentUsers[indexPath.row].username
-        print(usernameSelected)
-        print(userLoggedIn!.username)
         if usernameSelected == userLoggedIn!.username{
             self.performSegue(withIdentifier: "unwindtobpsegue", sender: self)
         }else{
@@ -129,6 +127,7 @@ class Followingviewcontroller: UIViewController, UITableViewDelegate, UITableVie
                                 let user = User(firstname: self.FirstName!, lastname: self.LastName!, username: self.UserName!, password: "", userweight: "", hometown: "", userheightinches: "", userheightfeet: "", position: "", profilepic: self.ProfilePic!, pfplink: self.PFPLink!)
                                 
                                 self.currentUsers.append(user!)
+                                self.currentUsers = self.currentUsers.sorted {$0.fullname < $1.fullname}
                                 self.FollowingTableView.reloadData()
                             }
                         }

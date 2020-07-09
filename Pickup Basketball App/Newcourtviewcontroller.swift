@@ -75,6 +75,7 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
         
         if (parkName == "" || numCourts == "" || !CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: numCourts)) || numCourts.trimmingCharacters(in: .whitespacesAndNewlines) == "0"){
             check = false
+            return
         }
         
         if !numCourts.isEmpty{
@@ -83,26 +84,31 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
                 alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 check = false
+                return
             }
         }
         
         if parkName.isEmpty{
             check = false
+            return
         } else if (parkName.count > 30 || parkName.count < 5){
             let alert = UIAlertController(title: "Error", message: "The parkname must be between 5 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             check = false
+            return
         }
         
         if address.isEmpty{
             check = false
+            return
         } else if (address != " "){
-            if (address.count > 30 || address.count < 5){
-                let alert = UIAlertController(title: "Error", message: "The address must be between 5 and 30 characters in length.", preferredStyle: UIAlertController.Style.alert)
+            if (address.count > 40 || address.count < 5){
+                let alert = UIAlertController(title: "Error", message: "The address must be between 5 and 40 characters in length.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 check = false
+                return
             }
         }
         startHoopingButton.isEnabled = check
