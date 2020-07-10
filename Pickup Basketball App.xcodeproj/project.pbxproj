@@ -13,9 +13,7 @@
 		189C797724992BE20019EAF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189C797624992BE20019EAF9 /* GoogleService-Info.plist */; };
 		18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FF29244A08920060672A /* Creategameviewcontroller.swift */; };
 		18C2510F24B8D7BA0008BFCF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
-		18C2511024B8D7BA0008BFCF /* MapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18C2511224B8D7BC0008BFCF /* Pods_Pickup_Basketball_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */; };
-		18C2511324B8D7BC0008BFCF /* Pods_Pickup_Basketball_App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18DA8E582450BAB8000B7DA9 /* searchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA8E572450BAB8000B7DA9 /* searchTableViewCell.swift */; };
 		C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */; };
 		C01396A9243D58A600DAE647 /* Newcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */; };
@@ -50,21 +48,6 @@
 		C2F312AA2453C72E00B42E51 /* Followingviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F312A92453C72E00B42E51 /* Followingviewcontroller.swift */; };
 		C2F312AC2453DA5900B42E51 /* FollowersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F312AB2453DA5900B42E51 /* FollowersViewCell.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		18C2511124B8D7BA0008BFCF /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				18C2511024B8D7BA0008BFCF /* MapKit.framework in Embed Frameworks */,
-				18C2511324B8D7BC0008BFCF /* Pods_Pickup_Basketball_App.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTableViewCell.swift; sourceTree = "<group>"; };
@@ -228,7 +211,6 @@
 				C0A27B6D24280DC700F6D70F /* Frameworks */,
 				C0A27B6E24280DC700F6D70F /* Resources */,
 				D73634910C417E16A71B97BB /* [CP] Embed Pods Frameworks */,
-				18C2511124B8D7BA0008BFCF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
