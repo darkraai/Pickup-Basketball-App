@@ -78,16 +78,6 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
             return
         }
         
-        if !numCourts.isEmpty{
-            if(Int(numCourts)! > 10){
-                let alert = UIAlertController(title: "Error", message: "Sorry, one park cannot have more than 10 courts", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                check = false
-                return
-            }
-        }
-        
         if parkName.isEmpty{
             check = false
             return
@@ -99,18 +89,28 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
             return
         }
         
-        if address.isEmpty{
-            check = false
-            return
-        } else if (address != " "){
-            if (address.count > 40 || address.count < 5){
-                let alert = UIAlertController(title: "Error", message: "The address must be between 5 and 40 characters in length.", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+        if !numCourts.isEmpty{
+            if(Int(numCourts)! > 10){
+                let alert = UIAlertController(title: "Error", message: "Sorry, one park cannot have more than 10 courts", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 check = false
                 return
             }
         }
+        
+//        if address.isEmpty{
+//            check = false
+//            return
+//        } else if (address != " "){
+//            if (address.count > 40 || address.count < 5){
+//                let alert = UIAlertController(title: "Error", message: "The address must be between 5 and 40 characters in length.", preferredStyle: UIAlertController.Style.alert)
+//                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertAction.Style.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//                check = false
+//                return
+//            }
+//        }
         startHoopingButton.isEnabled = check
     }
     
