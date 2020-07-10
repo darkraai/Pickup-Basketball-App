@@ -66,7 +66,6 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
         
         interstitial = createAndLoadInterstitial()
         
-        configureButtons()
         
     }
     
@@ -384,6 +383,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         teamstableview.reloadData()
+        configureButtons()
+
     }
     
     
