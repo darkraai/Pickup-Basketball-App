@@ -384,6 +384,9 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         teamstableview.reloadData()
+        team1button.isEnabled = true
+        team2button.isEnabled = true
+
     }
     
     
