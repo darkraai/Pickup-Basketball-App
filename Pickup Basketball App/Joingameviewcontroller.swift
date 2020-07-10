@@ -42,6 +42,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     var key2: String?
     
+    var todaysdate: String?
+    
     var unislotsfilled: Int?
     
     var ref:DatabaseReference?
@@ -63,9 +65,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        interstitial = createAndLoadInterstitial()
-        
+                
         
     }
     
@@ -229,6 +229,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                                let timeslot = gam3?["timeslot"] as! String
                                let gamemode = gam3?["gametype"] as! String
                                let creator = gam3?["creator"] as! String
+                               let date = gam3?["date"] as! String
                                let team1 = gam3?["team 1"] as! [String]
                                let team2 = gam3?["team 2"] as! [String]
                                
@@ -248,7 +249,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                            
                                //makes sure the user is being added to the right game and adds the user to that game
                                for x in self.alltimeslotsids{
-                                   if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator))){
+                                   if((x == game3.key) && (self.chosengameid == (timeslot + gamemode + creator)) && (date == self.todaysdate)){
                                        for b in team1{
                                            self.team1users.append(b)
                                            self.key1 = game3.key
@@ -294,6 +295,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                         let creator = gg?["creator"] as! String
                         let team1 = gg?["team 1"] as! [String]
                         let team2 = gg?["team 2"] as! [String]
+                        let date = gg?["date"] as! String
                         _ = gg?["slotsfilled"] as! Int
                         
                         
@@ -303,7 +305,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                         
                         
                         
-                        if ((team2.contains("placeholder")) && (self.chosengameid == (timeslot + gamemode + creator))){
+                        if ((team2.contains("placeholder")) && (self.chosengameid == (timeslot + gamemode + creator)) && (date == self.todaysdate)){
                             //counts number of slots
                             for _ in team1{
                                 counter+=1
@@ -327,7 +329,7 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
                             
                             self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
                         }
-                        else if (((team2.contains("placeholder")) == false) && (self.chosengameid == (timeslot + gamemode + creator))){
+                        else if (((team2.contains("placeholder")) == false) && (self.chosengameid == (timeslot + gamemode + creator)) && (date == self.todaysdate)){
                             //counts number of slots
                             for _ in team1{
                                 counter+=1
@@ -382,8 +384,10 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        teamstableview.reloadData()
         configureButtons()
+        teamstableview.reloadData()
+        interstitial = createAndLoadInterstitial()
+
 
     }
     

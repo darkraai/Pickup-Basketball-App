@@ -386,6 +386,8 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             
             MainVC.user24 = user24
             
+            MainVC.todaysdate = dateTextField.text!
+            
             MainVC.totalslots = totalslotsx
             
             MainVC.alltimeslotsids = alltimeslotsids
