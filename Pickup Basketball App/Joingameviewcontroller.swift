@@ -65,7 +65,8 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        team1button.isMultipleTouchEnabled = false
+        team2button.isMultipleTouchEnabled = false
         
     }
     
@@ -391,8 +392,6 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
 
     }
     
-    
-    
     @IBAction func button1pressed(_ sender: UIButton) {
         
         self.appflow = 1
@@ -409,15 +408,10 @@ class Joingameviewcontroller: UIViewController, UITableViewDelegate, UITableView
     private func presentAlert(){
         let alertController = UIAlertController(title: "Sucess", message: "You have joined a " + timeslotforalert! + " game at " + courtnameforalert!, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: {_ in CATransaction.setCompletionBlock({
-            
             self.performSegue(withIdentifier: "unwindtohome", sender: UIStoryboardSegue.self)
-            
         })
-            
-            
         })
              
-            
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
