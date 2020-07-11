@@ -12,8 +12,8 @@
 		189AAFD02446C5490035E722 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCF2446C5490035E722 /* GameTableViewCell.swift */; };
 		189C797724992BE20019EAF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189C797624992BE20019EAF9 /* GoogleService-Info.plist */; };
 		18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FF29244A08920060672A /* Creategameviewcontroller.swift */; };
-		18C2510F24B8D7BA0008BFCF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
-		18C2511224B8D7BC0008BFCF /* Pods_Pickup_Basketball_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */; };
+		18CC06D224BA6F44005D40F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
+		18CC06D524BA6F46005D40F6 /* Pods_Pickup_Basketball_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */; };
 		18DA8E582450BAB8000B7DA9 /* searchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA8E572450BAB8000B7DA9 /* searchTableViewCell.swift */; };
 		C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */; };
 		C01396A9243D58A600DAE647 /* Newcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */; };
@@ -101,8 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C2510F24B8D7BA0008BFCF /* MapKit.framework in Frameworks */,
-				18C2511224B8D7BC0008BFCF /* Pods_Pickup_Basketball_App.framework in Frameworks */,
+				18CC06D224BA6F44005D40F6 /* MapKit.framework in Frameworks */,
+				18CC06D524BA6F46005D40F6 /* Pods_Pickup_Basketball_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hoopbreak.Pickup-Basketball-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -514,7 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hoopbreak.Pickup-Basketball-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
