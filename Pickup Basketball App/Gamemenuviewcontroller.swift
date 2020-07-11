@@ -366,7 +366,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
             MainVC.selecteddate = dateTextField.text!
             creatorsandtimesofgames.append(dateTextField.text!)
             MainVC.creatorsandtimesofgames = creatorsandtimesofgames
-            print(creatorsandtimesofgames.count)
 
             
             for z in currenttimeslots{

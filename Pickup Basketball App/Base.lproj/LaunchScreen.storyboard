@@ -22,7 +22,7 @@
                                     <constraint firstAttribute="width" constant="240" id="GdG-ac-gFM"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep Hoopbreak downloaded to receive our premium version for free" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFY-tr-GlC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep Hoopbreak downloaded to receive our premium version for free" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFY-tr-GlC">
                                 <rect key="frame" x="32" y="643" width="350" height="50.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="jRt-yy-aOe"/>
