@@ -1,0 +1,449 @@
+@font-face {
+	font-family: Aquatico;
+	src: url(./assets/Aquatico-Regular.otf);
+}
+
+@font-face {
+	font-family: Roboto;
+	src: url(./assets/Roboto-Regular.ttf);
+}
+
+h1 {
+	font-family: Aquatico;
+}
+
+html {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	overflow: hidden;
+
+	font-size: 2vw;
+
+	scroll-behavior: smooth;
+}
+
+body {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	font-family: "Roboto";
+}
+
+p {
+	font-size: 2vw;
+}
+
+.tab {
+	tab-size: 4;
+}
+
+::selection {
+    background-color: #FF8E00;
+    color: #F7F7FF;
+}
+
+::-moz-selection {
+    background-color: #FF8E00;
+    color: #F7F7FF;
+}
+
+::-o-selection {
+    background-color: #FF8E00;
+    color: #F7F7FF;
+}
+
+#content-main {
+	width: 100%;
+	max-width: 100%;
+	padding-left: 0px;
+	margin: 0px;
+	margin-left: 0px;
+	height: 100%;
+}
+
+.main-text-container {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+	font-size: 1.2rem;
+}
+
+#navigation {	
+	padding: 0.1rem;
+	margin: 0px;
+	width: 100%;
+	max-width: 100%;
+	height: 7%;
+	position: fixed;
+
+	z-index: 1;
+
+	transition: top 0.5s;
+
+	background-color: #2A2D34;
+
+	overflow: hidden;
+}
+
+#navbar-logo {
+	height: 80%;
+	padding-left: 0.8rem;
+	vertical-align: middle;
+}
+
+.navbar-item {
+	color: black;
+	text-decoration: none;
+	
+	display: inline-block;
+	vertical-align: middle;
+	
+	padding-top: 0.4rem;
+	padding-bottom: 0.2rem;
+	padding-left: 0.1rem;
+	padding-right: 0.8rem;
+	
+	color: white;
+	overflow: auto;
+
+	font-family: Aquatico;
+}
+
+.navbar-item:hover {
+	color: #FF8E00;
+	cursor: pointer;
+	transition: 400ms;
+}
+
+.bio-pic {
+	width: 100%;
+	max-width: 100%;
+}
+
+.team-pic {
+	border-radius: 100%;
+	width: 25%;
+	display: inline-block;
+	margin: 0.6rem;
+	padding: 0px;
+	float: left;
+	overflow: auto;
+	border: 5px solid #00B1FE;
+}
+
+.bio-pic-text {
+	display: inline-block;
+	width: 60%;
+	max-width: 60%;
+	clear: left;
+}
+
+
+.contact-icon {
+	width: 1rem;
+	display: inline;
+	padding: 2px;
+	margin-top: 0.4rem;
+	margin-bottom: 0.4rem;
+	filter: invert(100%);
+	vertical-align: middle;
+}
+
+.contact-text {
+	display: inline;
+	font-size: 1rem;
+}
+
+#contact-container {
+	clear: none;
+	width: 100%;
+	max-width: 100%;
+	height: 80%;
+}
+
+.title {
+	font-family: Aquatico;
+	font-size: 2.5rem;
+}
+
+hr {
+	width: 100%;
+	max-width: 100%;
+	color: black;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	background-color: black;
+}
+
+.item-container {
+	padding-left: 1.2%;
+	padding-right: 1.2%;
+	padding-bottom: 2.0%;
+	padding-top: 1.5%;
+	margin-top: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+.spacer {
+	clear: both;
+}
+
+#main-container {
+	background-color: #F7F7FF;
+	display: block;
+	width: 99%;
+	max-width: 99%;
+	height: 360%;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+#hoop-break {
+	margin-top: 5px;
+	margin-bottom: 0px;
+	font-size: 280%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	max-width: 60%;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+#main-h2 {
+	margin-top: 2rem;
+	margin-bottom: 0;
+	text-align: center;
+	display: block;
+}
+
+#download-container {
+	background-color: #343330;
+	color: #F7F7FF;
+	align-items: center;
+}
+
+.accent {
+	background-color: #FF8E00;
+	height: 2%;
+	width: 6.5%;
+	display: block;
+	margin-top: 10px;
+}
+
+#contact-container {
+	background-color: #343330;
+	color: #F7F7FF;
+}
+
+#about-container {
+	background-color: #F7F7FF;
+	height: 160%;
+	max-height: 160%;
+	overflow-y: hidden;
+}
+
+form {
+	color: white;
+}
+
+#apple-logo {
+	margin-left: auto;
+	margin-right: auto;
+	height: 17%;
+	
+	vertical-align: middle;
+	display: block;
+
+	margin-top: 7%;
+}
+
+#downloads {
+	margin: auto;
+	align-items: center;
+	height: 100%;
+}
+
+#download-text {
+	text-align: center;
+
+	text-decoration: none;
+	font-size: 2rem;
+	margin-top: 0;
+	height: 20%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2rem;
+	width: 20%;
+	max-width: 20%;
+}
+
+#downlaod-text:hover {
+	color: black;
+}
+
+#apple {
+	color: white; 
+	text-decoration: none;
+
+	transition: 0.3s;
+	filter: invert(100%);
+}
+
+#apple:hover {
+	color: black;
+	filter: initial;
+}
+
+#apple img {
+	filter: invert(100%);
+	transition: 0.3s;
+}
+
+#apple img:hover {
+	filter: initial;
+}
+
+#download-text-container {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px;
+	width: 20%;
+	align-items: center;
+	padding-top: 2%;
+}
+
+input[type="submit"] {
+	background-color: #FF8E00;
+	color: white;
+	font-weight: bold;
+	
+	border: 0;
+	border-radius: 0.4rem;
+	font-size: 1.2rem;
+	
+	padding: 5px;
+	padding-left: 0.8rem;
+	padding-right: 0.8rem;
+	margin-top: 1rem;
+	
+	transition: 0.4s;
+}
+
+input[type="submit"]:hover {
+	cursor: pointer;
+	box-shadow: 0.3rem 0.3rem #21221B;
+}
+
+input[type="text"] {
+	font-size: 1.2rem;
+	padding: 3px;
+	color: #F7F7FF;
+	background-color: inherit;
+
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-bottom: 0.1rem solid #F7F7FF;
+	opacity: 80%;
+}
+
+input[type="email"] {
+	font-size: 1.2rem;
+	padding: 3px;
+	margin-top: 3px;
+	color: #F7F7FF;
+	background-color: inherit;
+	
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-bottom: 0.1rem solid #F7F7FF;
+	transition: 0.3s;
+}
+
+#mailing-container{
+	float: right;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	height: 55%;
+	margin-right: 8rem;
+}
+
+table {
+	margin-top: 2rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+th[scope="col"] {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-right: 0.6rem;
+	padding: 0px;
+	width: 40%;
+	max-width: 40%;
+}
+
+tr {
+	padding: 0px;
+	margin: 0;
+}
+
+
+.screen-image {
+	height: 50%;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 1rem;
+	margin-top: 2rem;
+	height: 90vh;
+	max-height: 90vh;
+}
+
+.screen-image-caption {
+	padding: 0;
+	font-weight: normal;
+	width: 80%;
+	max-width: 80%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#story-link {
+	text-align: inherit;
+	color: #FF8E00;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+#story-link:hover {
+	color: #00B1FE;
+}
+
+#logo {
+	height: 8%;
+	padding: 0;
+	margin-top: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+#story-text-container {
+	margin-left: 1rem;
+	padding-right: 2rem;
+}

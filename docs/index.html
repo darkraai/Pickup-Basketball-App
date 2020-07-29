@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="icon" type="image/icon" href="./assets/favicon.ico">
+		<script src="index.js"></script>
+		<title>Home | Hoop Break</title>
+	</head>
+	<body>
+		<div id="navigation">
+			<a href="#main-spacer"><img id="navbar-logo" src="./assets/logo.png"></a>
+			<a href="#main-spacer" class="navbar-item" onclick="navbar_onclick()">Hoop Break</a>
+			<a href="#download-spacer" class="navbar-item" onclick="navbar_onclick()">Download</a>
+			<a href="#about-spacer" class="navbar-item" onclick="navbar_onclick()">Our Team</a>
+			<a href="#contact-spacer" class="navbar-item" onclick="navbar_onclick()">Contact</a>
+		</div>
+
+		<div id="main-spacer" style="height:9%"></div>
+
+		<div id="content-main">
+			
+			<div id="main-container" class="item-container">
+				<h1 id="hoop-break" class="title">Hoop Break</h1>
+				<img src="./assets/logo.png" id="logo">
+				<div class="main-text-container">
+					<p style="text-align: center;">Hoop Break's goal is to allow users to not only easily join and schedule games, but to help users forge meaningful relationships and learn life skills through pickup basketball. Read about our story <a href="./our-story.html" id="story-link">here</a>.</p>
+				</div>
+				
+				<div class="accent" style="margin-right: auto; margin-left: auto; height: 0.9rem; width: 3.5rem;"></div>
+				<h2 id="main-h2">How Hoop Break works</h2>
+				<table style="margin-right: 0;">
+					<tr>
+						<th scope="col">
+							<img class="screen-image" src="assets/screenshots/screen1.png">
+						</th>
+						<th scope="col">
+							<img class="screen-image" src="assets/screenshots/screen2.png">
+						</th>
+					</tr>
+					
+					<tr>
+						<th scope="col">
+							<p class="screen-image-caption">Join games and view the availability of games near you</p>
+						</th>
+						<th scope="col">
+							<p class="screen-image-caption">Customize your Baller Profile with your height, weight, preferred position, and hometown, and follow friends</p>
+						</th>
+					</tr>
+
+					<tr>
+						<th scope="col">
+							<img class="screen-image" src="assets/screenshots/screen3.png">
+						</th>
+						<th scope="col">
+							<img class="screen-image" src="assets/screenshots/screen4.png">
+						</th>
+					</tr>
+
+					<tr>
+						<th scope="col">
+							<p class="screen-image-caption">Create courts and view the availability of those courts</p>
+						</th>
+						<th scope="col">
+							<p class="screen-image-caption">Find or create courts to play on near you using the map</p>
+						</th>
+					</tr>
+				</table>
+
+			</div>
+
+
+			
+			<hr id="download-spacer">
+
+			<div id="download-container" class="item-container">
+				<h1 id="download" class="title">Download</h1>
+				
+				<div id="downloads">
+					<a id="apple" href="." >
+						<img src="./assets/apple.png" id="apple-logo">
+					</a>
+
+					<p id="download-text">Download on the App Store</p>
+					
+					<br>
+					
+
+				</div>
+			
+			</div>
+			
+			<div style="margin: 0px; padding-bottom: 0px; background-color: #FF8E00; height: 0.8%; width: 100%;"></div>
+
+			<hr id="about-spacer">
+
+			<div id="about-container" class="item-container">
+				<h1 id="about" class="title">Our Team</h1>
+				<div class="bio-pic">
+					<img class="team-pic" src="./assets/team_assets/ben.png">
+					<div class="bio-pic-text"><p><b>Ben Svoboda - CEO, Co-founder</b><br>
+					Ben is a programmer, entrepreneur, and student with a love for the game of basketball. He is located in Northern Virginia and recently graduated from Riverside High School and the Loudoun Academy of Science. He plans to study computer science at the University of Illinois Urbana Champaign. Ben’s favorite coding project that he’s conducted was a program that filled out his march madness bracket, which scored in the 77th percentile. Ben is a Thunder fan and his favorite hoopers are Hasssan Whiteside and Tracy Mcgrady.<br><br>					Ben’s hot take: Zion Williamson and Brandon Ingram are the best young duo in the NBA and will win the Pelicans multiple rings.
+					 </p></div>
+				</div>
+				<div class="spacer"></div>
+				<div class="bio-pic">
+					<img class="team-pic" src="./assets/team_assets/ben.png">
+					<div class="bio-pic-text"><p><b>Surya Mamidyala - CTO, Co-founder</b><br>
+					Surya is a data scientist who loves coding, playing pickup basketball, and Joel Embiid. He graduated from Rock Ridge High School and the Loudoun Academy of Science and will attend UC Berkeley to study Electrical Engineering and Computer Science. Surya’s favorite program that he created was a machine learning algorithm that forecasted population growth in east asian countries. Surya is a Wizards fan, but once the playoffs come around each year, he becomes a diehard Sixers fan.<br><br>Surya’s hot take: Joel Embiid is a top ten NBA player and undoubtedly the best center in the league.
+					 </p></div>
+				</div>
+				<div class="spacer"></div>
+				<div><p>Thanks to Lachi Balabanski for designing the website</p></div>
+			</div>
+			
+			<hr id="contact-spacer">
+
+			<div id="contact-container" class="item-container">
+				<div class="accent"></div>
+				
+				<h1 id="contact" class="title">Contact</h1>
+				
+				<div style="display: inline-block; float: left; width: 45%; padding: 0; margin: 0;">
+					<h2 style="margin-top: 0;">Contact Information:</h2>
+					<img class="contact-icon" src="./assets/email.png">
+					<p class="contact-text">hoopbreakllc@gmail.com</p><br>
+					<img class="contact-icon" src="./assets/instagram.png">
+					<p class="contact-text">@hoop.break</p>
+				</div>
+			
+				<div id="mailing-container">
+					<h2 style="margin-top: 0;">Join the email list:</h2>
+					<form action="/sign_up" method="post">
+						<input type="text" placeholder="Name" name="name" required> <br>
+						<input type="email" placeholder="Email" name="email" required> <br>
+						<input type="submit" value="Join!">
+					</form>
+				
+				</div>
+
+				<div class="spacer"></div>
+
+				<!-- Website designed by: Lachezar Balabanski; lachibal2@gmail.com-->
+			
+			</div>
+		</div>
+	</body>
+</html>
