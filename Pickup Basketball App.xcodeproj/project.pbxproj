@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		18013ADA244CE9D500AAB54F /* JoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18013AD9244CE9D500AAB54F /* JoinTableViewCell.swift */; };
+		185B5D8B24D8F94D00611F0D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
+		185B5D8E24D8F94E00611F0D /* Pods_Pickup_Basketball_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */; };
 		189AAFCE2446C5100035E722 /* Gamemenuviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */; };
 		189AAFD02446C5490035E722 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCF2446C5490035E722 /* GameTableViewCell.swift */; };
 		189C797724992BE20019EAF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189C797624992BE20019EAF9 /* GoogleService-Info.plist */; };
 		18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FF29244A08920060672A /* Creategameviewcontroller.swift */; };
 		18DA8E582450BAB8000B7DA9 /* searchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA8E572450BAB8000B7DA9 /* searchTableViewCell.swift */; };
-		18F4071724D7B2CF00B53290 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E28CEB2436D92C00A25ABD /* MapKit.framework */; };
-		18F4071A24D7B2D100B53290 /* Pods_Pickup_Basketball_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB4FEBA6A5FF505A276E5B /* Pods_Pickup_Basketball_App.framework */; };
 		C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */; };
 		C01396A9243D58A600DAE647 /* Newcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A8243D58A600DAE647 /* Newcourtviewcontroller.swift */; };
 		C0A27B7424280DC700F6D70F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A27B7324280DC700F6D70F /* AppDelegate.swift */; };
@@ -101,8 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F4071724D7B2CF00B53290 /* MapKit.framework in Frameworks */,
-				18F4071A24D7B2D100B53290 /* Pods_Pickup_Basketball_App.framework in Frameworks */,
+				185B5D8B24D8F94D00611F0D /* MapKit.framework in Frameworks */,
+				185B5D8E24D8F94E00611F0D /* Pods_Pickup_Basketball_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
