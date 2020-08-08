@@ -131,9 +131,9 @@
 				<div id="mailing-container">
 					<h2 style="margin-top: 0;">Join the email list:</h2>
 					<form action="/sign_up" method="post">
-						<input type="text" placeholder="Name" name="name" required> <br>
-						<input type="email" placeholder="Email" name="email" required> <br>
-						<input type="submit" value="Join!">
+						<input type="text" id = "nametxtfield" placeholder="Name" name="name" required> <br>
+						<input type="email" id = "emailtxtfield" placeholder="Email" name="email" required> <br>
+						<input type="submit" id = "submit_btn" value="Join!">
 					</form>
 
 				</div>
@@ -153,5 +153,32 @@
 
 		<!-- Initialize Firebase -->
 		<script src="/__/firebase/init.js"></script>
+
+		<script>
+			document.getElementById("submit_btn").onclick = function(a) {
+					var email = document.getElementById("emailtxtfield").value;
+					var name = document.getElementById("nametxtfield").value;
+					var emailObject = {
+			 			email: email
+	 				};
+
+					var nameObject = {
+						name: name
+					};
+
+	 				firebase.database().ref('subscription-entries').child('emails').push().set(emailObject)
+			 		.then(function(snapshot) {
+			 		}, function(error) {
+					 		console.log('error' + error);
+			 		});
+
+					firebase.database().ref('subscription-entries').child('names').push().set(nameObject)
+			 		.then(function(snapshot) {
+							window.location.href = "signup-success.html";
+			 		}, function(error) {
+					 		console.log('error' + error);
+			 		});
+			}
+		</script>
 	</body>
 </html>
