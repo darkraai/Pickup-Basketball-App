@@ -130,7 +130,7 @@
 
 				<div id="mailing-container">
 					<h2 style="margin-top: 0;">Join the email list:</h2>
-					<form action="/sign_up" method="post">
+					<form>
 						<input type="text" id = "nametxtfield" placeholder="Name" name="name" required> <br>
 						<input type="email" id = "emailtxtfield" placeholder="Email" name="email" required> <br>
 						<input type="submit" id = "submit_btn" value="Join!">
@@ -202,7 +202,7 @@
 					 		console.log('error' + error);
 			 		});
 
-					// window.location.href = "signup-success.html";
+					window.location.href = "./signup-success.html";
 			}
 		</script>
 	</body>
