@@ -154,6 +154,30 @@
 		<!-- Initialize Firebase -->
 		<script src="/__/firebase/init.js"></script>
 
+				<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+		     https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+
+		<script>
+		  // Your web app's Firebase configuration
+		  var firebaseConfig = {
+		    apiKey: "AIzaSyAUqVCEJTZlcWlkx0YvzfQdsm33y8BV71o",
+		    authDomain: "pickup-basketball-app.firebaseapp.com",
+		    databaseURL: "https://pickup-basketball-app.firebaseio.com",
+		    projectId: "pickup-basketball-app",
+		    storageBucket: "pickup-basketball-app.appspot.com",
+		    messagingSenderId: "307441027701",
+		    appId: "1:307441027701:web:6b12401ad37f1634ea063c",
+		    measurementId: "G-04KM2D7WP1"
+		  };
+		  // Initialize Firebase
+		  firebase.initializeApp(firebaseConfig);
+		  firebase.analytics();
+		</script>
+
 		<script>
 			document.getElementById("submit_btn").onclick = function(a) {
 					var email = document.getElementById("emailtxtfield").value;
@@ -174,10 +198,11 @@
 
 					firebase.database().ref('subscription-entries').child('names').push().set(nameObject)
 			 		.then(function(snapshot) {
-							window.location.href = "signup-success.html";
 			 		}, function(error) {
 					 		console.log('error' + error);
 			 		});
+
+					window.location.href = "signup-success.html";
 			}
 		</script>
 	</body>
