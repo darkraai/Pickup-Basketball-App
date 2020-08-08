@@ -130,11 +130,10 @@
 
 				<div id="mailing-container">
 					<h2 style="margin-top: 0;">Join the email list:</h2>
-					<form onsubmit = "myFunction()">
-						<input type="text" id = "nametxtfield" placeholder="Name" name="name" required> <br>
-						<input type="email" id = "emailtxtfield" placeholder="Email" name="email" required> <br>
-						<input type="submit" id = "submit_btn" value="Join!">
-					</form>
+
+					<input type="text" id = "nametxtfield" placeholder="Name" name="name" required> <br>
+					<input type="email" id = "emailtxtfield" placeholder="Email" name="email" required> <br>
+					<input type="submit" id = "submit_btn" value="Join!">
 
 				</div>
 
@@ -179,7 +178,7 @@
 		</script>
 
 		<script>
-			function myFunction {
+			document.getElementById("submit_btn").onclick = function(a) {
 					var email = document.getElementById("emailtxtfield").value;
 					var name = document.getElementById("nametxtfield").value;
 					var emailObject = {
