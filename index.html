@@ -125,15 +125,15 @@
 					<img class="contact-icon" src="./assets/email.png">
 					<p class="contact-text">hoopbreakllc@gmail.com</p><br>
 					<img class="contact-icon" src="./assets/instagram.png">
-					<p class="contact-text">@hoop.break</p>
+					<p class="contact-text"><a href = "https://www.instagram.com/hoop.break/">@hoop.break</a></p>
 				</div>
 
 				<div id="mailing-container">
 					<h2 style="margin-top: 0;">Join the email list:</h2>
-					<form action="./signup-success.html" method="post">
+					<form action="./signup-success.html" method="post" onsubmit = "return saveToFirebase()">
 						<input type="text" id = "nametxtfield" placeholder="Name" name="name" required> <br>
 						<input type="email" id = "emailtxtfield" placeholder="Email" name="email" required> <br>
-						<input type="submit" id = "submit_btn" value="Join!">
+						<input type="submit" value="Join!">
 					</form>
 
 				</div>
@@ -143,67 +143,39 @@
 				<!-- Website designed by: Lachezar Balabanski; lachibal2@gmail.com-->
 
 			</div>
-		</div>
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="/__/firebase/7.17.2/firebase-app.js"></script>
 
-		<!-- TODO: Add SDKs for Firebase products that you want to use
-     		https://firebase.google.com/docs/web/setup#available-libraries -->
-		<script src="/__/firebase/7.17.2/firebase-analytics.js"></script>
+			</div>
 
-		<!-- Initialize Firebase -->
-		<script src="/__/firebase/init.js"></script>
+			<!-- The core Firebase JS SDK is always required and must be listed first -->
+			<!-- <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script> -->
 
-				<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+			<!-- TODO: Add SDKs for Firebase products that you want to use
+			     https://firebase.google.com/docs/web/setup#available-libraries -->
 
-		<!-- TODO: Add SDKs for Firebase products that you want to use
-		     https://firebase.google.com/docs/web/setup#available-libraries -->
-		<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+			<!-- <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script> -->
 
-		<script>
-		  // Your web app's Firebase configuration
-		  var firebaseConfig = {
-		    apiKey: "AIzaSyAUqVCEJTZlcWlkx0YvzfQdsm33y8BV71o",
-		    authDomain: "pickup-basketball-app.firebaseapp.com",
-		    databaseURL: "https://pickup-basketball-app.firebaseio.com",
-		    projectId: "pickup-basketball-app",
-		    storageBucket: "pickup-basketball-app.appspot.com",
-		    messagingSenderId: "307441027701",
-		    appId: "1:307441027701:web:6b12401ad37f1634ea063c",
-		    measurementId: "G-04KM2D7WP1"
-		  };
-		  // Initialize Firebase
-		  firebase.initializeApp(firebaseConfig);
-		  firebase.analytics();
-		</script>
+			<!-- <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script> -->
 
-		<script>
-			document.getElementById("submit_btn").onclick = function(a) {
-					var email = document.getElementById("emailtxtfield").value;
-					var name = document.getElementById("nametxtfield").value;
-					var emailObject = {
-			 			email: email
-	 				};
+			<!-- <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script> -->
 
-					var nameObject = {
-						name: name
-					};
+			<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase.js"></script>
 
-	 				firebase.database().ref('subscription-entries').child('emails').push().set(emailObject)
-			 		.then(function(snapshot) {
-			 		}, function(error) {
-					 		console.log('error' + error);
-			 		});
+			<script>
+			  // Your web app's Firebase configuration
+			  var firebaseConfig = {
+			    apiKey: "AIzaSyAUqVCEJTZlcWlkx0YvzfQdsm33y8BV71o",
+			    authDomain: "pickup-basketball-app.firebaseapp.com",
+			    databaseURL: "https://pickup-basketball-app.firebaseio.com",
+			    projectId: "pickup-basketball-app",
+			    storageBucket: "pickup-basketball-app.appspot.com",
+			    messagingSenderId: "307441027701",
+			    appId: "1:307441027701:web:6b12401ad37f1634ea063c",
+			    measurementId: "G-04KM2D7WP1"
+			  };
+			  // Initialize Firebase
+			  firebase.initializeApp(firebaseConfig);
+			  firebase.analytics();
+			</script>
 
-					firebase.database().ref('subscription-entries').child('names').push().set(nameObject)
-			 		.then(function(snapshot) {
-			 		}, function(error) {
-					 		console.log('error' + error);
-			 		});
-
-					window.location.href = "./signup-success.html";
-			}
-		</script>
 	</body>
 </html>
