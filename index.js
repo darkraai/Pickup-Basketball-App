@@ -42,6 +42,6 @@ function saveToFirebase(){
 				console.log('error' + error);
 		});
 
-		setTimeout(function(){ alert("Thank you for signing up for the email list! You will be notified when the app launches and will receive the premium version for free upon release."); window.location = "./signup-success.html";}, 200);
+		setTimeout(function(){ alert("***PLEASE READ***\r\nThank you for signing up for the email list! You will be notified when the app launches, will receive a free HoopBreak t-shirt & quality basketball analysis, and will have access to the premium version of the app for free upon release."); window.location = "./signup-success.html";}, 500);
 		return false;
 }

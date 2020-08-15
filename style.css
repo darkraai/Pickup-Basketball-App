@@ -76,7 +76,7 @@ p {
 	font-size: 1.2rem;
 }
 
-#navigation {	
+#navigation {
 	padding: 0.1rem;
 	margin: 0px;
 	width: 100%;
@@ -102,15 +102,15 @@ p {
 .navbar-item {
 	color: black;
 	text-decoration: none;
-	
+
 	display: inline-block;
 	vertical-align: middle;
-	
+
 	padding-top: 0.4rem;
 	padding-bottom: 0.2rem;
 	padding-left: 0.1rem;
 	padding-right: 0.8rem;
-	
+
 	color: white;
 	overflow: auto;
 
@@ -166,7 +166,7 @@ p {
 	clear: none;
 	width: 100%;
 	max-width: 100%;
-	height: 80%;
+	height: 90%;
 }
 
 .title {
@@ -261,7 +261,7 @@ form {
 	margin-left: auto;
 	margin-right: auto;
 	height: 17%;
-	
+
 	vertical-align: middle;
 	display: block;
 
@@ -293,7 +293,7 @@ form {
 }
 
 #apple {
-	color: white; 
+	color: white;
 	text-decoration: none;
 
 	transition: 0.3s;
@@ -328,16 +328,16 @@ input[type="submit"] {
 	background-color: #FF8E00;
 	color: white;
 	font-weight: bold;
-	
+
 	border: 0;
 	border-radius: 0.4rem;
 	font-size: 1.2rem;
-	
+
 	padding: 5px;
 	padding-left: 0.8rem;
 	padding-right: 0.8rem;
 	margin-top: 1rem;
-	
+
 	transition: 0.4s;
 }
 
@@ -365,7 +365,7 @@ input[type="email"] {
 	margin-top: 3px;
 	color: #F7F7FF;
 	background-color: inherit;
-	
+
 	border-left: none;
 	border-right: none;
 	border-top: none;
@@ -446,4 +446,14 @@ tr {
 #story-text-container {
 	margin-left: 1rem;
 	padding-right: 2rem;
+}
+
+.marketing-screenshots {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.m-p-text {
+	margin-right: 3rem;
 }
