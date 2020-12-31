@@ -13,6 +13,7 @@
 		189AAFCE2446C5100035E722 /* Gamemenuviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */; };
 		189AAFD02446C5490035E722 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AAFCF2446C5490035E722 /* GameTableViewCell.swift */; };
 		189C797724992BE20019EAF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189C797624992BE20019EAF9 /* GoogleService-Info.plist */; };
+		18B0D82F259E5F5800657690 /* TextFieldDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0D82E259E5F5800657690 /* TextFieldDesign.swift */; };
 		18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4FF29244A08920060672A /* Creategameviewcontroller.swift */; };
 		18DA8E582450BAB8000B7DA9 /* searchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA8E572450BAB8000B7DA9 /* searchTableViewCell.swift */; };
 		C01396A7243D583B00DAE647 /* Tabnewcourtviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01396A6243D583B00DAE647 /* Tabnewcourtviewcontroller.swift */; };
@@ -54,6 +55,7 @@
 		189AAFCD2446C5100035E722 /* Gamemenuviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamemenuviewcontroller.swift; sourceTree = "<group>"; };
 		189AAFCF2446C5490035E722 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		189C797624992BE20019EAF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18B0D82E259E5F5800657690 /* TextFieldDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDesign.swift; sourceTree = "<group>"; };
 		18B4FF29244A08920060672A /* Creategameviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creategameviewcontroller.swift; sourceTree = "<group>"; };
 		18DA8E572450BAB8000B7DA9 /* searchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchTableViewCell.swift; sourceTree = "<group>"; };
 		76E9EAFC0A8049891FA76815 /* Pods-Pickup Basketball App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pickup Basketball App.release.xcconfig"; path = "Target Support Files/Pods-Pickup Basketball App/Pods-Pickup Basketball App.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				C23FC943243F8861006AC17C /* SegueFromRight.swift */,
 				C222E538243EAAAF006098C6 /* SegueFromLeft.swift */,
 				C20012B824ABDE0D00040042 /* Main.storyboard */,
+				18B0D82E259E5F5800657690 /* TextFieldDesign.swift */,
 				C0A27B8324280DCB00F6D70F /* LaunchScreen.storyboard */,
 				C0A27B8124280DCB00F6D70F /* Assets.xcassets */,
 				C0A27B8624280DCB00F6D70F /* Info.plist */,
@@ -319,6 +322,7 @@
 				C28B00BB245D0C7C00DEC740 /* Game.swift in Sources */,
 				C2B7BF8424551752007B98B1 /* FollowingViewCell.swift in Sources */,
 				C207214D245620CD00665C49 /* Otherballerviewcontroller.swift in Sources */,
+				18B0D82F259E5F5800657690 /* TextFieldDesign.swift in Sources */,
 				C2DBB52B244BEA8400DB50E4 /* Joingameviewcontroller.swift in Sources */,
 				18B4FF2A244A08920060672A /* Creategameviewcontroller.swift in Sources */,
 				C0A27B7A24280DC700F6D70F /* Homeviewcontroller.swift in Sources */,

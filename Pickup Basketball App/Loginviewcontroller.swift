@@ -171,6 +171,9 @@ class Loginviewcontroller: UIViewController, UITextFieldDelegate {
         }
         
         LoginButton.isEnabled = check
+        if check{
+            LoginButton.backgroundColor = UIColor(red: 63/255, green: 148/255, blue: 239/255, alpha: 1)
+        }
 
     }
     
