@@ -48,13 +48,13 @@ class BallerProfile: UIViewController {
         
         //configures height label
         if(user24!.userheightfeet != "N/A"){
-        heightlabel.text = user24!.userheightfeet + " ' " + user24!.userheightinches + " \" "
+        heightlabel.text = user24!.userheightfeet + "' " + user24!.userheightinches + "\" "
         }
         else{
             editprofbutton.isEnabled = false
         }
         //configures other labels based on passed values
-        weightlabel.text = user24!.userweight
+        weightlabel.text = user24!.userweight + " lbs"
         prefpositionlabel.text = user24!.position
         hometownlabel.text = user24!.hometown
         fullnamelabel.text = user24!.firstname + " " + user24!.lastname

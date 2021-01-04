@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,39 +17,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Gb-Fz-CyF">
-                                <rect key="frame" x="87" y="274" width="240" height="294"/>
+                                <rect key="frame" x="87" y="199" width="240" height="294"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="294" id="3CY-Uh-2cz"/>
                                     <constraint firstAttribute="width" constant="240" id="GdG-ac-gFM"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep Hoopbreak downloaded to receive our premium version for free" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFY-tr-GlC">
-                                <rect key="frame" x="32" y="643" width="350" height="50.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep Hoopbreak downloaded to receive our premium version for free!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFY-tr-GlC">
+                                <rect key="frame" x="32" y="568" width="350" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="jRt-yy-aOe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6lP-hg-yQQ">
-                                <rect key="frame" x="-43" y="169" width="500" height="90"/>
+                                <rect key="frame" x="-43" y="94" width="500" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="hFk-q8-gq1"/>
                                     <constraint firstAttribute="width" constant="500" id="tE3-OD-vdf"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.76601278780000004" green="0.90872657300000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VFY-tr-GlC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1Ye-cN-N08"/>
                             <constraint firstItem="6lP-hg-yQQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8KI-nl-QIY"/>
                             <constraint firstItem="0Gb-Fz-CyF" firstAttribute="top" secondItem="6lP-hg-yQQ" secondAttribute="bottom" constant="15" id="FKo-YV-whK"/>
-                            <constraint firstItem="6lP-hg-yQQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="125" id="Jvk-zT-6fd"/>
+                            <constraint firstItem="6lP-hg-yQQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Jvk-zT-6fd"/>
                             <constraint firstItem="0Gb-Fz-CyF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c5U-Z3-Q6I"/>
                             <constraint firstItem="VFY-tr-GlC" firstAttribute="top" secondItem="0Gb-Fz-CyF" secondAttribute="bottom" constant="75" id="dHJ-KR-gCw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
