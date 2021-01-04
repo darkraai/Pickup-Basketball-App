@@ -183,6 +183,11 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     
     //sets the number of rows in the game menu
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.currenttimeslots.count == 0 {
+            self.gamemenutableview.setEmptyMessage("Looks like there are no games currently scheduled. Please create one using the button in the top-right.🏀")
+        } else {
+            self.gamemenutableview.restore()
+        }
         return currenttimeslots.count
     }
     
@@ -266,8 +271,6 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         gamemenutableview.reloadData()
         
     }
-    
-
     
 
     //loads in games from the database into the alltimeslots
@@ -510,5 +513,26 @@ extension Gamemenuviewcontroller: delegate{
         
         
         
+    }
+}
+
+extension UITableView {
+
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .darkGray
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 20)
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
     }
 }

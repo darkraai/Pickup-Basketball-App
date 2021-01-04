@@ -115,6 +115,13 @@ class RegisterViewController2: UIViewController,UITextFieldDelegate, UIPickerVie
             self.pickerviewposition.delegate = self
             self.pickerviewposition.dataSource = self
             
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+            label.text = "LBS"
+            label.textColor = UIColor(red: 65/255, green: 105/255, blue: 225/255, alpha: 1)
+            label.textAlignment = .left
+            userweight.rightView = label
+            userweight.rightViewMode = .always
+            
             updateDoneButtonState2()
     }
     
