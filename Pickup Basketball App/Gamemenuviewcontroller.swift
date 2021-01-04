@@ -184,7 +184,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     //sets the number of rows in the game menu
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.currenttimeslots.count == 0 {
-            self.gamemenutableview.setEmptyMessage("Looks like there are no games currently scheduled. Please create one using the button in the top-right.🏀")
+            self.gamemenutableview.setEmptyMessage("Looks like there are no games currently scheduled. Please create one using the button in the top-right.")
         } else {
             self.gamemenutableview.restore()
         }
