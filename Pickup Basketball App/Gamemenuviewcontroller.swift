@@ -162,6 +162,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
         //sets the date picker to the current date
         datePicker.datePickerMode = .date
         field.textAlignment = .center
+        datePicker.preferredDatePickerStyle = .wheels
         
         //toolbar
         let toolbar = UIToolbar()
