@@ -185,7 +185,7 @@ class Gamemenuviewcontroller: UIViewController, UITableViewDelegate, UITableView
     //sets the number of rows in the game menu
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.currenttimeslots.count == 0 {
-            self.gamemenutableview.setEmptyMessage("Looks like there are no games currently scheduled. Please create one using the button in the top-right.")
+            self.gamemenutableview.setEmptyMessage("No games currently scheduled")
         } else {
             self.gamemenutableview.restore()
         }
@@ -525,7 +525,7 @@ extension UITableView {
         messageLabel.textColor = .darkGray
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
-        messageLabel.font = UIFont(name: "TrebuchetMS", size: 20)
+        messageLabel.font = UIFont.systemFont(ofSize: 35, weight: .light)
         messageLabel.sizeToFit()
 
         self.backgroundView = messageLabel

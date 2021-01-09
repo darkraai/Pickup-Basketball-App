@@ -14,11 +14,12 @@ import FirebaseDatabase
 import Firebase
 
 
-class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADInterstitialDelegate {
+class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADInterstitialDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     //MARK: Properties
     @IBOutlet weak var parkNameTextField: UITextField!
-    @IBOutlet weak var numCourtsTextField: UITextField!
+//    @IBOutlet weak var numCourtsTextField: UITextField!
+    @IBOutlet weak var numCourtsPicker: UIPickerView!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var indoorSwitch: UISwitch!
     @IBOutlet weak var membershipSwitch: UISwitch!
@@ -35,6 +36,28 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
     var address = ""
     var indoorSelected = false
     var membershipSelected = false
+    
+    var numCourtsArr = [" ","1","2","3","4","5","6","7","8","9","10"]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return numCourtsArr[row]
+    }
+    
+    //determines number of rows in each pickerview
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return numCourtsArr.count
+    }
+    
+    //adjusts values based on what is selected on pickerview
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        numCourts = numCourtsArr[row]
+        updateDoneButtonState()
+
+    }
     
     //handles ads
     func createAndLoadInterstitial() -> GADInterstitial {
@@ -56,7 +79,9 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
         ref = Database.database().reference()
         //sets up delegates
         parkNameTextField.delegate = self
-        numCourtsTextField.delegate = self
+//        numCourtsTextField.delegate = self
+        numCourtsPicker.delegate = self
+        numCourtsPicker.dataSource = self
         addressTextField.delegate = self
         //initializes switch states
         indoorSwitch.isOn = false
@@ -71,9 +96,10 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
         
         parkName = parkNameTextField.text ?? ""
         address = addressTextField.text ?? ""
-        numCourts = numCourtsTextField.text ?? ""
+//        numCourts = numCourtsTextField.text ?? ""
+        print(parkName, numCourts, address)
         
-        if (parkName == "" || numCourts == "" || !CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: numCourts)) || numCourts.trimmingCharacters(in: .whitespacesAndNewlines) == "0"){
+        if (parkName == "" || numCourts == "" || numCourts == " " || !CharacterSet(charactersIn: "1234567890").isSuperset(of: CharacterSet(charactersIn: numCourts)) || numCourts.trimmingCharacters(in: .whitespacesAndNewlines) == "0"){
             check = false
             return
         }
@@ -111,6 +137,9 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
 //                return
 //            }
 //        }
+        if check{
+            startHoopingButton.backgroundColor = UIColor(red: 63/255, green: 148/255, blue: 239/255, alpha: 1)
+        }
         startHoopingButton.isEnabled = check
     }
     
@@ -118,8 +147,6 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == parkNameTextField{
             parkName = parkNameTextField.text!
-        } else if textField == numCourtsTextField{
-            numCourts = numCourtsTextField.text!
         } else {
             address = addressTextField.text!
         }
@@ -171,7 +198,7 @@ class Newcourtviewcontroller: UIViewController, UITextFieldDelegate, GADIntersti
         
         //resets values after added to database
         parkNameTextField.text = ""
-        numCourtsTextField.text = ""
+        numCourtsPicker.selectRow(0, inComponent: 0, animated: true)
         addressTextField.text = ""
         membershipSwitch.isOn = false
         indoorSwitch.isOn = false

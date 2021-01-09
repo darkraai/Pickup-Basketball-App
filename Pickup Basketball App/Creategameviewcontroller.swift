@@ -283,6 +283,7 @@ class Creategameviewcontroller: UIViewController, UIPickerViewDataSource, UIPick
         startHoopingButton.isEnabled = false
         
         if (selectedGameMode != " " && selectedTimeSlot != " "){
+            startHoopingButton.backgroundColor = UIColor(red: 63/255, green: 148/255, blue: 239/255, alpha: 1)
             startHoopingButton.isEnabled = true
 
         }
